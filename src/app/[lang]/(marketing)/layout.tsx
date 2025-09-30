@@ -4,6 +4,7 @@ import { FooterSocial } from "@/components/footer-social"
 import { i18nConfig, type Locale } from "@/i18n-config";
 import { getDictionary, i18nNamespaces } from '@/i18n'
 import { Navbar, Footer, Billing, Auth } from "@/types/locales";
+import { TransformHistoryLocal } from "@/types/locales/transform-history";
 
 import { setCurrentLanguage } from '@/actions/constants'
 
@@ -33,7 +34,7 @@ export default async function Layout({
   const i18nFooter = await getDictionary<Footer>(lang, i18nNamespaces.footer);
   const i18nBilling = await getDictionary<Billing>(lang, i18nNamespaces.billing);
   const i18nAuth = await getDictionary<Auth>(lang, i18nNamespaces.auth);
-  // 已移除换脸历史功能，不再加载对应字典
+  const i18nHistory = await getDictionary<TransformHistoryLocal>(lang, 'transform-history');
 
   return (
     <>
@@ -43,6 +44,7 @@ export default async function Layout({
         navbarLocal={i18nNavbar}
         subscriptionLocal={i18nBilling.subscription}
         toastLocal={i18nBilling.toast}
+        historyLocal={i18nHistory}
         i18n={{ auth: i18nAuth }}
       />
       {children}

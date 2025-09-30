@@ -1,0 +1,42 @@
+{
+  "snow-white": {
+    "name": "《白雪公主》现代电影风",
+    "description": "现代迪士尼电影风格"
+  },
+  "cinderella": {
+    "name": "《灰姑娘》手绘经典风",
+    "description": "优雅的迪士尼公主风格"
+  },
+  "bambi": {
+    "name": "《小鹿斑比》经典风",
+    "description": "自然森林风格"
+  },
+  "mulan": {
+    "name": "《花木兰》美式东方风",
+    "description": "迪士尼还原古代中国场景"
+  },
+  "toy-story": {
+    "name": "《玩具总动员》3D风",
+    "description": "皮克斯3D动画风格，玩具质感"
+  },
+  "frozen": {
+    "name": "《冰雪奇缘》冰雪风",
+    "description": "冰雪魔法风格，蓝色和白色主调"
+  },
+  "zootopia": {
+    "name": "《疯狂动物城》3D 写实卡通风",
+    "description": "迪士尼 3D 写实卡通风格，动物毛发皮肤质感细腻"
+  },
+  "finding-nemo": {
+    "name": "《海底总动员》海洋风",
+    "description": "海底世界风格，蓝色和珊瑚色调"
+  },
+  "wreck-it-ralph": {
+    "name": "《无敌破坏王》游戏像素与 3D 结合风",
+    "description": "迪士尼像素风与 3D 融合风格，复古游戏场景用像素（简洁鲜艳）"
+  },
+  "the-lion-king": {
+    "name": "《狮子王》CGI 写实风",
+    "description": "迪士尼 CGI 动画风格，以非洲草原为背景"
+  }
+}

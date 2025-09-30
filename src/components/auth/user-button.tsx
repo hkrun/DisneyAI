@@ -13,6 +13,8 @@ import { Mail, CreditCard, User, LogOut, History } from "lucide-react"
 import { useState } from "react"
 import { ManageSubscriptionDialog } from "@/components/subscription-dialog"
 import { SubscriptionLocal, ToastLocal } from "@/types/locales/billing";
+import { TransformHistoryDialog } from "@/components/transform-history-dialog"
+import { TransformHistoryLocal } from "@/types/locales/transform-history"
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { useSession, signOut } from 'next-auth/react'
@@ -38,7 +40,7 @@ interface UserButtonProps {
   userLocal: UserButtonLocale;
   subscriptionLocal: SubscriptionLocal;
   toastLocal: ToastLocal;
-  // historyLocal 已移除
+  historyLocal?: TransformHistoryLocal;
 }
 
 const MENU_ICONS = {
@@ -49,7 +51,7 @@ const MENU_ICONS = {
   logout: LogOut,
 } as const;
 
-export function UserButton({ lang, userLocal, subscriptionLocal, toastLocal }: UserButtonProps) {
+export function UserButton({ lang, userLocal, subscriptionLocal, toastLocal, historyLocal }: UserButtonProps) {
   const { data: session } = useSession();
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   const [showHistoryModal, setShowHistoryModal] = useState(false);
@@ -144,7 +146,15 @@ export function UserButton({ lang, userLocal, subscriptionLocal, toastLocal }: U
         />
       )}
 
-      {/* 历史记录弹窗已移除，保留状态但不渲染组件 */}
+      {/* 转换记录弹窗 */}
+      {showHistoryModal && historyLocal && (
+        <TransformHistoryDialog
+          open={showHistoryModal}
+          onClose={() => setShowHistoryModal(false)}
+          i18n={historyLocal}
+          lang={lang}
+        />
+      )}
     </>
   )
 }

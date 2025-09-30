@@ -1,0 +1,44 @@
+{
+    "title": "変換履歴",
+    "filters": {
+      "all": "すべてのステータス",
+      "status": "ステータスでフィルタリング"
+    },
+    "tabs": {
+      "all": "すべて",
+      "image": "画像変換",
+      "video": "動画変換"
+    },
+    "status": {
+      "PROCESSING": "処理中",
+      "COMPLETED": "完了",
+      "FAILED": "失敗"
+    },
+    "taskType": {
+      "image": "画像",
+      "video": "動画"
+    },
+    "details": {
+      "preview": "プレビュー",
+      "hoverToPreview": "ホバーしてプレビュー",
+      "videoLoadError": "動画の読み込みに失敗しました",
+      "seconds": "秒",
+      "fileSize": "ファイルサイズ"
+    },
+    "actions": {
+      "download": "ダウンロード",
+      "retry": "再試行"
+    },
+    "empty": {
+      "title": "変換履歴はありません",
+      "description": "ディズニースタイルの変換をまだ行っていません。さっそく試してみましょう！"
+    },
+    "loading": "読み込み中...",
+    "pagination": {
+      "showing": "表示",
+      "of": "件、総計",
+      "results": "件の結果",
+      "previous": "前のページ",
+      "next": "次のページ"
+    }
+  }

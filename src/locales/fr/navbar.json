@@ -87,9 +87,9 @@
         "label": "Crédits",
         "tooltip": {
             "title": "Crédits",
-            "costInfo": "1 crédit consommé par utilisation",
-            "usageInfo": "Les fonctionnalités déduisent des crédits selon la durée de la vidéo.",
-            "getMoreButton": "Obtenir plus de temps"
+            "costInfo": "10 crédits consommés par utilisation",
+            "usageInfo": "Différentes fonctionnalités peuvent consommer différentes quantités de crédits.",
+            "getMoreButton": "Obtenir plus de crédits"
         }
     },
     "meta": {

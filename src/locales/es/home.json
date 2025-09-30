@@ -1,0 +1,118 @@
+{
+    "hero": {
+      "title": {
+        "imageConversion": "Conversión al estilo Disney",
+        "videoConversion": "Conversión de estilo de video"
+      },
+      "subtitle": {
+        "imageConversion": "Consigue el estilo Disney dibujado a mano en 10 segundos, muy fácil",
+        "videoConversion": "Videos cortos de 1 minuto convertidos en escenas animadas, con efectos mágicos"
+      }
+    },
+    "converter": {
+      "imageMode": {
+        "label": "Conversión de imagen",
+        "description": "Disponible en el plan Básico"
+      },
+      "videoMode": {
+        "label": "Conversión de video",
+        "description": "Disponible desde el plan Premium"
+      }
+    },
+    "features": {
+      "title": "Funciones mágicas",
+      "subtitle": "Explora nuestras potentes herramientas de magia con IA y convierte fácilmente tus fotos y videos en obras de arte con estilo Disney",
+      "items": [
+        {
+          "icon": "fa fa-camera",
+          "title": "Convierte fotos en ilustraciones Disney en segundos",
+          "description": "Sube selfies, paisajes o fotos de mascotas; elige plantillas como el estilo moderno de \"Blancanieves\" o el estilo refinado de \"Frozen\". ¡La IA genera en 10 segundos tu ilustración Disney exclusiva con gran detalle!"
+        },
+        {
+          "icon": "fa fa-film",
+          "title": "Convierte videos en escenas de película",
+          "description": "Clips de 30 segundos o videos familiares de 3 minutos pueden convertirse en el estilo clásico de \"Blancanieves\" o en imágenes con sensación cinematográfica 3D como en \"Zootrópolis\"."
+        },
+        {
+          "icon": "fa fa-users",
+          "title": "Únete a la comunidad de creadores Disney",
+          "description": "Comparte tus obras mágicas en TikTok, YouTube y otras plataformas, interactúa con fans de Disney de todo el mundo; participa en retos temáticos y gana merchandising y suscripciones Pro gratuitas."
+        }
+      ],
+      "videoNotSupported": "Tu navegador no admite la reproducción de video."
+    },
+    "templates": {
+      "title": "Biblioteca de estilos",
+      "subtitle": "Desde animación clásica hasta 3D moderno: muchas plantillas de estilo Disney para elegir",
+      "viewAll": "Ver todo",
+      "filters": {
+        "all": "Todos los estilos",
+        "classic": "Serie de animación clásica",
+        "pixar": "Serie 3D de Pixar",
+        "modern": "Serie de animación moderna"
+      },
+      "items": [
+        { "title": "Estilo dibujado de \"Cenicienta\"", "tag": "Clásico", "description": "Conversión de estilo de alta calidad", "status": "Disponible" },
+        { "title": "Estilo refinado de \"Frozen\"", "tag": "Popular", "description": "Conversión de estilo de alta calidad", "status": "Disponible" },
+        { "title": "Estilo 3D de \"Toy Story\"", "tag": "3D", "description": "Conversión de estilo de alta calidad", "status": "Disponible" },
+        { "title": "Estilo de aventura de \"El Rey León\"", "tag": "Nuevo", "description": "Conversión de estilo de alta calidad", "status": "Disponible" }
+      ]
+    },
+    "community": {
+      "title": "Plaza creativa",
+      "subtitle": "Únete a nuestra comunidad creativa y comparte tus obras con estilo Disney",
+      "stats": {
+        "users": "Usuarios activos",
+        "creations": "Obras generadas",
+        "satisfaction": "Satisfacción de usuarios"
+      }
+    },
+    "pricing": {
+      "title": "Haz que cada momento esté lleno de magia Disney",
+      "subtitle": "Regístrate ahora, prueba gratis la conversión mágica y comienza tu viaje creativo",
+      "cta": "Ver precios",
+      "learnMore": "Saber más"
+    },
+    "testimonials": {
+      "title": "Opiniones mágicas de todo el mundo",
+      "subtitle": "Mira lo que otros fans de Disney han creado con nuestras herramientas",
+      "items": [
+        {
+          "content": "Convertí la foto de mi hija al estilo \"Frozen\" y ¡se emocionó tanto que lloró! Súper fácil de usar.",
+          "author": "Lily_DisneyFan",
+          "role": "California, EE. UU. · Usuario Premium"
+        },
+        {
+          "content": "Transformé fotos de viaje al estilo acuarela Disney; ¡en las redes me preguntaron por el enlace sin parar!",
+          "author": "Emma_PixarFan",
+          "role": "París, Francia · Usuario Básico"
+        },
+        {
+          "content": "Como blogger de anime, lo uso para crear videos cortos al estilo \"Mulan\" y ¡mis seguidores aumentaron un 30%!",
+          "author": "Miki_AnimeLover",
+          "role": "Tokio, Japón · Usuario Pro"
+        }
+      ]
+    },
+    "activity": {
+      "badge": "Actividad destacada",
+      "title": "Reto de fan‑art de \"La Sirenita\"",
+      "description": "Participa en el reto temático, usa plantillas exclusivas de estilo y gana merchandising y suscripciones Pro gratuitas.",
+      "rules": [
+        "Fecha límite: 31 de diciembre de 2025",
+        "Las obras ganadoras se mostrarán en la cuenta oficial",
+        "Primer premio: oportunidad de ganar entradas para Disneyland"
+      ],
+      "cta": "Participar ahora"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "subtitle": "Resolvemos todas tus dudas sobre la conversión al estilo Disney",
+      "items": [
+        { "question": "¿Qué formatos de imagen se admiten?", "answer": "Admitimos formatos comunes como JPG, PNG y GIF, con un tamaño máximo de 20 MB." },
+        { "question": "¿Cuánto tarda la conversión?", "answer": "La conversión de imagen suele tardar 10–30 segundos; la de video, de 1 a 5 minutos según la duración." },
+        { "question": "¿Puedo usar comercialmente las imágenes generadas?", "answer": "Las imágenes del plan Básico son solo para uso personal. Con el plan Business es posible el uso comercial." },
+        { "question": "¿Cómo cancelo la suscripción?", "answer": "Puedes cancelarla en la configuración de tu cuenta en cualquier momento; seguirá activa hasta el final del ciclo de facturación actual." }
+      ]
+    }
+  }

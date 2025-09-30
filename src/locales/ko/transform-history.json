@@ -1,0 +1,44 @@
+{
+    "title": "변환 기록",
+    "filters": {
+      "all": "모든 상태",
+      "status": "상태로 필터링"
+    },
+    "tabs": {
+      "all": "전체",
+      "image": "이미지 변환",
+      "video": "비디오 변환"
+    },
+    "status": {
+      "PROCESSING": "처리 중",
+      "COMPLETED": "완료",
+      "FAILED": "실패"
+    },
+    "taskType": {
+      "image": "이미지",
+      "video": "비디오"
+    },
+    "details": {
+      "preview": "미리보기",
+      "hoverToPreview": "호버하여 미리보기",
+      "videoLoadError": "비디오 로드 실패",
+      "seconds": "초",
+      "fileSize": "파일 크기"
+    },
+    "actions": {
+      "download": "다운로드",
+      "retry": "재시도"
+    },
+    "empty": {
+      "title": "변환 기록이 없습니다",
+      "description": "디즈니 스타일 변환을 아직 수행하지 않았습니다. 지금 바로 시도해 보세요!"
+    },
+    "loading": "로딩 중...",
+    "pagination": {
+      "showing": "표시",
+      "of": "건, 총",
+      "results": "건의 결과",
+      "previous": "이전 페이지",
+      "next": "다음 페이지"
+    }
+  }

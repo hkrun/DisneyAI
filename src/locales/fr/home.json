@@ -1,0 +1,118 @@
+{
+    "hero": {
+      "title": {
+        "imageConversion": "Conversion au style Disney",
+        "videoConversion": "Conversion de style vidéo"
+      },
+      "subtitle": {
+        "imageConversion": "Obtenez le style Disney dessiné à la main en 10 secondes, ultra simple",
+        "videoConversion": "Des vidéos d’une minute transformées en scènes animées, avec effets magiques"
+      }
+    },
+    "converter": {
+      "imageMode": {
+        "label": "Conversion d’image",
+        "description": "Disponible dans l’offre Basique"
+      },
+      "videoMode": {
+        "label": "Conversion vidéo",
+        "description": "Disponible à partir de l’offre Premium"
+      }
+    },
+    "features": {
+      "title": "Fonctions magiques",
+      "subtitle": "Découvrez nos puissants outils de magie IA et transformez facilement vos photos et vidéos en œuvres au style Disney",
+      "items": [
+        {
+          "icon": "fa fa-camera",
+          "title": "Vos photos deviennent des illustrations Disney en quelques secondes",
+          "description": "Importez des selfies, paysages ou photos d’animaux. Choisissez des modèles comme le look moderne de « Blanche‑Neige » ou le style raffiné de « La Reine des Neiges ». L’IA génère en 10 secondes votre illustration Disney exclusive, avec un maximum de détails !"
+        },
+        {
+          "icon": "fa fa-film",
+          "title": "Des vidéos transformées en scènes de film d’animation",
+          "description": "Des clips de 30 secondes ou des vidéos familiales de 3 minutes deviennent un style classique « Blanche‑Neige » ou une ambiance cinéma 3D comme dans « Zootopie »."
+        },
+        {
+          "icon": "fa fa-users",
+          "title": "Rejoignez la communauté des créateurs Disney",
+          "description": "Partagez vos créations magiques sur TikTok, YouTube et d’autres plateformes, échangez avec des fans Disney du monde entier ; participez à des défis à thème et gagnez des goodies et des abonnements Pro gratuits."
+        }
+      ],
+      "videoNotSupported": "Votre navigateur ne prend pas en charge la lecture vidéo."
+    },
+    "templates": {
+      "title": "Bibliothèque de styles",
+      "subtitle": "De l’animation classique au 3D moderne, de nombreux modèles de style Disney à votre disposition",
+      "viewAll": "Tout afficher",
+      "filters": {
+        "all": "Tous les styles",
+        "classic": "Série animation classique",
+        "pixar": "Série 3D Pixar",
+        "modern": "Série animation moderne"
+      },
+      "items": [
+        { "title": "Style « Cendrillon » dessiné à la main", "tag": "Classique", "description": "Conversion de style haute qualité", "status": "Disponible" },
+        { "title": "Style raffiné « La Reine des Neiges »", "tag": "Populaire", "description": "Conversion de style haute qualité", "status": "Disponible" },
+        { "title": "Style 3D « Toy Story »", "tag": "3D", "description": "Conversion de style haute qualité", "status": "Disponible" },
+        { "title": "Style aventure « Le Roi Lion »", "tag": "Nouveau", "description": "Conversion de style haute qualité", "status": "Disponible" }
+      ]
+    },
+    "community": {
+      "title": "Place créative",
+      "subtitle": "Rejoignez notre communauté et partagez vos œuvres au style Disney",
+      "stats": {
+        "users": "Utilisateurs actifs",
+        "creations": "Œuvres générées",
+        "satisfaction": "Satisfaction des utilisateurs"
+      }
+    },
+    "pricing": {
+      "title": "Faites que chaque instant soit plein de magie Disney",
+      "subtitle": "Inscrivez‑vous maintenant, testez gratuitement la conversion magique et lancez votre aventure créative",
+      "cta": "Voir les tarifs",
+      "learnMore": "En savoir plus"
+    },
+    "testimonials": {
+      "title": "Avis magiques du monde entier",
+      "subtitle": "Découvrez ce que d’autres fans de Disney ont créé avec nos outils",
+      "items": [
+        {
+          "content": "J’ai transformé la photo de ma fille au style « La Reine des Neiges », elle était tellement émue qu’elle en a pleuré ! Tellement simple à utiliser.",
+          "author": "Lily_DisneyFan",
+          "role": "Californie, États‑Unis · Utilisatrice Premium"
+        },
+        {
+          "content": "J’ai converti mes photos de voyage en style aquarelle Disney ; sur les réseaux on m’a demandé le lien sans arrêt !",
+          "author": "Emma_PixarFan",
+          "role": "Paris, France · Utilisatrice Basique"
+        },
+        {
+          "content": "En tant que blogueuse anime, j’ai créé des courts métrages au style « Mulan » – mes abonnés ont augmenté de 30 % !",
+          "author": "Miki_AnimeLover",
+          "role": "Tokyo, Japon · Utilisatrice Pro"
+        }
+      ]
+    },
+    "activity": {
+      "badge": "Activité populaire",
+      "title": "Défi fan‑art « La Petite Sirène »",
+      "description": "Participez au défi thématique, utilisez des modèles de style exclusifs et gagnez des goodies et des abonnements Pro.",
+      "rules": [
+        "Date limite : 31 décembre 2025",
+        "Les œuvres gagnantes seront présentées sur le compte officiel",
+        "1er prix : chance de gagner des billets pour Disneyland"
+      ],
+      "cta": "Participer maintenant"
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Toutes les réponses sur la conversion au style Disney",
+      "items": [
+        { "question": "Quels formats d’image sont pris en charge ?", "answer": "Nous prenons en charge les formats courants JPG, PNG et GIF, jusqu’à 20 Mo." },
+        { "question": "Combien de temps dure la conversion ?", "answer": "La conversion d’image prend généralement 10 à 30 secondes ; pour la vidéo, comptez 1 à 5 minutes selon la durée." },
+        { "question": "Puis‑je utiliser commercialement les images générées ?", "answer": "Les images du plan Basique sont réservées à l’usage personnel. Avec l’offre Business, l’usage commercial est possible." },
+        { "question": "Comment annuler mon abonnement ?", "answer": "Vous pouvez l’annuler à tout moment dans les paramètres du compte ; il reste actif jusqu’à la fin de la période de facturation en cours." }
+      ]
+    }
+  }

@@ -40,7 +40,7 @@ async function checkUserCredits(userId: string): Promise<{ hasCredits: boolean; 
 }
 
 // 扣除用户积分
-async function deductUserCredits(userId: string, creditsToDeduct: number = 1): Promise<boolean> {
+async function deductUserCredits(userId: string, creditsToDeduct: number = 10): Promise<boolean> {
   try {
     const { rows } = await sql`
       UPDATE nf_users 
@@ -153,10 +153,10 @@ export async function POST(request: NextRequest) {
     }
 
     // 检查用户积分
-    const { hasCredits, credits } = await checkUserCredits(user.userId);
-    if (!hasCredits) {
+    const { hasCredits, credits } = await checkUserCredits(userId);
+    if (credits < 10) {
       return NextResponse.json(
-        { success: false, error: '积分不足，请购买积分后再试' },
+        { success: false, error: '积分不足，图片转换需要至少10积分' },
         { status: 402 }
       );
     }
@@ -180,7 +180,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 扣除用户积分
-    const creditsDeducted = await deductUserCredits(user.userId, 1);
+    const creditsDeducted = await deductUserCredits(userId, 10);
     if (!creditsDeducted) {
       // 如果积分扣除失败，取消预测
       try {
@@ -196,13 +196,13 @@ export async function POST(request: NextRequest) {
     }
 
     // 记录转换历史
-    await recordTransformHistory(user.userId, styleId, fluxResponse.id, 1);
+    await recordTransformHistory(userId, styleId, fluxResponse.id, 10);
 
     // 返回预测ID，前端可以轮询状态
     return NextResponse.json({
       success: true,
       predictionId: fluxResponse.id,
-      creditsUsed: 1,
+      creditsUsed: 10,
       message: '图像转换已开始，请稍候...'
     });
 

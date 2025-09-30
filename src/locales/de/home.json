@@ -1,0 +1,118 @@
+{
+    "hero": {
+      "title": {
+        "imageConversion": "Disney‑Stil Konvertierung",
+        "videoConversion": "Videostil‑Konvertierung"
+      },
+      "subtitle": {
+        "imageConversion": "In 10 Sekunden zum Disney‑Handzeichnungsstil – super einfach",
+        "videoConversion": "1‑minütige Kurzvideos werden zu Animationsszenen – mit magischen Effekten"
+      }
+    },
+    "converter": {
+      "imageMode": {
+        "label": "Bildkonvertierung",
+        "description": "Im Basis‑Tarif verfügbar"
+      },
+      "videoMode": {
+        "label": "Videokonvertierung",
+        "description": "Ab dem Premium‑Tarif"
+      }
+    },
+    "features": {
+      "title": "Magische Funktionen",
+      "subtitle": "Entdecke unsere leistungsstarken AI‑Magie‑Tools und verwandle deine Fotos und Videos mühelos in Kunstwerke im Disney‑Stil",
+      "items": [
+        {
+          "icon": "fa fa-camera",
+          "title": "Fotos werden in Sekunden zu Disney‑Illustrationen",
+          "description": "Lade Selfies, Landschaften oder Haustierfotos hoch, wähle Vorlagen wie „Schneewittchen“ moderner Disney‑Filmlook oder den feinen Stil von „Die Eiskönigin“. Die AI erstellt in 10 Sekunden deine exklusive Disney‑Illustration – mit Details, die überzeugen!"
+        },
+        {
+          "icon": "fa fa-film",
+          "title": "Videos werden zu Filmszenen",
+          "description": "30‑Sekunden‑Clips oder 3‑Minuten‑Familienvideos werden zu Szenen im klassischen „Schneewittchen“‑Look oder mit 3D‑Filmgefühl wie in „Zoomania“!"
+        },
+        {
+          "icon": "fa fa-users",
+          "title": "Werde Teil der Disney‑Creator‑Community",
+          "description": "Teile deine magischen Werke auf TikTok, YouTube und anderen Plattformen, interagiere mit Disney‑Fans weltweit; nimm an Themen‑Challenges teil und gewinne Fan‑Merch oder kostenlose Pro‑Abos."
+        }
+      ],
+      "videoNotSupported": "Ihr Browser unterstützt die Videowiedergabe nicht."
+    },
+    "templates": {
+      "title": "Vorlagenbibliothek",
+      "subtitle": "Von klassischen Animationen bis modernem 3D – wähle aus vielen Disney‑Stilen",
+      "viewAll": "Alle anzeigen",
+      "filters": {
+        "all": "Alle Stile",
+        "classic": "Klassische Animationsserie",
+        "pixar": "Pixar‑3D‑Serie",
+        "modern": "Moderne Animationsserie"
+      },
+      "items": [
+        { "title": "„Cinderella“ Handzeichnungsstil", "tag": "Klassisch", "description": "Hochwertige Stilkonvertierung", "status": "Verfügbar" },
+        { "title": "„Die Eiskönigin“ Feiner Stil", "tag": "Beliebt", "description": "Hochwertige Stilkonvertierung", "status": "Verfügbar" },
+        { "title": "„Toy Story“ 3D‑Stil", "tag": "3D", "description": "Hochwertige Stilkonvertierung", "status": "Verfügbar" },
+        { "title": "„Der König der Löwen“ Abenteuerstil", "tag": "Neu", "description": "Hochwertige Stilkonvertierung", "status": "Verfügbar" }
+      ]
+    },
+    "community": {
+      "title": "Kreativ‑Plaza",
+      "subtitle": "Tritt unserer Community bei und teile deine Werke im Disney‑Stil",
+      "stats": {
+        "users": "Aktive Nutzer",
+        "creations": "Erstellte Werke",
+        "satisfaction": "Zufriedenheit"
+      }
+    },
+    "pricing": {
+      "title": "Lass jeden Moment voller Disney‑Magie sein",
+      "subtitle": "Jetzt registrieren, Stilkonvertierung gratis testen und deine kreative Reise starten",
+      "cta": "Preise ansehen",
+      "learnMore": "Mehr erfahren"
+    },
+    "testimonials": {
+      "title": "Magisches Feedback aus aller Welt",
+      "subtitle": "Sieh dir an, was andere Disney‑Fans mit unseren Tools erschaffen",
+      "items": [
+        {
+          "content": "Ich habe das Foto meiner kleinen Tochter in den Stil von „Die Eiskönigin“ verwandelt – sie war so begeistert, dass sie vor Freude weinte! Super einfach zu bedienen!",
+          "author": "Lily_DisneyFan",
+          "role": "Kalifornien, USA · Premium‑Nutzerin"
+        },
+        {
+          "content": "Reisefotos in Disney‑Aquarellstil umgewandelt – in den sozialen Medien wurde ich sofort nach dem Link gefragt!",
+          "author": "Emma_PixarFan",
+          "role": "Paris, Frankreich · Basis‑Nutzerin"
+        },
+        {
+          "content": "Als Anime‑Blogger nutze ich es für Kurzvideos im „Mulan“‑Stil – meine Followerzahl stieg um 30%!",
+          "author": "Miki_AnimeLover",
+          "role": "Tokio, Japan · Pro‑Nutzerin"
+        }
+      ]
+    },
+    "activity": {
+      "badge": "Beliebte Aktion",
+      "title": "„Arielle, die Meerjungfrau“ Fan‑Art‑Challenge",
+      "description": "Mach bei der Themen‑Challenge mit, nutze exklusive Stilvorlagen und gewinne Fan‑Merch oder ein kostenloses Pro‑Abo!",
+      "rules": [
+        "Einsendeschluss: 31. Dezember 2025",
+        "Gewinnerwerke werden auf dem offiziellen Account gezeigt",
+        "1. Preis: Chance auf Tickets für den Disneyland‑Park"
+      ],
+      "cta": "Jetzt mitmachen"
+    },
+    "faq": {
+      "title": "Häufige Fragen",
+      "subtitle": "Antworten auf alle Fragen zur Disney‑Stilkonvertierung",
+      "items": [
+        { "question": "Welche Bildformate werden unterstützt?", "answer": "Wir unterstützen gängige Formate wie JPG, PNG und GIF bis 20 MB." },
+        { "question": "Wie lange dauert die Konvertierung?", "answer": "Bildkonvertierung dauert in der Regel 10–30 Sekunden, Videokonvertierung je nach Länge 1–5 Minuten." },
+        { "question": "Darf ich die erstellten Bilder kommerziell nutzen?", "answer": "Bilder im Basis‑Tarif sind nur für private Nutzung. Mit Business‑Tarif ist kommerzielle Nutzung möglich." },
+        { "question": "Wie kann ich das Abo kündigen?", "answer": "Du kannst dein Abo jederzeit in den Kontoeinstellungen kündigen. Die Nutzung bleibt bis zum Ende des aktuellen Abrechnungszeitraums bestehen." }
+      ]
+    }
+  }

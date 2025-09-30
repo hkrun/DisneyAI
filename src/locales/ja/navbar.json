@@ -93,9 +93,9 @@
         "label": "クレジット",
         "tooltip": {
             "title": "クレジット",
-            "costInfo": "使用ごとに1クレジット消費",
-            "usageInfo": "機能は動画の長さに応じてクレジットを差し引きます。",
-            "getMoreButton": "時間を追加"
+            "costInfo": "使用ごとに10クレジット消費",
+            "usageInfo": "異なる機能は異なる量のクレジットを消費する可能性があります。",
+            "getMoreButton": "クレジットを追加"
         }
     },
   "meta":{

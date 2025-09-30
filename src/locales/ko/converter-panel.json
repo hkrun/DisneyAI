@@ -1,0 +1,75 @@
+{
+  "progress": {
+    "title": "작업 진행률",
+    "step": "단계"
+  },
+  "steps": {
+    "upload": {
+      "title": "이미지 업로드",
+      "subtitle": "(JPG/PNG/GIF 지원, ≤5MB)",
+      "placeholder": "클릭하여 업로드하거나 이미지를 여기로 드래그",
+      "supportedFormats": "JPG, PNG, GIF 형식 지원",
+      "exampleImages": "예시 이미지 선택:"
+    },
+    "style": {
+      "title": "디즈니 스타일 선택",
+      "subtitle": "(클릭하여 효과 선택)",
+      "selected": "스타일 선택됨"
+    },
+    "video": {
+      "title": "비디오 생성",
+      "subtitle": "(프롬프트 선택사항)",
+      "promptLabel": "비디오 프롬프트 (선택사항)",
+      "promptPlaceholder": "선택사항, 비디오에 표현하고 싶은 장면, 캐릭터 동작, 감정 등을 자세히 설명해주세요... 작성하지 않으면 이미지 내용을 자동으로 분석합니다"
+    }
+  },
+  "buttons": {
+    "previous": "이전",
+    "next": "다음",
+    "startConversion": "변환 시작",
+    "generateVideo": "비디오 생성",
+    "continue": "변환 계속",
+    "back": "돌아가기",
+    "download": "다운로드",
+    "downloadImage": "이미지 다운로드",
+    "downloadVideo": "비디오 다운로드"
+  },
+  "status": {
+    "uploading": "이미지 업로드 중...",
+    "processing": "디즈니 스타일 이미지 생성 중...",
+    "generatingVideo": "비디오 생성 중...",
+    "uploadingToCloud": "이미지를 클라우드에 업로드 중...",
+    "processingVideo": "비디오 효과 처리 중...",
+    "magic": "마법을 부리고 있습니다",
+    "imagePreview": "이미지 효과 미리보기",
+    "videoPreview": "비디오 생성 미리보기"
+  },
+  "messages": {
+    "imageConversion": "디즈니 스타일 작품을 생성하고 있습니다~",
+    "videoGeneration": "이미지에서 디즈니 스타일 비디오를 생성하고 있습니다~",
+    "estimatedTime": {
+      "image": "예상 남은 시간 30-60초",
+      "video": "예상 남은 시간 3-8분"
+    },
+    "hint": "팁: 드래그하여 세부 보기를 하고, 스타일 카드를 클릭하면 즉시 미리보기"
+  },
+  "results": {
+    "imageCompleted": "이미지 변환 완료!",
+    "videoCompleted": "비디오 변환 완료!",
+    "originalImage": "원본 이미지",
+    "styleImage": "스타일 이미지",
+    "styleVideo": "스타일 비디오"
+  },
+  "errors": {
+    "loadExampleFailed": "예시 이미지 로드 실패, 다시 시도해주세요",
+    "imageLoadError": "이미지 로드 실패",
+    "videoLoadError": "비디오 로드 실패"
+  },
+  "creditsDialog": {
+    "title": "포인트 부족",
+    "imageRequired": "포인트가 부족합니다. 이미지 변환에는 최소 {credits} 포인트가 필요합니다.",
+    "videoRequired": "포인트가 부족합니다. 비디오 변환에는 최소 {credits} 포인트가 필요합니다.",
+    "cancel": "취소",
+    "subscribe": "구독하기"
+  }
+}

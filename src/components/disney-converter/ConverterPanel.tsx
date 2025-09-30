@@ -3,6 +3,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { DISNEY_STYLE_TEMPLATES, type DisneyStyleTemplate } from '@/lib/disney-prompts'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
+import { useStyleTranslations } from '@/hooks/use-style-translations'
+import { type Locale } from '@/i18n-config'
+import { useAuthTranslation } from '@/hooks/use-auth-translation'
+import ConfirmDialog from '@/components/ui/confirm-dialog'
+import { LoginDialog } from '@/components/auth/LoginDialog'
+import { type ConverterPanelLocal } from '@/types/locales/converter-panel'
 
 interface ConversionState {
   predictionId?: string
@@ -15,10 +23,19 @@ interface ConversionState {
 
 interface ConverterPanelProps {
   mode: 'image' | 'video'
+  i18n: ConverterPanelLocal
 }
 
-export default function ConverterPanel({ mode }: ConverterPanelProps) {
+export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
   const { data: session } = useSession()
+  const isLoggedIn = Boolean(session?.user)
+  const [showLoginDialog, setShowLoginDialog] = useState(false)
+  const router = useRouter()
+  // 读取当前语言参数
+  const params = useParams() as { lang?: string }
+  const lang = (params?.lang || 'zh') as Locale
+  const { dict: styleI18n } = useStyleTranslations(lang)
+  const { translations: authI18n } = useAuthTranslation(lang)
   const [step, setStep] = useState(1)
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
   const [selectedImageDataUrl, setSelectedImageDataUrl] = useState<string | null>(null)
@@ -37,6 +54,34 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
   const [videoConversionStarted, setVideoConversionStarted] = useState<boolean>(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const videoInputRef = useRef<HTMLInputElement>(null)
+
+  // 积分不足对话框状态
+  const [showInsufficientCreditsDialog, setShowInsufficientCreditsDialog] = useState<boolean>(false)
+  const [insufficientCreditsMessage, setInsufficientCreditsMessage] = useState<string>('')
+
+  // 跳转到价格页面
+  const handleGoToPricing = () => {
+    setShowInsufficientCreditsDialog(false)
+    router.push('/pricing')
+  }
+
+  // 获取用户积分
+  const getUserCredits = async (): Promise<number> => {
+    try {
+      const response = await fetch('/api/user', {
+        credentials: 'include'
+      })
+      if (response.ok) {
+        const data = await response.json() as any
+        const credits = typeof data === 'number' ? data : (typeof data?.credits === 'number' ? data.credits : Number(data?.credits))
+        return Number.isFinite(credits) ? credits : 0
+      }
+      return 0
+    } catch (error) {
+      console.error('获取积分失败:', error)
+      return 0
+    }
+  }
 
   const STORAGE_KEY = 'disney-converter-state'
 
@@ -132,9 +177,9 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
         return
       }
       
-      // 验证文件大小 (20MB)
-      if (file.size > 20 * 1024 * 1024) {
-        alert('图片大小不能超过20MB')
+      // 验证文件大小 (5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('图片大小不能超过5MB')
         return
       }
       
@@ -154,9 +199,9 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
         return
       }
       
-      // 验证文件大小 (20MB)
-      if (file.size > 20 * 1024 * 1024) {
-        alert('图片大小不能超过20MB')
+      // 验证文件大小 (5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('图片大小不能超过5MB')
         return
       }
       
@@ -307,11 +352,19 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
     }
   }
 
-  // 在图片转换完成后，直接用结果图发起“视频生成”（等同视频模式第3步）
+  // 在图片转换完成后，直接用结果图发起"视频生成"（等同视频模式第3步）
   const startVideoFromImageResult = async () => {
     if (!conversion.resultUrl || !selectedStyle) return
 
     try {
+      // 先检查积分
+      const userCredits = await getUserCredits()
+      if (userCredits < 5) {
+        setInsufficientCreditsMessage('积分不足，视频转换需要5积分。请购买积分后再试。')
+        setShowInsufficientCreditsDialog(true)
+        return
+      }
+      
       // 标记视频转换已开始
       setVideoConversionStarted(true)
       // 直接使用现有结果图 URL，跳过再次生成与上传
@@ -380,6 +433,14 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
 
       if (mode === 'image') {
         // 图片转换逻辑
+        // 先检查积分
+        const userCredits = await getUserCredits()
+        if (userCredits < 10) {
+          setInsufficientCreditsMessage('积分不足，图片转换需要10积分。请购买积分后再试。')
+          setShowInsufficientCreditsDialog(true)
+          return
+        }
+        
         const base64Image = await convertToBase64(selectedImage!)
         
         // 调用图片转换API
@@ -417,15 +478,18 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
           setStep(3)
           return
         } else if (step === 3) {
-          // 第3步：使用自定义提示词生成视频
-          if (!customPrompt.trim()) {
-            alert('请输入视频提示词')
+          // 第3步：生成视频（提示词可选）
+          // 先检查积分
+          const userCredits = await getUserCredits()
+          if (userCredits < 125) {
+            setInsufficientCreditsMessage('积分不足，视频转换需要125积分。请购买积分后再试。')
+            setShowInsufficientCreditsDialog(true)
             return
           }
           
           const base64Image = await convertToBase64(selectedImage!)
           
-          // 调用增强视频转换API，使用自定义提示词
+          // 调用增强视频转换API，提示词可选
           setConversion({ status: 'uploading' })
           const response = await fetch('/api/transform-video-enhanced', {
             method: 'POST',
@@ -436,7 +500,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
             body: JSON.stringify({
               image: base64Image,
               styleId: selectedStyle.id, // 用于生成迪士尼风格图片
-              prompt: customPrompt.trim(), // 用于生成视频
+              prompt: customPrompt.trim() || undefined, // 用于生成视频，可选
             }),
           })
 
@@ -555,10 +619,10 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
             // 更新进度和步骤描述
             const progress = Math.min(90, (attempts / maxAttempts) * 90)
             const stepMessages = [
-              '正在生成迪士尼风格图片...',
-              '正在上传图片到云端...',
-              '正在生成视频...',
-              '正在处理视频效果...'
+              i18n.status.processing,
+              i18n.status.uploadingToCloud,
+              i18n.status.generatingVideo,
+              i18n.status.processingVideo
             ]
             const stepIndex = Math.min(Math.floor(progress / 25), stepMessages.length - 1)
             
@@ -638,7 +702,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
             <div className="text-center">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-bold">
-                  {showVideoFromImage ? '视频生成预览' : (mode === 'image' ? '图片效果预览' : '视频生成预览')}
+                  {showVideoFromImage ? i18n.status.videoPreview : (mode === 'image' ? i18n.status.imagePreview : i18n.status.videoPreview)}
                 </h3>
                 <button 
                   className="text-disney-accent hover:text-disney-red transition-colors flex items-center"
@@ -646,7 +710,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                   disabled={!conversion.resultUrl}
                 >
                   <i className="fa fa-download mr-1" />
-                  <span className="text-sm">下载{showVideoFromImage ? '视频' : (mode === 'image' ? '图片' : '视频')}</span>
+                  <span className="text-sm">{showVideoFromImage ? i18n.buttons.downloadVideo : (mode === 'image' ? i18n.buttons.downloadImage : i18n.buttons.downloadVideo)}</span>
                 </button>
               </div>
               
@@ -654,9 +718,9 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                 <i className="fa fa-magic text-3xl text-disney-red animate-spin" />
               </div>
               
-              <h4 className="text-lg font-bold mb-2 text-disney-blue">正在施展魔法</h4>
+              <h4 className="text-lg font-bold mb-2 text-disney-blue">{i18n.status.magic}</h4>
               <p className="text-gray-600 mb-6">
-                {showVideoFromImage ? '正在根据图片生成迪士尼风格视频～' : (mode === 'image' ? '马上为您生成迪士尼风格作品～' : '正在根据图片生成迪士尼风格视频～')}
+                {showVideoFromImage ? i18n.messages.videoGeneration : (mode === 'image' ? i18n.messages.imageConversion : i18n.messages.videoGeneration)}
               </p>
               
               <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
@@ -668,13 +732,13 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
               
               <p className="text-xs text-gray-500">
                 {conversion.status === 'uploading' 
-                  ? (showVideoFromImage ? '正在生成视频...' : (mode === 'video' ? '正在生成迪士尼风格图片...' : '正在上传图片...'))
-                  : conversion.step || (showVideoFromImage ? '预计还需 3-8 分钟' : (mode === 'image' ? '预计还需 30-60 秒' : '预计还需 3-8 分钟'))
+                  ? (showVideoFromImage ? i18n.status.generatingVideo : (mode === 'video' ? i18n.status.processing : i18n.status.uploading))
+                  : conversion.step || (showVideoFromImage ? i18n.messages.estimatedTime.video : (mode === 'image' ? i18n.messages.estimatedTime.image : i18n.messages.estimatedTime.video))
                 }
               </p>
               
               <div className="text-center text-sm text-gray-500 italic mt-6">
-                提示：拖动可查看细节，点击风格模板实时预览效果
+                {i18n.messages.hint}
               </div>
             </div>
           )}
@@ -683,14 +747,14 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
           {conversion.status === 'completed' && conversion.resultUrl && mode === 'image' && !showVideoFromImage && !videoConversionStarted && (
             <div>
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">转换完成！</h3>
+                <h3 className="text-xl font-bold">{i18n.results.imageCompleted}</h3>
                 <div className="flex gap-2">
                   <button 
                     className="text-disney-accent hover:text-disney-red transition-colors flex items-center"
                     onClick={() => downloadByUrl(conversion.resultUrl, `image-${Date.now()}.png`)}
                   >
                     <i className="fa fa-download mr-1" />
-                    <span className="text-sm">下载图片</span>
+                  <span className="text-sm">{i18n.buttons.downloadImage}</span>
                   </button>
                 </div>
               </div>
@@ -702,7 +766,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                         <img 
                           src={selectedImage ? URL.createObjectURL(selectedImage) : ''} 
                           className="w-full h-full object-cover aspect-square cursor-zoom-in" 
-                          alt="原始图片"
+                          alt={i18n.results.originalImage}
                           onClick={() => {
                             if (selectedImage) {
                               const url = URL.createObjectURL(selectedImage)
@@ -711,18 +775,18 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                           }}
                         />
                       <div className="p-2 bg-gray-50 text-center text-sm font-medium">
-                        原始图片
+                        {i18n.results.originalImage}
                       </div>
                     </div>
                     <div>
                         <img 
                           src={conversion.resultUrl} 
                           className="w-full h-full object-cover aspect-square cursor-zoom-in" 
-                          alt="转换结果"
+                          alt={i18n.results.styleImage}
                           onClick={() => window.open(conversion.resultUrl!, '_blank')}
                         />
                       <div className="p-2 bg-gray-50 text-center text-sm font-medium">
-                        {selectedStyle?.name}风格
+                        {i18n.results.styleImage}
                       </div>
                     </div>
                   </div>
@@ -734,13 +798,13 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                   onClick={resetConversion}
                   className="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors"
                 >
-                  继续转换
+                  {i18n.buttons.continue}
                 </button>
                 <button 
                   onClick={() => setShowVideoFromImage(true)}
                   className="flex-1 bg-disney-blue hover:bg-disney-blue/90 text-white font-bold py-3 rounded-xl transition-colors"
                 >
-                  转换视频
+                  {i18n.buttons.generateVideo}
                 </button>
               </div>
             </div>
@@ -752,11 +816,11 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
               <div className="max-h-[400px] overflow-y-auto md:max-h-none md:overflow-visible mb-6 pr-2">
                 {/* 提示词输入框（可选） */}
                 <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">视频提示词（可选）</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{i18n.steps.video.promptLabel}</label>
                   <textarea
                     value={customPrompt}
                     onChange={(e) => setCustomPrompt(e.target.value)}
-                    placeholder="可选，请详细描述您希望视频呈现的场景、角色动作、情绪等...如果不填写，将自动分析图片内容"
+                    placeholder={i18n.steps.video.promptPlaceholder}
                     className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-disney-red focus:border-transparent resize-none"
                     rows={6}
                   />
@@ -768,30 +832,30 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                   onClick={() => setShowVideoFromImage(false)} 
                   className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors"
                 >
-                  返回
+                  {i18n.buttons.back}
                 </button>
                 <button 
                   onClick={startVideoFromImageResult} 
                   className="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  开始生成视频
+                  {i18n.buttons.generateVideo}
                 </button>
               </div>
             </div>
           )}
 
           {/* 视频转换完成状态 */}
-          {conversion.status === 'completed' && conversion.resultUrl && videoConversionStarted && (
+          {conversion.status === 'completed' && conversion.resultUrl && (videoConversionStarted || mode === 'video') && (
             <div>
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">视频转换完成！</h3>
+                <h3 className="text-xl font-bold">{i18n.results.videoCompleted}</h3>
                 <div className="flex gap-2">
                   <button 
                     className="text-disney-accent hover:text-disney-red transition-colors flex items-center"
                     onClick={() => downloadByUrl(conversion.resultUrl, `video-${Date.now()}.mp4`)}
                   >
                     <i className="fa fa-download mr-1" />
-                    <span className="text-sm">下载视频</span>
+                  <span className="text-sm">{i18n.buttons.downloadVideo}</span>
                   </button>
                 </div>
               </div>
@@ -803,7 +867,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                       <img 
                         src={selectedImage ? URL.createObjectURL(selectedImage) : ''} 
                         className="w-full h-full object-cover aspect-square cursor-zoom-in" 
-                        alt="原始图片"
+                        alt={i18n.results.originalImage}
                         onClick={() => {
                           if (selectedImage) {
                             const url = URL.createObjectURL(selectedImage)
@@ -812,7 +876,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                         }}
                       />
                       <div className="p-2 bg-gray-50 text-center text-sm font-medium">
-                        原始图片
+                        {i18n.results.originalImage}
                       </div>
                     </div>
                     <div>
@@ -827,7 +891,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                         }}
                       />
                       <div className="p-2 bg-gray-50 text-center text-sm font-medium">
-                        {selectedStyle?.name}风格视频
+                        {i18n.results.styleVideo}
                       </div>
                     </div>
                   </div>
@@ -839,13 +903,13 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                   onClick={resetConversion}
                   className="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors"
                 >
-                  继续转换
+                  {i18n.buttons.continue}
                 </button>
                 <button 
                   onClick={() => setShowVideoFromImage(false)}
                   className="flex-1 bg-disney-blue hover:bg-disney-blue/90 text-white font-bold py-3 rounded-xl transition-colors"
                 >
-                  返回
+                  {i18n.buttons.back}
                 </button>
               </div>
             </div>
@@ -874,9 +938,9 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
               {/* 进度条 */}
               <div className="mb-6">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-bold">操作进度</span>
+                  <span className="font-bold">{i18n.progress.title}</span>
                   <span className="text-disney-red font-medium">
-                    {step}/{mode === 'video' ? '3' : '2'} 步
+                    {step}/{mode === 'video' ? '3' : '2'} {i18n.progress.step}
                   </span>
                 </div>
                 <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -889,58 +953,63 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
 
               {/* 步骤1：上传文件 */}
               {step === 1 && (
-                <div>
+                <div className="h-[500px] md:h-auto flex flex-col">
                   <div className="flex items-center mb-4">
                     <div className="w-10 h-10 rounded-full bg-disney-red text-white border-2 flex items-center justify-center mr-3">1</div>
                     <h3 className="text-xl font-bold">
-                      {mode === 'image' ? '上传图片' : '上传图片'}
+                      {i18n.steps.upload.title}
                     </h3>
                     <span className="ml-2 text-sm text-gray-500">
-                      (支持JPG/PNG/GIF，≤20MB)
+                      {i18n.steps.upload.subtitle}
                     </span>
                   </div>
                   
-                  <div 
-                    className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-disney-red transition-colors cursor-pointer mb-6 bg-gray-50"
-                    onClick={() => {
-                        fileInputRef.current?.click()
-                    }}
-                    onDrop={handleDrop}
-                    onDragOver={handleDragOver}
-                  >
-                    <div className="flex flex-col items-center">
-                      <div className="w-16 h-16 rounded-full bg-disney-light flex items-center justify-center mb-4">
-                        <i className="fa fa-camera text-2xl text-disney-accent" />
+                  <div className="flex-1 flex flex-col">
+                    <div 
+                      className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-disney-red transition-colors cursor-pointer mb-6 bg-gray-50 flex-1 flex items-center justify-center"
+                onClick={() => {
+                    if (!isLoggedIn) { setShowLoginDialog(true); return }
+                    fileInputRef.current?.click()
+                }}
+                      onDrop={handleDrop}
+                      onDragOver={handleDragOver}
+                    >
+                      <div className="flex flex-col items-center">
+                        <div className="w-16 h-16 rounded-full bg-disney-light flex items-center justify-center mb-4">
+                          <i className="fa fa-camera text-2xl text-disney-accent" />
+                        </div>
+                        <p className="text-gray-600 mb-2">
+                          {i18n.steps.upload.placeholder}
+                        </p>
+                        <p className="text-xs text-gray-400">
+                          {i18n.steps.upload.supportedFormats}
+                        </p>
                       </div>
-                      <p className="text-gray-600 mb-2">
-                        点击上传或拖拽图片至此处
-                      </p>
-                      <p className="text-xs text-gray-400">
-                        支持JPG、PNG、GIF格式
-                      </p>
                     </div>
-                  </div>
-                  
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={mode === 'image' ? handleImageUpload : handleVideoImageUpload}
-                    className="hidden"
-                  />
-                  
-                  {/* 示例素材 */}
+                    
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={mode === 'image' ? handleImageUpload : handleVideoImageUpload}
+                      className="hidden"
+                    />
+                    
+                    {/* 示例素材 */}
                     <div className="mb-6">
-                    <p className="text-sm font-medium mb-3">选择示例图片：</p>
+                      <p className="text-sm font-medium mb-3">{i18n.steps.upload.exampleImages}</p>
                       <div className="grid grid-cols-3 gap-4">
                         {[
                           'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/d558df1d7d8f642c524c7a5af1d4f613.jpeg',
                           'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/c1f0b3fbb832ad271dcd59281672a04a.jpeg',
                           'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/7dcb96839cad12bfca9659c77a7c1ffc.jpeg'
                         ].map((imageUrl, index) => (
-                          <button 
-                            key={index} 
-                          onClick={() => mode === 'image' ? handleSelectExampleImage(imageUrl) : handleSelectExampleImageForVideo(imageUrl)} 
+                    <button 
+                      key={index} 
+                    onClick={() => {
+                      if (!isLoggedIn) { setShowLoginDialog(true); return }
+                      return mode === 'image' ? handleSelectExampleImage(imageUrl) : handleSelectExampleImageForVideo(imageUrl)
+                    }} 
                             disabled={loadingExample}
                             className="aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 hover:border-disney-red transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           >
@@ -959,29 +1028,30 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                         ))}
                       </div>
                     </div>
+                  </div>
                 </div>
               )}
 
 
               {/* 步骤2：选择风格 */}
               {step === 2 && (
-                <div>
+                <div className="h-[500px] md:h-auto flex flex-col">
                   <div className="flex items-center mb-4">
                     <div className="w-10 h-10 rounded-full bg-disney-red text-white border-2 flex items-center justify-center mr-3">2</div>
                     {selectedStyle ? (
                       <div>
-                        <h3 className="text-xl font-bold text-disney-red">{selectedStyle.name}</h3>
-                        <span className="text-sm text-gray-500">已选择风格</span>
+                        <h3 className="text-xl font-bold text-disney-red">{styleI18n?.[selectedStyle.id]?.name || selectedStyle.name}</h3>
+                        <span className="text-sm text-gray-500">{i18n.steps.style.selected}</span>
                       </div>
                     ) : (
                       <div>
-                        <h3 className="text-xl font-bold">选择迪士尼风格</h3>
-                        <span className="ml-2 text-sm text-gray-500">(点击选择效果)</span>
+                        <h3 className="text-xl font-bold">{i18n.steps.style.title}</h3>
+                        <span className="ml-2 text-sm text-gray-500">{i18n.steps.style.subtitle}</span>
                       </div>
                     )}
                   </div>
                   
-                  <div className="max-h-[400px] md:max-h-[680px] overflow-y-auto mb-6">
+                  <div className="flex-1 overflow-y-auto mb-6 md:max-h-[680px]">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                       {DISNEY_STYLE_TEMPLATES.map((style, i) => (
                       <div 
@@ -994,9 +1064,9 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                         onClick={() => setSelectedStyle(style)}
                       >
                         <div className="aspect-[4/3] bg-gradient-to-br from-disney-light to-disney-accent flex items-center justify-center overflow-hidden relative">
-                          <img 
-                            src={style.image} 
-                            alt={style.name}
+                            <img 
+                              src={style.image} 
+                              alt={styleI18n?.[style.id]?.name || style.name}
                             className="w-full h-full object-cover"
                             onError={(e) => {
                               // 如果图片加载失败，隐藏图片显示占位符
@@ -1010,8 +1080,8 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                             <i className="fa fa-magic text-2xl text-disney-red" />
                           </div>
                         </div>
-                        <div className="p-2 text-center text-sm font-medium">{style.name}</div>
-                        <div className="px-2 pb-2 text-center text-xs text-gray-500">{style.description}</div>
+                          <div className="p-2 text-center text-sm font-medium">{styleI18n?.[style.id]?.name || style.name}</div>
+                          <div className="px-2 pb-2 text-center text-xs text-gray-500">{styleI18n?.[style.id]?.description || style.description}</div>
                       </div>
                     ))}
                     </div>
@@ -1022,14 +1092,14 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                       onClick={() => setStep(1)} 
                       className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors"
                     >
-                      上一步
+                      {i18n.buttons.previous}
                     </button>
                     <button 
                       onClick={startConversion} 
                       disabled={!selectedStyle}
                       className="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {mode === 'video' ? '下一步' : '开始转换'}
+                      {mode === 'video' ? i18n.buttons.next : i18n.buttons.startConversion}
                     </button>
                   </div>
                 </div>
@@ -1041,8 +1111,8 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                   <div className="flex items-center mb-4">
                     <div className="w-10 h-10 rounded-full bg-disney-red text-white border-2 flex items-center justify-center mr-3">3</div>
                     <div>
-                      <h3 className="text-xl font-bold">输入视频提示词</h3>
-                      <span className="ml-2 text-sm text-gray-500">(描述您希望视频呈现的内容)</span>
+                      <h3 className="text-xl font-bold">{i18n.steps.video.title}</h3>
+                      <span className="ml-2 text-sm text-gray-500">{i18n.steps.video.subtitle}</span>
                     </div>
                   </div>
                   
@@ -1054,7 +1124,7 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                         <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-xl overflow-hidden border border-gray-200">
                           <img 
                             src={URL.createObjectURL(selectedImage)} 
-                            alt="上传的图片" 
+                            alt={i18n.results.originalImage} 
                             className="w-full h-full object-cover"
                           />
                         </div>
@@ -1073,8 +1143,8 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                             />
                           </div>
                           <div>
-                            <p className="font-medium text-gray-800">{selectedStyle.name}</p>
-                            <p className="text-sm text-gray-500">{selectedStyle.description}</p>
+                            <p className="font-medium text-gray-800">{styleI18n?.[selectedStyle.id]?.name || selectedStyle.name}</p>
+                            <p className="text-sm text-gray-500">{styleI18n?.[selectedStyle.id]?.description || selectedStyle.description}</p>
                           </div>
                         </div>
                       </div>
@@ -1082,11 +1152,11 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
 
                     {/* 提示词输入框（可选） */}
                     <div className="mb-6">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">视频提示词（可选）</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">{i18n.steps.video.promptLabel}</label>
                       <textarea
                         value={customPrompt}
                         onChange={(e) => setCustomPrompt(e.target.value)}
-                        placeholder="可选，请详细描述您希望视频呈现的场景、角色动作、情绪等...如果不填写，将自动分析图片内容"
+                        placeholder={i18n.steps.video.promptPlaceholder}
                         className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-disney-red focus:border-transparent resize-none"
                         rows={6}
                       />
@@ -1100,13 +1170,13 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
                       onClick={() => setStep(2)} 
                       className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors"
                     >
-                      上一步
+                      {i18n.buttons.previous}
                     </button>
                       <button 
                         onClick={startConversion} 
                       className="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      生成视频
+                      {i18n.buttons.generateVideo}
                     </button>
                   </div>
                 </div>
@@ -1116,6 +1186,27 @@ export default function ConverterPanel({ mode }: ConverterPanelProps) {
           )}
         </div>
       </div>
+
+      {/* 积分不足对话框 */}
+      <ConfirmDialog
+        isOpen={showInsufficientCreditsDialog}
+        onClose={() => setShowInsufficientCreditsDialog(false)}
+        onConfirm={handleGoToPricing}
+        title={i18n.creditsDialog?.title || '积分不足'}
+        description={insufficientCreditsMessage}
+        confirmText={i18n.creditsDialog?.subscribe || '去订阅'}
+        cancelText={i18n.creditsDialog?.cancel || '取消'}
+        isDestructive={true}
+      />
+      {showLoginDialog && authI18n ? (
+        <LoginDialog
+          isOpen={true}
+          onClose={() => setShowLoginDialog(false)}
+          defaultMode='login'
+          lang={lang}
+          i18n={authI18n as any}
+        />
+      ) : null}
     </section>
     </>
   )

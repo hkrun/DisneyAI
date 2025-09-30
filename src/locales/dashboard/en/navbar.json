@@ -7,10 +7,6 @@
             "label": "Users"
         },
         {
-            "href": "/dashboard/templates",
-            "label": "Templates"
-        },
-        {
             "href": "/dashboard/orders",
             "label": "Orders"
         },
@@ -40,10 +36,6 @@
             {
                 "href": "/dashboard",
                 "label": "Users"
-            },
-            {
-                "href": "/dashboard/templates",
-                "label": "Templates"
             },
             {
                 "href": "/dashboard/orders",

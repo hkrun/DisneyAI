@@ -16,15 +16,17 @@ export function NavbarSticky({ lang, navbarLocal }: NavbarStickyProps) {
     const pathname = usePathname();
     const isActive = (href: string) => {
         if (lang === "en") {
-            if (href === "/") {
-                return pathname === "/";
+            if (href === "/" || href === "/dashboard") {
+                // 根路径和 Dashboard 根路径只在完全匹配时高亮
+                return pathname === href;
             }
             return pathname === href || pathname.startsWith(href + "/");
         } else {
             const langPrefix = `/${lang}`;
             const fullPath = href === "/" ? langPrefix : `${langPrefix}${href}`;
-            if (href === "/") {
-            return pathname === fullPath;
+            if (href === "/" || href === "/dashboard") {
+                // 根路径和 Dashboard 根路径只在完全匹配时高亮
+                return pathname === fullPath;
             }
             return pathname === fullPath || pathname.startsWith(fullPath + "/");
         }

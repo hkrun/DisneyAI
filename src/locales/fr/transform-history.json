@@ -1,0 +1,44 @@
+{
+    "title": "Historique de conversion",
+    "filters": {
+      "all": "Tous les statuts",
+      "status": "Filtrer par statut"
+    },
+    "tabs": {
+      "all": "Tous",
+      "image": "Conversion d'images",
+      "video": "Conversion de vidéos"
+    },
+    "status": {
+      "PROCESSING": "En traitement",
+      "COMPLETED": "Terminé",
+      "FAILED": "Échoué"
+    },
+    "taskType": {
+      "image": "Image",
+      "video": "Vidéo"
+    },
+    "details": {
+      "preview": "Aperçu",
+      "hoverToPreview": "Passez la souris pour prévisualiser",
+      "videoLoadError": "Échec du chargement de la vidéo",
+      "seconds": "secondes",
+      "fileSize": "Taille du fichier"
+    },
+    "actions": {
+      "download": "Télécharger",
+      "retry": "Réessayer"
+    },
+    "empty": {
+      "title": "Aucun historique de conversion",
+      "description": "Vous n'avez effectué aucune conversion dans le style Disney pour le moment. Allez-y, essayez !"
+    },
+    "loading": "Chargement...",
+    "pagination": {
+      "showing": "Affichage de",
+      "of": "éléments, sur un total de",
+      "results": "résultats",
+      "previous": "Page précédente",
+      "next": "Page suivante"
+    }
+  }

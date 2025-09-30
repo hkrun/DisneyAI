@@ -53,7 +53,7 @@ export default async function RootLayout({
             {children}
         </ThemeProvider>
         </NextAuthProvider>
-        <GoogleAnalytics gaId="G-P4Q0DZW6C1" />
+        <GoogleAnalytics gaId="G-4WQMFTCY1Q" />
       </body>
     </html>
   )

@@ -83,7 +83,7 @@ export async function uploadToOSS(
         'Date': date,
         'Content-Type': contentType
       },
-      body: fileBuffer
+      body: new Uint8Array(fileBuffer)
     })
 
     if (!response.ok) {

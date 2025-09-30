@@ -93,9 +93,9 @@
         "label": "Guthaben",
         "tooltip": {
             "title": "Guthaben",
-            "costInfo": "1 Guthaben pro Nutzung verbraucht",
-            "usageInfo": "Funktionen ziehen Guthaben entsprechend der Videodauer ab.",
-            "getMoreButton": "Mehr Zeit erhalten"
+            "costInfo": "10 Guthaben pro Nutzung werden verbraucht",
+            "usageInfo": "Verschiedene Funktionen können unterschiedliche Guthabenmengen verbrauchen.",
+            "getMoreButton": "Mehr Guthaben erhalten"
         }
     },
     "meta": {

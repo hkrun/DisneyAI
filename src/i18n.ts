@@ -10,6 +10,7 @@ export const i18nNamespaces = {
     pricing: 'pricing',
     billing: 'billing',
     auth: 'auth',
+    'transform-history': 'transform-history',
 
     subscriptionDialog: 'subscription-dialog',
     textTranslation: 'text-translation',

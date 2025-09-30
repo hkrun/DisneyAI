@@ -1,0 +1,75 @@
+{
+  "progress": {
+    "title": "Operation Progress",
+    "step": "step"
+  },
+  "steps": {
+    "upload": {
+      "title": "Upload Image",
+      "subtitle": "(Supports JPG/PNG/GIF, ≤5MB)",
+      "placeholder": "Click to upload or drag image here",
+      "supportedFormats": "Supports JPG, PNG, GIF formats",
+      "exampleImages": "Select example images:"
+    },
+    "style": {
+      "title": "Choose Disney Style",
+      "subtitle": "(Click to select effect)",
+      "selected": "Style Selected"
+    },
+    "video": {
+      "title": "Generate Video",
+      "subtitle": "(Prompt optional)",
+      "promptLabel": "Video Prompt (Optional)",
+      "promptPlaceholder": "Optional, please describe in detail the scene, character actions, emotions, etc. you want the video to present... If not filled, it will automatically analyze the image content"
+    }
+  },
+  "buttons": {
+    "previous": "Previous",
+    "next": "Next",
+    "startConversion": "Start Conversion",
+    "generateVideo": "Generate Video",
+    "continue": "Continue Conversion",
+    "back": "Back",
+    "download": "Download",
+    "downloadImage": "Download Image",
+    "downloadVideo": "Download Video"
+  },
+  "status": {
+    "uploading": "Uploading image...",
+    "processing": "Generating Disney style image...",
+    "generatingVideo": "Generating video...",
+    "uploadingToCloud": "Uploading image to cloud...",
+    "processingVideo": "Processing video effects...",
+    "magic": "Casting Magic",
+    "imagePreview": "Image Effect Preview",
+    "videoPreview": "Video Generation Preview"
+  },
+  "messages": {
+    "imageConversion": "Generating your Disney style artwork~",
+    "videoGeneration": "Generating Disney style video from image~",
+    "estimatedTime": {
+      "image": "Estimated 30-60 seconds remaining",
+      "video": "Estimated 3-8 minutes remaining"
+    },
+    "hint": "Tip: drag to view details, click a style card to preview instantly"
+  },
+  "results": {
+    "imageCompleted": "Image conversion completed!",
+    "videoCompleted": "Video conversion completed!",
+    "originalImage": "Original Image",
+    "styleImage": "Style Image",
+    "styleVideo": "Style Video"
+  },
+  "errors": {
+    "loadExampleFailed": "Failed to load example image, please try again",
+    "imageLoadError": "Image failed to load",
+    "videoLoadError": "Video failed to load"
+  },
+  "creditsDialog": {
+    "title": "Insufficient Credits",
+    "imageRequired": "Insufficient credits, image conversion requires at least {credits} credits.",
+    "videoRequired": "Insufficient credits, video conversion requires at least {credits} credits.",
+    "cancel": "Cancel",
+    "subscribe": "Subscribe"
+  }
+}

@@ -12,13 +12,14 @@ import dynamic from "next/dynamic"
 // 避免 SSR/CSR 渲染差异导致 Radix useId 链错位：积分组件仅在客户端渲染
 const CreditsDisplay = dynamic(() => import("@/components/credits-display").then(m => m.CreditsDisplay), { ssr: false })
 import { SubscriptionLocal, ToastLocal } from "@/types/locales/billing";
+import { TransformHistoryLocal } from "@/types/locales/transform-history";
 
 interface NavbarStickyProps {
     lang: Locale;
     navbarLocal: Navbar,
     subscriptionLocal: SubscriptionLocal,
     toastLocal: ToastLocal,
-    // historyLocal 已移除
+    historyLocal?: TransformHistoryLocal,
     i18n: {
         auth: {
             login: {
@@ -75,7 +76,7 @@ interface NavbarStickyProps {
     };
 }
 
-export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal, i18n }: NavbarStickyProps) {
+export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal, historyLocal, i18n }: NavbarStickyProps) {
     const pathname = usePathname();
     const isActive = (href: string) => {
         if (lang === "en") {
@@ -147,6 +148,7 @@ export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal,
                         loginLabel={navbarLocal.actions.signIn}
                         subscription={subscriptionLocal}
                         toastLocal={toastLocal}
+                        historyLocal={historyLocal}
                         i18n={i18n}
                     />
 

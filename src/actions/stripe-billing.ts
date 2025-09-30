@@ -7,19 +7,19 @@ import { IUserCredit } from '@/types/user-credit';
 // 101~199: 一次性套餐；201~299: 个人订阅档位；301~399: 商业版；4: 免费试用
 const stripe_subscription_type_map = new Map<string,number>([
     // 一次性套餐（non-recurring）
-    ['price_1S5cgnDx3cvsYDBQa8waZ5Dz', 101], // 一次性 基础包
-    ['price_1S5ch2Dx3cvsYDBQcy4YbwIJ', 102], // 一次性 专业包
-    ['price_1S5cjQDx3cvsYDBQGTGkToKH', 103], // 一次性 高级包
+    ['price_1SCx9PLmvlReBkzoTKl71en7', 101], // 一次性 基础包
+    ['price_1SCxACLmvlReBkzoOpDCZ6ee', 102], // 一次性 专业包
+    ['price_1SCxANLmvlReBkzoTcXzprzh', 103], // 一次性 高级包
 
     // 个人订阅（recurring - 月度）
-    ['price_1S5cf4Dx3cvsYDBQX4pLFyUq', 201], // 订阅 基础版
-    ['price_1S5cffDx3cvsYDBQXG5t2SkW', 202], // 订阅 高级版
-    ['price_1S5cgZDx3cvsYDBQ1Yu1cL1U', 203], // 订阅 专业版（个人最高档）
+    ['price_1SCxAYLmvlReBkzoW0jPGNCs', 201], // 订阅 基础版
+    ['price_1SCxAjLmvlReBkzoPPyBXK7Y', 202], // 订阅 高级版
+    ['price_1SCxAvLmvlReBkzo8w3da07n', 203], // 订阅 专业版（个人最高档）
 
     // 个人订阅（recurring - 年度）
-    ['price_1S7YYKDx3cvsYDBQyTkiM3vL', 201], // 年度订阅 基础版
-    ['price_1S7YYfDx3cvsYDBQQLkCNcTv', 202], // 年度订阅 高级版
-    ['price_1S7YYtDx3cvsYDBQWIHn7l8k', 203], // 年度订阅 专业版
+    ['price_1SCxBGLmvlReBkzoR3hG6eqT', 201], // 年度订阅 基础版
+    ['price_1SCxBdLmvlReBkzoTabyONnB', 202], // 年度订阅 高级版
+    ['price_1SCxBtLmvlReBkzo5RzDYiS4', 203], // 年度订阅 专业版
 
     // 商业版（recurring）
     ['price_1S5h1BDx3cvsYDBQwP6f9qGk', 301], // 商业版订阅（月度）
@@ -29,19 +29,19 @@ const stripe_subscription_type_map = new Map<string,number>([
 // 价格ID → 友好产品名（用于记录）
 const price_name_map = new Map<string,string>([
     // 一次性套餐
-    ['price_1S5cgnDx3cvsYDBQa8waZ5Dz', 'DisneyAi 基础包（一次性）'],
-    ['price_1S5ch2Dx3cvsYDBQcy4YbwIJ', 'DisneyAi 专业包（一次性）'],
-    ['price_1S5cjQDx3cvsYDBQGTGkToKH', 'DisneyAi 高级包（一次性）'],
+    ['price_1SCx9PLmvlReBkzoTKl71en7', 'DisneyAi 基础包（一次性）'],
+    ['price_1SCxACLmvlReBkzoOpDCZ6ee', 'DisneyAi 专业包（一次性）'],
+    ['price_1SCxANLmvlReBkzoTcXzprzh', 'DisneyAi 高级包（一次性）'],
 
     // 个人订阅（月度）
-    ['price_1S5cf4Dx3cvsYDBQX4pLFyUq', 'DisneyAi 基础版（月度订阅）'],
-    ['price_1S5cffDx3cvsYDBQXG5t2SkW', 'DisneyAi 高级版（月度订阅）'],
-    ['price_1S5cgZDx3cvsYDBQ1Yu1cL1U', 'DisneyAi 专业版（月度订阅）'],
+    ['price_1SCxAYLmvlReBkzoW0jPGNCs', 'DisneyAi 基础版（月度订阅）'],
+    ['price_1SCxAjLmvlReBkzoPPyBXK7Y', 'DisneyAi 高级版（月度订阅）'],
+    ['price_1SCxAvLmvlReBkzo8w3da07n', 'DisneyAi 专业版（月度订阅）'],
 
     // 个人订阅（年度）
-    ['price_1S7YYKDx3cvsYDBQyTkiM3vL', 'DisneyAi 基础版（年度订阅）'],
-    ['price_1S7YYfDx3cvsYDBQQLkCNcTv', 'DisneyAi 高级版（年度订阅）'],
-    ['price_1S7YYtDx3cvsYDBQWIHn7l8k', 'DisneyAi 专业版（年度订阅）'],
+    ['price_1SCxBGLmvlReBkzoR3hG6eqT', 'DisneyAi 基础版（年度订阅）'],
+    ['price_1SCxBdLmvlReBkzoTabyONnB', 'DisneyAi 高级版（年度订阅）'],
+    ['price_1SCxBtLmvlReBkzo5RzDYiS4', 'DisneyAi 专业版（年度订阅）'],
 
     // 商业版
     ['price_1S5h1BDx3cvsYDBQwP6f9qGk', 'DisneyAi 商业版（月度订阅）'],
@@ -51,29 +51,29 @@ const price_name_map = new Map<string,string>([
 // 价格ID → 赠送积分数量（一次性为一次发放；订阅为每次支付发放周期额度）
 const price_credits_map = new Map<string, number>([
     // 一次性套餐
-    ['price_1S5cgnDx3cvsYDBQa8waZ5Dz', 1500],   // 基础包 25 分钟
-    ['price_1S5ch2Dx3cvsYDBQcy4YbwIJ', 3600],   // 高级包 60 分钟
-    ['price_1S5cjQDx3cvsYDBQGTGkToKH', 5400],  // 专业包 90 分钟
+    ['price_1SCx9PLmvlReBkzoTKl71en7', 700],   // 基础包 700积分
+    ['price_1SCxACLmvlReBkzoOpDCZ6ee', 1820],   // 高级包 1820积分
+    ['price_1SCxANLmvlReBkzoTcXzprzh', 2800],  // 专业包 2800积分
 
     // 个人订阅（月度 - 每期发放）
-    ['price_1S5cf4Dx3cvsYDBQX4pLFyUq', 3000],    // 基础版 50 分钟/月
-    ['price_1S5cffDx3cvsYDBQXG5t2SkW', 7200],   // 高级版 120 分钟/月
-    ['price_1S5cgZDx3cvsYDBQ1Yu1cL1U', 10800],  // 专业版 180 分钟/月
+    ['price_1SCxAYLmvlReBkzoW0jPGNCs', 1000],    // 基础版 1000积分/月
+    ['price_1SCxAjLmvlReBkzoPPyBXK7Y', 2600],   // 高级版 2600积分/月
+    ['price_1SCxAvLmvlReBkzo8w3da07n', 4000],  // 专业版 4000积分/月
 
     // 个人订阅（年度 - 每期发放年度额度）
-    ['price_1S7YYKDx3cvsYDBQyTkiM3vL', 36000],   // 基础版 600 分钟/年 (50*12)
-    ['price_1S7YYfDx3cvsYDBQQLkCNcTv', 86400],   // 高级版 1440 分钟/年 (120*12)
-    ['price_1S7YYtDx3cvsYDBQWIHn7l8k', 129600],  // 专业版 2160 分钟/年 (180*12)
+    ['price_1SCxBGLmvlReBkzoR3hG6eqT', 12000],   // 基础版 12000积分/年 (1000*12)
+    ['price_1SCxBdLmvlReBkzoTabyONnB', 31200],   // 高级版 31200积分/年 (2600*12)
+    ['price_1SCxBtLmvlReBkzo5RzDYiS4', 48000],  // 专业版 48000积分/年 (4000*12)
 
     // 商业版（月度 - 每期发放）
-    ['price_1S5h1BDx3cvsYDBQwP6f9qGk', 40000], // 商业版 666 分钟/月（近似无限）
+    ['price_1S5h1BDx3cvsYDBQwP6f9qGk', 120000], // 商业版 120000积分/月（近似无限）
 
     // 商业版（年度 - 每期发放年度额度）
-    ['price_1S7YZGDx3cvsYDBQpy1DfL9S', 480000], // 商业版 8000 分钟/年（近似无限）
+    ['price_1S7YZGDx3cvsYDBQpy1DfL9S', 1440000], // 商业版 1440000积分/年（近似无限）
 ]);
 
 // 试用额度（统一发放）
-const TRIAL_CREDITS = 300;
+const TRIAL_CREDITS = 124;
 
 
 export async function createOrderDetailsFromStripe (orderDetails: IOrderDetail, isTrial: boolean = false, isRenewal: boolean = false) {
@@ -310,27 +310,27 @@ export async function createTrialSubscriptionFromStripe(orderDetails: IOrderDeta
     let productName = 'Free Trial';
     let productDesc = 'trial subscription: 3-day free trial';
 
-    if (orderDetails.priceId === 'price_1S5cf4Dx3cvsYDBQX4pLFyUq') {
+    if (orderDetails.priceId === 'price_1SCxAYLmvlReBkzoW0jPGNCs') {
         // 基础版试用（月度）
         productName = 'DisneyAi 基础版 - 3天免费试用（月度）';
         productDesc = 'trial subscription: DisneyAi Basic 3-day free trial (monthly)';
-    } else if (orderDetails.priceId === 'price_1S5cffDx3cvsYDBQXG5t2SkW') {
+    } else if (orderDetails.priceId === 'price_1SCxAjLmvlReBkzoPPyBXK7Y') {
         // 高级版试用（月度）
         productName = 'DisneyAi 高级版 - 3天免费试用（月度）';
         productDesc = 'trial subscription: DisneyAi Premium 3-day free trial (monthly)';
-    } else if (orderDetails.priceId === 'price_1S5cgZDx3cvsYDBQ1Yu1cL1U') {
+    } else if (orderDetails.priceId === 'price_1SCxAvLmvlReBkzo8w3da07n') {
         // 专业版试用（月度）
         productName = 'DisneyAi 专业版 - 3天免费试用（月度）';
         productDesc = 'trial subscription: DisneyAi Professional 3-day free trial (monthly)';
-    } else if (orderDetails.priceId === 'price_1S7YYKDx3cvsYDBQyTkiM3vL') {
+    } else if (orderDetails.priceId === 'price_1SCxBGLmvlReBkzoR3hG6eqT') {
         // 基础版试用（年度）
         productName = 'DisneyAi 基础版 - 3天免费试用（年度）';
         productDesc = 'trial subscription: DisneyAi Basic 3-day free trial (annual)';
-    } else if (orderDetails.priceId === 'price_1S7YYfDx3cvsYDBQQLkCNcTv') {
+    } else if (orderDetails.priceId === 'price_1SCxBdLmvlReBkzoTabyONnB') {
         // 高级版试用（年度）
         productName = 'DisneyAi 高级版 - 3天免费试用（年度）';
         productDesc = 'trial subscription: DisneyAi Premium 3-day free trial (annual)';
-    } else if (orderDetails.priceId === 'price_1S7YYtDx3cvsYDBQWIHn7l8k') {
+    } else if (orderDetails.priceId === 'price_1SCxBtLmvlReBkzo5RzDYiS4') {
         // 专业版试用（年度）
         productName = 'DisneyAi 专业版 - 3天免费试用（年度）';
         productDesc = 'trial subscription: DisneyAi Professional 3-day free trial (annual)';

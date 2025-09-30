@@ -1,0 +1,75 @@
+{
+  "progress": {
+    "title": "Fortschritt der Operation",
+    "step": "Schritt"
+  },
+  "steps": {
+    "upload": {
+      "title": "Bild hochladen",
+      "subtitle": "(Unterstützt JPG/PNG/GIF, ≤5MB)",
+      "placeholder": "Klicken zum Hochladen oder Bild hierher ziehen",
+      "supportedFormats": "Unterstützt JPG, PNG, GIF Formate",
+      "exampleImages": "Beispielbilder auswählen:"
+    },
+    "style": {
+      "title": "Disney-Stil wählen",
+      "subtitle": "(Klicken um Effekt auszuwählen)",
+      "selected": "Stil ausgewählt"
+    },
+    "video": {
+      "title": "Video generieren",
+      "subtitle": "(Prompt optional)",
+      "promptLabel": "Video-Prompt (Optional)",
+      "promptPlaceholder": "Optional, bitte beschreiben Sie detailliert die Szene, Charakteraktionen, Emotionen usw., die das Video zeigen soll... Wenn nicht ausgefüllt, wird der Bildinhalt automatisch analysiert"
+    }
+  },
+  "buttons": {
+    "previous": "Zurück",
+    "next": "Weiter",
+    "startConversion": "Konvertierung starten",
+    "generateVideo": "Video generieren",
+    "continue": "Konvertierung fortsetzen",
+    "back": "Zurück",
+    "download": "Herunterladen",
+    "downloadImage": "Bild herunterladen",
+    "downloadVideo": "Video herunterladen"
+  },
+  "status": {
+    "uploading": "Bild wird hochgeladen...",
+    "processing": "Disney-Stil Bild wird generiert...",
+    "generatingVideo": "Video wird generiert...",
+    "uploadingToCloud": "Bild wird in die Cloud hochgeladen...",
+    "processingVideo": "Videoeffekte werden verarbeitet...",
+    "magic": "Magie wird gewirkt",
+    "imagePreview": "Bildeffekt-Vorschau",
+    "videoPreview": "Video-Generierungsvorschau"
+  },
+  "messages": {
+    "imageConversion": "Ihr Disney-Stil Kunstwerk wird generiert~",
+    "videoGeneration": "Disney-Stil Video wird aus dem Bild generiert~",
+    "estimatedTime": {
+      "image": "Geschätzte verbleibende Zeit 30-60 Sekunden",
+      "video": "Geschätzte verbleibende Zeit 3-8 Minuten"
+    },
+    "hint": "Tipp: Ziehen, um Details zu sehen; Stilkarte anklicken für Vorschau"
+  },
+  "results": {
+    "imageCompleted": "Bildkonvertierung abgeschlossen!",
+    "videoCompleted": "Videokonvertierung abgeschlossen!",
+    "originalImage": "Originalbild",
+    "styleImage": "Stilbild",
+    "styleVideo": "Stilvideo"
+  },
+  "errors": {
+    "loadExampleFailed": "Beispielbild konnte nicht geladen werden, bitte versuchen Sie es erneut",
+    "imageLoadError": "Bild konnte nicht geladen werden",
+    "videoLoadError": "Video konnte nicht geladen werden"
+  },
+  "creditsDialog": {
+    "title": "Unzureichende Punkte",
+    "imageRequired": "Unzureichende Punkte, Bildkonvertierung erfordert mindestens {credits} Punkte.",
+    "videoRequired": "Unzureichende Punkte, Videokonvertierung erfordert mindestens {credits} Punkte.",
+    "cancel": "Abbrechen",
+    "subscribe": "Abonnieren"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "progress": {
+    "title": "操作の進捗",
+    "step": "ステップ"
+  },
+  "steps": {
+    "upload": {
+      "title": "画像をアップロード",
+      "subtitle": "(JPG/PNG/GIF対応、≤5MB)",
+      "placeholder": "クリックしてアップロードまたは画像をここにドラッグ",
+      "supportedFormats": "JPG、PNG、GIF形式に対応",
+      "exampleImages": "サンプル画像を選択："
+    },
+    "style": {
+      "title": "ディズニースタイルを選択",
+      "subtitle": "(クリックしてエフェクトを選択)",
+      "selected": "スタイル選択済み"
+    },
+    "video": {
+      "title": "動画を生成",
+      "subtitle": "(プロンプト任意)",
+      "promptLabel": "動画プロンプト（任意）",
+      "promptPlaceholder": "任意、動画に表現したいシーン、キャラクターの動作、感情などを詳しく説明してください...記入しない場合は、画像の内容を自動分析します"
+    }
+  },
+  "buttons": {
+    "previous": "前へ",
+    "next": "次へ",
+    "startConversion": "変換を開始",
+    "generateVideo": "動画を生成",
+    "continue": "変換を続行",
+    "back": "戻る",
+    "download": "ダウンロード",
+    "downloadImage": "画像をダウンロード",
+    "downloadVideo": "動画をダウンロード"
+  },
+  "status": {
+    "uploading": "画像をアップロード中...",
+    "processing": "ディズニースタイル画像を生成中...",
+    "generatingVideo": "動画を生成中...",
+    "uploadingToCloud": "画像をクラウドにアップロード中...",
+    "processingVideo": "動画エフェクトを処理中...",
+    "magic": "魔法をかけています",
+    "imagePreview": "画像エフェクトプレビュー",
+    "videoPreview": "動画生成プレビュー"
+  },
+  "messages": {
+    "imageConversion": "ディズニースタイルのアートワークを生成中~",
+    "videoGeneration": "画像からディズニースタイル動画を生成中~",
+    "estimatedTime": {
+      "image": "残り時間推定30-60秒",
+      "video": "残り時間推定3-8分"
+    },
+    "hint": "ヒント：ドラッグで詳細を確認、スタイルカードをクリックで即時プレビュー"
+  },
+  "results": {
+    "imageCompleted": "画像変換が完了しました！",
+    "videoCompleted": "動画変換が完了しました！",
+    "originalImage": "元の画像",
+    "styleImage": "スタイル画像",
+    "styleVideo": "スタイル動画"
+  },
+  "errors": {
+    "loadExampleFailed": "サンプル画像の読み込みに失敗しました。再試行してください",
+    "imageLoadError": "画像の読み込みに失敗しました",
+    "videoLoadError": "動画の読み込みに失敗しました"
+  },
+  "creditsDialog": {
+    "title": "ポイント不足",
+    "imageRequired": "ポイントが不足しています。画像変換には少なくとも{credits}ポイントが必要です。",
+    "videoRequired": "ポイントが不足しています。動画変換には少なくとも{credits}ポイントが必要です。",
+    "cancel": "キャンセル",
+    "subscribe": "購入へ"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "snow-white": {
+    "name": "백설공주 - 모던 영화 스타일",
+    "description": "현대 디즈니 영화 스타일"
+  },
+  "cinderella": {
+    "name": "신데렐라 - 클래식 손그림 스타일",
+    "description": "우아한 디즈니 공주 스타일"
+  },
+  "bambi": {
+    "name": "밤비 - 클래식 스타일",
+    "description": "자연스러운 숲 분위기"
+  },
+  "mulan": {
+    "name": "뮬란 - 아메리칸 동양풍",
+    "description": "고대 중국을 디즈니 스타일로 재현"
+  },
+  "toy-story": {
+    "name": "토이 스토리 - 3D 스타일",
+    "description": "픽사 3D 애니메이션, 장난감 텍스처"
+  },
+  "frozen": {
+    "name": "겨울왕국 - 얼음과 눈 스타일",
+    "description": "얼음과 눈의 마법, 파랑과 흰색 톤"
+  },
+  "zootopia": {
+    "name": "주토피아 - 3D 리얼 카툰",
+    "description": "세밀한 털과 피부 질감의 디즈니 3D 리얼 카툰"
+  },
+  "finding-nemo": {
+    "name": "니모를 찾아서 - 오션 스타일",
+    "description": "해저 세계, 파랑과 산호 팔레트"
+  },
+  "wreck-it-ralph": {
+    "name": "주먹왕 랄프 - 픽셀 & 3D 하이브리드",
+    "description": "디즈니 픽셀풍과 3D의 결합, 레트로 게임 장면"
+  },
+  "the-lion-king": {
+    "name": "라이온 킹 - CGI 리얼",
+    "description": "아프리카 사바나를 배경으로 한 디즈니 CGI 애니메이션"
+  }
+}

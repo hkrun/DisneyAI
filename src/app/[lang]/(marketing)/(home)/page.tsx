@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import ConverterPanel from '@/components/disney-converter/ConverterPanel'
 import { useHomeTranslation } from '@/hooks/use-home-translation'
+import { useConverterPanelTranslation } from '@/hooks/use-converter-panel-translation'
 import { type Locale } from '@/i18n-config'
 
 interface HomePageProps {
@@ -24,6 +25,7 @@ export default function Home({ params }: HomePageProps) {
   }, [])
   const [lang, setLang] = useState<Locale>('zh')
   const { translations, loading, error } = useHomeTranslation(lang)
+  const { translations: converterTranslations, loading: converterLoading, error: converterError } = useConverterPanelTranslation(lang)
 
   // 初始化语言参数
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function Home({ params }: HomePageProps) {
   }
 
   // 如果正在加载翻译，显示加载状态
-  if (loading) {
+  if (loading || converterLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
@@ -53,7 +55,7 @@ export default function Home({ params }: HomePageProps) {
   }
 
   // 如果加载翻译失败，显示错误状态
-  if (error || !translations) {
+  if (error || !translations || converterError || !converterTranslations) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
@@ -68,13 +70,13 @@ export default function Home({ params }: HomePageProps) {
     <>
       <main>
       {/* 迪士尼风格转换模块 */}
-      <section id="converter" className="relative pt-16 pb-16 overflow-hidden">
+      <section id="converter" className="relative pt-8 md:pt-16 pb-16 overflow-hidden">
         {/* 背景：与"把日常变成迪士尼动画"一致 */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('https://picsum.photos/id/1035/1920/1080')] bg-cover bg-center opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-disney-blue/30 to-disney-light/80" />
                               </div>
-        <div className="container mx-auto px-4 mb-8 relative z-10">
+        <div className="container mx-auto px-4 mb-4 md:mb-8 relative z-10">
           <div className="flex flex-col md:flex-row md:items-center justify-between">
             <div>
               <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-shadow-lg mb-2">
@@ -118,7 +120,7 @@ export default function Home({ params }: HomePageProps) {
                           </div>
 
         <div className="relative z-10">
-          <ConverterPanel mode={conversionMode} />
+          <ConverterPanel mode={conversionMode} i18n={converterTranslations} />
                           </div>
       </section>
       

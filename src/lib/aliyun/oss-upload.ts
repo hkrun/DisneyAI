@@ -171,7 +171,7 @@ export class AliyunOSSService {
       conditions: [
         { bucket: this.config.bucket },
         { key: objectKey },
-        ['content-length-range', 0, 20 * 1024 * 1024] // 最大20MB
+        ['content-length-range', 0, 5 * 1024 * 1024] // 最大5MB
       ]
     }
 

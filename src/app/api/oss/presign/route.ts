@@ -11,7 +11,7 @@ export const preferredRegion = ['hkg1','sin1']
 // 允许的图片/视频类型与大小
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png']
 const ALLOWED_VIDEO_TYPES = ['video/mp4','video/avi','video/mov','video/wmv','video/flv','video/webm','video/mkv','video/ts','video/mpg']
-const MAX_IMAGE_SIZE = 20 * 1024 * 1024 // 20MB
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024 // 5MB
 const MAX_VIDEO_SIZE = 120 * 1024 * 1024 // 120MB
 
 function getExtFromFilename(filename: string): string {
@@ -43,11 +43,11 @@ export async function POST(request: NextRequest) {
 
     // 检查用户积分
     const userCredits = await findUserCreditsByUserId(session.user.id)
-    if (userCredits <= 1) {
+    if (userCredits < 1) {
       return NextResponse.json(
         { 
           success: false,
-          error: '积分不足，需要至少2积分才能上传文件。请购买积分或升级订阅计划。' 
+          error: '积分不足，需要至少1积分才能上传文件。请购买积分或升级订阅计划。' 
         },
         { status: 402 }
       )
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     if (fileSize > 0) {
       if (isImage && fileSize > MAX_IMAGE_SIZE) {
         return NextResponse.json(
-          { success: false, error: '图片大小不能超过20MB' },
+          { success: false, error: '图片大小不能超过5MB' },
           { status: 400 }
         )
       }

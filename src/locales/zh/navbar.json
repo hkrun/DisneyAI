@@ -85,9 +85,9 @@
         "label": "积分",
         "tooltip": {
             "title": "积分",
-            "costInfo": "每次使用消耗1个积分",
-            "usageInfo": "不同功能按实际视频时长扣减积分。",
-            "getMoreButton": "获取更多时长"
+            "costInfo": "每次使用消耗10个积分",
+            "usageInfo": "不同的功能可能消耗不同数量的积分。",
+            "getMoreButton": "获取更多积分"
         }
     },
     "meta": {

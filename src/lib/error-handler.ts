@@ -182,7 +182,7 @@ export function getUserFriendlyMessage(error: CustomError): string {
     case 'TIMEOUT_ERROR':
       return '请求超时，请稍后重试'
     case 'FILE_TOO_LARGE':
-      return '文件太大，请选择小于20MB的图片'
+      return '文件太大，请选择小于5MB的图片'
     case 'INVALID_FILE_TYPE':
       return '文件格式不支持，请选择JPG、PNG或GIF格式'
     case 'DUPLICATE_ERROR':

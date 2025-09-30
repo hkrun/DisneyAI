@@ -63,7 +63,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
   {
     id: 'zootopia',
     name: '《疯狂动物城》3D 写实卡通风 ',
-    description: ' 迪士尼 3D 写实卡通风格，动物毛发皮肤质感细腻，角色表情动作夸张卡通化，城市场景兼具奇幻与写实 ',
+    description: ' 迪士尼 3D 写实卡通风格，动物毛发皮肤质感细腻',
     prompt: 'Disney animation style, 3D realistic cartoon illustration, anthropomorphic animal characters (detailed fur texture, expressive faces), Zootopia cityscape (mix of fantasy and realism), vibrant color palette, exaggerated cartoon movements, soft lighting, detailed urban environments, family-friendly art',
     category: 'modern',
     image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/6244b887612cf8c60d581dc9a8ceff51.jpeg'
@@ -74,41 +74,26 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '海底世界风格，蓝色和珊瑚色调',
     prompt: 'Pixar Finding Nemo style, underwater ocean animation, coral reef colors, marine life aesthetic, flowing water effects, tropical fish colors, ocean depth lighting, 3D underwater world',
     category: 'pixar',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/finding-nemo-style.jpg'
+    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/61c3c68198b2ab11a191df0e79504585.jpeg'
   },
-  {
-    id: 'up',
-    name: '《飞屋环游记》冒险风',
-    description: '冒险风格，温暖的橙色和黄色',
-    prompt: 'The Disney movie "Up" emphasizes a specific "handmade realism" style with slightly exaggerated facial proportions (big nose, wide chin)',
-    category: 'pixar',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/up-style.jpg'
-  },
+  
   {id: "wreck-it-ralph",
     name: "《无敌破坏王》游戏像素与 3D 结合风",
-    description: "迪士尼像素风与 3D 融合风格，复古游戏场景用像素（简洁鲜艳），角色与现实场景用 3D（细腻逼真），怀旧与现代碰撞",
+    description: "迪士尼像素风与 3D 融合风格，复古游戏场景用像素（简洁鲜艳）",
     prompt: "Disney animation style, blend of pixel art and 3D illustration, retro video game world (pixelated scenes, blocky character shapes, bright pixel colors), 3D character details (Ralph's fur, clothing texture), real-world scenes (3D realistic), nostalgic game vibe, vibrant color palette, family-friendly art",
     category: "pixar",
-    image: "https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/wreck-it-ralph-style.jpg"
+    image: "https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/eb624b85a3427bdf60fc9b60211932d5.jpeg"
   },
 
   // 现代动画系列
   {id: 'the-lion-king',
     name: '《狮子王》CGI 写实风',
-    description: '迪士尼 CGI 动画风格，以非洲草原为背景，画面极具写实感，色彩鲜艳生动，动物毛发与场景细节刻画精细',
+    description: '迪士尼 CGI 动画风格，以非洲草原为背景',
     prompt: 'Disney animation style, CGI realistic illustration, African savanna landscape, vivid bright colors, lifelike animal fur texture, detailed grasslands and trees, dramatic lighting, epic fairy tale scene, high-definition details, natural atmosphere',
     category: 'modern',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/lion-king-style.jpg'
+    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/377c38a66f28a1a1d18df2d341056526.jpeg'
   },
   
-  {
-    id: 'moana',
-    name: '《海洋奇缘》波利尼西亚风',
-    description: '太平洋岛屿风格，海洋和热带色调',
-    prompt: 'Disney Moana style, Polynesian ocean animation, tropical island colors, ocean waves, traditional patterns, vibrant sunset colors, island culture aesthetic, flowing water animation',
-    category: 'modern',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/moana-style.jpg'
-  }
 ];
 
 /**

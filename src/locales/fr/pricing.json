@@ -1,7 +1,7 @@
 {
   "hero": {
-    "subtitle": "Technologie de remplacement de visage AI, créativité sans limites",
-    "title": "Choisissez votre plan de remplacement de visage AI",
+    "subtitle": "Conversion au style Disney, créativité sans limites",
+    "title": "Choisissez votre plan de conversion au style Disney",
     "description": "Sélectionnez le plan idéal pour vos besoins créatifs. Nous offrons un essai gratuit de 3 jours."
   },
   "billing": {
@@ -42,19 +42,19 @@
       "sku": "disneyai_trial",
       "type": "digital",
       "unit_price": "0.00",
-      "priceId": "price_1S5cf4Dx3cvsYDBQX4pLFyUq"
+      "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
     "cta": "Réclamer Gratuitement",
     "afterTrial": "Renouvellement automatique vers le plan De Base après l'essai",
     "placeholderFeatures": {
-      "templateUsage": "Utilisation de Modèles Gratuits",
-      "customDisneyAi": "Échange de Visages Personnalisé",
-      "historyView": "Voir l'Historique d'Échange"
+      "templateUsage": "Utilisation gratuite des modèles",
+      "customDisneyAi": "Conversion de style personnalisée",
+      "historyView": "Voir l'historique des conversions"
     },
     "placeholderDescriptions": {
       "templateUsage": "Découvrez toutes les fonctionnalités",
-      "customDisneyAi": "Téléchargez votre propre vidéo",
-      "historyView": "Voir les enregistrements historiques"
+      "customDisneyAi": "Téléchargez votre image ou vidéo",
+      "historyView": "Voir l'historique des conversions"
     },
     "placeholderPrice": "Gratuit",
     "placeholderPeriod": "3 jours",
@@ -77,12 +77,12 @@
     "currency": "EUR",
     "mode": "Récurrent",
     "features": [
-      "50 minutes de temps de remplacement de visage AI par mois",
+      "100 conversions au style Disney par mois",
       "Sortie en qualité HD",
       "Bibliothèque de modèles de base"
     ],
     "annualFeatures": [
-      "600 minutes de temps de remplacement de visage AI par an",
+      "600 conversions au style Disney par an",
       "Sortie en qualité HD",
       "Bibliothèque de modèles de base"
     ],
@@ -94,7 +94,7 @@
       "sku": "disneyai_basic_monthly",
       "type": "numérique",
       "unit_price": "9.99",
-      "priceId": "price_1S5cf4Dx3cvsYDBQX4pLFyUq"
+      "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
     "annualProduct": {
       "code": "disneyai_basic_annual",
@@ -104,7 +104,7 @@
       "sku": "disneyai_basic_annual",
       "type": "numérique",
       "unit_price": "99.99",
-      "priceId": "price_1S7YYKDx3cvsYDBQyTkiM3vL"
+      "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
     "cta": "Démarrer l'essai gratuit"
   },
@@ -122,14 +122,14 @@
     "currency": "EUR",
     "mode": "Récurrent",
     "features": [
-      "120 minutes de temps de remplacement de visage AI par mois",
+      "260 conversions au style Disney par mois",
       "Sortie en qualité HD",
       "Bibliothèque complète de modèles",
       "Fonction de traitement par lots",
       "File d'attente de traitement prioritaire"
     ],
     "annualFeatures": [
-      "1440 minutes de temps de remplacement de visage AI par an",
+      "1440 conversions au style Disney par an",
       "Sortie en qualité HD",
       "Bibliothèque complète de modèles",
       "Fonction de traitement par lots",
@@ -143,7 +143,7 @@
       "sku": "disneyai_premium_monthly",
       "type": "numérique",
       "unit_price": "19.99",
-      "priceId": "price_1S5cffDx3cvsYDBQXG5t2SkW"
+      "priceId": "price_1SCxAjLmvlReBkzoPPyBXK7Y"
     },
     "annualProduct": {
       "code": "disneyai_premium_annual",
@@ -153,7 +153,7 @@
       "sku": "disneyai_premium_annual",
       "type": "numérique",
       "unit_price": "199.99",
-      "priceId": "price_1S7YYfDx3cvsYDBQQLkCNcTv"
+      "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
     "cta": "Démarrer l'essai gratuit"
   },
@@ -171,13 +171,13 @@
     "currency": "EUR",
     "mode": "Récurrent",
     "features": [
-      "180 minutes de temps de remplacement de visage AI par mois",
+      "400 conversions au style Disney par mois",
       "Sortie en qualité HD",
       "Tous les modèles premium",
       "Support client dédié"
     ],
     "annualFeatures": [
-      "2160 minutes de temps de remplacement de visage AI par an",
+      "2160 conversions au style Disney par an",
       "Sortie en qualité HD",
       "Tous les modèles premium",
       "Support client dédié"
@@ -190,7 +190,7 @@
       "sku": "disneyai_professional_monthly",
       "type": "numérique",
       "unit_price": "29.99",
-      "priceId": "price_1S5cgZDx3cvsYDBQ1Yu1cL1U"
+      "priceId": "price_1SCxAvLmvlReBkzo8w3da07n"
     },
     "annualProduct": {
       "code": "disneyai_professional_annual",
@@ -200,12 +200,12 @@
       "sku": "disneyai_professional_annual",
       "type": "numérique",
       "unit_price": "299.99",
-      "priceId": "price_1S7YYtDx3cvsYDBQWIHn7l8k"
+      "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
     "cta": "Démarrer l'essai gratuit"
   },
   "oneTimeBasic": {
-    "title": "1500 points",
+    "title": "700 points",
     "price": {
       "amount": "$9.99",
       "period": "Une seule fois"
@@ -213,7 +213,7 @@
     "currency": "EUR",
     "mode": "Paiement unique",
     "features": [
-      "25 minutes de temps de remplacement de visage AI",
+      "70 conversions au style Disney",
       "Sortie en qualité HD",
       "Bibliothèque de modèles de base",
       "Validité permanente"
@@ -226,12 +226,12 @@
       "sku": "disneyai_onetime_basic",
       "type": "numérique",
       "unit_price": "9.99",
-      "priceId": "price_1S5cgnDx3cvsYDBQa8waZ5Dz"
+      "priceId": "price_1SCx9PLmvlReBkzoTKl71en7"
     },
     "cta": "Acheter maintenant"
   },
   "oneTimePremium": {
-    "title": "3600 points",
+    "title": "1820 points",
     "price": {
       "amount": "$19.99",
       "period": "Une seule fois"
@@ -239,7 +239,7 @@
     "currency": "EUR",
     "mode": "Paiement unique",
     "features": [
-      "60 minutes de temps de remplacement de visage AI",
+      "182 conversions au style Disney",
       "Sortie en qualité HD",
       "Bibliothèque complète de modèles",
       "Fonction de traitement par lots",
@@ -253,12 +253,12 @@
       "sku": "disneyai_onetime_premium",
       "type": "numérique",
       "unit_price": "19.99",
-      "priceId": "price_1S5ch2Dx3cvsYDBQcy4YbwIJ"
+      "priceId": "price_1SCxACLmvlReBkzoOpDCZ6ee"
     },
     "cta": "Acheter maintenant"
   },
   "oneTimeProfessional": {
-    "title": "5400 points",
+    "title": "2800 points",
     "price": {
       "amount": "$29.99",
       "period": "Une seule fois"
@@ -266,7 +266,7 @@
     "currency": "EUR",
     "mode": "Paiement unique",
     "features": [
-      "90 minutes de temps de remplacement de visage AI",
+      "280 conversions au style Disney",
       "Sortie en qualité HD",
       "Tous les modèles premium",
       "Fonction de traitement par lots",
@@ -281,7 +281,7 @@
       "sku": "disneyai_onetime_professional",
       "type": "numérique",
       "unit_price": "29.99",
-      "priceId": "price_1S5cjQDx3cvsYDBQGTGkToKH"
+      "priceId": "price_1SCxANLmvlReBkzoTcXzprzh"
     },
     "cta": "Acheter maintenant"
   },
@@ -299,7 +299,7 @@
     "currency": "EUR",
     "mode": "Récurrent",
     "features": [
-      "Temps de remplacement de visage AI étendu",
+      "Quota important de conversion au style Disney",
       "Sortie en qualité HD",
       "Tous les modèles premium",
       "Accès à l'API",
@@ -331,7 +331,7 @@
   },
   "paymentTips": "Après le paiement, l'abonnement sera automatiquement ajouté à votre compte (effet dans les 30 secondes). Si elle n'apparaît pas, actualisez la page.",
   "trust": {
-    "text": "Démarrez maintenant votre voyage créatif de remplacement de visage AI et libérez votre créativité sans limites",
+    "text": "Démarrez maintenant votre voyage créatif au style Disney et libérez votre créativité sans limites",
     "allPlansInclude": "Tous les plans incluent :",
     "features": {
       "secureTranslation": "Protection des données",
@@ -394,9 +394,9 @@
     }
   },
   "meta": {
-    "title": "Tarifs DisneyAi AI – Remplacement de visage AI | Remplacement de visage | Remplacement de visage en vidéo",
-    "description": "Plans de tarification du service de remplacement de visage AI DisneyAi, offrant des services professionnels de remplacement de visage AI, de remplacement de visage en vidéo et de création de contenu créatif.",
-    "alt": "DisneyAi Remplacement de visage AI",
-    "keywords": "Remplacement de visage AI, Remplacement de visage, Remplacement de visage en vidéo, Logiciel de remplacement de visage AI, Remplacement de visage par intelligence artificielle"
+    "title": "Tarifs DisneyAi – Conversion au style Disney (image/vidéo)",
+    "description": "Plans de tarification pour la conversion au style Disney, stylisation professionnelle d'images et de vidéos.",
+    "alt": "DisneyAi Conversion au style Disney",
+    "keywords": "Style Disney, stylisation d'image, stylisation vidéo, transfert de style IA"
   }
 }

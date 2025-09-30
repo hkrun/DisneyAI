@@ -93,9 +93,9 @@
         "label": "크레딧",
         "tooltip": {
             "title": "크레딧",
-            "costInfo": "사용할 때마다 1크레딧 소모",
-            "usageInfo": "기능은 동영상 길이에 따라 크레딧이 차감됩니다.",
-            "getMoreButton": "시간 더 받기"
+            "costInfo": "사용할 때마다 10크레딧 소모",
+            "usageInfo": "다른 기능은 다른 양의 크레딧을 소모할 수 있습니다.",
+            "getMoreButton": "크레딧 더 받기"
         }
     },
     "meta": {

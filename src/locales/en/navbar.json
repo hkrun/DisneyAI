@@ -85,9 +85,9 @@
         "label": "Credits",
         "tooltip": {
             "title": "Credits",
-            "costInfo": "1 credit consumed per use",
-            "usageInfo": "Features deduct credits based on video duration.",
-            "getMoreButton": "Get More Time"
+            "costInfo": "10 credits consumed per use",
+            "usageInfo": "Different features may consume different amounts of credits.",
+            "getMoreButton": "Get More Credits"
         }
     },
     "meta": {

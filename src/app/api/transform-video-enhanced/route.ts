@@ -124,10 +124,10 @@ export async function POST(request: NextRequest) {
 
     // 检查用户积分
     const userCredits = await findUserCreditsByUserId(userId)
-    if (userCredits < 5) { // 视频转换需要更多积分
+    if (userCredits < 125) { // 视频转换需要更多积分
       return NextResponse.json({ 
         success: false, 
-        error: '积分不足，视频转换需要至少5积分' 
+        error: '积分不足，视频转换需要至少125积分' 
       }, { status: 402 })
     }
 
@@ -232,7 +232,7 @@ export async function POST(request: NextRequest) {
     await recordVideoTask(userId, (styleId as string) || 'unknown', videoCreate.taskId, uploadedUrl || imageUrl)
 
     // 扣除用户积分
-    await deductUserCredits(userId, 5, '视频转换')
+    await deductUserCredits(userId, 125, '视频转换')
 
     console.log('视频转换任务创建成功:', videoCreate.taskId)
 
@@ -273,13 +273,44 @@ export async function GET(request: NextRequest) {
     const taskResult = await wanI2VClient.getTask(predictionId, 3)
     
     if (taskResult.status === 'SUCCEEDED') {
-      // 更新数据库记录
-      await updateVideoTask(predictionId, 'completed', taskResult.videoUrl)
+      // 视频生成成功，保存到OSS
+      let finalVideoUrl = taskResult.videoUrl
+      
+      if (!taskResult.videoUrl) {
+        console.error('视频生成成功但URL为空')
+        await updateVideoTask(predictionId, 'failed', undefined, '视频URL为空')
+        return NextResponse.json({
+          success: false,
+          error: '视频生成成功但URL为空'
+        }, { status: 500 })
+      }
+      
+      try {
+        console.log('视频生成成功，开始保存到OSS:', taskResult.videoUrl)
+        const upload = await downloadAndUploadToOSS(
+          taskResult.videoUrl,
+          `video-${predictionId}.mp4`,
+          'generated-videos',
+          'disney-video'
+        )
+        
+        if (upload.success && upload.url) {
+          finalVideoUrl = upload.url
+          console.log('视频保存到OSS成功:', upload.url)
+        } else {
+          console.error('视频保存到OSS失败，使用原始URL:', upload.error)
+        }
+      } catch (e) {
+        console.error('视频保存到OSS异常，使用原始URL:', e)
+      }
+      
+      // 更新数据库记录（保存OSS URL）
+      await updateVideoTask(predictionId, 'completed', finalVideoUrl)
       
       return NextResponse.json({
         success: true,
         status: 'completed',
-        resultUrl: taskResult.videoUrl,
+        resultUrl: finalVideoUrl,
         actualPrompt: taskResult.actualPrompt
       })
     } else if (taskResult.status === 'FAILED') {

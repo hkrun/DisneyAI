@@ -12,7 +12,7 @@
  Target Server Version : 170004 (170004)
  File Encoding         : 65001
 
- Date: 22/09/2025 15:20:46
+ Date: 30/09/2025 13:27:36
 */
 
 
@@ -32,6 +32,17 @@ CACHE 1;
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "public"."nf_api_usage_id_seq";
 CREATE SEQUENCE "public"."nf_api_usage_id_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for nf_cache_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."nf_cache_id_seq";
+CREATE SEQUENCE "public"."nf_cache_id_seq" 
 INCREMENT 1
 MINVALUE  1
 MAXVALUE 9223372036854775807
@@ -127,6 +138,17 @@ START 1
 CACHE 1;
 
 -- ----------------------------
+-- Sequence structure for nf_transform_history_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."nf_transform_history_id_seq";
+CREATE SEQUENCE "public"."nf_transform_history_id_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+
+-- ----------------------------
 -- Sequence structure for nf_user_health_assessment_id_seq
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "public"."nf_user_health_assessment_id_seq";
@@ -158,6 +180,26 @@ MINVALUE  1
 MAXVALUE 9223372036854775807
 START 1
 CACHE 1;
+
+-- ----------------------------
+-- Table structure for nf_cache
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."nf_cache";
+CREATE TABLE "public"."nf_cache" (
+  "id" int4 NOT NULL DEFAULT nextval('nf_cache_id_seq'::regclass),
+  "cache_key" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "cache_value" text COLLATE "pg_catalog"."default" NOT NULL,
+  "expires_at" timestamp(6) NOT NULL,
+  "created_at" timestamp(6) DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" timestamp(6) DEFAULT CURRENT_TIMESTAMP
+)
+;
+COMMENT ON COLUMN "public"."nf_cache"."cache_key" IS '缓存键';
+COMMENT ON COLUMN "public"."nf_cache"."cache_value" IS '缓存值（JSON格式）';
+COMMENT ON COLUMN "public"."nf_cache"."expires_at" IS '过期时间';
+COMMENT ON COLUMN "public"."nf_cache"."created_at" IS '创建时间';
+COMMENT ON COLUMN "public"."nf_cache"."updated_at" IS '更新时间';
+COMMENT ON TABLE "public"."nf_cache" IS '系统缓存表';
 
 -- ----------------------------
 -- Table structure for nf_contact
@@ -247,6 +289,44 @@ CREATE TABLE "public"."nf_subscription" (
 COMMENT ON COLUMN "public"."nf_subscription"."plan_type" IS '订阅计划类型: basic=基础版, professional=专业版, business=商业版';
 
 -- ----------------------------
+-- Table structure for nf_transform_history
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."nf_transform_history";
+CREATE TABLE "public"."nf_transform_history" (
+  "id" int4 NOT NULL DEFAULT nextval('nf_transform_history_id_seq'::regclass),
+  "user_id" varchar(32) COLLATE "pg_catalog"."default" NOT NULL,
+  "style_id" varchar(64) COLLATE "pg_catalog"."default" NOT NULL,
+  "prediction_id" varchar(128) COLLATE "pg_catalog"."default",
+  "original_image_url" text COLLATE "pg_catalog"."default",
+  "result_url" text COLLATE "pg_catalog"."default",
+  "credits_used" int4 DEFAULT 1,
+  "status" varchar(20) COLLATE "pg_catalog"."default" DEFAULT 'processing'::character varying,
+  "error" text COLLATE "pg_catalog"."default",
+  "custom_prompt" text COLLATE "pg_catalog"."default",
+  "processing_time" int4,
+  "created_at" timestamp(6) DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" timestamp(6) DEFAULT CURRENT_TIMESTAMP,
+  "type" varchar(20) COLLATE "pg_catalog"."default" DEFAULT 'image'::character varying,
+  "task_id" varchar(128) COLLATE "pg_catalog"."default",
+  "generated_image_url" text COLLATE "pg_catalog"."default"
+)
+;
+COMMENT ON COLUMN "public"."nf_transform_history"."user_id" IS '用户ID';
+COMMENT ON COLUMN "public"."nf_transform_history"."style_id" IS '使用的风格模板ID';
+COMMENT ON COLUMN "public"."nf_transform_history"."prediction_id" IS 'Flux API预测ID';
+COMMENT ON COLUMN "public"."nf_transform_history"."original_image_url" IS '原始图片URL';
+COMMENT ON COLUMN "public"."nf_transform_history"."result_url" IS '转换结果图片URL';
+COMMENT ON COLUMN "public"."nf_transform_history"."credits_used" IS '消耗的积分数量';
+COMMENT ON COLUMN "public"."nf_transform_history"."status" IS '转换状态: processing, completed, failed';
+COMMENT ON COLUMN "public"."nf_transform_history"."error" IS '错误信息';
+COMMENT ON COLUMN "public"."nf_transform_history"."custom_prompt" IS '用户自定义提示词';
+COMMENT ON COLUMN "public"."nf_transform_history"."processing_time" IS '处理时间（秒）';
+COMMENT ON COLUMN "public"."nf_transform_history"."type" IS '转换类型: image(图片转换), video(视频转换)';
+COMMENT ON COLUMN "public"."nf_transform_history"."task_id" IS '任务ID（视频转换使用）';
+COMMENT ON COLUMN "public"."nf_transform_history"."generated_image_url" IS '生成的中间图片URL（视频转换使用）';
+COMMENT ON TABLE "public"."nf_transform_history" IS '图像和视频转换历史记录表';
+
+-- ----------------------------
 -- Table structure for nf_users
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."nf_users";
@@ -268,6 +348,19 @@ CREATE TABLE "public"."nf_users" (
 ;
 
 -- ----------------------------
+-- Function structure for clean_expired_cache
+-- ----------------------------
+DROP FUNCTION IF EXISTS "public"."clean_expired_cache"();
+CREATE OR REPLACE FUNCTION "public"."clean_expired_cache"()
+  RETURNS "pg_catalog"."void" AS $BODY$
+BEGIN
+  DELETE FROM "public"."nf_cache" WHERE expires_at <= NOW();
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+
+-- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 SELECT setval('"public"."nf_api_keys_id_seq"', 1, false);
@@ -280,12 +373,17 @@ SELECT setval('"public"."nf_api_usage_id_seq"', 1, false);
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
+SELECT setval('"public"."nf_cache_id_seq"', 1, false);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
 SELECT setval('"public"."nf_contact_id_seq"', 5, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
-SELECT setval('"public"."nf_credits_id_seq"', 135, true);
+SELECT setval('"public"."nf_credits_id_seq"', 151, true);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -320,14 +418,74 @@ SELECT setval('"public"."nf_template_face_swap_jobs_id_seq"', 13, true);
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
+SELECT setval('"public"."nf_transform_history_id_seq"', 73, true);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
 SELECT setval('"public"."nf_user_health_assessment_id_seq"', 56, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
-SELECT setval('"public"."nf_users_id_seq"', 3, true);
+SELECT setval('"public"."nf_users_id_seq"', 5, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 SELECT setval('"public"."nf_video_templates_id_seq"', 11, true);
+
+-- ----------------------------
+-- Indexes structure for table nf_cache
+-- ----------------------------
+CREATE INDEX "idx_cache_created_at" ON "public"."nf_cache" USING btree (
+  "created_at" "pg_catalog"."timestamp_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_cache_expires_at" ON "public"."nf_cache" USING btree (
+  "expires_at" "pg_catalog"."timestamp_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_cache_key" ON "public"."nf_cache" USING btree (
+  "cache_key" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+
+-- ----------------------------
+-- Uniques structure for table nf_cache
+-- ----------------------------
+ALTER TABLE "public"."nf_cache" ADD CONSTRAINT "nf_cache_key_unique" UNIQUE ("cache_key");
+
+-- ----------------------------
+-- Primary Key structure for table nf_cache
+-- ----------------------------
+ALTER TABLE "public"."nf_cache" ADD CONSTRAINT "nf_cache_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Indexes structure for table nf_transform_history
+-- ----------------------------
+CREATE INDEX "idx_transform_history_created_at" ON "public"."nf_transform_history" USING btree (
+  "created_at" "pg_catalog"."timestamp_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_transform_history_prediction_id" ON "public"."nf_transform_history" USING btree (
+  "prediction_id" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_transform_history_status" ON "public"."nf_transform_history" USING btree (
+  "status" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_transform_history_task_id" ON "public"."nf_transform_history" USING btree (
+  "task_id" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_transform_history_type" ON "public"."nf_transform_history" USING btree (
+  "type" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_transform_history_user_id" ON "public"."nf_transform_history" USING btree (
+  "user_id" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+
+-- ----------------------------
+-- Checks structure for table nf_transform_history
+-- ----------------------------
+ALTER TABLE "public"."nf_transform_history" ADD CONSTRAINT "chk_transform_type" CHECK (type::text = ANY (ARRAY['image'::character varying, 'video'::character varying]::text[]));
+
+-- ----------------------------
+-- Primary Key structure for table nf_transform_history
+-- ----------------------------
+ALTER TABLE "public"."nf_transform_history" ADD CONSTRAINT "nf_transform_history_pkey" PRIMARY KEY ("id");

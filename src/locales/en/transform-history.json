@@ -1,0 +1,44 @@
+{
+  "title": "Conversion History",
+  "filters": {
+    "all": "All Statuses",
+    "status": "Filter Status"
+  },
+  "tabs": {
+    "all": "All",
+    "image": "Image Conversion",
+    "video": "Video Conversion"
+  },
+  "status": {
+    "PROCESSING": "Processing",
+    "COMPLETED": "Completed",
+    "FAILED": "Failed"
+  },
+  "taskType": {
+    "image": "Image",
+    "video": "Video"
+  },
+  "details": {
+    "preview": "Preview",
+    "hoverToPreview": "Hover to preview",
+    "videoLoadError": "Video failed to load",
+    "seconds": "seconds",
+    "fileSize": "File Size"
+  },
+  "actions": {
+    "download": "Download",
+    "retry": "Retry"
+  },
+  "empty": {
+    "title": "No Conversion History",
+    "description": "You haven't performed any Disney style conversions yet. Go try it out!"
+  },
+  "loading": "Loading...",
+  "pagination": {
+    "showing": "Showing",
+    "of": "of",
+    "results": "results",
+    "previous": "Previous",
+    "next": "Next"
+  }
+}

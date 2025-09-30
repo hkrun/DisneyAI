@@ -1,0 +1,75 @@
+{
+  "progress": {
+    "title": "操作进度",
+    "step": "步"
+  },
+  "steps": {
+    "upload": {
+      "title": "上传图片",
+      "subtitle": "(支持JPG/PNG/GIF，≤5MB)",
+      "placeholder": "点击上传或拖拽图片至此处",
+      "supportedFormats": "支持JPG、PNG、GIF格式",
+      "exampleImages": "选择示例图片："
+    },
+    "style": {
+      "title": "选择迪士尼风格",
+      "subtitle": "(点击选择效果)",
+      "selected": "已选择风格"
+    },
+    "video": {
+      "title": "生成视频",
+      "subtitle": "(提示词可选)",
+      "promptLabel": "视频提示词（可选）",
+      "promptPlaceholder": "可选，请详细描述您希望视频呈现的场景、角色动作、情绪等...如果不填写，将自动分析图片内容"
+    }
+  },
+  "buttons": {
+    "previous": "上一步",
+    "next": "下一步",
+    "startConversion": "开始转换",
+    "generateVideo": "生成视频",
+    "continue": "继续转换",
+    "back": "返回",
+    "download": "下载",
+    "downloadImage": "下载图片",
+    "downloadVideo": "下载视频"
+  },
+  "status": {
+    "uploading": "正在上传图片...",
+    "processing": "正在生成迪士尼风格图片...",
+    "generatingVideo": "正在生成视频...",
+    "uploadingToCloud": "正在上传图片到云端...",
+    "processingVideo": "正在处理视频效果...",
+    "magic": "正在施展魔法",
+    "imagePreview": "图片效果预览",
+    "videoPreview": "视频生成预览"
+  },
+  "messages": {
+    "imageConversion": "马上为您生成迪士尼风格作品～",
+    "videoGeneration": "正在根据图片生成迪士尼风格视频～",
+    "estimatedTime": {
+      "image": "预计还需 30-60 秒",
+      "video": "预计还需 3-8 分钟"
+    },
+    "hint": "提示：拖动可查看细节，点击风格模板实时预览效果"
+  },
+  "results": {
+    "imageCompleted": "图片转换完成！",
+    "videoCompleted": "视频转换完成！",
+    "originalImage": "原始图片",
+    "styleImage": "风格图片",
+    "styleVideo": "风格视频"
+  },
+  "errors": {
+    "loadExampleFailed": "加载示例图片失败，请重试",
+    "imageLoadError": "图片加载失败",
+    "videoLoadError": "视频加载失败"
+  },
+  "creditsDialog": {
+    "title": "积分不足",
+    "imageRequired": "积分不足，图片转换需要至少{credits}积分。",
+    "videoRequired": "积分不足，视频转换需要至少{credits}积分。",
+    "cancel": "取消",
+    "subscribe": "去订阅"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "snow-white": {
+    "name": "Blanche-Neige - Style film moderne",
+    "description": "Style cinématographique Disney moderne"
+  },
+  "cinderella": {
+    "name": "Cendrillon - Style classique dessiné",
+    "description": "Style élégant de princesse Disney"
+  },
+  "bambi": {
+    "name": "Bambi - Style classique",
+    "description": "Esthétique de forêt naturelle"
+  },
+  "mulan": {
+    "name": "Mulan - Style oriental américain",
+    "description": "Reconstitution Disney de la Chine ancienne"
+  },
+  "toy-story": {
+    "name": "Toy Story - Style 3D",
+    "description": "Animation 3D Pixar avec texture de jouet"
+  },
+  "frozen": {
+    "name": "La Reine des Neiges - Style glace et neige",
+    "description": "Magie de glace et neige, tons bleus et blancs"
+  },
+  "zootopia": {
+    "name": "Zootopie - Cartoon réaliste 3D",
+    "description": "Cartoon 3D réaliste Disney avec fourrure et peau détaillées"
+  },
+  "finding-nemo": {
+    "name": "Le Monde de Nemo - Style océan",
+    "description": "Monde sous-marin, palette bleue et corail"
+  },
+  "wreck-it-ralph": {
+    "name": "Les Mondes de Ralph - Pixel et 3D hybride",
+    "description": "Style pixel Disney mélangé à la 3D; scènes rétro en pixels vifs"
+  },
+  "the-lion-king": {
+    "name": "Le Roi Lion - Réaliste CGI",
+    "description": "Animation CGI Disney sur la savane africaine"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "progress": {
+    "title": "Progrès de l'opération",
+    "step": "étape"
+  },
+  "steps": {
+    "upload": {
+      "title": "Télécharger l'image",
+      "subtitle": "(Supporte JPG/PNG/GIF, ≤5MB)",
+      "placeholder": "Cliquez pour télécharger ou glissez l'image ici",
+      "supportedFormats": "Supporte les formats JPG, PNG, GIF",
+      "exampleImages": "Sélectionner des images d'exemple :"
+    },
+    "style": {
+      "title": "Choisir le style Disney",
+      "subtitle": "(Cliquez pour sélectionner l'effet)",
+      "selected": "Style sélectionné"
+    },
+    "video": {
+      "title": "Générer la vidéo",
+      "subtitle": "(Prompt optionnel)",
+      "promptLabel": "Prompt vidéo (Optionnel)",
+      "promptPlaceholder": "Optionnel, veuillez décrire en détail la scène, les actions des personnages, les émotions, etc. que vous souhaitez que la vidéo présente... Si non rempli, il analysera automatiquement le contenu de l'image"
+    }
+  },
+  "buttons": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "startConversion": "Commencer la conversion",
+    "generateVideo": "Générer la vidéo",
+    "continue": "Continuer la conversion",
+    "back": "Retour",
+    "download": "Télécharger",
+    "downloadImage": "Télécharger l'image",
+    "downloadVideo": "Télécharger la vidéo"
+  },
+  "status": {
+    "uploading": "Téléchargement de l'image...",
+    "processing": "Génération de l'image style Disney...",
+    "generatingVideo": "Génération de la vidéo...",
+    "uploadingToCloud": "Téléchargement de l'image vers le cloud...",
+    "processingVideo": "Traitement des effets vidéo...",
+    "magic": "Lancement de la magie",
+    "imagePreview": "Aperçu de l'effet image",
+    "videoPreview": "Aperçu de la génération vidéo"
+  },
+  "messages": {
+    "imageConversion": "Génération de votre œuvre d'art style Disney~",
+    "videoGeneration": "Génération de la vidéo style Disney à partir de l'image~",
+    "estimatedTime": {
+      "image": "Temps estimé restant 30-60 secondes",
+      "video": "Temps estimé restant 3-8 minutes"
+    },
+    "hint": "Astuce : faites glisser pour voir les détails, cliquez sur un style pour l'aperçu"
+  },
+  "results": {
+    "imageCompleted": "Conversion d'image terminée !",
+    "videoCompleted": "Conversion vidéo terminée !",
+    "originalImage": "Image originale",
+    "styleImage": "Image de style",
+    "styleVideo": "Vidéo de style"
+  },
+  "errors": {
+    "loadExampleFailed": "Échec du chargement de l'image d'exemple, veuillez réessayer",
+    "imageLoadError": "Échec du chargement de l'image",
+    "videoLoadError": "Échec du chargement de la vidéo"
+  },
+  "creditsDialog": {
+    "title": "Crédits insuffisants",
+    "imageRequired": "Crédits insuffisants, la conversion d'image nécessite au moins {credits} crédits.",
+    "videoRequired": "Crédits insuffisants, la conversion vidéo nécessite au moins {credits} crédits.",
+    "cancel": "Annuler",
+    "subscribe": "S'abonner"
+  }
+}

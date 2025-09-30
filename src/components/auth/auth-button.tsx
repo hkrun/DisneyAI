@@ -7,6 +7,7 @@ import { UserButton } from './user-button'
 import { LoginDialog } from './LoginDialog'
 import { UserButtonLocale } from "@/types/locales/navbar"
 import { SubscriptionLocal, ToastLocal } from "@/types/locales/billing";
+import { TransformHistoryLocal } from "@/types/locales/transform-history";
 import { useSession } from 'next-auth/react'
 
 interface AuthButtonProps {
@@ -16,7 +17,7 @@ interface AuthButtonProps {
     className?: string;
     subscription: SubscriptionLocal;
     toastLocal: ToastLocal;
-    // historyLocal 已移除
+    historyLocal?: TransformHistoryLocal;
     i18n: {
         auth: {
             login: {
@@ -78,6 +79,7 @@ export function AuthButton({
     userButton,
     subscription,
     toastLocal,
+    historyLocal,
     loginLabel,
     i18n,
     className = "inline-flex bg-disney-red hover:bg-disney-red/90 text-white border border-disney-gold/30 dark:bg-disney-red/80 dark:hover:bg-disney-red"
@@ -113,6 +115,7 @@ export function AuthButton({
                     userLocal={userButton}
                     subscriptionLocal={subscription}
                     toastLocal={toastLocal}
+                    historyLocal={historyLocal}
                 />
             ) : (
                 <Button

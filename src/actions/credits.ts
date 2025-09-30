@@ -161,9 +161,9 @@ export async function addSubscription(data: IUserCredit, priceId?: string) {
         
         // 年度订阅的价格ID列表
         const annualPriceIds = [
-            'price_1S7YYKDx3cvsYDBQyTkiM3vL', // 基础版年度
-            'price_1S7YYfDx3cvsYDBQQLkCNcTv', // 高级版年度
-            'price_1S7YYtDx3cvsYDBQWIHn7l8k', // 专业版年度
+            'price_1SCxBGLmvlReBkzoR3hG6eqT', // 基础版年度
+            'price_1SCxBdLmvlReBkzoTabyONnB', // 高级版年度
+            'price_1SCxBtLmvlReBkzo5RzDYiS4', // 专业版年度
             'price_1S7YZGDx3cvsYDBQpy1DfL9S'  // 商业版年度
         ];
         
@@ -228,9 +228,9 @@ export async function addTrialSubscription(data: IUserCredit, subscriptionId: st
         
         // 年度订阅的价格ID列表
         const annualPriceIds = [
-            'price_1S7YYKDx3cvsYDBQyTkiM3vL', // 基础版年度
-            'price_1S7YYfDx3cvsYDBQQLkCNcTv', // 高级版年度
-            'price_1S7YYtDx3cvsYDBQWIHn7l8k', // 专业版年度
+            'price_1SCxBGLmvlReBkzoR3hG6eqT', // 基础版年度
+            'price_1SCxBdLmvlReBkzoTabyONnB', // 高级版年度
+            'price_1SCxBtLmvlReBkzo5RzDYiS4', // 专业版年度
             'price_1S7YZGDx3cvsYDBQpy1DfL9S'  // 商业版年度
         ];
         
@@ -351,9 +351,9 @@ export async function addRenewalSubscription(data: IUserCredit, priceId?: string
         
         // 年度订阅的价格ID列表
         const annualPriceIds = [
-            'price_1S7YYKDx3cvsYDBQyTkiM3vL', // 基础版年度
-            'price_1S7YYfDx3cvsYDBQQLkCNcTv', // 高级版年度
-            'price_1S7YYtDx3cvsYDBQWIHn7l8k', // 专业版年度
+            'price_1SCxBGLmvlReBkzoR3hG6eqT', // 基础版年度
+            'price_1SCxBdLmvlReBkzoTabyONnB', // 高级版年度
+            'price_1SCxBtLmvlReBkzo5RzDYiS4', // 专业版年度
             'price_1S7YZGDx3cvsYDBQpy1DfL9S'  // 商业版年度
         ];
         

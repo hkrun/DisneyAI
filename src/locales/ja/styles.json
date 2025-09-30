@@ -1,0 +1,42 @@
+{
+  "snow-white": {
+    "name": "白雪姫 - モダン映画スタイル",
+    "description": "現代のディズニー映画風"
+  },
+  "cinderella": {
+    "name": "シンデレラ - クラシック手描きスタイル",
+    "description": "エレガントなディズニープリンセス風"
+  },
+  "bambi": {
+    "name": "バンビ - クラシックスタイル",
+    "description": "自然な森林の雰囲気"
+  },
+  "mulan": {
+    "name": "ムーラン - アメリカン東洋風",
+    "description": "古代中国のシーンをディズニー風に再現"
+  },
+  "toy-story": {
+    "name": "トイ・ストーリー - 3Dスタイル",
+    "description": "ピクサー3Dアニメーション、玩具の質感"
+  },
+  "frozen": {
+    "name": "アナと雪の女王 - 氷と雪のスタイル",
+    "description": "氷と雪の魔法、青と白のトーン"
+  },
+  "zootopia": {
+    "name": "ズートピア - 3Dリアルカートゥーン",
+    "description": "毛並みや肌の質感が細かいディズニー3Dリアルカートゥーン"
+  },
+  "finding-nemo": {
+    "name": "ファインディング・ニモ - オーシャンスタイル",
+    "description": "海中世界、青とサンゴ色のパレット"
+  },
+  "wreck-it-ralph": {
+    "name": "シュガー・ラッシュ - ピクセル&3Dハイブリッド",
+    "description": "ディズニーピクセル風と3Dの融合、レトロゲーム風シーン"
+  },
+  "the-lion-king": {
+    "name": "ライオン・キング - CGIリアル",
+    "description": "アフリカのサバンナを舞台にしたディズニーCGIアニメ"
+  }
+}

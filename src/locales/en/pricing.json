@@ -1,7 +1,7 @@
 {
   "hero": {
-    "subtitle": "AI Disney Ai Technology, Endless Creativity",
-    "title": "Choose Your AI Disney Ai Plan",
+    "subtitle": "Disney style conversion, endless creativity",
+    "title": "Choose your Disney style conversion plan",
     "description": "Select the perfect plan for your creative needs. We offer a 3-day free trial."
   },
   "billing": {
@@ -42,19 +42,19 @@
       "sku": "disneyai_trial",
       "type": "digital",
       "unit_price": "0.00",
-      "priceId": "price_1S5cf4Dx3cvsYDBQX4pLFyUq"
+      "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
     "cta": "Free Claim",
     "afterTrial": "Auto-renew to Basic plan after trial",
     "placeholderFeatures": {
-      "templateUsage": "Free Template Usage",
-      "customDisneyAi": "Custom Disney Ai",
-      "historyView": "Disney Ai History View"
+      "templateUsage": "Free template usage",
+      "customDisneyAi": "Custom style conversion",
+      "historyView": "Conversion history view"
     },
     "placeholderDescriptions": {
       "templateUsage": "Experience full features",
-      "customDisneyAi": "Upload your own video",
-      "historyView": "View historical records"
+      "customDisneyAi": "Upload your own image or video",
+      "historyView": "View conversion history"
     },
     "placeholderPrice": "Free",
     "placeholderPeriod": "3 days",
@@ -77,12 +77,12 @@
     "currency": "EUR",
     "mode": "Recurring",
     "features": [
-      "50 minutes of AI disney ai time per month",
+      "100 Disney style conversions per month",
       "HD quality output",
       "Basic template library"
     ],
     "annualFeatures": [
-      "600 minutes of AI disney ai time per year",
+      "600 Disney style conversions per year",
       "HD quality output",
       "Basic template library"
     ],
@@ -94,7 +94,7 @@
       "sku": "disneyai_basic_monthly",
       "type": "digital",
       "unit_price": "9.99",
-      "priceId": "price_1S5cf4Dx3cvsYDBQX4pLFyUq"
+      "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
     "annualProduct": {
       "code": "disneyai_basic_annual",
@@ -104,7 +104,7 @@
       "sku": "disneyai_basic_annual",
       "type": "digital",
       "unit_price": "99.99",
-      "priceId": "price_1S7YYKDx3cvsYDBQyTkiM3vL"
+      "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
     "cta": "Start Free Trial"
   },
@@ -122,14 +122,14 @@
     "currency": "EUR",
     "mode": "Recurring",
     "features": [
-      "120 minutes of AI disney ai time per month",
+      "260 Disney style conversions per month",
       "HD quality output",
       "Full template library",
       "Batch processing function",
       "Priority processing queue"
     ],
     "annualFeatures": [
-      "1440 minutes of AI disney ai time per year",
+      "1440 Disney style conversions per year",
       "HD quality output",
       "Full template library",
       "Batch processing function",
@@ -143,7 +143,7 @@
       "sku": "disneyai_premium_monthly",
       "type": "digital",
       "unit_price": "19.99",
-      "priceId": "price_1S5cffDx3cvsYDBQXG5t2SkW"
+      "priceId": "price_1SCxAjLmvlReBkzoPPyBXK7Y"
     },
     "annualProduct": {
       "code": "disneyai_premium_annual",
@@ -153,7 +153,7 @@
       "sku": "disneyai_premium_annual",
       "type": "digital",
       "unit_price": "199.99",
-      "priceId": "price_1S7YYfDx3cvsYDBQQLkCNcTv"
+      "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
     "cta": "Start Free Trial"
   },
@@ -171,13 +171,13 @@
     "currency": "EUR",
     "mode": "Recurring",
     "features": [
-      "180 minutes of AI disney ai time per month",
+      "400 Disney style conversions per month",
       "HD quality output",
       "All premium templates",
       "Dedicated customer support"
     ],
     "annualFeatures": [
-      "2160 minutes of AI disney ai time per year",
+      "2160 Disney style conversions per year",
       "HD quality output",
       "All premium templates",
       "Dedicated customer support"
@@ -190,7 +190,7 @@
       "sku": "disneyai_professional_monthly",
       "type": "digital",
       "unit_price": "29.99",
-      "priceId": "price_1S5cgZDx3cvsYDBQ1Yu1cL1U"
+      "priceId": "price_1SCxAvLmvlReBkzo8w3da07n"
     },
     "annualProduct": {
       "code": "disneyai_professional_annual",
@@ -200,12 +200,12 @@
       "sku": "disneyai_professional_annual",
       "type": "digital",
       "unit_price": "299.99",
-      "priceId": "price_1S7YYtDx3cvsYDBQWIHn7l8k"
+      "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
     "cta": "Start Free Trial"
   },
   "oneTimeBasic": {
-    "title": "1500 Points",
+    "title": "700 Points",
     "price": {
       "amount": "$9.99",
       "period": "One-Time"
@@ -213,7 +213,7 @@
     "currency": "EUR",
     "mode": "Payment",
     "features": [
-      "25 minutes of AI disney ai time",
+      "70 Disney style conversions",
       "HD quality output",
       "Basic template library",
       "Permanent validity"
@@ -226,12 +226,12 @@
       "sku": "disneyai_onetime_basic",
       "type": "digital",
       "unit_price": "9.99",
-      "priceId": "price_1S5cgnDx3cvsYDBQa8waZ5Dz"
+      "priceId": "price_1SCx9PLmvlReBkzoTKl71en7"
     },
     "cta": "Buy Now"
   },
   "oneTimePremium": {
-    "title": "3600 Points",
+    "title": "1820 Points",
     "price": {
       "amount": "$19.99",
       "period": "One-Time"
@@ -239,7 +239,7 @@
     "currency": "EUR",
     "mode": "Payment",
     "features": [
-      "60 minutes of AI disney ai time",
+      "182 Disney style conversions",
       "HD quality output",
       "Full template library",
       "Batch processing function",
@@ -253,12 +253,12 @@
       "sku": "disneyai_onetime_premium",
       "type": "digital",
       "unit_price": "19.99",
-      "priceId": "price_1S5ch2Dx3cvsYDBQcy4YbwIJ"
+      "priceId": "price_1SCxACLmvlReBkzoOpDCZ6ee"
     },
     "cta": "Buy Now"
   },
   "oneTimeProfessional": {
-    "title": "5400 Points",
+    "title": "2800 Points",
     "price": {
       "amount": "$29.99",
       "period": "One-Time"
@@ -266,7 +266,7 @@
     "currency": "EUR",
     "mode": "Payment",
     "features": [
-      "90 minutes of AI disney ai time",
+      "280 Disney style conversions",
       "HD quality output",
       "All premium templates",
       "Batch processing function",
@@ -281,7 +281,7 @@
       "sku": "disneyai_onetime_professional",
       "type": "digital",
       "unit_price": "29.99",
-      "priceId": "price_1S5cjQDx3cvsYDBQGTGkToKH"
+      "priceId": "price_1SCxANLmvlReBkzoTcXzprzh"
     },
     "cta": "Buy Now"
   },
@@ -299,7 +299,7 @@
     "currency": "EUR",
     "mode": "Recurring",
     "features": [
-      "Extra-long AI disney ai time",
+      "Extra-large Disney style conversion quota",
       "HD quality output",
       "All premium templates",
       "API access",
@@ -331,7 +331,7 @@
   },
   "paymentTips": "After payment, the subscription will be automatically added to your account (takes effect within 30 seconds). If it does not appear, please refresh the page.",
   "trust": {
-    "text": "Start your AI disney ai creative journey now and unleash endless creativity",
+    "text": "Start your Disney style creative journey now and unleash endless creativity",
     "allPlansInclude": "All plans include:",
     "features": {
       "secureTranslation": "Data Security Protection",
@@ -394,9 +394,9 @@
     }
   },
   "meta": {
-    "title": "DisneyAi AI Disney Ai Pricing - AI Disney Ai | Face Replacement | Video Disney Ai",
-    "description": "Pricing plans for DisneyAi AI disney ai service, providing professional AI face replacement, video disney ai and creative content production services.",
-    "alt": "DisneyAi AI Disney Ai",
-    "keywords": "AI Disney Ai, Face Replacement, Video Disney Ai, AI Disney Ai Software, Artificial Intelligence Disney Ai"
+    "title": "DisneyAi Disney Style Conversion Pricing - Image/Video Stylization",
+    "description": "Pricing plans for Disney style conversion, offering professional image and video stylization services.",
+    "alt": "DisneyAi Disney Style Conversion",
+    "keywords": "Disney style, image stylization, video stylization, AI style transfer"
   }
 }

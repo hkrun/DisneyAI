@@ -1,0 +1,42 @@
+{
+  "snow-white": {
+    "name": "Snow White - Modern Film Style",
+    "description": "Modern Disney cinematic style"
+  },
+  "cinderella": {
+    "name": "Cinderella - Classic Hand-drawn Style",
+    "description": "Elegant Disney princess style"
+  },
+  "bambi": {
+    "name": "Bambi - Classic Style",
+    "description": "Natural forest aesthetic"
+  },
+  "mulan": {
+    "name": "Mulan - Oriental American Style",
+    "description": "Disney rendition of ancient China"
+  },
+  "toy-story": {
+    "name": "Toy Story - 3D Style",
+    "description": "Pixar 3D animation with toy texture"
+  },
+  "frozen": {
+    "name": "Frozen - Ice & Snow Style",
+    "description": "Magic of ice and snow, blue and white tones"
+  },
+  "zootopia": {
+    "name": "Zootopia - 3D Realistic Cartoon",
+    "description": "Disney 3D realistic cartoon with detailed fur and skin"
+  },
+  "finding-nemo": {
+    "name": "Finding Nemo - Ocean Style",
+    "description": "Underwater world, blue and coral palette"
+  },
+  "wreck-it-ralph": {
+    "name": "Wreck-It Ralph - Pixel & 3D Hybrid",
+    "description": "Disney pixel style blended with 3D; retro game scenes in vivid pixels"
+  },
+  "the-lion-king": {
+    "name": "The Lion King - CGI Realistic",
+    "description": "Disney CGI animation set on the African savanna"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "progress": {
+    "title": "Progreso de la operación",
+    "step": "paso"
+  },
+  "steps": {
+    "upload": {
+      "title": "Subir imagen",
+      "subtitle": "(Soporta JPG/PNG/GIF, ≤5MB)",
+      "placeholder": "Haz clic para subir o arrastra la imagen aquí",
+      "supportedFormats": "Soporta formatos JPG, PNG, GIF",
+      "exampleImages": "Seleccionar imágenes de ejemplo:"
+    },
+    "style": {
+      "title": "Elegir estilo Disney",
+      "subtitle": "(Haz clic para seleccionar efecto)",
+      "selected": "Estilo seleccionado"
+    },
+    "video": {
+      "title": "Generar video",
+      "subtitle": "(Prompt opcional)",
+      "promptLabel": "Prompt de video (Opcional)",
+      "promptPlaceholder": "Opcional, por favor describe en detalle la escena, acciones del personaje, emociones, etc. que quieres que presente el video... Si no se completa, analizará automáticamente el contenido de la imagen"
+    }
+  },
+  "buttons": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "startConversion": "Iniciar conversión",
+    "generateVideo": "Generar video",
+    "continue": "Continuar conversión",
+    "back": "Volver",
+    "download": "Descargar",
+    "downloadImage": "Descargar imagen",
+    "downloadVideo": "Descargar video"
+  },
+  "status": {
+    "uploading": "Subiendo imagen...",
+    "processing": "Generando imagen estilo Disney...",
+    "generatingVideo": "Generando video...",
+    "uploadingToCloud": "Subiendo imagen a la nube...",
+    "processingVideo": "Procesando efectos de video...",
+    "magic": "Lanzando magia",
+    "imagePreview": "Vista previa del efecto de imagen",
+    "videoPreview": "Vista previa de generación de video"
+  },
+  "messages": {
+    "imageConversion": "Generando tu obra de arte estilo Disney~",
+    "videoGeneration": "Generando video estilo Disney desde la imagen~",
+    "estimatedTime": {
+      "image": "Tiempo estimado restante 30-60 segundos",
+      "video": "Tiempo estimado restante 3-8 minutos"
+    },
+    "hint": "Consejo: arrastra para ver detalles y haz clic en un estilo para previsualizar"
+  },
+  "results": {
+    "imageCompleted": "¡Conversión de imagen completada!",
+    "videoCompleted": "¡Conversión de video completada!",
+    "originalImage": "Imagen original",
+    "styleImage": "Imagen de estilo",
+    "styleVideo": "Video de estilo"
+  },
+  "errors": {
+    "loadExampleFailed": "Error al cargar imagen de ejemplo, por favor inténtalo de nuevo",
+    "imageLoadError": "Error al cargar imagen",
+    "videoLoadError": "Error al cargar video"
+  },
+  "creditsDialog": {
+    "title": "Créditos insuficientes",
+    "imageRequired": "Créditos insuficientes, la conversión de imagen requiere al menos {credits} créditos.",
+    "videoRequired": "Créditos insuficientes, la conversión de video requiere al menos {credits} créditos.",
+    "cancel": "Cancelar",
+    "subscribe": "Suscribirse"
+  }
+}

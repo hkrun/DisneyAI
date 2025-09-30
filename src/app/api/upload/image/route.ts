@@ -21,11 +21,11 @@ export async function POST(request: NextRequest) {
 
     // 检查用户积分
     const userCredits = await findUserCreditsByUserId(session.user.id)
-    if (userCredits <= 1) {
+    if (userCredits < 1) {
       return NextResponse.json(
         { 
           success: false,
-          error: '积分不足，需要至少2积分才能上传文件。请购买积分或升级订阅计划。' 
+          error: '积分不足，需要至少1积分才能上传文件。请购买积分或升级订阅计划。' 
         },
         { status: 402 }
       )
@@ -56,13 +56,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 验证文件大小 (20MB)
+    // 验证文件大小 (5MB)
     const maxSize = 20 * 1024 * 1024
     if (file.size > maxSize) {
       return NextResponse.json(
         { 
           success: false,
-          error: '文件大小不能超过20MB' 
+          error: '文件大小不能超过5MB' 
         },
         { status: 400 }
       )

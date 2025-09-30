@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "subtitle": "联系我们",
+    "title": "关于迪士尼风格转换的疑问？",
+    "description": "我们的专业迪士尼风格转换团队随时为您提供迪士尼风格转换咨询、技术支持和创意解决方案。"
+  },
+  "info": {
+    "title": "联系方式",
+    "description": "通过以下方式与我们的专业迪士尼风格转换团队取得联系",
+    "contacts": [
+      {
+        "text": "zjhkrun@gmail.com"
+      },
+      {
+        "text": "提供专业的迪士尼风格转换服务"
+      },
+      {
+        "text": "专业团队支持多种视频格式和高清迪士尼风格转换效果"
+      }
+    ]
+  },
+  "form": {
+    "title": "发送技术咨询",
+    "description": "无论是迪士尼风格转换需求、视频制作问题还是创意项目指导，我们都会专业回复。",
+    "fields": {
+      "name": {
+        "label": "姓名",
+        "placeholder": "您的姓名",
+        "error": "姓名至少需要 2 个字符。"
+      },
+      "email": {
+        "label": "电子邮件",
+        "placeholder": "your@email.com",
+        "error": "请输入有效的电子邮件地址。"
+      },
+      "message": {
+        "label": "咨询内容",
+        "placeholder": "请描述您的迪士尼风格转换需求、视频类型、技术要求或其他创意项目需求...",
+        "error": "消息至少需要 10 个字符。"
+      }
+    },
+    "submitButton": "发送咨询",
+    "successMessage": "我们的迪士尼风格转换专家团队会尽快回复您的咨询。",
+    "submitting": "正在提交...",
+    "toasts": {
+      "success": {
+        "title": "咨询已发送",
+        "description": "感谢您的咨询！我们的迪士尼风格转换专家会在24小时内回复您。"
+      },
+      "error": {
+        "title": "发送失败",
+        "description": "消息发送失败，请重试。",
+        "fallback": "表单提交失败，请稍后重试。"
+      }
+    }
+  },
+  "auth": {
+    "loginRequired": {
+      "title": "请先登录",
+      "description": "请登录后再发送咨询"
+    }
+  },
+  "meta": {
+    "title": "联系迪士尼风格转换专家团队-专业咨询 | DisneyAi 迪士尼风格转换",
+    "description": "需要迪士尼风格转换服务指导？联系我们的专家团队获取迪士尼风格转换、视频制作咨询和创意项目解决方案。",
+    "alt": "迪士尼风格转换服务",
+    "keywords": "迪士尼风格转换,迪士尼风格图片转换,迪士尼风格视频转换,创意内容制作"
+  }
+}

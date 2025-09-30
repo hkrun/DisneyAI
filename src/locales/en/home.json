@@ -1,0 +1,150 @@
+{
+  "hero": {
+    "title": {
+      "imageConversion": "Disney Style Conversion",
+      "videoConversion": "Video Style Conversion"
+    },
+    "subtitle": {
+      "imageConversion": "Get Disney hand-drawn style in 10 seconds, super easy to operate",
+      "videoConversion": "Transform 1-minute short videos into animation clips with built-in magic effects"
+    }
+  },
+  "converter": {
+    "imageMode": {
+      "label": "Image Conversion",
+      "description": "Basic version available"
+    },
+    "videoMode": {
+      "label": "Video Conversion",
+      "description": "Advanced version and above"
+    }
+  },
+  "features": {
+    "title": "Magic Features",
+    "subtitle": "Explore our powerful AI magic tools to easily transform your photos and videos into Disney-style artworks",
+    "items": [
+      {
+        "icon": "fa fa-camera",
+        "title": "Photos Instantly Become Disney Illustrations",
+        "description": "Upload selfies, landscapes, pet photos, choose from Snow White modern Disney style, Frozen delicate colors and other templates, AI generates exclusive Disney illustrations in 10 seconds with perfect details!"
+      },
+      {
+        "icon": "fa fa-film",
+        "title": "Videos Transform into Animated Movie Clips",
+        "description": "30-second short videos, 3-minute family recordings, all can become Snow White classic style, Zootopia 3D movie-style scenes!"
+      },
+      {
+        "icon": "fa fa-users",
+        "title": "Join the Disney Creator Planet",
+        "description": "Share your magic works on TikTok and YouTube and other social platforms, interact and like with global Disney fans; participate in themed creation activities, win Disney merchandise and free professional subscriptions."
+      }
+    ],
+    "videoNotSupported": "Your browser does not support video playback."
+  },
+  "templates": {
+    "title": "Style Template Library",
+    "subtitle": "From classic animation to modern 3D, choose from various Disney style templates",
+    "viewAll": "View All",
+    "filters": {
+      "all": "All Styles",
+      "classic": "Classic Animation Series",
+      "pixar": "Pixar 3D Series",
+      "modern": "Modern Animation Series"
+    },
+    "items": [
+      {
+        "title": "Cinderella Hand-drawn Style",
+        "tag": "Classic",
+        "description": "High-quality style conversion",
+        "status": "Available"
+      },
+      {
+        "title": "Frozen Delicate Style",
+        "tag": "Popular",
+        "description": "High-quality style conversion",
+        "status": "Available"
+      },
+      {
+        "title": "Toy Story 3D Style",
+        "tag": "3D",
+        "description": "High-quality style conversion",
+        "status": "Available"
+      },
+      {
+        "title": "Lion King Adventure Style",
+        "tag": "New Template",
+        "description": "High-quality style conversion",
+        "status": "Available"
+      }
+    ]
+  },
+  "community": {
+    "title": "Creative Square",
+    "subtitle": "Join our creative community and share your Disney-style works",
+    "stats": {
+      "users": "Active Users",
+      "creations": "Creations Generated",
+      "satisfaction": "User Satisfaction"
+    }
+  },
+  "pricing": {
+    "title": "Make Every Moment Full of Disney Magic",
+    "subtitle": "Register now, experience magic conversion for free, and start your creative journey",
+    "cta": "View Pricing",
+    "learnMore": "Learn More"
+  },
+  "testimonials": {
+    "title": "Magic Feedback from Around the World",
+    "subtitle": "See what other Disney enthusiasts have created with our tools",
+    "items": [
+      {
+        "content": "I converted my little daughter's photo into Frozen style, and she was so excited she cried! The operation is super simple~",
+        "author": "Lily_DisneyFan",
+        "role": "California, USA · Advanced User"
+      },
+      {
+        "content": "I converted travel photos into Disney watercolor style, and my social media posts went viral!",
+        "author": "Emma_PixarFan",
+        "role": "Paris, France · Basic User"
+      },
+      {
+        "content": "As an anime blogger, I used it to create Mulan-style short videos, and my follower count increased by 30%!",
+        "author": "Miki_AnimeLover",
+        "role": "Tokyo, Japan · Professional User"
+      }
+    ]
+  },
+  "activity": {
+    "badge": "Hot Activity",
+    "title": "Little Mermaid Fan Creation Challenge",
+    "description": "Participate in themed creation activities, use exclusive style templates to convert your works, and have a chance to win merchandise and free professional subscriptions!",
+    "rules": [
+      "Submission deadline: December 31, 2025",
+      "Winning works will be showcased on official accounts",
+      "First prize: Chance to win Disneyland tickets"
+    ],
+    "cta": "Join Now"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answer all your questions about Disney style conversion",
+    "items": [
+      {
+        "question": "What image formats are supported?",
+        "answer": "We support common image formats like JPG, PNG, GIF, with file size not exceeding 20MB."
+      },
+      {
+        "question": "How long does the conversion take?",
+        "answer": "Image conversion usually takes 10-30 seconds, video conversion may take 1-5 minutes depending on length."
+      },
+      {
+        "question": "Can the generated images be used commercially?",
+        "answer": "Basic version users can only use generated images for personal use, commercial version users can use them for commercial purposes."
+      },
+      {
+        "question": "How to cancel subscription?",
+        "answer": "You can cancel your subscription anytime in account settings. After cancellation, you can still use it until the end of the current billing cycle."
+      }
+    ]
+  }
+}

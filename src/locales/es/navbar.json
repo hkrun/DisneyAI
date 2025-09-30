@@ -1,0 +1,107 @@
+{
+    "logo": "DisneyAi",
+    "logoTitle": "DisneyAi | Cambio de estilo Disney",
+    "navigation": [
+        {
+            "href": "/",
+            "label": "Inicio"
+        },
+        {
+            "href": "/features",
+            "label": "Características"
+        },
+        {
+            "href": "/pricing",
+            "label": "Precios"
+        },
+        {
+            "href": "/about",
+            "label": "Acerca de"
+        },
+        {
+            "href": "/contact",
+            "label": "Contáctenos"
+        }
+    ],
+    "actions": {
+        "signIn": "Iniciar sesión"
+    },
+    "mobileMenu": {
+        "toggleMenu": "Alternar menú",
+        "actions": {
+            "signIn": "Iniciar sesión",
+            "upgradePlan": "Mejorar plan",
+            "contactUs": "Contáctenos"
+        },
+        "settings": {
+            "theme": "Tema",
+            "language": "Idioma"
+        },
+        "navigation": [
+            {
+                "href": "/",
+                "label": "Inicio"
+            },
+            {
+                "href": "/features",
+                "label": "Características"
+            },
+            {
+                "href": "/pricing",
+                "label": "Precios"
+            },
+            {
+                "href": "/about",
+                "label": "Acerca de"
+            }
+        ]
+    },
+    "userButton": {
+        "menuItems": [
+            {
+                "type": "contact",
+                "href": "/contact",
+                "label": "Contáctenos"
+            },
+            {
+                "type": "billing",
+                "label": "Administrar suscripción"
+            },
+            {
+                "type": "history",
+                "label": "Registros de conversión"
+            },
+            {
+                "type": "logout",
+                "label": "Cerrar sesión"
+            }
+        ],
+        "aria": {
+            "userMenu": "Menú de usuario",
+            "userImage": "Imagen de usuario",
+            "userName": "Nombre de usuario",
+            "userEmail": "Correo electrónico del usuario"
+        }
+    },
+    "languageToggle": {
+        "label": "Cambiar idioma"
+    },
+    "themeToggle": {
+        "label": "Cambiar tema"
+    },
+    "creditsDisplay": {
+        "label": "Créditos",
+        "tooltip": {
+            "title": "Créditos",
+            "costInfo": "1 crédito consumido por uso",
+            "usageInfo": "Las funciones descuentan créditos según la duración del vídeo.",
+            "getMoreButton": "Obtener más tiempo"
+        }
+    },
+    "meta": {
+        "title": "Precios de DisneyAi AI – Intercambio de rostros AI | Reemplazo de rostros | Intercambio de rostros en vídeo",
+        "description": "Planes de precios del servicio de intercambio de rostros AI DisneyAi, que ofrece servicios profesionales de reemplazo de rostros AI, intercambio de rostros en vídeo y creación de contenido creativo.",
+        "alt": "DisneyAi Intercambio de rostros AI",
+        "keywords": "Intercambio de rostros AI, Reemplazo de rostros, Intercambio de rostros en vídeo, Software de intercambio de rostros AI, Intercambio de rostros con inteligencia artificial"
+  }
+}

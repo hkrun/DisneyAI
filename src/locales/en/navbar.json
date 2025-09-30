@@ -1,0 +1,99 @@
+{
+    "logo": "DisneyAi",
+    "logoTitle": "DisneyAi | Disney style transition",
+    "navigation": [
+        {
+            "href": "/",
+            "label": "Home"
+        },
+        {
+            "href": "/pricing",
+            "label": "Pricing"
+        },
+        {
+            "href": "/about",
+            "label": "About"
+        },
+        {
+            "href": "/contact",
+            "label": "Contact Us"
+        }
+    ],
+    "actions": {
+        "signIn": "Sign In"
+    },
+    "mobileMenu": {
+        "toggleMenu": "Toggle Menu",
+        "actions": {
+            "signIn": "Sign In",
+            "upgradePlan": "Upgrade Plan",
+            "contactUs": "Contact Us"
+        },
+        "settings": {
+            "theme": "Theme",
+            "language": "Language"
+        },
+        "navigation": [
+            {
+                "href": "/",
+                "label": "Home"
+            },
+            {
+                "href": "/pricing",
+                "label": "Pricing"
+            },
+            {
+                "href": "/about",
+                "label": "About"
+            }
+        ]
+    },
+    "userButton": {
+        "menuItems": [
+            {
+                "type": "contact",
+                "href": "/contact",
+                "label": "Contact Us"
+            },
+            {
+                "type": "billing",
+                "label": "Manage Subscription"
+            },
+            {
+                "type": "history",
+                "label": "Conversion History"
+            },
+            {
+                "type": "logout",
+                "label": "Log Out"
+            }
+        ],
+        "aria": {
+            "userMenu": "User Menu",
+            "userImage": "User Image",
+            "userName": "User Name",
+            "userEmail": "User Email"
+        }
+    },
+    "languageToggle": {
+        "label": "Change Language"
+    },
+    "themeToggle": {
+        "label": "Change Theme"
+    },
+    "creditsDisplay": {
+        "label": "Credits",
+        "tooltip": {
+            "title": "Credits",
+            "costInfo": "1 credit consumed per use",
+            "usageInfo": "Features deduct credits based on video duration.",
+            "getMoreButton": "Get More Time"
+        }
+    },
+    "meta": {
+    "title": "DisneyAi AI Disney Ai Pricing - AI Disney Ai | Face Replacement | Video Disney Ai",
+    "description": "Pricing plans for DisneyAi AI disney ai service, providing professional AI face replacement, video disney ai and creative content production services.",
+    "alt": "DisneyAi AI Disney Ai",
+    "keywords": "AI Disney Ai, Face Replacement, Video Disney Ai, AI Disney Ai Software, Artificial Intelligence Disney Ai"
+  }
+}

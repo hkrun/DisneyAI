@@ -1,0 +1,69 @@
+{
+  "logo": "DisneyAi",
+  "logoTitle": "DisneyAi | Cambio de estilo Disney",
+  "description": "Plataforma inteligente de conversión de estilo Disney integrada con avanzada tecnología AI, que ofrece servicios profesionales de conversión de imágenes estilo Disney, procesamiento de videos en HD y soluciones de creación de contenido creativo.",
+  "sections": [
+    {
+      "title": "Servicios",
+      "links": [
+        {
+          "label": "Conversión de imágenes",
+          "href": "/#workflow"
+        },
+        {
+          "label": "Conversión de video",
+          "href": "/#workflow"
+        }
+      ]
+    },
+    {
+      "title": "Compañía",
+      "links": [
+        {
+          "label": "Sobre nosotros",
+          "href": "/about"
+        },
+        {
+          "label": "Contáctanos",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "title": "Términos legales",
+      "links": [
+        {
+          "label": "Política de privacidad",
+          "href": "/legal/privacy"
+        },
+        {
+          "label": "Términos de servicio",
+          "href": "/legal/terms"
+        },
+        {
+          "label": "Pago y reembolso",
+          "href": "/legal/payments-refund"
+        }
+      ]
+    }
+  ],
+  "copyright": "© {year} DisneyAi. Todos los derechos reservados.",
+  "legal": {
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio"
+  },
+  "socials": [
+    {
+      "name": "Twitter",
+      "href": "https://twitter.com/disneyai"
+    },
+    {
+      "name": "Instagram",
+      "href": "https://instagram.com/disneyai"
+    },
+    {
+      "name": "LinkedIn",
+      "href": "https://linkedin.com/company/disneyai"
+    }
+  ]
+}

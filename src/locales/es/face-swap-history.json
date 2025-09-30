@@ -1,0 +1,62 @@
+{
+  "title": "Historial de Cambio de Rostro",
+  "tabs": {
+    "all": "Todos",
+    "template": "Cambio de Rostro por Plantilla",
+    "custom": "Cambio de Rostro Personalizado"
+  },
+  "status": {
+    "PROCESSING": "Procesando",
+    "SUCCESS": "Éxito",
+    "FAILED": "Fallido"
+  },
+  "taskType": {
+    "template": "Cambio de Rostro por Plantilla",
+    "custom": "Cambio de Rostro Personalizado"
+  },
+  "columns": {
+    "type": "Tipo",
+    "source": "Archivo Fuente",
+    "faceImage": "Imagen de Rostro",
+    "status": "Estado",
+    "createdAt": "Hora de Creación",
+    "actions": "Acciones"
+  },
+  "actions": {
+    "download": "Descargar",
+    "view": "Ver",
+    "retry": "Reintentar"
+  },
+  "empty": {
+    "title": "Sin Historial",
+    "description": "Aún no has realizado ninguna operación de cambio de rostro"
+  },
+  "loading": "Cargando...",
+  "error": {
+    "loadFailed": "Error al cargar el historial",
+    "downloadFailed": "Error al descargar"
+  },
+  "pagination": {
+    "showing": "Mostrando",
+    "of": "de un total de",
+    "results": "registros",
+    "previous": "Página Anterior",
+    "next": "Página Siguiente"
+  },
+  "filters": {
+    "status": "Filtro de Estado",
+    "all": "Todos los Estados"
+  },
+  "details": {
+    "preview": "Vista Previa de Video",
+    "processingTime": "Tiempo de Procesamiento",
+    "seconds": "segundos",
+    "fileSize": "Tamaño de Archivo",
+    "watermark": "Marca de Agua",
+    "enhance": "Mejora de Belleza",
+    "yes": "Sí",
+    "no": "No",
+    "hoverToPreview": "Pasar el Ratón para Vista Previa",
+    "videoLoadError": "Error al Cargar Video"
+  }
+}

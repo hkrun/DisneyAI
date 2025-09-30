@@ -1,0 +1,1 @@
+// Intentionally left blank. Previous homepage-specific types removed during cleanup.

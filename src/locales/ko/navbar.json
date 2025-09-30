@@ -1,0 +1,107 @@
+{
+    "logo": "DisneyAi",
+    "logoTitle": "DisneyAi | 디즈니 스타일 전환",
+    "navigation": [
+        {
+            "href": "/",
+            "label": "홈"
+        },
+        {
+            "href": "/features",
+            "label": "기능"
+        },
+        {
+            "href": "/pricing",
+            "label": "가격"
+        },
+        {
+            "href": "/about",
+            "label": "회사 소개"
+        },
+        {
+            "href": "/contact",
+            "label": "문의하기"
+        }
+    ],
+    "actions": {
+        "signIn": "로그인"
+    },
+    "mobileMenu": {
+        "toggleMenu": "메뉴 토글",
+        "actions": {
+            "signIn": "로그인",
+            "upgradePlan": "플랜 업그레이드",
+            "contactUs": "문의하기"
+        },
+        "settings": {
+            "theme": "테마",
+            "language": "언어"
+        },
+        "navigation": [
+            {
+                "href": "/",
+                "label": "홈"
+            },
+            {
+                "href": "/features",
+                "label": "기능"
+            },
+            {
+                "href": "/pricing",
+                "label": "가격"
+            },
+            {
+                "href": "/about",
+                "label": "회사 소개"
+            }
+        ]
+    },
+    "userButton": {
+        "menuItems": [
+            {
+                "type": "contact",
+                "href": "/contact",
+                "label": "문의하기"
+            },
+            {
+                "type": "billing",
+                "label": "구독 관리"
+            },
+            {
+                "type": "history",
+                "label": "변환 기록"
+            },
+            {
+                "type": "logout",
+                "label": "로그아웃"
+            }
+        ],
+        "aria": {
+            "userMenu": "사용자 메뉴",
+            "userImage": "사용자 이미지",
+            "userName": "사용자 이름",
+            "userEmail": "사용자 이메일"
+        }
+    },
+    "languageToggle": {
+        "label": "언어 변경"
+    },
+    "themeToggle": {
+        "label": "테마 변경"
+    },
+    "creditsDisplay": {
+        "label": "크레딧",
+        "tooltip": {
+            "title": "크레딧",
+            "costInfo": "사용할 때마다 1크레딧 소모",
+            "usageInfo": "기능은 동영상 길이에 따라 크레딧이 차감됩니다.",
+            "getMoreButton": "시간 더 받기"
+        }
+    },
+    "meta": {
+    "title": "DisneyAi AI 페이스 스왑 가격 - AI 페이스 스왑｜얼굴 교체｜동영상 얼굴 교체",
+    "description": "DisneyAi AI 페이스 스왑 서비스 가격 플랜, 전문적인 AI 얼굴 교체, 동영상 얼굴 교체 및 창작 콘텐츠 제작 서비스 제공.",
+    "alt": "DisneyAi AI 페이스 스왑",
+    "keywords": "AI 페이스 스왑,얼굴 교체,동영상 얼굴 교체,AI 페이스 스왑 소프트웨어,인공지능 얼굴 교체"
+  }
+}

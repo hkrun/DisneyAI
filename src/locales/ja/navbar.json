@@ -1,0 +1,106 @@
+{
+    "logo": "DisneyAi",
+    "logoTitle": "DisneyAi | ディズニースタイル転換",
+    "navigation": [
+        {
+            "href": "/",
+            "label": "ホーム"
+        },
+        {
+            "href": "/features",
+            "label": "機能"
+        },
+        {
+            "href": "/pricing",
+            "label": "料金"
+        },
+        {
+            "href": "/about",
+            "label": "当社について"
+        },
+        {
+            "href": "/contact",
+            "label": "お問い合わせ"
+        }
+    ],
+    "actions": {
+        "signIn": "ログイン"
+    },
+    "mobileMenu": {
+        "toggleMenu": "メニュー切り替え",
+        "actions": {
+            "signIn": "ログイン",
+            "upgradePlan": "プランアップグレード",
+            "contactUs": "お問い合わせ"
+        },
+        "settings": {
+            "theme": "テーマ",
+            "language": "言語"
+        },
+        "navigation": [
+            {
+                "href": "/",
+                "label": "ホーム"
+            },
+            {
+                "href": "/features",
+                "label": "機能"
+            },
+            {
+                "href": "/pricing",
+                "label": "料金"
+            },
+            {
+                "href": "/about",
+                "label": "当社について"
+            }
+        ]
+    },
+    "userButton": {
+        "menuItems": [
+            {
+                "type": "contact",
+                "href": "/contact",
+                "label": "お問い合わせ"
+            },
+            {
+                "type": "billing",
+                "label": "サブスクリプション管理"
+            },
+            {
+                "type": "history",
+                "label": "変換履歴"
+            },
+            {
+                "type": "logout",
+                "label": "ログアウト"
+            }
+        ],
+        "aria": {
+            "userMenu": "ユーザーメニュー",
+            "userImage": "ユーザー画像",
+            "userName": "ユーザー名",
+            "userEmail": "ユーザーメール"
+        }
+    },
+    "languageToggle": {
+        "label": "言語切り替え"
+    },
+    "themeToggle": {
+        "label": "テーマ切り替え"
+    },
+    "creditsDisplay": {
+        "label": "クレジット",
+        "tooltip": {
+            "title": "クレジット",
+            "costInfo": "使用ごとに1クレジット消費",
+            "usageInfo": "機能は動画の長さに応じてクレジットを差し引きます。",
+            "getMoreButton": "時間を追加"
+        }
+    },
+  "meta":{
+    "title":"AI顔交換技術ブログ - 顔交換AI | 顔面AI交換",
+    "description":"AI顔交換技術、動画編集のコツ、クリエイティブな応用事例を探求し、最新のAI顔交換ツールと技術をマスターしましょう。",
+    "keywords":"AI顔交換,AI顔交換動画,顔交換,顔交換AI"
+  }
+}

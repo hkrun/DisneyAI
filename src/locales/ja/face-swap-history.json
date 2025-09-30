@@ -1,0 +1,62 @@
+{
+  "title": "顔替え記録",
+  "tabs": {
+    "all": "すべて",
+    "template": "テンプレート顔替え",
+    "custom": "カスタム顔替え"
+  },
+  "status": {
+    "PROCESSING": "処理中",
+    "SUCCESS": "成功",
+    "FAILED": "失敗"
+  },
+  "taskType": {
+    "template": "テンプレート顔替え",
+    "custom": "カスタム顔替え"
+  },
+  "columns": {
+    "type": "種別",
+    "source": "元ファイル",
+    "faceImage": "顔画像",
+    "status": "ステータス",
+    "createdAt": "作成日時",
+    "actions": "操作"
+  },
+  "actions": {
+    "download": "ダウンロード",
+    "view": "確認",
+    "retry": "再試行"
+  },
+  "empty": {
+    "title": "記録がありません",
+    "description": "まだ顔替え操作を実行していません"
+  },
+  "loading": "読み込み中...",
+  "error": {
+    "loadFailed": "記録の読み込みに失敗しました",
+    "downloadFailed": "ダウンロードに失敗しました"
+  },
+  "pagination": {
+    "showing": "表示",
+    "of": "全",
+    "results": "件の記録",
+    "previous": "前のページ",
+    "next": "次のページ"
+  },
+  "filters": {
+    "status": "ステータス絞り込み",
+    "all": "すべてのステータス"
+  },
+  "details": {
+    "preview": "動画プレビュー",
+    "processingTime": "処理時間",
+    "seconds": "秒",
+    "fileSize": "ファイルサイズ",
+    "watermark": "ウォーターマーク",
+    "enhance": "美颜強化",
+    "yes": "はい",
+    "no": "いいえ",
+    "hoverToPreview": "ホバーでプレビュー",
+    "videoLoadError": "動画読み込みエラー"
+  }
+}

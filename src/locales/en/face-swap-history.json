@@ -1,0 +1,62 @@
+{
+  "title": "Disney Ai History",
+  "tabs": {
+    "all": "All",
+    "template": "Template",
+    "custom": "Custom"
+  },
+  "status": {
+    "PROCESSING": "Processing",
+    "SUCCESS": "Success",
+    "FAILED": "Failed"
+  },
+  "taskType": {
+    "template": "Template Disney Ai",
+    "custom": "Custom Disney Ai"
+  },
+  "columns": {
+    "type": "Type",
+    "source": "Source",
+    "faceImage": "Face Image",
+    "status": "Status",
+    "createdAt": "Created At",
+    "actions": "Actions"
+  },
+  "actions": {
+    "download": "Download",
+    "view": "View",
+    "retry": "Retry"
+  },
+  "empty": {
+    "title": "No Records",
+    "description": "You haven't performed any disney ai operations yet"
+  },
+  "loading": "Loading...",
+  "error": {
+    "loadFailed": "Failed to load records",
+    "downloadFailed": "Download failed"
+  },
+  "pagination": {
+    "showing": "Showing",
+    "of": "of",
+    "results": "results",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "filters": {
+    "status": "Filter by Status",
+    "all": "All Status"
+  },
+  "details": {
+    "preview": "Video Preview",
+    "processingTime": "Processing Time",
+    "seconds": "seconds",
+    "fileSize": "File Size",
+    "watermark": "Watermark",
+    "enhance": "Enhancement",
+    "yes": "Yes",
+    "no": "No",
+    "hoverToPreview": "Hover to Preview",
+    "videoLoadError": "Video Load Failed"
+  }
+}

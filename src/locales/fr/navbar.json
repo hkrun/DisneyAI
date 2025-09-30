@@ -1,0 +1,101 @@
+{
+    "logo": "DisneyAi",
+    "logoTitle": "DisneyAi | Disney changement de style",
+    "navigation": [
+        {
+            "href": "/",
+            "label": "Accueil"
+        },
+
+        {
+            "href": "/pricing",
+            "label": "Tarifs"
+        },
+        {
+            "href": "/about",
+            "label": "À propos"
+        },
+        {
+            "href": "/contact",
+            "label": "Contactez-nous"
+        }
+    ],
+    "actions": {
+        "signIn": "Connexion"
+    },
+    "mobileMenu": {
+        "toggleMenu": "Basculer le menu",
+        "actions": {
+            "signIn": "Connexion",
+            "upgradePlan": "Améliorer l'abonnement",
+            "contactUs": "Contactez-nous"
+        },
+        "settings": {
+            "theme": "Thème",
+            "language": "Langue"
+        },
+        "navigation": [
+            {
+                "href": "/",
+                "label": "Accueil"
+            },
+
+            {
+                "href": "/pricing",
+                "label": "Tarifs"
+            },
+            {
+                "href": "/about",
+                "label": "À propos"
+            }
+        ]
+    },
+    "userButton": {
+        "menuItems": [
+            {
+                "type": "contact",
+                "href": "/contact",
+                "label": "Contactez-nous"
+            },
+            {
+                "type": "billing",
+                "label": "Gérer l'abonnement"
+            },
+            {
+                "type": "history",
+                "label": "Historique des conversions"
+            },
+            {
+                "type": "logout",
+                "label": "Déconnexion"
+            }
+        ],
+        "aria": {
+            "userMenu": "Menu utilisateur",
+            "userImage": "Image utilisateur",
+            "userName": "Nom d'utilisateur",
+            "userEmail": "Email utilisateur"
+        }
+    },
+    "languageToggle": {
+        "label": "Changer de langue"
+    },
+    "themeToggle": {
+        "label": "Changer de thème"
+    },
+    "creditsDisplay": {
+        "label": "Crédits",
+        "tooltip": {
+            "title": "Crédits",
+            "costInfo": "1 crédit consommé par utilisation",
+            "usageInfo": "Les fonctionnalités déduisent des crédits selon la durée de la vidéo.",
+            "getMoreButton": "Obtenir plus de temps"
+        }
+    },
+    "meta": {
+    "title": "Contacter l'équipe d'experts en technologie d'échange de visages par IA – Consultation professionnelle | DisneyAi Technologie d'échange de visages par IA",
+    "description": "Besoin de guidance sur les services de technologie d'échange de visages par IA ? Contactez notre équipe d'experts pour obtenir des conseils sur l'échange de visages par intelligence artificielle, la production vidéo et des solutions pour des projets créatifs.",
+    "alt": "Services de technologie d'échange de visages par IA",
+    "keywords": "Échange de visages par IA,Intelligence artificielle pour échange de visages,Tecnologie d'échange de visages en vidéo,Tecnologie deepfake"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "subtitle": "Kontaktieren Sie uns",
+    "title": "Fragen zur Disney-Stil-Konvertierung?",
+    "description": "Unser professionelles Team für Disney-Stil-Konvertierung steht Ihnen jederzeit zur Beratung zur Disney-Stil-Konvertierung, technischen Unterstützung und kreativen Lösungen zur Verfügung."
+  },
+  "info": {
+    "title": "Kontaktinformationen",
+    "description": "Kontaktieren Sie unser professionelles Team für Disney-Stil-Konvertierung über die folgenden Wege",
+    "contacts": [
+      {
+        "text": "zjhkrun@gmail.com"
+      },
+      {
+        "text": "Angebot professioneller Dienstleistungen für Disney-Stil-Konvertierung"
+      },
+      {
+        "text": "Das professionelle Team unterstützt verschiedene Videoformate und Hochauflösungs-Disney-Stil-Konvertierungsergebnisse"
+      }
+    ]
+  },
+  "form": {
+    "title": "Technische Beratung senden",
+    "description": "Ob Sie Anforderungen an Disney-Stil-Konvertierung, Fragen zur Videoproduktion oder Anleitung für kreative Projekte haben – wir antworten professionell.",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Ihr Name",
+        "error": "Der Name muss mindestens 2 Zeichen lang sein."
+      },
+      "email": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "Ihre@email.com",
+        "error": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+      },
+      "message": {
+        "label": "Beratungsinhalt",
+        "placeholder": "Beschreiben Sie bitte Ihre Anforderungen an Disney-Stil-Konvertierung, den Videotyp, technische Anforderungen oder andere Anforderungen an kreative Projekte...",
+        "error": "Die Nachricht muss mindestens 10 Zeichen lang sein."
+      }
+    },
+    "submitButton": "Beratung senden",
+    "successMessage": "Unser Team von Disney-Stil-Konvertierung-Experten wird Ihre Beratung so schnell wie möglich beantworten.",
+    "submitting": "Wird gesendet...",
+    "toasts": {
+      "success": {
+        "title": "Beratung gesendet",
+        "description": "Vielen Dank für Ihre Beratungsanfrage! Unsere Experten für Disney-Stil-Konvertierung antworten Ihnen innerhalb von 24 Stunden."
+      },
+      "error": {
+        "title": "Versand fehlgeschlagen",
+        "description": "Der Versand der Nachricht ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+        "fallback": "Der Formularvorgang ist fehlgeschlagen. Bitte versuchen Sie es später erneut."
+      }
+    }
+  },
+  "auth": {
+    "loginRequired": {
+      "title": "Bitte melden Sie sich zuerst an",
+      "description": "Bitte melden Sie sich an, bevor Sie die Beratung senden"
+    }
+  },
+  "meta": {
+    "title": "Kontaktieren Sie das Expertenteam für Disney-Stil-Konvertierung – Professionelle Beratung | DisneyAi Disney-Stil-Konvertierung",
+    "description": "Benötigen Sie Anleitung zu Dienstleistungen für Disney-Stil-Konvertierung? Kontaktieren Sie unser Expertenteam, um Beratung zur Disney-Stil-Konvertierung, Videoproduktion und Lösungen für kreative Projekte zu erhalten.",
+    "alt": "Dienstleistungen für Disney-Stil-Konvertierung",
+    "keywords": "Disney-Stil-Konvertierung,Disney-Stil-Bildkonvertierung,Disney-Stil-Videokonvertierung,Kreative Inhaltserstellung"
+  }
+}

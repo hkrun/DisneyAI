@@ -1,0 +1,69 @@
+{
+  "logo": "DisneyAi",
+  "logoTitle": "DisneyAi | Disney-Stilwechsel",
+  "description": "Intelligente Disney-Stil-Konvertierungsplattform mit fortschrittlicher AI-Technik, die professionelle Disney-Stil-Bildkonvertierung, HD-Videoverarbeitung und kreative Inhaltserstellungslösungen bietet.",
+  "sections": [
+    {
+      "title": "Dienste",
+      "links": [
+        {
+          "label": "Bildkonvertierung",
+          "href": "/#workflow"
+        },
+        {
+          "label": "Videokonvertierung",
+          "href": "/#workflow"
+        }
+      ]
+    },
+    {
+      "title": "Unternehmen",
+      "links": [
+        {
+          "label": "Über uns",
+          "href": "/about"
+        },
+        {
+          "label": "Kontaktiere uns",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "title": "Rechtliche Hinweise",
+      "links": [
+        {
+          "label": "Datenschutzrichtlinie",
+          "href": "/legal/privacy"
+        },
+        {
+          "label": "Nutzungsbedingungen",
+          "href": "/legal/terms"
+        },
+        {
+          "label": "Zahlung & Rückerstattung",
+          "href": "/legal/payments-refund"
+        }
+      ]
+    }
+  ],
+  "copyright": "© {year} DisneyAi. Alle Rechte vorbehalten.",
+  "legal": {
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen"
+  },
+  "socials": [
+    {
+      "name": "Twitter",
+      "href": "https://twitter.com/disneyai"
+    },
+    {
+      "name": "Instagram",
+      "href": "https://instagram.com/disneyai"
+    },
+    {
+      "name": "LinkedIn",
+      "href": "https://linkedin.com/company/disneyai"
+    }
+  ]
+}

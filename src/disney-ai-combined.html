@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迪士尼魔法转换 | 图片与视频风格转换</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind自定义主题
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        disney: {
+                            red: '#E63946',
+                            yellow: '#FFC857',
+                            blue: '#1D3557',
+                            light: '#F1FAEE',
+                            accent: '#457B9D',
+                            purple: '#9D4EDD',
+                            gold: '#FFD700',
+                            basic: '#457B9D',      // 基础版蓝色
+                            advanced: '#9D4EDD',   // 进阶版紫色
+                            pro: '#FFD700'         // 专业版金色
+                        }
+                    },
+                    fontFamily: {
+                        disney: ['"Arial Rounded MT Bold"', '"Helvetica Rounded"', 'Arial', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'sparkle': 'sparkle 2s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 3s linear infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        sparkle: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.5 }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .text-shadow-lg {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            }
+            .magic-border {
+                border-image: linear-gradient(45deg, #FFC857, #E63946, #457B9D, #9D4EDD) 1;
+            }
+            .bg-magic {
+                background: linear-gradient(135deg, #F1FAEE 0%, #E0FBFC 100%);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .step-active {
+                @apply bg-disney-red text-white border-disney-red;
+            }
+            .step-inactive {
+                @apply bg-white text-gray-400 border-gray-300;
+            }
+            .tab-active {
+                @apply bg-disney-red text-white;
+            }
+            .tab-inactive {
+                @apply bg-white text-disney-red hover:bg-gray-100;
+            }
+        }
+    </style>
+</head>
+<body class="font-disney bg-disney-light text-disney-blue overflow-x-hidden">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-disney-light shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full bg-disney-red flex items-center justify-center">
+                    <i class="fa fa-magic text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold bg-gradient-to-r from-disney-red to-disney-purple bg-clip-text text-transparent">迪士尼魔法转换</span>
+            </div>
+            
+            <!-- 桌面导航菜单 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="font-medium hover:text-disney-red transition-colors">首页</a>
+                <a href="#" class="font-medium text-disney-red border-b-2 border-disney-red pb-1">功能详情</a>
+                <a href="#" class="font-medium hover:text-disney-red transition-colors">风格模板库</a>
+                <a href="#" class="font-medium hover:text-disney-red transition-colors">我的作品</a>
+                <a href="#" class="font-medium hover:text-disney-red transition-colors">订阅套餐</a>
+            </div>
+            
+            <!-- 右侧功能区 -->
+            <div class="flex items-center space-x-4">
+                <!-- 语言选择 -->
+                <div class="relative hidden md:block">
+                    <button class="flex items-center space-x-1 text-sm border border-gray-300 rounded-full px-3 py-1 hover:bg-gray-100 transition-colors">
+                        <i class="fa fa-globe"></i>
+                        <span>中文</span>
+                        <i class="fa fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+                
+                <!-- 登录/注册按钮 -->
+                <a href="#" class="hidden md:block text-sm font-medium hover:text-disney-red transition-colors">登录</a>
+                <a href="#" class="bg-disney-red hover:bg-disney-red/90 text-white px-4 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">免费注册</a>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-2xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#" class="py-2 font-medium hover:text-disney-red transition-colors">首页</a>
+                <a href="#" class="py-2 font-medium text-disney-red">功能详情</a>
+                <a href="#" class="py-2 font-medium hover:text-disney-red transition-colors">风格模板库</a>
+                <a href="#" class="py-2 font-medium hover:text-disney-red transition-colors">我的作品</a>
+                <a href="#" class="py-2 font-medium hover:text-disney-red transition-colors">订阅套餐</a>
+                <div class="flex items-center justify-between py-2 border-t border-gray-100">
+                    <span class="text-sm">语言: 中文</span>
+                    <i class="fa fa-globe text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-16">
+        <!-- 返回与标题区 -->
+        <section class="container mx-auto px-4 mb-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <div>
+                    <a href="#" class="inline-flex items-center text-disney-accent hover:text-disney-red mb-2 md:mb-0 transition-colors">
+                        <i class="fa fa-arrow-left mr-2"></i> 返回功能选择
+                    </a>
+                    <h1 id="main-title" class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-disney-blue">图片风格转换</h1>
+                    <p id="main-subtitle" class="text-gray-600 text-lg">10秒get迪士尼手绘风，操作超简单</p>
+                </div>
+                
+                <!-- 功能切换标签 -->
+                <div class="mt-6 md:mt-0 inline-flex rounded-full overflow-hidden border-2 border-disney-red shadow-md">
+                    <button id="image-tab" class="tab-active px-6 py-3 font-bold transition-all">
+                        图片转换
+                        <span class="block text-xs font-normal mt-1 text-white/80">基础版可用</span>
+                    </button>
+                    <button id="video-tab" class="tab-inactive px-6 py-3 font-bold transition-all">
+                        视频转换
+                        <span class="block text-xs font-normal mt-1 text-disney-red/80">进阶版及以上</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 主功能区：左侧操作区 + 右侧预览区 -->
+        <section class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- 左侧操作区 -->
+                <div class="lg:w-1/2 bg-white rounded-2xl shadow-lg p-6">
+                    <!-- 进度条 -->
+                    <div class="mb-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">操作进度</span>
+                            <span id="progress-text" class="text-disney-red font-medium">1/4 步</span>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="h-full bg-disney-red rounded-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤容器 -->
+                    <div id="steps-container">
+                        <!-- 步骤1：上传素材（图片和视频通用） -->
+                        <div id="step-1" class="step-content">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full step-active border-2 flex items-center justify-center mr-3">1</div>
+                                <h3 class="text-xl font-bold" id="step-1-title">上传图片</h3>
+                                <span class="ml-2 text-sm text-gray-500" id="step-1-subtitle">(支持JPG/PNG/GIF，≤20MB)</span>
+                                <button class="ml-auto text-gray-400 hover:text-disney-blue transition-colors">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="hidden md:inline ml-1 text-sm">帮助</span>
+                                </button>
+                            </div>
+                            
+                            <!-- 上传区域 -->
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-disney-red transition-colors cursor-pointer mb-6 bg-gray-50">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-16 h-16 rounded-full bg-disney-light flex items-center justify-center mb-4">
+                                        <i class="fa fa-camera text-2xl text-disney-accent"></i>
+                                    </div>
+                                    <p class="text-gray-600 mb-2">点击上传或拖拽图片至此处</p>
+                                    <p class="text-xs text-gray-400">支持JPG、PNG、GIF格式</p>
+                                </div>
+                                <input type="file" class="hidden" accept="image/*">
+                            </div>
+                            
+                            <!-- 辅助功能 -->
+                            <div class="flex flex-wrap gap-4 mb-6">
+                                <button class="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                    <i class="fa fa-link mr-2 text-disney-accent"></i>
+                                    <span>从网络导入</span>
+                                </button>
+                                <button class="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                    <i class="fa fa-image mr-2 text-disney-accent"></i>
+                                    <span>使用示例素材</span>
+                                </button>
+                            </div>
+                            
+                            <!-- 示例素材预览（默认隐藏，点击使用示例素材后显示） -->
+                            <div id="sample-materials" class="hidden mb-6">
+                                <p class="text-sm font-medium mb-3">选择示例素材：</p>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <img src="https://picsum.photos/id/64/200/200" alt="示例图片1" class="rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                                    <img src="https://picsum.photos/id/237/200/200" alt="示例图片2" class="rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                                    <img src="https://picsum.photos/id/1025/200/200" alt="示例图片3" class="rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                                </div>
+                            </div>
+                            
+                            <!-- 下一步按钮 -->
+                            <button id="step-1-next" class="w-full bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center">
+                                <span>下一步</span>
+                                <i class="fa fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- 步骤2：基础编辑（图片和视频通用） -->
+                        <div id="step-2" class="step-content hidden">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full step-inactive border-2 flex items-center justify-center mr-3">2</div>
+                                <h3 class="text-xl font-bold">简单调整</h3>
+                                <span class="ml-2 text-sm text-gray-500">(可选)</span>
+                                <button class="ml-auto text-gray-400 hover:text-disney-blue transition-colors">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="hidden md:inline ml-1 text-sm">帮助</span>
+                                </button>
+                            </div>
+                            
+                            <!-- 预览图 -->
+                            <div class="mb-6 border border-gray-200 rounded-xl overflow-hidden">
+                                <img id="edit-preview" src="https://picsum.photos/id/64/600/400" alt="编辑预览图" class="w-full h-auto">
+                            </div>
+                            
+                            <!-- 裁剪工具 -->
+                            <div class="mb-8">
+                                <p class="text-sm font-medium mb-3">裁剪比例：</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="px-3 py-1 border border-gray-300 rounded hover:border-disney-red hover:text-disney-red transition-colors text-sm">自由裁剪</button>
+                                    <button class="px-3 py-1 border border-gray-300 rounded hover:border-disney-red hover:text-disney-red transition-colors text-sm">正方形</button>
+                                    <button class="px-3 py-1 border border-gray-300 rounded hover:border-disney-red hover:text-disney-red transition-colors text-sm">4:3</button>
+                                    <button class="px-3 py-1 border border-gray-300 rounded hover:border-disney-red hover:text-disney-red transition-colors text-sm">16:9</button>
+                                </div>
+                            </div>
+                            
+                            <!-- 视频专属：播放速度 -->
+                            <div id="video-speed-control" class="mb-8 hidden">
+                                <p class="text-sm font-medium mb-3">播放速度：</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="px-3 py-1 border border-gray-300 rounded hover:border-disney-red hover:text-disney-red transition-colors text-sm">0.5x 慢放</button>
+                                    <button class="px-3 py-1 border border-disney-red text-disney-red rounded transition-colors text-sm">1x 正常</button>
+                                    <button class="px-3 py-1 border border-gray-300 rounded hover:border-disney-red hover:text-disney-red transition-colors text-sm">2x 快放</button>
+                                </div>
+                            </div>
+                            
+                            <!-- 基础调节 -->
+                            <div class="space-y-6 mb-8">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>亮度</span>
+                                        <span>0</span>
+                                    </div>
+                                    <input type="range" min="-100" max="100" value="0" class="w-full accent-disney-red">
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>对比度</span>
+                                        <span>0</span>
+                                    </div>
+                                    <input type="range" min="-100" max="100" value="0" class="w-full accent-disney-red">
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>饱和度</span>
+                                        <span>0</span>
+                                    </div>
+                                    <input type="range" min="-100" max="100" value="0" class="w-full accent-disney-red">
+                                </div>
+                            </div>
+                            
+                            <!-- 视频专属：背景音乐 -->
+                            <div id="video-audio-control" class="mb-8 hidden">
+                                <p class="text-sm font-medium mb-3">背景音乐：</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                        <div class="flex items-center">
+                                            <i class="fa fa-music text-disney-accent mr-3"></i>
+                                            <span>迪士尼经典BGM 1</span>
+                                        </div>
+                                        <button class="w-8 h-8 rounded-full bg-disney-light flex items-center justify-center hover:bg-disney-red hover:text-white transition-colors">
+                                            <i class="fa fa-play"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                        <div class="flex items-center">
+                                            <i class="fa fa-music text-disney-accent mr-3"></i>
+                                            <span>迪士尼经典BGM 2</span>
+                                        </div>
+                                        <button class="w-8 h-8 rounded-full bg-disney-light flex items-center justify-center hover:bg-disney-red hover:text-white transition-colors">
+                                            <i class="fa fa-play"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <button class="w-full flex items-center justify-center p-3 border border-dashed border-gray-300 rounded-lg text-sm hover:border-disney-red hover:text-disney-red transition-colors">
+                                        <i class="fa fa-upload mr-2"></i>
+                                        上传自有音乐
+                                    </button>
+                                    
+                                    <div class="pt-2">
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span>音量</span>
+                                            <span>50%</span>
+                                        </div>
+                                        <input type="range" min="0" max="100" value="50" class="w-full accent-disney-red">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 按钮组 -->
+                            <div class="flex gap-4">
+                                <button class="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors">
+                                    重置
+                                </button>
+                                <button id="step-2-next" class="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors">
+                                    下一步
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤3：视频专属 - 剪辑片段 -->
+                        <div id="step-3-video" class="step-content hidden">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full step-inactive border-2 flex items-center justify-center mr-3">3</div>
+                                <h3 class="text-xl font-bold">剪辑片段</h3>
+                                <span class="ml-2 text-sm text-gray-500">(可选)</span>
+                                <button class="ml-auto text-gray-400 hover:text-disney-blue transition-colors">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="hidden md:inline ml-1 text-sm">帮助</span>
+                                </button>
+                            </div>
+                            
+                            <!-- 视频预览 -->
+                            <div class="relative mb-6 bg-gray-900 rounded-xl overflow-hidden">
+                                <img src="https://picsum.photos/id/1025/600/400" alt="视频预览" class="w-full h-auto opacity-80">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <button class="w-16 h-16 rounded-full bg-disney-red/80 hover:bg-disney-red flex items-center justify-center text-white transition-colors">
+                                        <i class="fa fa-play text-2xl"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute bottom-3 right-3 bg-black/70 text-white text-sm px-2 py-1 rounded">00:35</div>
+                            </div>
+                            
+                            <!-- 时间轴 -->
+                            <div class="mb-6">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>00:00</span>
+                                    <span id="clip-duration">当前选中时长：00:35</span>
+                                    <span>01:20</span>
+                                </div>
+                                
+                                <div class="relative h-6 bg-gray-200 rounded-full px-1">
+                                    <!-- 视频进度条 -->
+                                    <div class="absolute h-4 bg-gray-300 rounded-full top-1 left-1 right-1"></div>
+                                    
+                                    <!-- 选中区域 -->
+                                    <div class="absolute h-4 bg-disney-blue/30 rounded-full top-1 left-[10%] right-[30%]"></div>
+                                    
+                                    <!-- 左右滑块 -->
+                                    <div class="absolute w-4 h-6 bg-disney-red rounded-full -top-1 left-[10%] cursor-ew-resize"></div>
+                                    <div class="absolute w-4 h-6 bg-disney-red rounded-full -top-1 right-[30%] cursor-ew-resize"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- 播放控制 -->
+                            <div class="flex justify-center gap-4 mb-8">
+                                <button class="w-10 h-10 rounded-full bg-disney-light flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <i class="fa fa-step-backward"></i>
+                                </button>
+                                <button class="w-12 h-12 rounded-full bg-disney-red text-white flex items-center justify-center hover:bg-disney-red/90 transition-colors">
+                                    <i class="fa fa-play"></i>
+                                </button>
+                                <button class="w-10 h-10 rounded-full bg-disney-light flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <i class="fa fa-step-forward"></i>
+                                </button>
+                                <button class="w-10 h-10 rounded-full bg-disney-light flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- 按钮组 -->
+                            <div class="flex gap-4">
+                                <button id="step-3-video-prev" class="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors">
+                                    上一步
+                                </button>
+                                <button id="step-3-video-next" class="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors">
+                                    下一步
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤3：图片 - 选择风格 / 步骤4：视频 - 选择风格与动态效果 -->
+                        <div id="step-3-image" class="step-content hidden">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full step-inactive border-2 flex items-center justify-center mr-3">3</div>
+                                <h3 class="text-xl font-bold">选迪士尼风格</h3>
+                                <span class="ml-2 text-sm text-gray-500">(点击预览效果)</span>
+                                <button class="ml-auto text-gray-400 hover:text-disney-blue transition-colors">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="hidden md:inline ml-1 text-sm">帮助</span>
+                                </button>
+                            </div>
+                            
+                            <!-- 风格分类标签 -->
+                            <div class="flex overflow-x-auto scrollbar-hide gap-2 mb-6 pb-2">
+                                <button class="whitespace-nowrap px-4 py-2 bg-disney-red text-white rounded-full text-sm font-medium">全部风格</button>
+                                <button class="whitespace-nowrap px-4 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium hover:border-disney-red hover:text-disney-red transition-colors">经典动画</button>
+                                <button class="whitespace-nowrap px-4 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium hover:border-disney-red hover:text-disney-red transition-colors">皮克斯3D</button>
+                                <button class="whitespace-nowrap px-4 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium hover:border-disney-red hover:text-disney-red transition-colors">现代动画</button>
+                                <button class="whitespace-nowrap px-4 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium hover:border-disney-red hover:text-disney-red transition-colors">限定IP</button>
+                            </div>
+                            
+                            <!-- 视频专属：动态效果 -->
+                            <div id="video-effects" class="mb-6 hidden">
+                                <p class="text-sm font-medium mb-3">动态效果：</p>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <div class="border border-gray-200 rounded-lg p-3 text-center hover:border-disney-red cursor-pointer transition-colors">
+                                        <div class="w-12 h-12 mx-auto bg-disney-light rounded-full flex items-center justify-center mb-2">
+                                            <i class="fa fa-magic text-disney-accent"></i>
+                                        </div>
+                                        <span class="text-sm">魔法粒子</span>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-3 text-center hover:border-disney-red cursor-pointer transition-colors">
+                                        <div class="w-12 h-12 mx-auto bg-disney-light rounded-full flex items-center justify-center mb-2">
+                                            <i class="fa fa-snowflake-o text-disney-accent"></i>
+                                        </div>
+                                        <span class="text-sm">雪花特效</span>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-3 text-center hover:border-disney-red cursor-pointer transition-colors">
+                                        <div class="w-12 h-12 mx-auto bg-disney-light rounded-full flex items-center justify-center mb-2">
+                                            <i class="fa fa-star text-disney-accent"></i>
+                                        </div>
+                                        <span class="text-sm">星光效果</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 风格模板展示 -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                <!-- 模板1 -->
+                                <div class="border-2 border-disney-red rounded-xl overflow-hidden relative group cursor-pointer">
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/64/300/300" alt="原始图片" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">原始</span>
+                                        </div>
+                                    </div>
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/237/300/300" alt="转换效果" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">效果</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 text-center">
+                                        <h4 class="text-sm font-medium">《白雪公主》手绘风</h4>
+                                        <span class="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-disney-basic/20 text-disney-basic">基础版</span>
+                                    </div>
+                                    <div class="absolute top-2 right-2 w-5 h-5 rounded-full bg-disney-red flex items-center justify-center text-white text-xs">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- 模板2 -->
+                                <div class="border border-gray-200 rounded-xl overflow-hidden relative group cursor-pointer hover:border-disney-red transition-colors">
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/64/300/300" alt="原始图片" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">原始</span>
+                                        </div>
+                                    </div>
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/1039/300/300" alt="转换效果" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">效果</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 text-center">
+                                        <h4 class="text-sm font-medium">《冰雪奇缘》细腻风</h4>
+                                        <span class="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-disney-advanced/20 text-disney-advanced">进阶版</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 模板3 -->
+                                <div class="border border-gray-200 rounded-xl overflow-hidden relative group cursor-pointer hover:border-disney-red transition-colors">
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/64/300/300" alt="原始图片" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">原始</span>
+                                        </div>
+                                    </div>
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/1059/300/300" alt="转换效果" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">效果</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 text-center">
+                                        <h4 class="text-sm font-medium">《玩具总动员》3D风</h4>
+                                        <span class="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-disney-advanced/20 text-disney-advanced">进阶版</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 模板4 -->
+                                <div class="border border-gray-200 rounded-xl overflow-hidden relative group cursor-pointer hover:border-disney-red transition-colors">
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/64/300/300" alt="原始图片" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">原始</span>
+                                        </div>
+                                    </div>
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/1071/300/300" alt="转换效果" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">效果</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 text-center">
+                                        <h4 class="text-sm font-medium">《漫威》动画风</h4>
+                                        <span class="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-disney-pro/20 text-disney-pro">专业版</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 模板5 -->
+                                <div class="border border-gray-200 rounded-xl overflow-hidden relative group cursor-pointer hover:border-disney-red transition-colors">
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/64/300/300" alt="原始图片" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">原始</span>
+                                        </div>
+                                    </div>
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/1061/300/300" alt="转换效果" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">效果</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 text-center">
+                                        <h4 class="text-sm font-medium">《飞屋环游记》水彩风</h4>
+                                        <span class="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-disney-basic/20 text-disney-basic">基础版</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 模板6 -->
+                                <div class="border border-gray-200 rounded-xl overflow-hidden relative group cursor-pointer hover:border-disney-red transition-colors">
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/64/300/300" alt="原始图片" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">原始</span>
+                                        </div>
+                                    </div>
+                                    <div class="aspect-square relative">
+                                        <img src="https://picsum.photos/id/1069/300/300" alt="转换效果" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <span class="text-white font-medium">效果</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 text-center">
+                                        <h4 class="text-sm font-medium">《疯狂动物城》电影风</h4>
+                                        <span class="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-disney-advanced/20 text-disney-advanced">进阶版</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 按钮组 -->
+                            <div class="flex gap-4">
+                                <button id="step-3-prev" class="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors">
+                                    上一步
+                                </button>
+                                <button id="step-3-next" class="flex-1 bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors">
+                                    下一步
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤4：图片生成 / 步骤5：视频生成 -->
+                        <div id="step-4" class="step-content hidden">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full step-inactive border-2 flex items-center justify-center mr-3">4</div>
+                                <h3 class="text-xl font-bold" id="step-4-title">生成迪士尼风图片</h3>
+                                <button class="ml-auto text-gray-400 hover:text-disney-blue transition-colors">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="hidden md:inline ml-1 text-sm">帮助</span>
+                                </button>
+                            </div>
+                            
+                            <!-- 转换设置 -->
+                            <div class="bg-disney-light rounded-xl p-4 mb-6">
+                                <h4 class="font-medium mb-3">转换设置</h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">风格选择</span>
+                                        <span class="text-sm font-medium">《白雪公主》手绘风</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">输出格式</span>
+                                        <select class="text-sm border border-gray-300 rounded-lg px-2 py-1 bg-white">
+                                            <option>JPG（推荐）</option>
+                                            <option>PNG（透明背景）</option>
+                                        </select>
+                                    </div>
+                                    <div id="video-output-settings" class="hidden">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm">输出分辨率</span>
+                                            <select class="text-sm border border-gray-300 rounded-lg px-2 py-1 bg-white">
+                                                <option>720P</option>
+                                                <option selected>1080P</option>
+                                                <option>4K（专业版）</option>
+                                            </select>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm">动态效果</span>
+                                            <span class="text-sm font-medium">魔法粒子</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 转换提示 -->
+                            <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-6 flex items-start">
+                                <i class="fa fa-info-circle text-disney-accent mt-1 mr-3"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-disney-accent" id="conversion-time">转换耗时：10-30秒，取决于图片复杂度</p>
+                                    <p class="text-xs text-gray-600 mt-1">转换过程中请不要关闭页面</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 套餐提醒（如果需要） -->
+                            <div class="bg-orange-50 border border-orange-100 rounded-xl p-4 mb-6 flex items-start hidden">
+                                <i class="fa fa-exclamation-circle text-orange-500 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-orange-500">您当前剩余免费转换次数：1次</p>
+                                    <p class="text-xs text-gray-600 mt-1"><a href="#" class="text-orange-500 hover:underline">升级套餐</a> 解锁更多转换次数和高级功能</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 转换按钮 -->
+                            <button id="start-conversion" class="w-full bg-disney-red hover:bg-disney-red/90 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center text-lg mb-4">
+                                <i class="fa fa-magic mr-2 animate-spin-slow"></i>
+                                <span id="conversion-button-text">开始转换</span>
+                            </button>
+                            
+                            <!-- 取消转换按钮（转换中显示） -->
+                            <div id="cancel-conversion" class="flex gap-4 hidden">
+                                <button class="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors">
+                                    暂停转换
+                                </button>
+                                <button class="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-colors">
+                                    取消转换
+                                </button>
+                            </div>
+                            
+                            <!-- 上一步按钮 -->
+                            <button id="step-4-prev" class="w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors">
+                                上一步
+                            </button>
+                        </div>
+                        
+                        <!-- 步骤5：转换完成 -->
+                        <div id="step-5" class="step-content hidden">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 rounded-full bg-green-100 text-green-500 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa fa-check text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">转换完成！</h3>
+                                <p class="text-gray-600">你的迪士尼风格作品已经准备好啦</p>
+                            </div>
+                            
+                            <!-- 完成按钮组 -->
+                            <div class="flex flex-col gap-4">
+                                <button class="w-full bg-disney-red hover:bg-disney-red/90 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center">
+                                    <i class="fa fa-download mr-2"></i>
+                                    <span id="download-button-text">下载图片</span>
+                                </button>
+                                <button class="w-full bg-disney-blue hover:bg-disney-blue/90 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center">
+                                    <i class="fa fa-share-alt mr-2"></i>
+                                    <span>分享作品</span>
+                                </button>
+                                <button class="w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors flex items-center justify-center">
+                                    <i class="fa fa-refresh mr-2"></i>
+                                    <span>重新转换</span>
+                                </button>
+                                <button class="w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl transition-colors flex items-center justify-center">
+                                    <i class="fa fa-magic mr-2"></i>
+                                    <span>尝试其他风格</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右侧预览区 -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold" id="preview-title">图片效果预览</h3>
+                            <button class="text-disney-accent hover:text-disney-red transition-colors flex items-center">
+                                <i class="fa fa-search-plus mr-1"></i>
+                                <span class="text-sm">放大查看</span>
+                            </button>
+                        </div>
+                        
+                        <!-- 转换中状态 -->
+                        <div id="converting-state" class="hidden">
+                            <div class="flex flex-col items-center justify-center py-16 text-center">
+                                <div class="w-20 h-20 rounded-full bg-disney-light flex items-center justify-center mb-6">
+                                    <i class="fa fa-magic text-3xl text-disney-red animate-spin-slow"></i>
+                                </div>
+                                <h4 class="text-lg font-bold mb-2">正在施展魔法</h4>
+                                <p class="text-gray-600 mb-6">马上为您生成迪士尼风格作品～</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-disney-red h-2.5 rounded-full" style="width: 65%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-2">预计还需 15 秒</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 图片预览区 -->
+                        <div id="image-preview" class="mb-6">
+                            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                                <div class="grid grid-cols-2 divide-x divide-gray-200">
+                                    <div>
+                                        <img src="https://picsum.photos/id/64/600/800" alt="原始图片" class="w-full h-full object-cover">
+                                        <div class="p-2 bg-gray-50 text-center text-sm font-medium">原始图片</div>
+                                    </div>
+                                    <div>
+                                        <img src="https://picsum.photos/id/237/600/800" alt="转换后效果" class="w-full h-full object-cover">
+                                        <div class="p-2 bg-gray-50 text-center text-sm font-medium">转换后效果</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 图片微调选项（转换完成后显示） -->
+                            <div id="image-fine-tune" class="mt-6 hidden">
+                                <p class="text-sm font-medium mb-3">微调效果：</p>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <div>
+                                        <label class="block text-xs text-gray-600 mb-1">色彩偏向</label>
+                                        <select class="w-full text-sm border border-gray-300 rounded-lg px-2 py-1">
+                                            <option>默认</option>
+                                            <option>暖色调</option>
+                                            <option>冷色调</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-600 mb-1">线条风格</label>
+                                        <select class="w-full text-sm border border-gray-300 rounded-lg px-2 py-1">
+                                            <option>圆润</option>
+                                            <option>锐利</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-600 mb-1">细节丰富度</label>
+                                        <select class="w-full text-sm border border-gray-300 rounded-lg px-2 py-1">
+                                            <option>低</option>
+                                            <option>中</option>
+                                            <option>高</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="mt-3 w-full text-sm bg-disney-accent hover:bg-disney-blue text-white py-1.5 rounded-lg transition-colors">
+                                    确认应用
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 视频预览区 -->
+                        <div id="video-preview" class="mb-6 hidden">
+                            <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-900">
+                                <img src="https://picsum.photos/id/1025/600/400" alt="视频预览" class="w-full h-auto">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <button class="w-16 h-16 rounded-full bg-disney-red/80 hover:bg-disney-red flex items-center justify-center text-white transition-colors">
+                                        <i class="fa fa-play text-2xl"></i>
+                                    </button>
+                                </div>
+                                <div class="p-3 bg-gray-900">
+                                    <div class="relative h-1 bg-gray-700 rounded-full">
+                                        <div class="absolute h-full bg-disney-red rounded-full" style="width: 35%"></div>
+                                        <div class="absolute w-3 h-3 bg-white rounded-full -top-1" style="left: 35%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-400 mt-1">
+                                        <span>00:12</span>
+                                        <span>00:35</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 视频分段预览（转换完成后显示） -->
+                            <div id="video-chapters" class="mt-6 hidden">
+                                <p class="text-sm font-medium mb-3">分段预览：</p>
+                                <div class="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
+                                    <button class="flex-shrink-0 w-20 h-14 border border-disney-red rounded overflow-hidden relative">
+                                        <img src="https://picsum.photos/id/1025/100/100" alt="视频片段1" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs text-center">00:00</div>
+                                    </button>
+                                    <button class="flex-shrink-0 w-20 h-14 border border-gray-200 rounded overflow-hidden relative hover:border-disney-red transition-colors">
+                                        <img src="https://picsum.photos/id/1025/100/100" alt="视频片段2" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs text-center">00:10</div>
+                                    </button>
+                                    <button class="flex-shrink-0 w-20 h-14 border border-gray-200 rounded overflow-hidden relative hover:border-disney-red transition-colors">
+                                        <img src="https://picsum.photos/id/1025/100/100" alt="视频片段3" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs text-center">00:20</div>
+                                    </button>
+                                    <button class="flex-shrink-0 w-20 h-14 border border-gray-200 rounded overflow-hidden relative hover:border-disney-red transition-colors">
+                                        <img src="https://picsum.photos/id/1025/100/100" alt="视频片段4" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs text-center">00:30</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 预览说明 -->
+                        <div class="text-center text-sm text-gray-500 italic">
+                            提示：拖动可查看细节，点击风格模板实时预览效果
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-disney-blue text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-disney-red flex items-center justify-center">
+                            <i class="fa fa-magic text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">迪士尼魔法转换</span>
+                    </div>
+                    <p class="text-white/70 mb-6 max-w-md">迪士尼风格AI媒体转换平台，致力于让每一位迪士尼爱好者轻松创造动画魔法，所有风格模板均遵循迪士尼版权规范。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-disney-red transition-colors">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-disney-red transition-colors">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-disney-red transition-colors">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-disney-red transition-colors">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">功能详情</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">风格模板库</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">我的作品</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">订阅套餐</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">支持</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">帮助中心</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">常见问题</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">联系我们</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">隐私政策</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">服务条款</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">订阅最新资讯</h4>
+                    <p class="text-white/70 mb-4">获取最新模板和活动信息</p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-full w-full outline-none text-disney-blue">
+                            <button type="submit" class="bg-disney-red hover:bg-disney-red/90 px-4 py-2 rounded-r-full transition-colors">
+                                <i class="fa fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="text-xs text-white/50">我们尊重你的隐私，不会发送垃圾邮件</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/50 text-sm mb-4 md:mb-0">© 2025 迪士尼魔法转换平台. 保留所有权利.</p>
+                <p class="text-white/50 text-sm">本平台已获得迪士尼相关授权</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 图片/视频标签切换
+        const imageTab = document.getElementById('image-tab');
+        const videoTab = document.getElementById('video-tab');
+        const mainTitle = document.getElementById('main-title');
+        const mainSubtitle = document.getElementById('main-subtitle');
+        const step1Title = document.getElementById('step-1-title');
+        const step1Subtitle = document.getElementById('step-1-subtitle');
+        const step4Title = document.getElementById('step-4-title');
+        const conversionTime = document.getElementById('conversion-time');
+        const downloadButtonText = document.getElementById('download-button-text');
+        const progressText = document.getElementById('progress-text');
+        const imagePreview = document.getElementById('image-preview');
+        const videoPreview = document.getElementById('video-preview');
+        const videoSpeedControl = document.getElementById('video-speed-control');
+        const videoAudioControl = document.getElementById('video-audio-control');
+        const videoEffects = document.getElementById('video-effects');
+        const videoOutputSettings = document.getElementById('video-output-settings');
+        const step3Video = document.getElementById('step-3-video');
+        const previewTitle = document.getElementById('preview-title');
+        
+        // 切换到图片模式
+        function switchToImageMode() {
+            // 更新标签样式
+            imageTab.classList.remove('tab-inactive');
+            imageTab.classList.add('tab-active');
+            videoTab.classList.remove('tab-active');
+            videoTab.classList.add('tab-inactive');
+            
+            // 更新标题和说明
+            mainTitle.textContent = '图片风格转换';
+            mainSubtitle.textContent = '10秒get迪士尼手绘风，操作超简单';
+            step1Title.textContent = '上传图片';
+            step1Subtitle.textContent = '(支持JPG/PNG/GIF，≤20MB)';
+            step4Title.textContent = '生成迪士尼风图片';
+            conversionTime.textContent = '转换耗时：10-30秒，取决于图片复杂度';
+            downloadButtonText.textContent = '下载图片';
+            progressText.textContent = '1/4 步';
+            previewTitle.textContent = '图片效果预览';
+            
+            // 更新进度条
+            document.getElementById('progress-bar').style.width = '25%';
+            
+            // 显示/隐藏相关元素
+            imagePreview.classList.remove('hidden');
+            videoPreview.classList.add('hidden');
+            videoSpeedControl.classList.add('hidden');
+            videoAudioControl.classList.add('hidden');
+            videoEffects.classList.add('hidden');
+            videoOutputSettings.classList.add('hidden');
+            step3Video.classList.add('hidden');
+            
+            // 重置步骤
+            showStep(1);
+        }
+        
+        // 切换到视频模式
+        function switchToVideoMode() {
+            // 更新标签样式
+            videoTab.classList.remove('tab-inactive');
+            videoTab.classList.add('tab-active');
+            imageTab.classList.remove('tab-active');
+            imageTab.classList.add('tab-inactive');
+            
+            // 更新标题和说明
+            mainTitle.textContent = '视频风格转换';
+            mainSubtitle.textContent = '1分钟短视频变动画片段，自带魔法特效';
+            step1Title.textContent = '上传视频';
+            step1Subtitle.textContent = '(支持MP4/MOV/AVI，≤2GB)';
+            step4Title.textContent = '生成迪士尼风视频';
+            conversionTime.textContent = '短视频（≤1分钟）约1-3分钟，长视频（≤5分钟）约5-10分钟';
+            downloadButtonText.textContent = '下载视频';
+            progressText.textContent = '1/5 步';
+            previewTitle.textContent = '视频效果预览';
+            
+            // 更新进度条
+            document.getElementById('progress-bar').style.width = '20%';
+            
+            // 显示/隐藏相关元素
+            videoPreview.classList.remove('hidden');
+            imagePreview.classList.add('hidden');
+            videoSpeedControl.classList.remove('hidden');
+            videoAudioControl.classList.remove('hidden');
+            videoEffects.classList.remove('hidden');
+            videoOutputSettings.classList.remove('hidden');
+            
+            // 重置步骤
+            showStep(1);
+        }
+        
+        imageTab.addEventListener('click', switchToImageMode);
+        videoTab.addEventListener('click', switchToVideoMode);
+        
+        // 步骤导航
+        function showStep(stepNumber) {
+            // 隐藏所有步骤
+            document.querySelectorAll('.step-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // 重置所有步骤指示器样式
+            document.querySelectorAll('.step-inactive, .step-active').forEach(el => {
+                el.classList.remove('step-active', 'step-inactive');
+                el.classList.add('step-inactive');
+            });
+            
+            // 显示当前步骤
+            if (stepNumber === 1) {
+                document.getElementById('step-1').classList.remove('hidden');
+                document.querySelector('.step-content:nth-child(1) .rounded-full').classList.remove('step-inactive');
+                document.querySelector('.step-content:nth-child(1) .rounded-full').classList.add('step-active');
+            } else if (stepNumber === 2) {
+                document.getElementById('step-2').classList.remove('hidden');
+                document.querySelectorAll('.step-content:nth-child(-n+2) .rounded-full').forEach(el => {
+                    el.classList.remove('step-inactive');
+                    el.classList.add('step-active');
+                });
+            } else if (stepNumber === 3) {
+                // 图片模式显示步骤3，视频模式显示视频剪辑步骤
+                if (imageTab.classList.contains('tab-active')) {
+                    document.getElementById('step-3-image').classList.remove('hidden');
+                    document.querySelectorAll('.step-content:nth-child(-n+3) .rounded-full').forEach(el => {
+                        el.classList.remove('step-inactive');
+                        el.classList.add('step-active');
+                    });
+                } else {
+                    document.getElementById('step-3-video').classList.remove('hidden');
+                    document.querySelectorAll('.step-content:nth-child(-n+3) .rounded-full').forEach(el => {
+                        el.classList.remove('step-inactive');
+                        el.classList.add('step-active');
+                    });
+                }
+            } else if (stepNumber === 4) {
+                // 图片模式的步骤4，视频模式的风格选择步骤
+                if (imageTab.classList.contains('tab-active')) {
+                    document.getElementById('step-4').classList.remove('hidden');
+                    document.querySelectorAll('.step-content:nth-child(-n+4) .rounded-full').forEach(el => {
+                        el.classList.remove('step-inactive');
+                        el.classList.add('step-active');
+                    });
+                } else {
+                    document.getElementById('step-3-image').classList.remove('hidden');
+                    document.querySelectorAll('.step-content:nth-child(-n+4) .rounded-full').forEach(el => {
+                        el.classList.remove('step-inactive');
+                        el.classList.add('step-active');
+                    });
+                }
+            } else if (stepNumber === 5) {
+                // 视频模式的生成步骤
+                document.getElementById('step-4').classList.remove('hidden');
+                document.querySelectorAll('.step-content:nth-child(-n+5) .rounded-full').forEach(el => {
+                    el.classList.remove('step-inactive');
+                    el.classList.add('step-active');
+                });
+            } else if (stepNumber === 6) {
+                // 转换完成步骤
+                document.getElementById('step-5').classList.remove('hidden');
+                
+                // 显示微调选项
+                if (imageTab.classList.contains('tab-active')) {
+                    document.getElementById('image-fine-tune').classList.remove('hidden');
+                } else {
+                    document.getElementById('video-chapters').classList.remove('hidden');
+                }
+            }
+            
+            // 更新进度条和进度文本
+            updateProgress(stepNumber);
+        }
+        
+        // 更新进度
+        function updateProgress(stepNumber) {
+            let totalSteps = imageTab.classList.contains('tab-active') ? 4 : 5;
+            let progressPercent = (stepNumber / totalSteps) * 100;
+            
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            document.getElementById('progress-text').textContent = `${stepNumber}/${totalSteps} 步`;
+        }
+        
+        // 步骤1下一步
+        document.getElementById('step-1-next').addEventListener('click', function() {
+            showStep(2);
+        });
+        
+        // 步骤2下一步
+        document.getElementById('step-2-next').addEventListener('click', function() {
+            if (imageTab.classList.contains('tab-active')) {
+                showStep(3);
+            } else {
+                showStep(3);
+                step3Video.classList.remove('hidden');
+            }
+        });
+        
+        // 视频步骤3下一步
+        document.getElementById('step-3-video-next').addEventListener('click', function() {
+            showStep(4);
+        });
+        
+        // 视频步骤3上一步
+        document.getElementById('step-3-video-prev').addEventListener('click', function() {
+            showStep(2);
+        });
+        
+        // 步骤3下一步
+        document.getElementById('step-3-next').addEventListener('click', function() {
+            if (imageTab.classList.contains('tab-active')) {
+                showStep(4);
+            } else {
+                showStep(5);
+            }
+        });
+        
+        // 步骤3上一步
+        document.getElementById('step-3-prev').addEventListener('click', function() {
+            if (imageTab.classList.contains('tab-active')) {
+                showStep(2);
+            } else {
+                showStep(3);
+            }
+        });
+        
+        // 步骤4上一步
+        document.getElementById('step-4-prev').addEventListener('click', function() {
+            if (imageTab.classList.contains('tab-active')) {
+                showStep(3);
+            } else {
+                showStep(4);
+            }
+        });
+        
+        // 开始转换按钮
+        document.getElementById('start-conversion').addEventListener('click', function() {
+            // 隐藏转换按钮，显示取消按钮
+            this.classList.add('hidden');
+            document.getElementById('cancel-conversion').classList.remove('hidden');
+            
+            // 显示转换中状态
+            document.getElementById('image-preview').classList.add('hidden');
+            document.getElementById('video-preview').classList.add('hidden');
+            document.getElementById('converting-state').classList.remove('hidden');
+            
+            // 模拟转换过程
+            setTimeout(function() {
+                document.getElementById('converting-state').classList.add('hidden');
+                
+                if (imageTab.classList.contains('tab-active')) {
+                    document.getElementById('image-preview').classList.remove('hidden');
+                } else {
+                    document.getElementById('video-preview').classList.remove('hidden');
+                }
+                
+                // 显示完成步骤
+                showStep(6);
+            }, 3000);
+        });
+        
+        // 使用示例素材按钮
+        document.querySelector('button:has(.fa-image)').addEventListener('click', function() {
+            document.getElementById('sample-materials').classList.remove('hidden');
+        });
+        
+        // 选择示例素材
+        document.querySelectorAll('#sample-materials img').forEach(img => {
+            img.addEventListener('click', function() {
+                // 更新编辑预览图
+                document.getElementById('edit-preview').src = this.src;
+                
+                // 自动进入下一步
+                showStep(2);
+            });
+        });
+        
+        // 初始化显示第一步
+        showStep(1);
+    </script>
+</body>
+</html>

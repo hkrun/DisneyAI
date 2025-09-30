@@ -1,0 +1,69 @@
+{
+  "logo": "DisneyAi",
+  "logoTitle": "DisneyAi｜디즈니 스타일 전환",
+  "description": "고급 AI 기술을 융합한 디즈니 스타일 변환 플랫폼으로, 전문적인 디즈니 스타일 이미지 변환, HD 영상 처리 및 창작 콘텐츠 제작 솔루션을 제공합니다.",
+  "sections": [
+    {
+      "title": "서비스",
+      "links": [
+        {
+          "label": "이미지 변환",
+          "href": "/#workflow"
+        },
+        {
+          "label": "비디오 변환",
+          "href": "/#workflow"
+        }
+      ]
+    },
+    {
+      "title": "회사",
+      "links": [
+        {
+          "label": "회사 소개",
+          "href": "/about"
+        },
+        {
+          "label": "문의하기",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "title": "법적 조항",
+      "links": [
+        {
+          "label": "개인정보 처리방침",
+          "href": "/legal/privacy"
+        },
+        {
+          "label": "이용 약관",
+          "href": "/legal/terms"
+        },
+        {
+          "label": "결제 및 환불",
+          "href": "/legal/payments-refund"
+        }
+      ]
+    }
+  ],
+  "copyright": "© {year} DisneyAi. 저작권 소유.",
+  "legal": {
+    "privacyPolicy": "개인정보 처리방침",
+    "termsOfService": "이용 약관"
+  },
+  "socials": [
+    {
+      "name": "Twitter",
+      "href": "https://twitter.com/disneyai"
+    },
+    {
+      "name": "Instagram",
+      "href": "https://instagram.com/disneyai"
+    },
+    {
+      "name": "LinkedIn",
+      "href": "https://linkedin.com/company/disneyai"
+    }
+  ]
+}

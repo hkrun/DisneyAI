@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "subtitle": "Contáctanos",
+    "title": "¿Tienes dudas sobre la conversión de estilo Disney?",
+    "description": "Nuestro equipo profesional en conversión de estilo Disney está disponible en todo momento para brindarte asesoramiento sobre conversión de estilo Disney, soporte técnico y soluciones creativas."
+  },
+  "info": {
+    "title": "Información de contacto",
+    "description": "Contáctanos con nuestro equipo profesional en conversión de estilo Disney a través de las siguientes formas",
+    "contacts": [
+      {
+        "text": "zjhkrun@gmail.com"
+      },
+      {
+        "text": "Brindamos servicios profesionales de conversión de estilo Disney"
+      },
+      {
+        "text": "El equipo profesional admite múltiples formatos de video y efectos de conversión de estilo Disney en alta definición"
+      }
+    ]
+  },
+  "form": {
+    "title": "Enviar asesoramiento técnico",
+    "description": "Ya sea que necesites servicios de conversión de estilo Disney, tengas problemas de producción de videos o necesites orientación para proyectos creativos, responderemos profesionalmente.",
+    "fields": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Tu nombre",
+        "error": "El nombre debe tener al menos 2 caracteres."
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "tu@email.com",
+        "error": "Por favor, ingresa una dirección de correo electrónico válida."
+      },
+      "message": {
+        "label": "Contenido del asesoramiento",
+        "placeholder": "Describe tus necesidades de conversión de estilo Disney, tipo de video, requisitos técnicos u otras necesidades de proyectos creativos...",
+        "error": "El mensaje debe tener al menos 10 caracteres."
+      }
+    },
+    "submitButton": "Enviar asesoramiento",
+    "successMessage": "Nuestro equipo de expertos en conversión de estilo Disney responderá a tu asesoramiento lo antes posible.",
+    "submitting": "Enviando...",
+    "toasts": {
+      "success": {
+        "title": "Asesoramiento enviado",
+        "description": "¡Gracias por tu asesoramiento! Nuestros expertos en conversión de estilo Disney te responderán en 24 horas."
+      },
+      "error": {
+        "title": "Error al enviar",
+        "description": "Falló el envío del mensaje, por favor intenta nuevamente.",
+        "fallback": "Falló el envío del formulario, por favor intenta nuevamente más tarde."
+      }
+    }
+  },
+  "auth": {
+    "loginRequired": {
+      "title": "Por favor, inicia sesión primero",
+      "description": "Inicia sesión antes de enviar el asesoramiento"
+    }
+  },
+  "meta": {
+    "title": "Contáctanos con el equipo de expertos en conversión de estilo Disney – Asesoramiento profesional | DisneyAi Conversión de estilo Disney",
+    "description": "¿Necesitas orientación sobre servicios de conversión de estilo Disney? Contáctanos con nuestro equipo de expertos para obtener asesoramiento sobre conversión de estilo Disney, producción de videos y soluciones para proyectos creativos.",
+    "alt": "Servicios de conversión de estilo Disney",
+    "keywords": "Conversión de estilo Disney,Conversión de imágenes de estilo Disney,Conversión de video de estilo Disney,Creación de contenido creativo"
+  }
+}

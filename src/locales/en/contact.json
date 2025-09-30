@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "subtitle": "Contact Us",
+    "title": "Have Questions About Disney Style Conversion?",
+    "description": "Our professional Disney style conversion team is ready to provide you with Disney style conversion consulting, technical support, and creative solutions at any time."
+  },
+  "info": {
+    "title": "Contact Information",
+    "description": "Get in touch with our professional Disney style conversion team through the following methods",
+    "contacts": [
+      {
+        "text": "zjhkrun@gmail.com"
+      },
+      {
+        "text": "Provide Professional Disney Style Conversion Services"
+      },
+      {
+        "text": "Our professional team supports multiple video formats and high-definition Disney style conversion effects"
+      }
+    ]
+  },
+  "form": {
+    "title": "Send Technical Consultation",
+    "description": "Whether it's Disney style conversion needs, video production issues, or creative project guidance, we will provide professional responses.",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your Name",
+        "error": "Name must be at least 2 characters long."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com",
+        "error": "Please enter a valid email address."
+      },
+      "message": {
+        "label": "Consultation Content",
+        "placeholder": "Please describe your Disney style conversion needs, video type, technical requirements, or other creative project needs...",
+        "error": "Message must be at least 10 characters long."
+      }
+    },
+    "submitButton": "Send Consultation",
+    "successMessage": "Our team of Disney style conversion experts will respond to your consultation as soon as possible.",
+    "submitting": "Submitting...",
+    "toasts": {
+      "success": {
+        "title": "Consultation Sent",
+        "description": "Thank you for your consultation! Our Disney style conversion experts will reply to you within 24 hours."
+      },
+      "error": {
+        "title": "Submission Failed",
+        "description": "Failed to send the message. Please try again.",
+        "fallback": "Failed to submit the form. Please try again later."
+      }
+    }
+  },
+  "auth": {
+    "loginRequired": {
+      "title": "Please Log In First",
+      "description": "Please log in before sending your consultation"
+    }
+  },
+  "meta": {
+    "title": "Contact Disney Style Conversion Expert Team - Professional Consulting | DisneyAi Disney Style Conversion",
+    "description": "Need guidance on Disney style conversion services? Contact our expert team to get Disney style conversion, video production consulting, and creative project solutions.",
+    "alt": "Disney Style Conversion Services",
+    "keywords": "Disney Style Conversion,Disney Style Image Conversion,Disney Style Video Conversion,Creative Content Creation"
+  }
+}

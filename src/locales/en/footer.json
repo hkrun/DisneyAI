@@ -1,0 +1,69 @@
+{
+  "logo": "DisneyAi",
+  "logoTitle": "DisneyAi | Disney style transition",
+  "description": "An advanced AI-powered Disney style conversion platform, providing professional Disney style image conversion, high-definition video processing, and creative content creation solutions.",
+  "sections": [
+    {
+      "title": "Services",
+      "links": [
+        {
+          "label": "Image Conversion",
+          "href": "/#workflow"
+        },
+        {
+          "label": "Video Conversion",
+          "href": "/#workflow"
+        }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        {
+          "label": "About Us",
+          "href": "/about"
+        },
+        {
+          "label": "Contact Us",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "title": "Legal",
+      "links": [
+        {
+          "label": "Privacy Policy",
+          "href": "/legal/privacy"
+        },
+        {
+          "label": "Terms of Service",
+          "href": "/legal/terms"
+        },
+        {
+          "label": "Payment & Refund",
+          "href": "/legal/payments-refund"
+        }
+      ]
+    }
+  ],
+  "copyright": "© {year} DisneyAi. All rights reserved.",
+  "legal": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "socials": [
+    {
+      "name": "Twitter",
+      "href": "https://twitter.com/disneyai"
+    },
+    {
+      "name": "Instagram",
+      "href": "https://instagram.com/disneyai"
+    },
+    {
+      "name": "LinkedIn",
+      "href": "https://linkedin.com/company/disneyai"
+    }
+  ]
+}

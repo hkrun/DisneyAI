@@ -1,0 +1,150 @@
+{
+  "hero": {
+    "title": {
+      "imageConversion": "迪士尼风格转换",
+      "videoConversion": "视频风格转换"
+    },
+    "subtitle": {
+      "imageConversion": "10秒get迪士尼手绘风，操作超简单",
+      "videoConversion": "1分钟短视频变动画片段，自带魔法特效"
+    }
+  },
+  "converter": {
+    "imageMode": {
+      "label": "图片转换",
+      "description": "基础版可用"
+    },
+    "videoMode": {
+      "label": "视频转换",
+      "description": "进阶版及以上"
+    }
+  },
+  "features": {
+    "title": "魔法功能",
+    "subtitle": "探索我们强大的AI魔法工具，轻松将你的照片和视频变成迪士尼风格的艺术作品",
+    "items": [
+      {
+        "icon": "fa fa-camera",
+        "title": "照片秒变迪士尼插画",
+        "description": "上传自拍、风景、宠物照，任选《白雪公主》现代迪士尼风、《冰雪奇缘》细腻色等模板，AI 10秒生成专属迪士尼插画，细节满分！"
+      },
+      {
+        "icon": "fa fa-film",
+        "title": "视频化身动画电影片段",
+        "description": "30秒钟短视频、3分钟家庭录像，都能变成《白雪公主》经典风、《疯狂动物城》3D电影感画面！"
+      },
+      {
+        "icon": "fa fa-users",
+        "title": "加入迪士尼创作者星球",
+        "description": "分享你的魔法作品到TikTok和Youtube等社交平台，和全球迪士尼粉丝互动点赞；参与主题创作活动，赢迪士尼周边、免费专业订阅。"
+      }
+    ],
+    "videoNotSupported": "您的浏览器不支持视频播放。"
+  },
+  "templates": {
+    "title": "风格模板库",
+    "subtitle": "从经典动画到现代3D，多种迪士尼风格模板任你选择",
+    "viewAll": "查看全部",
+    "filters": {
+      "all": "全部风格",
+      "classic": "经典动画系列",
+      "pixar": "皮克斯3D系列",
+      "modern": "现代动画系列"
+    },
+    "items": [
+      {
+        "title": "《灰姑娘》手绘风",
+        "tag": "经典",
+        "description": "高质量风格转换",
+        "status": "可用"
+      },
+      {
+        "title": "《冰雪奇缘》细腻风",
+        "tag": "热门",
+        "description": "高质量风格转换",
+        "status": "可用"
+      },
+      {
+        "title": "《玩具总动员》3D风",
+        "tag": "3D",
+        "description": "高质量风格转换",
+        "status": "可用"
+      },
+      {
+        "title": "《狮子王》冒险风",
+        "tag": "新模板",
+        "description": "高质量风格转换",
+        "status": "可用"
+      }
+    ]
+  },
+  "community": {
+    "title": "创意广场",
+    "subtitle": "加入我们的创意社区，分享你的迪士尼风格作品",
+    "stats": {
+      "users": "活跃用户",
+      "creations": "作品生成",
+      "satisfaction": "用户满意度"
+    }
+  },
+  "pricing": {
+    "title": "让每一刻，都充满迪士尼魔法",
+    "subtitle": "立即注册，免费体验魔法转换，开启你的创作之旅",
+    "cta": "查看定价",
+    "learnMore": "了解更多"
+  },
+  "testimonials": {
+    "title": "来自全球的魔法反馈",
+    "subtitle": "看看其他迪士尼爱好者用我们的工具创造了什么",
+    "items": [
+      {
+        "content": "把我小女儿的照片转换成《冰雪奇缘》风格，她激动得哭了！操作超简单～",
+        "author": "Lily_DisneyFan",
+        "role": "美国加州 · 进阶版用户"
+      },
+      {
+        "content": "把旅行照片转换成迪士尼水彩风，发圈被问爆链接！",
+        "author": "Emma_PixarFan",
+        "role": "法国巴黎 · 基础版用户"
+      },
+      {
+        "content": "作为动漫博主，用它制作《花木兰》风格短视频，粉丝量涨了30%！",
+        "author": "Miki_AnimeLover",
+        "role": "日本东京 · 专业版用户"
+      }
+    ]
+  },
+  "activity": {
+    "badge": "热门活动",
+    "title": "《小美人鱼》同人创作挑战",
+    "description": "参与主题创作活动，使用专属风格模板转换你的作品，有机会赢取周边与免费专业版订阅！",
+    "rules": [
+      "提交截止：2025年12月31日",
+      "获奖作品将在官方账号展示",
+      "一等奖：有机会获得迪士尼乐园门票"
+    ],
+    "cta": "立即参与"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "解答你关于迪士尼风格转换的所有疑问",
+    "items": [
+      {
+        "question": "支持哪些图片格式？",
+        "answer": "我们支持JPG、PNG、GIF等常见图片格式，文件大小不超过20MB。"
+      },
+      {
+        "question": "转换需要多长时间？",
+        "answer": "图片转换通常在10-30秒内完成，视频转换根据长度可能需要1-5分钟。"
+      },
+      {
+        "question": "生成的图片可以商用吗？",
+        "answer": "基础版用户生成的图片仅供个人使用，商业版用户可以用于商业用途。"
+      },
+      {
+        "question": "如何取消订阅？",
+        "answer": "你可以在账户设置中随时取消订阅，取消后仍可使用至当前计费周期结束。"
+      }
+    ]
+  }
+}

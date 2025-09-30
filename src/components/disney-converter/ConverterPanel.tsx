@@ -359,8 +359,11 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
     try {
       // 先检查积分
       const userCredits = await getUserCredits()
-      if (userCredits < 5) {
-        setInsufficientCreditsMessage('积分不足，视频转换需要5积分。请购买积分后再试。')
+      if (userCredits < 125) {
+        setInsufficientCreditsMessage(
+          (i18n.creditsDialog?.videoRequired || 'Insufficient credits, video conversion requires at least {credits} credits.')
+            .replace('{credits}', '125')
+        )
         setShowInsufficientCreditsDialog(true)
         return
       }
@@ -436,13 +439,30 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
         // 先检查积分
         const userCredits = await getUserCredits()
         if (userCredits < 10) {
-          setInsufficientCreditsMessage('积分不足，图片转换需要10积分。请购买积分后再试。')
+          setInsufficientCreditsMessage(
+            (i18n.creditsDialog?.imageRequired || 'Insufficient credits, image conversion requires at least {credits} credits.')
+              .replace('{credits}', '10')
+          )
           setShowInsufficientCreditsDialog(true)
           return
         }
         
         const base64Image = await convertToBase64(selectedImage!)
         
+        // 记录开始转换行为
+        try {
+          await fetch('/api/naming-task', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({
+              action: 'start_conversion',
+              params: { type: 'image', styleId: selectedStyle.id },
+              result: {}
+            })
+          })
+        } catch {}
+
         // 调用图片转换API
         setConversion({ status: 'uploading' })
         const response = await fetch('/api/transform-image', {
@@ -459,7 +479,7 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
 
         const result = await response.json()
 
-        if (!result.success) {
+          if (!result.success) {
           throw new Error(result.error || `转换失败 (状态码: ${response.status})`)
         }
 
@@ -482,13 +502,30 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
           // 先检查积分
           const userCredits = await getUserCredits()
           if (userCredits < 125) {
-            setInsufficientCreditsMessage('积分不足，视频转换需要125积分。请购买积分后再试。')
+            setInsufficientCreditsMessage(
+              (i18n.creditsDialog?.videoRequired || 'Insufficient credits, video conversion requires at least {credits} credits.')
+                .replace('{credits}', '125')
+            )
             setShowInsufficientCreditsDialog(true)
             return
           }
           
           const base64Image = await convertToBase64(selectedImage!)
           
+          // 记录生成视频行为
+          try {
+            await fetch('/api/naming-task', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              credentials: 'include',
+              body: JSON.stringify({
+                action: 'generate_video',
+                params: { type: 'video', styleId: selectedStyle.id, prompt: customPrompt.trim() || undefined },
+                result: {}
+              })
+            })
+          } catch {}
+
           // 调用增强视频转换API，提示词可选
           setConversion({ status: 'uploading' })
           const response = await fetch('/api/transform-video-enhanced', {

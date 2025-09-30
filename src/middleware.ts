@@ -11,6 +11,7 @@ const protectedApiRoutes = [
   '/api/upload',
   '/api/transform-image',
   '/api/transform-video',
+  '/api/naming-task',
   '/api/transform-history',
   // 已移除换脸相关API，删除保护项以避免无效匹配
 ];

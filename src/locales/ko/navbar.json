@@ -7,10 +7,6 @@
             "label": "홈"
         },
         {
-            "href": "/features",
-            "label": "기능"
-        },
-        {
             "href": "/pricing",
             "label": "가격"
         },
@@ -41,10 +37,6 @@
             {
                 "href": "/",
                 "label": "홈"
-            },
-            {
-                "href": "/features",
-                "label": "기능"
             },
             {
                 "href": "/pricing",

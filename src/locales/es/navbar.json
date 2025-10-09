@@ -7,10 +7,6 @@
             "label": "Inicio"
         },
         {
-            "href": "/features",
-            "label": "Características"
-        },
-        {
             "href": "/pricing",
             "label": "Precios"
         },
@@ -41,10 +37,6 @@
             {
                 "href": "/",
                 "label": "Inicio"
-            },
-            {
-                "href": "/features",
-                "label": "Características"
             },
             {
                 "href": "/pricing",

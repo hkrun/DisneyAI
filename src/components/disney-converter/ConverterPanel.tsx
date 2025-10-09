@@ -802,7 +802,7 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
                     <div>
                         <img 
                           src={selectedImage ? URL.createObjectURL(selectedImage) : ''} 
-                          className="w-full h-full object-cover aspect-square cursor-zoom-in" 
+                          className="w-full h-full object-contain aspect-square cursor-zoom-in" 
                           alt={i18n.results.originalImage}
                           onClick={() => {
                             if (selectedImage) {
@@ -818,7 +818,7 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
                     <div>
                         <img 
                           src={conversion.resultUrl} 
-                          className="w-full h-full object-cover aspect-square cursor-zoom-in" 
+                          className="w-full h-full object-contain aspect-square cursor-zoom-in" 
                           alt={i18n.results.styleImage}
                           onClick={() => window.open(conversion.resultUrl!, '_blank')}
                         />
@@ -903,7 +903,7 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
                     <div>
                       <img 
                         src={selectedImage ? URL.createObjectURL(selectedImage) : ''} 
-                        className="w-full h-full object-cover aspect-square cursor-zoom-in" 
+                        className="w-full h-full object-contain aspect-square cursor-zoom-in" 
                         alt={i18n.results.originalImage}
                         onClick={() => {
                           if (selectedImage) {
@@ -919,7 +919,7 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
                     <div>
                       <video 
                         src={conversion.resultUrl} 
-                        className="w-full h-full object-cover aspect-square" 
+                        className="w-full h-full object-contain aspect-square" 
                         controls
                         preload="metadata"
                         onError={(e) => {

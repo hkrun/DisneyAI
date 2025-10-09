@@ -7,10 +7,6 @@
             "label": "ホーム"
         },
         {
-            "href": "/features",
-            "label": "機能"
-        },
-        {
             "href": "/pricing",
             "label": "料金"
         },
@@ -41,10 +37,6 @@
             {
                 "href": "/",
                 "label": "ホーム"
-            },
-            {
-                "href": "/features",
-                "label": "機能"
             },
             {
                 "href": "/pricing",

@@ -128,6 +128,7 @@ export function FreeTrialCard({ lang, i18nPricing, i18nAuth, billingPeriod }: Fr
               i18nPricing={i18nPricing}
               isPopular={true}
               planType="freeTrial"
+              billingPeriod={billingPeriod}
             />
           )}
         </div>

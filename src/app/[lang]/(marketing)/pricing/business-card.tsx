@@ -99,6 +99,7 @@ export function BusinessCard({ lang, i18nPricing, i18nAuth, billingPeriod }: Bus
             i18nPricing={i18nPricing}
             isPopular={false}
             planType="business"
+            billingPeriod={billingPeriod}
           />
         </div>
       </div>

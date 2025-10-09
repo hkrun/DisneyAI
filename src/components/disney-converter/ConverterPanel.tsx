@@ -456,7 +456,7 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             body: JSON.stringify({
-              action: 'start_conversion',
+              action: '点击了开始转换按钮',
               params: { type: 'image', styleId: selectedStyle.id },
               result: {}
             })
@@ -519,7 +519,7 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
               headers: { 'Content-Type': 'application/json' },
               credentials: 'include',
               body: JSON.stringify({
-                action: 'generate_video',
+                action: '点击了生成视频按钮',
                 params: { type: 'video', styleId: selectedStyle.id, prompt: customPrompt.trim() || undefined },
                 result: {}
               })

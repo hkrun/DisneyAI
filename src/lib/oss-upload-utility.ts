@@ -39,7 +39,7 @@ export function generateFileName(originalName: string, prefix?: string): string 
  * 生成完整的OSS对象键（包含日期目录结构）
  */
 export function generateObjectKey(originalName: string, folder: string, prefix?: string): string {
-  const normalizedFolder = folder.startsWith('probface/') ? folder : `probface/${folder}`
+  const normalizedFolder = folder.startsWith('DisneyAi/') ? folder : `DisneyAi/${folder}`
   const datePath = generateDatePath()
   const fileName = generateFileName(originalName, prefix)
   return `${normalizedFolder}/${datePath}/${fileName}`

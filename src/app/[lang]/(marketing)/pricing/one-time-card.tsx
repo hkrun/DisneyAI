@@ -128,6 +128,7 @@ export function OneTimeCard({ lang, i18nPricing, i18nAuth, billingPeriod }: OneT
             i18nPricing={i18nPricing}
             isPopular={false}
             planType={currentPlan.planType}
+            billingPeriod={billingPeriod}
           />
         </div>
 

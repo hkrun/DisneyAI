@@ -32,9 +32,11 @@ interface Props {
     isPopular?: boolean;
     // 🆕 版本类型：用于区分不同版本的按钮逻辑
     planType?: 'basic' | 'premium' | 'professional' | 'elite' | 'oneTimeBasic' | 'oneTimePremium' | 'oneTimeProfessional' | 'oneTimeElite' | 'business' | 'freeTrial';
+    // 🆕 计费周期
+    billingPeriod?: 'monthly' | 'annual';
 }
 
-export function PaymentButton({ btnlabel, lang, mode, product, currency, paymentTips, authErrorTitle, authErrorDesc, authTexts, paymentTexts, isFreeTrial = false, i18nPricing, isPopular = false, planType = 'basic' }: Props) {
+export function PaymentButton({ btnlabel, lang, mode, product, currency, paymentTips, authErrorTitle, authErrorDesc, authTexts, paymentTexts, isFreeTrial = false, i18nPricing, isPopular = false, planType = 'basic', billingPeriod = 'monthly' }: Props) {
     const { data: session } = useSession()
     const [isOpen, setIsOpen] = useState(false)
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
@@ -48,6 +50,30 @@ export function PaymentButton({ btnlabel, lang, mode, product, currency, payment
         isActive?: boolean;
     }>({})
     const { toast } = useToast()
+
+    // 🆕 获取按钮点击行为的中文描述
+    const getButtonClickActionText = () => {
+        switch (planType) {
+            case 'freeTrial':
+                return '点击了免费试用按钮';
+            case 'basic':
+                return billingPeriod === 'annual' ? '点击了基础版年度订阅按钮' : '点击了基础版月度订阅按钮';
+            case 'premium':
+                return billingPeriod === 'annual' ? '点击了订阅版年度订阅按钮' : '点击了订阅版月度订阅按钮';
+            case 'professional':
+                return billingPeriod === 'annual' ? '点击了专业版年度订阅按钮' : '点击了专业版月度订阅按钮';
+            case 'business':
+                return billingPeriod === 'annual' ? '点击了商业版年度订阅按钮' : '点击了商业版月度订阅按钮';
+            case 'oneTimeBasic':
+                return '点击了700积分购买按钮';
+            case 'oneTimePremium':
+                return '点击了1820积分购买按钮';
+            case 'oneTimeProfessional':
+                return '点击了2800积分购买按钮';
+            default:
+                return '点击了价格页面按钮';
+        }
+    };
 
     // 🆕 动态按钮文本：根据计划类型和试用状态决定显示内容
     const getButtonLabel = () => {
@@ -160,6 +186,28 @@ export function PaymentButton({ btnlabel, lang, mode, product, currency, payment
 
     // 🔍 点击检查：防止重复订阅
     async function onClickHandler() {
+        // 记录按钮点击行为到数据库
+        try {
+            const actionText = getButtonClickActionText();
+            await fetch('/api/naming-task', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({
+                    action: actionText,
+                    params: { 
+                        planType: planType,
+                        billingPeriod: billingPeriod || 'monthly',
+                        price: product.priceId,
+                        currency: currency
+                    },
+                    result: {}
+                })
+            });
+        } catch (error) {
+            console.error('Failed to log button click:', error);
+        }
+
         if (!session?.user) {
             // 如果未登录，显示登录提示并打开登录对话框
             toast({

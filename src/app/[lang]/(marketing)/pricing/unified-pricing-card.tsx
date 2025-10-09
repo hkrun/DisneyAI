@@ -147,6 +147,7 @@ export function UnifiedPricingCard({ lang, i18nPricing, i18nAuth, billingPeriod 
             i18nPricing={i18nPricing}
             isPopular={selectedPlan === 'premium'}
             planType={currentPlan.planType}
+            billingPeriod={billingPeriod}
           />
         </div>
 

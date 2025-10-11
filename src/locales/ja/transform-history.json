@@ -22,12 +22,16 @@
       "preview": "プレビュー",
       "hoverToPreview": "ホバーしてプレビュー",
       "videoLoadError": "動画の読み込みに失敗しました",
+      "imageLoadError": "画像の読み込みに失敗しました",
       "seconds": "秒",
-      "fileSize": "ファイルサイズ"
+      "fileSize": "ファイルサイズ",
+      "credits": "クレジット"
     },
     "actions": {
       "download": "ダウンロード",
-      "retry": "再試行"
+      "retry": "再試行",
+      "downloadFailed": "ダウンロードに失敗しました",
+      "unknownError": "不明なエラー"
     },
     "empty": {
       "title": "変換履歴はありません",

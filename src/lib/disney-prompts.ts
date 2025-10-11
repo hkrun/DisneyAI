@@ -104,6 +104,50 @@ export function getStyleTemplate(id: string): DisneyStyleTemplate | undefined {
 }
 
 /**
+ * 根据ID和语言获取本地化的风格模板
+ */
+export function getLocalizedStyleTemplate(id: string, lang: string = 'zh'): DisneyStyleTemplate | undefined {
+  const template = DISNEY_STYLE_TEMPLATES.find(template => template.id === id);
+  if (!template) return undefined;
+
+  // 动态导入对应的语言文件
+  let localizedData;
+  try {
+    if (lang === 'zh') {
+      localizedData = require('@/locales/zh/styles.json');
+    } else if (lang === 'en') {
+      localizedData = require('@/locales/en/styles.json');
+    } else if (lang === 'es') {
+      localizedData = require('@/locales/es/styles.json');
+    } else if (lang === 'fr') {
+      localizedData = require('@/locales/fr/styles.json');
+    } else if (lang === 'de') {
+      localizedData = require('@/locales/de/styles.json');
+    } else if (lang === 'ja') {
+      localizedData = require('@/locales/ja/styles.json');
+    } else if (lang === 'ko') {
+      localizedData = require('@/locales/ko/styles.json');
+    } else {
+      localizedData = require('@/locales/en/styles.json'); // 默认英文
+    }
+  } catch (error) {
+    console.warn(`Failed to load localized styles for ${lang}, falling back to English`);
+    localizedData = require('@/locales/en/styles.json');
+  }
+
+  const localizedStyle = localizedData[id];
+  if (localizedStyle) {
+    return {
+      ...template,
+      name: localizedStyle.name,
+      description: localizedStyle.description
+    };
+  }
+
+  return template; // 如果找不到本地化版本，返回原始模板
+}
+
+/**
  * 根据分类获取风格模板
  */
 export function getStyleTemplatesByCategory(category: DisneyStyleTemplate['category']): DisneyStyleTemplate[] {

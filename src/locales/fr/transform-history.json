@@ -22,12 +22,16 @@
       "preview": "Aperçu",
       "hoverToPreview": "Passez la souris pour prévisualiser",
       "videoLoadError": "Échec du chargement de la vidéo",
+      "imageLoadError": "Échec du chargement de l'image",
       "seconds": "secondes",
-      "fileSize": "Taille du fichier"
+      "fileSize": "Taille du fichier",
+      "credits": "Crédits"
     },
     "actions": {
       "download": "Télécharger",
-      "retry": "Réessayer"
+      "retry": "Réessayer",
+      "downloadFailed": "Échec du téléchargement",
+      "unknownError": "Erreur inconnue"
     },
     "empty": {
       "title": "Aucun historique de conversion",

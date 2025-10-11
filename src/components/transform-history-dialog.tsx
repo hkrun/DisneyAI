@@ -13,7 +13,7 @@ import { TransformHistoryLocal } from "@/types/locales/transform-history"
 import { formatDistanceToNow } from "date-fns"
 import type { Locale } from "date-fns"
 import { zhCN, enUS, fr, de, es, ja, ko } from "date-fns/locale"
-import { getStyleTemplate } from "@/lib/disney-prompts"
+import { getLocalizedStyleTemplate } from "@/lib/disney-prompts"
 
 interface TransformTask {
   id: number
@@ -208,7 +208,7 @@ export function TransformHistoryDialog({ open, onClose, i18n, lang }: TransformH
       console.log('Download completed successfully')
     } catch (error) {
       console.error('Download failed:', error)
-      alert(`下载失败: ${error instanceof Error ? error.message : '未知错误'}`)
+      alert(`${i18n.actions.downloadFailed}: ${error instanceof Error ? error.message : i18n.actions.unknownError}`)
     }
   }
 
@@ -265,7 +265,7 @@ export function TransformHistoryDialog({ open, onClose, i18n, lang }: TransformH
                 <ScrollArea className="flex-1 h-[calc(85vh-200px)]">
                   <div className="space-y-4 px-0">
                   {filteredTasks.map((task, index) => {
-                    const styleTemplate = getStyleTemplate(task.styleId)
+                    const styleTemplate = getLocalizedStyleTemplate(task.styleId, lang)
                     return (
                     <div key={`${task.id}-${index}-${page}`} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors mx-3 sm:mx-4">
                       <div className="flex flex-col md:flex-row md:items-center justify-between">
@@ -318,7 +318,7 @@ export function TransformHistoryDialog({ open, onClose, i18n, lang }: TransformH
                                 <div className="w-full h-40 sm:w-48 sm:h-32 bg-gray-200 rounded border overflow-hidden">
                                   <img 
                                     src={task.resultUrl} 
-                                    alt="转换结果" 
+                                    alt={i18n.details.preview} 
                                     className="w-full h-full object-cover"
                                     onError={(e) => {
                                       const target = e.target as HTMLImageElement
@@ -327,7 +327,7 @@ export function TransformHistoryDialog({ open, onClose, i18n, lang }: TransformH
                                     }}
                                   />
                                   <div className="hidden w-full h-full flex items-center justify-center">
-                                    <span className="text-sm text-gray-400">图片加载失败</span>
+                                    <span className="text-sm text-gray-400">{i18n.details.imageLoadError}</span>
                                   </div>
                                 </div>
                               )
@@ -355,7 +355,7 @@ export function TransformHistoryDialog({ open, onClose, i18n, lang }: TransformH
                           <div className="text-xs text-gray-500 space-y-1">
                             <div className="flex items-center gap-1">
                               <Clock className="h-3 w-3" />
-                              {task.creditsUsed} 积分
+                              {task.creditsUsed} {i18n.details.credits}
                             </div>
                             {task.processingTime && (
                               <div className="flex items-center gap-1">

@@ -22,12 +22,16 @@
     "preview": "Preview",
     "hoverToPreview": "Hover to preview",
     "videoLoadError": "Video failed to load",
+    "imageLoadError": "Image failed to load",
     "seconds": "seconds",
-    "fileSize": "File Size"
+    "fileSize": "File Size",
+    "credits": "Credits"
   },
   "actions": {
     "download": "Download",
-    "retry": "Retry"
+    "retry": "Retry",
+    "downloadFailed": "Download failed",
+    "unknownError": "Unknown error"
   },
   "empty": {
     "title": "No Conversion History",

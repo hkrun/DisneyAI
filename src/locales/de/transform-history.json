@@ -22,12 +22,16 @@
       "preview": "Vorschau",
       "hoverToPreview": "Zum Vorschauen hoveren",
       "videoLoadError": "Videoladen fehlgeschlagen",
+      "imageLoadError": "Bildladen fehlgeschlagen",
       "seconds": "Sekunden",
-      "fileSize": "Dateigröße"
+      "fileSize": "Dateigröße",
+      "credits": "Credits"
     },
     "actions": {
       "download": "Herunterladen",
-      "retry": "Erneut versuchen"
+      "retry": "Erneut versuchen",
+      "downloadFailed": "Download fehlgeschlagen",
+      "unknownError": "Unbekannter Fehler"
     },
     "empty": {
       "title": "Kein Konvertierungsverlauf vorhanden",

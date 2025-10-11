@@ -22,12 +22,16 @@
     "preview": "预览",
     "hoverToPreview": "悬停预览",
     "videoLoadError": "视频加载失败",
+    "imageLoadError": "图片加载失败",
     "seconds": "秒",
-    "fileSize": "文件大小"
+    "fileSize": "文件大小",
+    "credits": "积分"
   },
   "actions": {
     "download": "下载",
-    "retry": "重试"
+    "retry": "重试",
+    "downloadFailed": "下载失败",
+    "unknownError": "未知错误"
   },
   "empty": {
     "title": "暂无转换记录",

@@ -22,12 +22,16 @@ export interface TransformHistoryLocal {
     preview: string;
     hoverToPreview: string;
     videoLoadError: string;
+    imageLoadError: string;
     seconds: string;
     fileSize: string;
+    credits: string;
   };
   actions: {
     download: string;
     retry: string;
+    downloadFailed: string;
+    unknownError: string;
   };
   empty: {
     title: string;

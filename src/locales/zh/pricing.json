@@ -327,7 +327,7 @@
       "unit_price": "999.99",
       "priceId": "price_1S7YZGDx3cvsYDBQpy1DfL9S"
     },
-    "cta": "立即订阅"
+    "cta": "联系我们"
   },
   "paymentTips": "付款后将自动添加订阅到您的账户 (30 秒内生效)。如果未显示，请刷新页面。",
   "trust": {
@@ -397,6 +397,6 @@
     "title": "DisneyAi 迪士尼风格转换定价-图片/视频风格化",
     "description": "DisneyAi 迪士尼风格转换定价方案，提供专业的图片与视频风格化创作服务。",
     "alt": "DisneyAi 迪士尼风格转换",
-    "keywords": "迪士尼风格,图片风格化,视频风格化,AI风格转换,AI图片处理"
+    "keywords": "迪士尼角色,迪士尼婴儿,迪士尼AI功能,AI图像生成器"
   }
 }

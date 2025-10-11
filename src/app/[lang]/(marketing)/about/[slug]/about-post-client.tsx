@@ -91,6 +91,17 @@ export default function AboutPostClient({ lang, slug, i18n, post }: { lang: stri
               </span>
             ))}
           </div>
+          {/* Article Featured Image */}
+          {post.image && (
+            <div className="mb-8">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-auto rounded-lg shadow-lg object-cover"
+                style={{ maxHeight: '500px' }}
+              />
+            </div>
+          )}
           {/* Share Button */}
           <div className="flex items-center gap-4 mb-8 pb-8 border-b border-border/50 dark:border-gray-700">
             <Button 

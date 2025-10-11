@@ -115,4 +115,11 @@
         { "question": "¿Cómo cancelo la suscripción?", "answer": "Puedes cancelarla en la configuración de tu cuenta en cualquier momento; seguirá activa hasta el final del ciclo de facturación actual." }
       ]
     }
+  ,
+  "meta": {
+    "title": "DisneyAi - Conversión de Estilo de Personajes Disney | Generador de Imágenes IA",
+    "description": "Transforma tus fotos y videos en estilos de personajes Disney usando tecnología IA. Experimenta bebé de Disney, funciones de IA de Disney y creación de contenido creativo.",
+    "alt": "DisneyAi Servicio de Conversión de Estilo Disney",
+    "keywords": "personajes de Disney, bebé de Disney, funciones de IA de Disney, generador de imágenes IA"
   }
+}

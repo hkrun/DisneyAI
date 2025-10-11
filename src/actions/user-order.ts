@@ -416,8 +416,19 @@ export async function hasValidSubscription(): Promise<{
             isWithinValidPeriod = expiryDateTime > now;
         }
 
-        // 只有活跃订阅才认为是有效订阅，已取消的订阅即使仍在有效期内也不阻止重新订阅
-        const hasValidSubscription = isActive;
+        // 🎯 判断是否应该显示商业版卡片：
+        // 1. 如果有活跃的付费订阅，显示商业版卡片
+        // 2. 如果试用期已过期，显示商业版卡片  
+        // 3. 如果付费订阅已取消，显示商业版卡片
+        let hasValidSubscription = false;
+        
+        if (subscription.subscription_type === 'trial') {
+            // 试用订阅：如果试用期已过期，显示商业版卡片
+            hasValidSubscription = !isWithinValidPeriod;
+        } else {
+            // 付费订阅：如果有活跃订阅，显示商业版卡片
+            hasValidSubscription = isActive;
+        }
 
         // 规范化当前档位（兼容未知/旧值），必要时用价格映射
         let normalizedPlan: 'basic' | 'premium' | 'professional' | 'business' | undefined = subscription.plan_type;

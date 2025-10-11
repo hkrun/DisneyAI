@@ -8,6 +8,7 @@ export interface BlogPost {
   publishDate: string;
   author: string;
   authorRole: string;
+  image: string;
   tags: string[];
   content: string;
 }
@@ -29,6 +30,7 @@ export function generateBlogPosts(i18n: About): BlogPosts {
         publishDate: post.publishDate,
         author: post.author,
         authorRole: post.authorRole,
+        image: post.image,
         tags: post.tags,
         content: generatePostContent(post.content)
       };

@@ -327,7 +327,7 @@
       "unit_price": "999.99",
       "priceId": "price_1S7YZGDx3cvsYDBQpy1DfL9S"
     },
-    "cta": "Suscribirse ahora"
+    "cta": "Contáctanos"
   },
   "paymentTips": "Después del pago, la suscripción se agregará automáticamente a su cuenta (toma efecto en 30 segundos). Si no aparece, actualice la página.",
   "trust": {
@@ -397,6 +397,6 @@
     "title": "Precios de conversión de estilo Disney de DisneyAi – Estilización de imágenes y videos",
     "description": "Planes de precios para la conversión de estilo Disney, con estilización profesional de imágenes y videos.",
     "alt": "DisneyAi Conversión de estilo Disney",
-    "keywords": "Estilo Disney, estilización de imágenes, estilización de videos, transferencia de estilo con IA"
+    "keywords": "personajes de Disney, bebé de Disney, funciones de IA de Disney, generador de imágenes IA"
   }
 }

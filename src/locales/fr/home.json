@@ -112,7 +112,13 @@
         { "question": "Quels formats d’image sont pris en charge ?", "answer": "Nous prenons en charge les formats courants JPG, PNG et GIF, jusqu’à 20 Mo." },
         { "question": "Combien de temps dure la conversion ?", "answer": "La conversion d’image prend généralement 10 à 30 secondes ; pour la vidéo, comptez 1 à 5 minutes selon la durée." },
         { "question": "Puis‑je utiliser commercialement les images générées ?", "answer": "Les images du plan Basique sont réservées à l’usage personnel. Avec l’offre Business, l’usage commercial est possible." },
-        { "question": "Comment annuler mon abonnement ?", "answer": "Vous pouvez l’annuler à tout moment dans les paramètres du compte ; il reste actif jusqu’à la fin de la période de facturation en cours." }
+        { "question": "Comment annuler mon abonnement ?", "answer": "Vous pouvez l'annuler à tout moment dans les paramètres du compte ; il reste actif jusqu'à la fin de la période de facturation en cours." }
       ]
-    }
+    },
+  "meta": {
+    "title": "DisneyAi - Conversion de Style de Personnages Disney | Générateur d'Images IA",
+    "description": "Transformez vos photos et vidéos en styles de personnages Disney en utilisant la technologie IA. Découvrez bébé Disney, fonctionnalités IA Disney et création de contenu créatif.",
+    "alt": "DisneyAi Service de Conversion de Style Disney",
+    "keywords": "personnages Disney, bébé Disney, fonctionnalités IA Disney, générateur d'images IA"
   }
+}

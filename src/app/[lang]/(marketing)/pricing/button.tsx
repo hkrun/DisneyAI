@@ -2,6 +2,7 @@
 
 import { useSession, signIn } from "next-auth/react"
 import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import CheckoutForm from './checkout-stripe'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -38,6 +39,7 @@ interface Props {
 
 export function PaymentButton({ btnlabel, lang, mode, product, currency, paymentTips, authErrorTitle, authErrorDesc, authTexts, paymentTexts, isFreeTrial = false, i18nPricing, isPopular = false, planType = 'basic', billingPeriod = 'monthly' }: Props) {
     const { data: session } = useSession()
+    const router = useRouter()
     const [isOpen, setIsOpen] = useState(false)
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
     const [hasUsedTrialState, setHasUsedTrialState] = useState(false)
@@ -63,7 +65,7 @@ export function PaymentButton({ btnlabel, lang, mode, product, currency, payment
             case 'professional':
                 return billingPeriod === 'annual' ? '点击了专业版年度订阅按钮' : '点击了专业版月度订阅按钮';
             case 'business':
-                return billingPeriod === 'annual' ? '点击了商业版年度订阅按钮' : '点击了商业版月度订阅按钮';
+                return '点击了商业版联系我们按钮';
             case 'oneTimeBasic':
                 return '点击了700积分购买按钮';
             case 'oneTimePremium':
@@ -81,9 +83,9 @@ export function PaymentButton({ btnlabel, lang, mode, product, currency, payment
         if (planType === 'freeTrial') {
             return btnlabel;
         }
-        // 商业版不提供免费试用，始终显示立即订阅
+        // 商业版显示联系我们
         if (planType === 'business') {
-            return i18nPricing?.subscription?.subscribeNow || "立即订阅";
+            return btnlabel; // 使用翻译文件中的"联系我们"文本
         }
         // 如果是单次购买，直接使用配置中的按钮文本
         if (planType?.startsWith('oneTime')) {
@@ -228,6 +230,13 @@ export function PaymentButton({ btnlabel, lang, mode, product, currency, payment
             return
         }
 
+        // 如果是商业版，跳转到联系我们页面
+        if (planType === 'business') {
+            const contactPath = lang === 'en' ? '/contact' : `/${lang}/contact`;
+            router.push(contactPath);
+            return;
+        }
+
         // 如果是免费试用，直接打开支付对话框，跳过订阅和试用检查
         if (planType === 'freeTrial') {
             setIsOpen(true);
@@ -270,8 +279,8 @@ export function PaymentButton({ btnlabel, lang, mode, product, currency, payment
             return;
         }
 
-        // 🎁 免费试用特殊处理：商业版和个人版订阅版本不提供试用；其他订阅版本按试用状态处理
-        if (planType !== 'business' && !['basic', 'premium', 'professional'].includes(planType || '') && !hasUsedTrialState) {
+        // 🎁 免费试用特殊处理：个人版订阅版本不提供试用；其他订阅版本按试用状态处理
+        if (!['basic', 'premium', 'professional'].includes(planType || '') && !hasUsedTrialState) {
             try {
                 const hasUsedTrial = await hasUsedFreeTrial();
                 if (hasUsedTrial) {

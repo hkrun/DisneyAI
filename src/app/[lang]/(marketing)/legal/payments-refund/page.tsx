@@ -8,8 +8,8 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     const alternates = generateAlternates(lang, '/legal/payments-refund');
     
     return {
-        title: "Payments & Refund Policy - DisneyAi Travel Translation",
-        description: "Payments and refund policy for our travel translation platform.",
+        title: "Payments & Refund Policy - DisneyAi",
+        description: "Payments and refund policy for our Disney style conversion platform.",
         alternates: {
             canonical: `${host}${getPathname(lang, '/legal/payments-refund')}`,
             languages: alternates

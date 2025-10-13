@@ -7,8 +7,8 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     const alternates = generateAlternates(lang, '/legal/terms');
     
     return {
-        title: "Terms of Service - DisneyAi Travel Translation",
-        description: "Terms of service for our travel translation platform.",
+        title: "Terms of Service - DisneyAi",
+        description: "Terms of service for our Disney style conversion platform.",
         alternates: {
             canonical: `${host}${getPathname(lang, '/legal/terms')}`,
             languages: alternates

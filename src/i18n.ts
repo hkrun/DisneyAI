@@ -13,10 +13,6 @@ export const i18nNamespaces = {
     'transform-history': 'transform-history',
 
     subscriptionDialog: 'subscription-dialog',
-    textTranslation: 'text-translation',
-    photoTranslation: 'photo-translation',
-    voiceTranslation: 'voice-translation',
-    travelGuide: 'travel-guide',
     features: 'features'
 };
 

@@ -7,8 +7,8 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     const alternates = generateAlternates(lang, '/legal/privacy');
     
     return {
-        title: "Privacy Policy - DisneyAi Travel Translation",
-        description: "Privacy policy for our travel translation platform.",
+        title: "Privacy Policy - DisneyAi",
+        description: "Privacy policy for our Disney style conversion platform.",
         alternates: {
             canonical: `${host}${getPathname(lang, '/legal/privacy')}`,
             languages: alternates

@@ -16,7 +16,6 @@ export enum Feature {
   TEXT_TRANSLATION = 'text_translation',      // 文本翻译
   VOICE_TRANSLATION = 'voice_translation',    // 语音翻译
   IMAGE_TRANSLATION = 'image_translation',    // 图片翻译
-  TRAVEL_GUIDE = 'travel_guide',              // 旅游攻略
   AI_ASSISTANT = 'ai_assistant',              // AI智能助手
   API_ACCESS = 'api_access',                  // API接口访问
   PRIORITY_SUPPORT = 'priority_support'       // 优先支持
@@ -71,7 +70,6 @@ export const SUBSCRIPTION_PLANS: Record<SubscriptionPlan, PlanConfig> = {
       Feature.TEXT_TRANSLATION,
       Feature.VOICE_TRANSLATION,
       Feature.IMAGE_TRANSLATION,
-      Feature.TRAVEL_GUIDE,
       Feature.AI_ASSISTANT
     ],
     limits: {
@@ -89,7 +87,6 @@ export const SUBSCRIPTION_PLANS: Record<SubscriptionPlan, PlanConfig> = {
       Feature.TEXT_TRANSLATION,
       Feature.VOICE_TRANSLATION,
       Feature.IMAGE_TRANSLATION,
-      Feature.TRAVEL_GUIDE,
       Feature.AI_ASSISTANT,
       Feature.API_ACCESS,
       Feature.PRIORITY_SUPPORT
@@ -189,7 +186,6 @@ export function checkFeaturePermission(
       [Feature.TEXT_TRANSLATION]: '文本翻译功能需要基础版或更高版本',
       [Feature.VOICE_TRANSLATION]: '语音翻译功能需要基础版或更高版本',
       [Feature.IMAGE_TRANSLATION]: '图片翻译功能需要基础版或更高版本',
-      [Feature.TRAVEL_GUIDE]: '旅游攻略功能需要专业版或更高版本',
       [Feature.AI_ASSISTANT]: 'AI智能助手功能需要专业版或更高版本',
       [Feature.API_ACCESS]: 'API接口访问需要商业版',
       [Feature.PRIORITY_SUPPORT]: '优先支持需要商业版'
@@ -198,7 +194,6 @@ export function checkFeaturePermission(
       [Feature.TEXT_TRANSLATION]: 'Text translation requires Basic plan or higher',
       [Feature.VOICE_TRANSLATION]: 'Voice translation requires Basic plan or higher',
       [Feature.IMAGE_TRANSLATION]: 'Image translation requires Basic plan or higher',
-      [Feature.TRAVEL_GUIDE]: 'Travel guide requires Professional plan or higher',
       [Feature.AI_ASSISTANT]: 'AI assistant requires Professional plan or higher',
       [Feature.API_ACCESS]: 'API access requires Business plan',
       [Feature.PRIORITY_SUPPORT]: 'Priority support requires Business plan'
@@ -207,7 +202,6 @@ export function checkFeaturePermission(
       [Feature.TEXT_TRANSLATION]: 'テキスト翻訳機能にはベーシックプラン以上が必要です',
       [Feature.VOICE_TRANSLATION]: '音声翻訳機能にはベーシックプラン以上が必要です',
       [Feature.IMAGE_TRANSLATION]: '画像翻訳機能にはベーシックプラン以上が必要です',
-      [Feature.TRAVEL_GUIDE]: '旅行ガイド機能にはプロフェッショナルプラン以上が必要です',
       [Feature.AI_ASSISTANT]: 'AI智能助手機能にはプロフェッショナルプラン以上が必要です',
       [Feature.API_ACCESS]: 'APIアクセスにはビジネスプランが必要です',
       [Feature.PRIORITY_SUPPORT]: '優先サポートにはビジネスプランが必要です'
@@ -216,7 +210,6 @@ export function checkFeaturePermission(
       [Feature.TEXT_TRANSLATION]: '텍스트 번역 기능은 베이직 플랜 이상이 필요합니다',
       [Feature.VOICE_TRANSLATION]: '음성 번역 기능은 베이직 플랜 이상이 필요합니다',
       [Feature.IMAGE_TRANSLATION]: '이미지 번역 기능은 베이직 플랜 이상이 필요합니다',
-      [Feature.TRAVEL_GUIDE]: '여행 가이드 기능은 프로페셔널 플랜 이상이 필요합니다',
       [Feature.AI_ASSISTANT]: 'AI 어시스턴트 기능은 프로페셔널 플랜 이상이 필요합니다',
       [Feature.API_ACCESS]: 'API 액세스는 비즈니스 플랜이 필요합니다',
       [Feature.PRIORITY_SUPPORT]: '우선 지원은 비즈니스 플랜이 필요합니다'
@@ -225,7 +218,6 @@ export function checkFeaturePermission(
       [Feature.TEXT_TRANSLATION]: 'La traducción de texto requiere plan Básico o superior',
       [Feature.VOICE_TRANSLATION]: 'La traducción de voz requiere plan Básico o superior',
       [Feature.IMAGE_TRANSLATION]: 'La traducción de imágenes requiere plan Básico o superior',
-      [Feature.TRAVEL_GUIDE]: 'La guía de viaje requiere plan Profesional o superior',
       [Feature.AI_ASSISTANT]: 'El asistente IA requiere plan Profesional o superior',
       [Feature.API_ACCESS]: 'El acceso API requiere plan Empresarial',
       [Feature.PRIORITY_SUPPORT]: 'El soporte prioritario requiere plan Empresarial'
@@ -234,7 +226,6 @@ export function checkFeaturePermission(
       [Feature.TEXT_TRANSLATION]: 'La traduction de texte nécessite un plan Basique ou supérieur',
       [Feature.VOICE_TRANSLATION]: 'La traduction vocale nécessite un plan Basique ou supérieur',
       [Feature.IMAGE_TRANSLATION]: 'La traduction d\'images nécessite un plan Basique ou supérieur',
-      [Feature.TRAVEL_GUIDE]: 'Le guide de voyage nécessite un plan Professionnel ou supérieur',
       [Feature.AI_ASSISTANT]: 'L\'assistant IA nécessite un plan Professionnel ou supérieur',
       [Feature.API_ACCESS]: 'L\'accès API nécessite un plan Entreprise',
       [Feature.PRIORITY_SUPPORT]: 'Le support prioritaire nécessite un plan Entreprise'
@@ -243,7 +234,6 @@ export function checkFeaturePermission(
       [Feature.TEXT_TRANSLATION]: 'Textübersetzung erfordert Basic-Plan oder höher',
       [Feature.VOICE_TRANSLATION]: 'Sprachübersetzung erfordert Basic-Plan oder höher',
       [Feature.IMAGE_TRANSLATION]: 'Bildübersetzung erfordert Basic-Plan oder höher',
-      [Feature.TRAVEL_GUIDE]: 'Reiseführer erfordert Professional-Plan oder höher',
       [Feature.AI_ASSISTANT]: 'KI-Assistent erfordert Professional-Plan oder höher',
       [Feature.API_ACCESS]: 'API-Zugang erfordert Business-Plan',
       [Feature.PRIORITY_SUPPORT]: 'Priority-Support erfordert Business-Plan'
@@ -267,7 +257,6 @@ export const FEATURE_NAMES = {
     [Feature.TEXT_TRANSLATION]: '文本翻译',
     [Feature.VOICE_TRANSLATION]: '语音翻译',
     [Feature.IMAGE_TRANSLATION]: '图片翻译',
-    [Feature.TRAVEL_GUIDE]: '旅游攻略',
     [Feature.AI_ASSISTANT]: 'AI智能助手',
     [Feature.API_ACCESS]: 'API接口',
     [Feature.PRIORITY_SUPPORT]: '优先支持'
@@ -276,7 +265,6 @@ export const FEATURE_NAMES = {
     [Feature.TEXT_TRANSLATION]: 'Text Translation',
     [Feature.VOICE_TRANSLATION]: 'Voice Translation',
     [Feature.IMAGE_TRANSLATION]: 'Image Translation',
-    [Feature.TRAVEL_GUIDE]: 'Travel Guide',
     [Feature.AI_ASSISTANT]: 'AI Assistant',
     [Feature.API_ACCESS]: 'API Access',
     [Feature.PRIORITY_SUPPORT]: 'Priority Support'

@@ -9,7 +9,7 @@
       "subtitle": "(Supports JPG/PNG/GIF, ≤5MB)",
       "placeholder": "Click to upload or drag image here",
       "supportedFormats": "Supports JPG, PNG, GIF formats",
-      "exampleImages": "Select example images:"
+      "exampleImages": "Conversion effect examples:"
     },
     "style": {
       "title": "Choose Disney Style",

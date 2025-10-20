@@ -42,7 +42,6 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
   const [selectedVideo, setSelectedVideo] = useState<File | null>(null)
   const [selectedStyle, setSelectedStyle] = useState<DisneyStyleTemplate | null>(null)
   const [conversion, setConversion] = useState<ConversionState>({ status: 'idle' })
-  const [loadingExample, setLoadingExample] = useState(false)
   const [previewVideo, setPreviewVideo] = useState<string | null>(null)
   // 新增：视频转换的自定义提示词状态
   const [customPrompt, setCustomPrompt] = useState<string>('')
@@ -93,7 +92,6 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
     setSelectedVideo(null)
     setSelectedStyle(null)
     setConversion({ status: 'idle' })
-    setLoadingExample(false)
     setPreviewVideo(null)
     setCustomPrompt('') // 重置自定义提示词
     setSelectedCharacterPrompt(null) // 重置选中人物提示词
@@ -211,51 +209,6 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
     }
   }
 
-  // 处理示例图片选择
-  const handleSelectExampleImage = async (imageUrl: string) => {
-    setLoadingExample(true)
-    try {
-      const response = await fetch(imageUrl)
-      if (!response.ok) {
-        throw new Error(`Failed to fetch image: ${response.statusText}`)
-      }
-      const blob = await response.blob()
-      // 从URL中提取文件名，并创建File对象
-      const filename = imageUrl.substring(imageUrl.lastIndexOf('/') + 1)
-      const file = new File([blob], filename, { type: blob.type })
-      setSelectedImage(file)
-      fileToDataUrl(file).then(setSelectedImageDataUrl).catch(() => {})
-      setStep(2) // 跳转到风格选择步骤
-    } catch (error) {
-      console.error('Failed to load example image:', error)
-      alert('加载示例图片失败，请重试')
-    } finally {
-      setLoadingExample(false)
-    }
-  }
-
-  // 处理示例图片选择（用于视频转换）
-  const handleSelectExampleImageForVideo = async (imageUrl: string) => {
-    setLoadingExample(true)
-    try {
-      const response = await fetch(imageUrl)
-      if (!response.ok) {
-        throw new Error(`Failed to fetch image: ${response.statusText}`)
-      }
-      const blob = await response.blob()
-      // 从URL中提取文件名，并创建File对象
-      const filename = imageUrl.substring(imageUrl.lastIndexOf('/') + 1)
-      const file = new File([blob], filename, { type: blob.type })
-      setSelectedImage(file)
-      fileToDataUrl(file).then(setSelectedImageDataUrl).catch(() => {})
-      setStep(2) // 跳转到风格选择步骤
-    } catch (error) {
-      console.error('Failed to load example image:', error)
-      alert('加载示例图片失败，请重试')
-    } finally {
-      setLoadingExample(false)
-    }
-  }
 
   // 处理拖拽上传
   const handleDrop = (event: React.DragEvent) => {
@@ -706,7 +659,6 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
     setSelectedImageDataUrl(null)
     setSelectedStyle(null)
     setConversion({ status: 'idle' })
-    setLoadingExample(false)
     setCustomPrompt('') // 重置自定义提示词
     setSelectedCharacterPrompt(null) // 重置选中人物提示词
     setSelectedScenePrompt(null) // 重置选中场景提示词
@@ -1032,36 +984,25 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
                       className="hidden"
                     />
                     
-                    {/* 示例素材 */}
+                    {/* 效果展示 */}
                     <div className="mb-6">
                       <p className="text-sm font-medium mb-3">{i18n.steps.upload.exampleImages}</p>
                       <div className="grid grid-cols-3 gap-4">
                         {[
-                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/d558df1d7d8f642c524c7a5af1d4f613.jpeg',
-                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/c1f0b3fbb832ad271dcd59281672a04a.jpeg',
-                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/7dcb96839cad12bfca9659c77a7c1ffc.jpeg'
+                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/xg1.jpg',
+                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/xg2.jpeg',
+                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/xg3.jpeg'
                         ].map((imageUrl, index) => (
-                    <button 
-                      key={index} 
-                    onClick={() => {
-                      if (!isLoggedIn) { setShowLoginDialog(true); return }
-                      return mode === 'image' ? handleSelectExampleImage(imageUrl) : handleSelectExampleImageForVideo(imageUrl)
-                    }} 
-                            disabled={loadingExample}
-                            className="aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 hover:border-disney-red transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          <div 
+                            key={index} 
+                            className="aspect-[4/3] rounded-xl overflow-hidden border border-gray-200"
                           >
-                            {loadingExample ? (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-100">
-                                <i className="fa fa-spinner fa-spin text-disney-red text-xl" />
-                              </div>
-                            ) : (
-                              <img 
-                                src={imageUrl} 
-                                className="w-full h-full object-cover" 
-                                alt={`示例图片 ${index + 1}`}
-                              />
-                            )}
-                          </button>
+                            <img 
+                              src={imageUrl} 
+                              className="w-full h-full object-cover" 
+                              alt={`效果展示 ${index + 1}`}
+                            />
+                          </div>
                         ))}
                       </div>
                     </div>

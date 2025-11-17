@@ -2,7 +2,7 @@
   "hero": {
     "subtitle": "ディズニースタイル変換、クリエイティビティ無限",
     "title": "ディズニースタイル変換プランを選択",
-    "description": "ご自身のクリエイティブニーズに合った最適なプランを選択してください。3日間の無料トライアルを提供しています。"
+    "description": "ご自身のクリエイティブニーズに合った最適なプランを選択してください。3日間の先行体験をご用意しています。"
   },
   "billing": {
     "title": "価格プラン",
@@ -17,14 +17,14 @@
     "popular": "人気"
   },
   "freeTrial": {
-    "title": "無料トライアル",
-    "description": "全機能を体験、クレジットカード不要",
-    "badge": "期間限定無料",
+    "title": "先行体験",
+    "description": "全機能を1ドルで体験できます",
+    "badge": "期間限定",
     "price": {
-      "amount": "$0.00",
-      "period": "/3日間"
+      "amount": "$1.00",
+      "period": "3日間"
     },
-    "trial": "3日間無料トライアル",
+    "trial": "3日間の先行体験",
     "currency": "EUR",
     "mode": "trial",
     "features": [
@@ -36,18 +36,18 @@
     ],
     "product": {
       "code": "disneyai_trial",
-      "desc": "DisneyAi 3日間無料トライアル",
-      "name": "DisneyAi 無料トライアル",
+      "desc": "DisneyAi 3日間先行体験",
+      "name": "DisneyAi 先行体験",
       "quantity": "1",
       "sku": "disneyai_trial",
       "type": "digital",
-      "unit_price": "0.00",
+      "unit_price": "1.00",
       "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
-    "cta": "無料で受け取る",
-    "afterTrial": "トライアル終了後、ベーシックプランに自動更新",
+    "cta": "今すぐ体験",
+    "afterTrial": "体験終了後、ベーシックプランに自動更新",
     "placeholderFeatures": {
-      "templateUsage": "無料テンプレート使用",
+      "templateUsage": "テンプレート使用",
       "customDisneyAi": "カスタムスタイル変換",
       "historyView": "変換履歴表示"
     },
@@ -56,24 +56,24 @@
       "customDisneyAi": "画像または動画をアップロード",
       "historyView": "変換履歴を表示"
     },
-    "placeholderPrice": "無料",
+    "placeholderPrice": "お得",
     "placeholderPeriod": "3日間",
     "statusTexts": {
-      "checkingTrial": "トライアル状態を確認中...",
-      "trialUsed": "トライアル使用済み"
+      "checkingTrial": "体験状態を確認中...",
+      "trialUsed": "体験使用済み"
     }
   },
   "basic": {
     "title": "ベーシック版",
     "price": {
       "amount": "$9.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$99.99",
-      "period": "/年"
+      "period": "年"
     },
-    "trial": "3日間無料トライアル",
+    "trial": "3日間限定体験",
     "currency": "EUR",
     "mode": "定期課金",
     "features": [
@@ -106,19 +106,19 @@
       "unit_price": "99.99",
       "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
-    "cta": "無料トライアルを開始"
+    "cta": "今すぐ購読"
   },
   "premium": {
     "title": "プレミアム版",
     "price": {
       "amount": "$19.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$199.99",
-      "period": "/年"
+      "period": "年"
     },
-    "trial": "3日間無料トライアル",
+    "trial": "3日間限定体験",
     "currency": "EUR",
     "mode": "定期課金",
     "features": [
@@ -155,19 +155,19 @@
       "unit_price": "199.99",
       "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
-    "cta": "無料トライアルを開始"
+    "cta": "今すぐ購読"
   },
   "professional": {
     "title": "プロフェッショナル版",
     "price": {
       "amount": "$29.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$299.99",
-      "period": "/年"
+      "period": "年"
     },
-    "trial": "3日間無料トライアル",
+    "trial": "3日間限定体験",
     "currency": "EUR",
     "mode": "定期課金",
     "features": [
@@ -202,7 +202,7 @@
       "unit_price": "299.99",
       "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
-    "cta": "無料トライアルを開始"
+    "cta": "今すぐ購読"
   },
   "oneTimeBasic": {
     "title": "700ポイント",
@@ -289,11 +289,11 @@
     "title": "ビジネス版",
     "price": {
       "amount": "$99.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$999.99",
-      "period": "/年"
+      "period": "年"
     },
     "trial": "サブスクリプション後、すぐにお問い合わせください",
     "currency": "EUR",
@@ -367,14 +367,14 @@
     }
   },
   "trial": {
-    "alreadyUsed": "トライアルは既に使用済み",
-    "alreadyUsedTitle": "トライアルは既に使用済み",
-    "alreadyUsedMessage": "3日間の無料トライアルは既に使用しています。各ユーザーは無料トライアルを1回のみ使用できます。\n他のサブスクリプションプランを選択して、当サービスの使用を継続できます。",
+    "alreadyUsed": "体験は既に使用済み",
+    "alreadyUsedTitle": "体験は既に使用済み",
+    "alreadyUsedMessage": "3日間の限定体験は既に使用しています。各ユーザーは限定体験を1回のみ使用できます。\n他のサブスクリプションプランを選択して、当サービスの使用を継続できます。",
     "alreadyUsedButton": "承知いたしました",
-    "cannotReapply": "無料トライアルは既に使用しているため、再申請できません",
+    "cannotReapply": "限定体験は既に使用しているため、再申請できません",
     "checkFailed": "確認に失敗しました",
-    "checkFailedDesc": "トライアル状況の検証ができませんでした。後ほど再試行してください",
-    "startFreeTrial": "無料トライアルを開始"
+    "checkFailedDesc": "体験状況の検証ができませんでした。後ほど再試行してください",
+    "startFreeTrial": "限定体験を開始"
   },
   "subscription": {
     "duplicateTitle": "重複したサブスクリプションは不可",
@@ -386,7 +386,7 @@
     "expiryTime": "有効期限：{expiryDate}",
     "subscribeNow": "すぐにサブスクライブ",
     "subscriptionTypes": {
-      "trial": "トライアル",
+      "trial": "体験",
       "monthly": "月額",
       "quarterly": "クォーターリー（3ヶ月）",
       "annual": "年額",

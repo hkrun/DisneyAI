@@ -2,7 +2,7 @@
   "hero": {
     "subtitle": "Conversión de estilo Disney, creatividad sin límites",
     "title": "Elige tu plan de conversión de estilo Disney",
-    "description": "Selecciona el plan perfecto para tus necesidades creativas. Ofrecemos una prueba gratuita de 3 días."
+    "description": "Selecciona el plan perfecto para tus necesidades creativas. Ofrecemos un acceso anticipado de 3 días."
   },
   "billing": {
     "title": "Planes de precios",
@@ -17,14 +17,14 @@
     "popular": "Popular"
   },
   "freeTrial": {
-    "title": "Prueba Gratuita",
-    "description": "Experimenta todas las funciones, no se requiere tarjeta de crédito",
-    "badge": "Gratis por tiempo limitado",
+    "title": "Acceso Anticipado",
+    "description": "Disfruta todas las funciones por solo un dólar",
+    "badge": "Oferta limitada",
     "price": {
-      "amount": "$0.00",
-      "period": "/3 días"
+      "amount": "$1.00",
+      "period": "3 días"
     },
-    "trial": "Prueba gratuita de 3 días",
+    "trial": "Acceso anticipado de 3 días",
     "currency": "EUR",
     "mode": "trial",
     "features": [
@@ -36,18 +36,18 @@
     ],
     "product": {
       "code": "disneyai_trial",
-      "desc": "DisneyAi Prueba gratuita de 3 días",
-      "name": "DisneyAi Prueba Gratuita",
+      "desc": "DisneyAi acceso anticipado de 3 días",
+      "name": "DisneyAi Acceso Anticipado",
       "quantity": "1",
       "sku": "disneyai_trial",
       "type": "digital",
-      "unit_price": "0.00",
+      "unit_price": "1.00",
       "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
-    "cta": "Reclamar Gratis",
-    "afterTrial": "Renovación automática al plan Básico después de la prueba",
+    "cta": "Probar ahora",
+    "afterTrial": "Renovación automática al plan Básico después de la experiencia",
     "placeholderFeatures": {
-      "templateUsage": "Uso gratuito de plantillas",
+      "templateUsage": "Uso de plantillas",
       "customDisneyAi": "Conversión de estilo personalizada",
       "historyView": "Ver historial de conversiones"
     },
@@ -56,24 +56,24 @@
       "customDisneyAi": "Sube tu imagen o video",
       "historyView": "Ver historial de conversiones"
     },
-    "placeholderPrice": "Gratis",
+    "placeholderPrice": "Oferta",
     "placeholderPeriod": "3 días",
     "statusTexts": {
-      "checkingTrial": "Verificando estado de prueba...",
-      "trialUsed": "Prueba Usada"
+      "checkingTrial": "Verificando estado de experiencia...",
+      "trialUsed": "Experiencia Usada"
     }
   },
   "basic": {
     "title": "Básica",
     "price": {
       "amount": "$9.99",
-      "period": "/mes"
+      "period": "mes"
     },
     "annualPrice": {
       "amount": "$99.99",
-      "period": "/año"
+      "period": "año"
     },
-    "trial": "Prueba gratuita de 3 días",
+    "trial": "Experiencia limitada de 3 días",
     "currency": "EUR",
     "mode": "Periódico",
     "features": [
@@ -106,19 +106,19 @@
       "unit_price": "99.99",
       "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
-    "cta": "Iniciar prueba gratuita"
+    "cta": "Suscribir ahora"
   },
   "premium": {
     "title": "Premium",
     "price": {
       "amount": "$19.99",
-      "period": "/mes"
+      "period": "mes"
     },
     "annualPrice": {
       "amount": "$199.99",
-      "period": "/año"
+      "period": "año"
     },
-    "trial": "Prueba gratuita de 3 días",
+    "trial": "Experiencia limitada de 3 días",
     "currency": "EUR",
     "mode": "Periódico",
     "features": [
@@ -155,19 +155,19 @@
       "unit_price": "199.99",
       "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
-    "cta": "Iniciar prueba gratuita"
+    "cta": "Suscribir ahora"
   },
   "professional": {
     "title": "Profesional",
     "price": {
       "amount": "$29.99",
-      "period": "/mes"
+      "period": "mes"
     },
     "annualPrice": {
       "amount": "$299.99",
-      "period": "/año"
+      "period": "año"
     },
-    "trial": "Prueba gratuita de 3 días",
+    "trial": "Experiencia limitada de 3 días",
     "currency": "EUR",
     "mode": "Periódico",
     "features": [
@@ -202,7 +202,7 @@
       "unit_price": "299.99",
       "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
-    "cta": "Iniciar prueba gratuita"
+    "cta": "Suscribir ahora"
   },
   "oneTimeBasic": {
     "title": "700 puntos",
@@ -289,11 +289,11 @@
     "title": "Empresarial",
     "price": {
       "amount": "$99.99",
-      "period": "/mes"
+      "period": "mes"
     },
     "annualPrice": {
       "amount": "$999.99",
-      "period": "/año"
+      "period": "año"
     },
     "trial": "Contáctenos inmediatamente después de suscribirse",
     "currency": "EUR",
@@ -367,14 +367,14 @@
     }
   },
   "trial": {
-    "alreadyUsed": "Prueba ya utilizada",
-    "alreadyUsedTitle": "Prueba ya utilizada",
-    "alreadyUsedMessage": "Ya ha utilizado la prueba gratuita de 3 días. Cada usuario solo puede usar la prueba gratuita una vez.\nPuede elegir otros planes de suscripción para continuar usando nuestro servicio.",
+    "alreadyUsed": "Experiencia ya utilizada",
+    "alreadyUsedTitle": "Experiencia ya utilizada",
+    "alreadyUsedMessage": "Ya ha utilizado la experiencia limitada de 3 días. Cada usuario solo puede usar la experiencia limitada una vez.\nPuede elegir otros planes de suscripción para continuar usando nuestro servicio.",
     "alreadyUsedButton": "Entendido",
-    "cannotReapply": "Ya ha utilizado la prueba gratuita y no puede solicitarla nuevamente",
+    "cannotReapply": "Ya ha utilizado la experiencia limitada y no puede solicitarla nuevamente",
     "checkFailed": "Verificación fallida",
-    "checkFailedDesc": "No se pudo verificar el estado de la prueba, intente nuevamente más tarde",
-    "startFreeTrial": "Iniciar prueba gratuita"
+    "checkFailedDesc": "No se pudo verificar el estado de la experiencia, intente nuevamente más tarde",
+    "startFreeTrial": "Iniciar experiencia limitada"
   },
   "subscription": {
     "duplicateTitle": "Suscripción duplicada no permitida",
@@ -386,7 +386,7 @@
     "expiryTime": "Fecha de vencimiento: {expiryDate}",
     "subscribeNow": "Suscribirse ahora",
     "subscriptionTypes": {
-      "trial": "Prueba",
+      "trial": "Experiencia",
       "monthly": "Mensual",
       "quarterly": "Trimestral",
       "annual": "Anual",

@@ -2,7 +2,7 @@
   "hero": {
     "subtitle": "Conversion au style Disney, créativité sans limites",
     "title": "Choisissez votre plan de conversion au style Disney",
-    "description": "Sélectionnez le plan idéal pour vos besoins créatifs. Nous offrons un essai gratuit de 3 jours."
+    "description": "Sélectionnez le plan idéal pour vos besoins créatifs. Nous proposons un accès anticipé de 3 jours."
   },
   "billing": {
     "title": "Plans de tarification",
@@ -17,14 +17,14 @@
     "popular": "Populaire"
   },
   "freeTrial": {
-    "title": "Essai Gratuit",
-    "description": "Découvrez toutes les fonctionnalités, aucune carte de crédit requise",
-    "badge": "Gratuit pour un temps limité",
+    "title": "Accès anticipé",
+    "description": "Profitez de toutes les fonctionnalités pour seulement un dollar",
+    "badge": "Offre limitée",
     "price": {
-      "amount": "$0.00",
-      "period": "/3 jours"
+      "amount": "$1.00",
+      "period": "3 jours"
     },
-    "trial": "Essai gratuit de 3 jours",
+    "trial": "Accès anticipé de 3 jours",
     "currency": "EUR",
     "mode": "trial",
     "features": [
@@ -36,18 +36,18 @@
     ],
     "product": {
       "code": "disneyai_trial",
-      "desc": "DisneyAi Essai gratuit de 3 jours",
-      "name": "DisneyAi Essai Gratuit",
+      "desc": "DisneyAi accès anticipé de 3 jours",
+      "name": "DisneyAi Accès anticipé",
       "quantity": "1",
       "sku": "disneyai_trial",
       "type": "digital",
-      "unit_price": "0.00",
+      "unit_price": "1.00",
       "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
-    "cta": "Réclamer Gratuitement",
-    "afterTrial": "Renouvellement automatique vers le plan De Base après l'essai",
+    "cta": "Essayer maintenant",
+    "afterTrial": "Renouvellement automatique vers le plan De Base après l'expérience",
     "placeholderFeatures": {
-      "templateUsage": "Utilisation gratuite des modèles",
+      "templateUsage": "Utilisation des modèles",
       "customDisneyAi": "Conversion de style personnalisée",
       "historyView": "Voir l'historique des conversions"
     },
@@ -56,24 +56,24 @@
       "customDisneyAi": "Téléchargez votre image ou vidéo",
       "historyView": "Voir l'historique des conversions"
     },
-    "placeholderPrice": "Gratuit",
+    "placeholderPrice": "Offre",
     "placeholderPeriod": "3 jours",
     "statusTexts": {
-      "checkingTrial": "Vérification du statut d'essai...",
-      "trialUsed": "Essai Utilisé"
+      "checkingTrial": "Vérification du statut d'expérience...",
+      "trialUsed": "Expérience Utilisée"
     }
   },
   "basic": {
     "title": "De Base",
     "price": {
       "amount": "$9.99",
-      "period": "/mois"
+      "period": "mois"
     },
     "annualPrice": {
       "amount": "$99.99",
-      "period": "/an"
+      "period": "an"
     },
-    "trial": "Essai gratuit de 3 jours",
+    "trial": "Expérience limitée de 3 jours",
     "currency": "EUR",
     "mode": "Récurrent",
     "features": [
@@ -106,19 +106,19 @@
       "unit_price": "99.99",
       "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
-    "cta": "Démarrer l'essai gratuit"
+    "cta": "S'abonner maintenant"
   },
   "premium": {
     "title": "Premium",
     "price": {
       "amount": "$19.99",
-      "period": "/mois"
+      "period": "mois"
     },
     "annualPrice": {
       "amount": "$199.99",
-      "period": "/an"
+      "period": "an"
     },
-    "trial": "Essai gratuit de 3 jours",
+    "trial": "Expérience limitée de 3 jours",
     "currency": "EUR",
     "mode": "Récurrent",
     "features": [
@@ -155,19 +155,19 @@
       "unit_price": "199.99",
       "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
-    "cta": "Démarrer l'essai gratuit"
+    "cta": "S'abonner maintenant"
   },
   "professional": {
     "title": "Professionnelle",
     "price": {
       "amount": "$29.99",
-      "period": "/mois"
+      "period": "mois"
     },
     "annualPrice": {
       "amount": "$299.99",
-      "period": "/an"
+      "period": "an"
     },
-    "trial": "Essai gratuit de 3 jours",
+    "trial": "Expérience limitée de 3 jours",
     "currency": "EUR",
     "mode": "Récurrent",
     "features": [
@@ -202,7 +202,7 @@
       "unit_price": "299.99",
       "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
-    "cta": "Démarrer l'essai gratuit"
+    "cta": "S'abonner maintenant"
   },
   "oneTimeBasic": {
     "title": "700 points",
@@ -289,11 +289,11 @@
     "title": "Entreprise",
     "price": {
       "amount": "$99.99",
-      "period": "/mois"
+      "period": "mois"
     },
     "annualPrice": {
       "amount": "$999.99",
-      "period": "/an"
+      "period": "an"
     },
     "trial": "Contactez-nous immédiatement après l'abonnement",
     "currency": "EUR",
@@ -367,14 +367,14 @@
     }
   },
   "trial": {
-    "alreadyUsed": "Essai déjà utilisé",
-    "alreadyUsedTitle": "Essai déjà utilisé",
-    "alreadyUsedMessage": "Vous avez déjà utilisé l'essai gratuit de 3 jours. Chaque utilisateur ne peut utiliser l'essai gratuit qu'une seule fois.\nVous pouvez choisir d'autres plans d'abonnement pour continuer à utiliser notre service.",
+    "alreadyUsed": "Expérience déjà utilisée",
+    "alreadyUsedTitle": "Expérience déjà utilisée",
+    "alreadyUsedMessage": "Vous avez déjà utilisé l'expérience limitée de 3 jours. Chaque utilisateur ne peut utiliser l'expérience limitée qu'une seule fois.\nVous pouvez choisir d'autres plans d'abonnement pour continuer à utiliser notre service.",
     "alreadyUsedButton": "J'ai compris",
-    "cannotReapply": "Vous avez déjà utilisé l'essai gratuit et ne pouvez pas le renouveler",
+    "cannotReapply": "Vous avez déjà utilisé l'expérience limitée et ne pouvez pas le renouveler",
     "checkFailed": "Vérification échouée",
-    "checkFailedDesc": "Impossible de vérifier l'état de l'essai, veuillez réessayer plus tard",
-    "startFreeTrial": "Démarrer l'essai gratuit"
+    "checkFailedDesc": "Impossible de vérifier l'état de l'expérience, veuillez réessayer plus tard",
+    "startFreeTrial": "Démarrer l'expérience limitée"
   },
   "subscription": {
     "duplicateTitle": "Abonnement en double non autorisé",
@@ -386,7 +386,7 @@
     "expiryTime": "Date d'expiration : {expiryDate}",
     "subscribeNow": "S'abonner maintenant",
     "subscriptionTypes": {
-      "trial": "Essai",
+      "trial": "Expérience",
       "monthly": "Mensuel",
       "quarterly": "Trimestriel",
       "annual": "Annuel",

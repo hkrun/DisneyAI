@@ -2,7 +2,7 @@
   "hero": {
     "subtitle": "디즈니 스타일 변환, 무한한 창의성",
     "title": "디즈니 스타일 변환 플랜 선택",
-    "description": "크리에이티브 니즈에 맞는 최적의 플랜을 선택하세요. 3일 무료 트라이얼을 제공합니다."
+    "description": "크리에이티브 니즈에 맞는 최적의 플랜을 선택하세요. 3일 사전 체험을 제공합니다."
   },
   "billing": {
     "title": "가격 플랜",
@@ -17,14 +17,14 @@
     "popular": "인기"
   },
   "freeTrial": {
-    "title": "무료 체험",
-    "description": "모든 기능을 경험하세요, 신용카드 불필요",
-    "badge": "한정 무료",
+    "title": "사전 체험",
+    "description": "모든 기능을 단 1달러로 이용해 보세요",
+    "badge": "한정 혜택",
     "price": {
-      "amount": "$0.00",
-      "period": "/3일"
+      "amount": "$1.00",
+      "period": "3일"
     },
-    "trial": "3일 무료 체험",
+    "trial": "3일 사전 체험",
     "currency": "EUR",
     "mode": "trial",
     "features": [
@@ -36,18 +36,18 @@
     ],
     "product": {
       "code": "disneyai_trial",
-      "desc": "DisneyAi 3일 무료 체험",
-      "name": "DisneyAi 무료 체험",
+      "desc": "DisneyAi 3일 사전 체험",
+      "name": "DisneyAi 사전 체험",
       "quantity": "1",
       "sku": "disneyai_trial",
       "type": "digital",
-      "unit_price": "0.00",
+      "unit_price": "1.00",
       "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
-    "cta": "무료로 받기",
+    "cta": "지금 체험하기",
     "afterTrial": "체험 종료 후 기본 플랜으로 자동 갱신",
     "placeholderFeatures": {
-      "templateUsage": "무료 템플릿 사용",
+      "templateUsage": "템플릿 사용",
       "customDisneyAi": "커스텀 스타일 변환",
       "historyView": "변환 기록 보기"
     },
@@ -56,7 +56,7 @@
       "customDisneyAi": "이미지 또는 비디오 업로드",
       "historyView": "변환 기록 보기"
     },
-    "placeholderPrice": "무료",
+    "placeholderPrice": "혜택",
     "placeholderPeriod": "3일",
     "statusTexts": {
       "checkingTrial": "체험 상태 확인 중...",
@@ -67,13 +67,13 @@
     "title": "기본版",
     "price": {
       "amount": "$9.99",
-      "period": "/월"
+      "period": "월"
     },
     "annualPrice": {
       "amount": "$99.99",
-      "period": "/년"
+      "period": "년"
     },
-    "trial": "3일 무료 트라이얼",
+    "trial": "3일 한정 체험",
     "currency": "EUR",
     "mode": "정기 결제",
     "features": [
@@ -106,19 +106,19 @@
       "unit_price": "99.99",
       "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
-    "cta": "무료 트라이얼 시작"
+    "cta": "지금 구독"
   },
   "premium": {
     "title": "프리미엄版",
     "price": {
       "amount": "$19.99",
-      "period": "/월"
+      "period": "월"
     },
     "annualPrice": {
       "amount": "$199.99",
-      "period": "/년"
+      "period": "년"
     },
-    "trial": "3일 무료 트라이얼",
+    "trial": "3일 한정 체험",
     "currency": "EUR",
     "mode": "정기 결제",
     "features": [
@@ -155,19 +155,19 @@
       "unit_price": "199.99",
       "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
-    "cta": "무료 트라이얼 시작"
+    "cta": "지금 구독"
   },
   "professional": {
     "title": "프로페셔널版",
     "price": {
       "amount": "$29.99",
-      "period": "/월"
+      "period": "월"
     },
     "annualPrice": {
       "amount": "$299.99",
-      "period": "/년"
+      "period": "년"
     },
-    "trial": "3일 무료 트라이얼",
+    "trial": "3일 한정 체험",
     "currency": "EUR",
     "mode": "정기 결제",
     "features": [
@@ -202,7 +202,7 @@
       "unit_price": "299.99",
       "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
-    "cta": "무료 트라이얼 시작"
+    "cta": "지금 구독"
   },
   "oneTimeBasic": {
     "title": "700 포인트",
@@ -289,11 +289,11 @@
     "title": "비즈니스版",
     "price": {
       "amount": "$99.99",
-      "period": "/월"
+      "period": "월"
     },
     "annualPrice": {
       "amount": "$999.99",
-      "period": "/년"
+      "period": "년"
     },
     "trial": "구독 후 즉시 문의해주세요",
     "currency": "EUR",
@@ -367,14 +367,14 @@
     }
   },
   "trial": {
-    "alreadyUsed": "트라이얼 사용 완료",
-    "alreadyUsedTitle": "트라이얼 사용 완료",
-    "alreadyUsedMessage": "3일 무료 트라이얼을 이미 사용하셨습니다. 각 사용자는 무료 트라이얼을 1회만 사용할 수 있습니다.\n다른 구독 플랜을 선택하여 서비스 사용을 계속할 수 있습니다.",
+    "alreadyUsed": "체험 사용 완료",
+    "alreadyUsedTitle": "체험 사용 완료",
+    "alreadyUsedMessage": "3일 한정 체험을 이미 사용하셨습니다. 각 사용자는 한정 체험을 1회만 사용할 수 있습니다.\n다른 구독 플랜을 선택하여 서비스 사용을 계속할 수 있습니다.",
     "alreadyUsedButton": "알겠습니다",
-    "cannotReapply": "무료 트라이얼을 이미 사용하셔서 다시 신청할 수 없습니다",
+    "cannotReapply": "한정 체험을 이미 사용하셔서 다시 신청할 수 없습니다",
     "checkFailed": "검사 실패",
-    "checkFailedDesc": "트라이얼 상태를 확인할 수 없습니다. 나중에 다시 시도해주세요",
-    "startFreeTrial": "무료 트라이얼 시작"
+    "checkFailedDesc": "체험 상태를 확인할 수 없습니다. 나중에 다시 시도해주세요",
+    "startFreeTrial": "한정 체험 시작"
   },
   "subscription": {
     "duplicateTitle": "중복 구독 불가",
@@ -386,7 +386,7 @@
     "expiryTime": "만료 시간: {expiryDate}",
     "subscribeNow": "즉시 구독",
     "subscriptionTypes": {
-      "trial": "트라이얼",
+      "trial": "체험",
       "monthly": "월간",
       "quarterly": "분기별",
       "annual": "연간",

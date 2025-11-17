@@ -85,22 +85,28 @@ export async function POST(req: Request) {
                 }
             };
         } else if(type === "3") {
-            // 🆕 免费试用订阅
-            console.log('🎁 处理免费试用订阅请求');
+            // 🆕 $1付费试用订阅（3天后自动转为月度订阅）
+            console.log('🎁 处理$1付费试用订阅请求');
             
             // 🚫 防重复检查
             const hasUsedTrial = await hasUsedFreeTrial();
             if (hasUsedTrial) {
-                console.log('❌ 用户已使用过免费试用');
+                console.log('❌ 用户已使用过试用');
                 return NextResponse.json({ 
-                    error: '您已使用过免费试用，无法再次申请' 
+                    error: '您已使用过试用，无法再次申请' 
                 }, { status: 400 });
             }
             
-            console.log('✅ 用户未使用过试用，创建试用订阅');
+            console.log('✅ 用户未使用过试用，创建$1付费试用订阅');
             param.mode = 'subscription';
             param.subscription_data = {
                 trial_period_days: 3, // 🎯 3天试用期
+                // 🎯 关键：立即收取$1作为试用激活费
+                trial_settings: {
+                    end_behavior: {
+                        missing_payment_method: 'cancel' // 如果没有支付方式则取消
+                    }
+                },
                 metadata: {
                     userId: userId,
                     priceId: priceId,
@@ -109,6 +115,19 @@ export async function POST(req: Request) {
                     language: language || locale || 'zh' // 多语言支持
                 }
             };
+            
+            // 🎯 添加立即收取的$1试用费（作为首次发票项）
+            param.subscription_data.add_invoice_items = [{
+                price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: 'DisneyAi Trial Access Fee',
+                        description: '3-day trial activation fee'
+                    },
+                    unit_amount: 100, // $1.00 = 100美分
+                },
+                quantity: 1,
+            }];
         } else {
             // 常规订阅
             param.mode = 'subscription';

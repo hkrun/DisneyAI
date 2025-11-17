@@ -2,7 +2,7 @@
   "hero": {
     "subtitle": "Disney style conversion, endless creativity",
     "title": "Choose your Disney style conversion plan",
-    "description": "Select the perfect plan for your creative needs. We offer a 3-day free trial."
+    "description": "Select the perfect plan for your creative needs. We offer a 3-day early access."
   },
   "billing": {
     "title": "Pricing Plans",
@@ -17,14 +17,14 @@
     "popular": "Popular"
   },
   "freeTrial": {
-    "title": "Free Trial",
-    "description": "Experience full features, no credit card required",
-    "badge": "Limited Time Free",
+    "title": "Early Access",
+    "description": "Experience full features for just one dollar",
+    "badge": "Limited Offer",
     "price": {
-      "amount": "$0.00",
-      "period": "/3 days"
+      "amount": "$1.00",
+      "period": "3 days"
     },
-    "trial": "3-day free trial",
+    "trial": "3-day early access",
     "currency": "EUR",
     "mode": "trial",
     "features": [
@@ -36,18 +36,18 @@
     ],
     "product": {
       "code": "disneyai_trial",
-      "desc": "DisneyAi 3-day free trial",
-      "name": "DisneyAi Free Trial",
+      "desc": "DisneyAi 3-day early access",
+      "name": "DisneyAi Early Access",
       "quantity": "1",
       "sku": "disneyai_trial",
       "type": "digital",
-      "unit_price": "0.00",
+      "unit_price": "1.00",
       "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
-    "cta": "Free Claim",
-    "afterTrial": "Auto-renew to Basic plan after trial",
+    "cta": "Experience Now",
+    "afterTrial": "Auto-renew to Basic plan after experience",
     "placeholderFeatures": {
-      "templateUsage": "Free template usage",
+      "templateUsage": "Template usage",
       "customDisneyAi": "Custom style conversion",
       "historyView": "Conversion history view"
     },
@@ -56,24 +56,24 @@
       "customDisneyAi": "Upload your own image or video",
       "historyView": "View conversion history"
     },
-    "placeholderPrice": "Free",
+    "placeholderPrice": "Offer",
     "placeholderPeriod": "3 days",
     "statusTexts": {
-      "checkingTrial": "Checking trial status...",
-      "trialUsed": "Trial Used"
+      "checkingTrial": "Checking experience status...",
+      "trialUsed": "Experience Used"
     }
   },
   "basic": {
     "title": "Basic",
     "price": {
       "amount": "$9.99",
-      "period": "/month"
+      "period": "month"
     },
     "annualPrice": {
       "amount": "$99.99",
-      "period": "/year"
+      "period": "year"
     },
-    "trial": "3-day free trial",
+    "trial": "3-day limited experience",
     "currency": "EUR",
     "mode": "Recurring",
     "features": [
@@ -106,19 +106,19 @@
       "unit_price": "99.99",
       "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
-    "cta": "Start Free Trial"
+    "cta": "Subscribe Now"
   },
   "premium": {
     "title": "Premium",
     "price": {
       "amount": "$19.99",
-      "period": "/month"
+      "period": "month"
     },
     "annualPrice": {
       "amount": "$199.99",
-      "period": "/year"
+      "period": "year"
     },
-    "trial": "3-day free trial",
+    "trial": "3-day limited experience",
     "currency": "EUR",
     "mode": "Recurring",
     "features": [
@@ -155,19 +155,19 @@
       "unit_price": "199.99",
       "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
-    "cta": "Start Free Trial"
+    "cta": "Subscribe Now"
   },
   "professional": {
     "title": "Professional",
     "price": {
       "amount": "$29.99",
-      "period": "/month"
+      "period": "month"
     },
     "annualPrice": {
       "amount": "$299.99",
-      "period": "/year"
+      "period": "year"
     },
-    "trial": "3-day free trial",
+    "trial": "3-day limited experience",
     "currency": "EUR",
     "mode": "Recurring",
     "features": [
@@ -202,7 +202,7 @@
       "unit_price": "299.99",
       "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
-    "cta": "Start Free Trial"
+    "cta": "Subscribe Now"
   },
   "oneTimeBasic": {
     "title": "700 Points",
@@ -289,11 +289,11 @@
     "title": "Business",
     "price": {
       "amount": "$99.99",
-      "period": "/month"
+      "period": "month"
     },
     "annualPrice": {
       "amount": "$999.99",
-      "period": "/year"
+      "period": "year"
     },
     "trial": "Please contact us immediately after subscription",
     "currency": "EUR",
@@ -367,14 +367,14 @@
     }
   },
   "trial": {
-    "alreadyUsed": "Trial Already Used",
-    "alreadyUsedTitle": "Trial Already Used",
-    "alreadyUsedMessage": "You have already used the 3-day free trial. Each user can only use the free trial once.\nYou can choose other subscription plans to continue using our service.",
+    "alreadyUsed": "Experience Already Used",
+    "alreadyUsedTitle": "Experience Already Used",
+    "alreadyUsedMessage": "You have already used the 3-day limited experience. Each user can only use the limited experience once.\nYou can choose other subscription plans to continue using our service.",
     "alreadyUsedButton": "I Understand",
-    "cannotReapply": "You have already used the free trial and cannot reapply",
+    "cannotReapply": "You have already used the limited experience and cannot reapply",
     "checkFailed": "Check Failed",
-    "checkFailedDesc": "Failed to verify trial status, please try again later",
-    "startFreeTrial": "Start Free Trial"
+    "checkFailedDesc": "Failed to verify experience status, please try again later",
+    "startFreeTrial": "Start Limited Experience"
   },
   "subscription": {
     "duplicateTitle": "Duplicate Subscription Not Allowed",
@@ -386,7 +386,7 @@
     "expiryTime": "Expiry Date: {expiryDate}",
     "subscribeNow": "Subscribe Now",
     "subscriptionTypes": {
-      "trial": "Trial",
+      "trial": "Experience",
       "monthly": "Monthly",
       "quarterly": "Quarterly",
       "annual": "Annual",

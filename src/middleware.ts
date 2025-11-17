@@ -114,14 +114,15 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 处理国际化重写（仅针对页面路由）
+  // 处理国际化重定向（仅针对页面路由）
   if (!pathnameHasLocale) {
-    // 跳过测试页面的国际化重写
     if (pathname === '/test-qwen') {
       return NextResponse.next();
     }
-    request.nextUrl.pathname = `/${i18nConfig.defaultLocale}${pathname}`;
-  return NextResponse.rewrite(request.nextUrl);
+    const redirectUrl = request.nextUrl.clone()
+    const normalizedPath = pathname === '/' ? '' : pathname
+    redirectUrl.pathname = `/${i18nConfig.defaultLocale}${normalizedPath}`
+    return NextResponse.redirect(redirectUrl, 308)
   }
 
   return NextResponse.next();

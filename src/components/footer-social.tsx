@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { type Footer as FooterSocialType } from "@/types/locales/footer"
-import { SOCIAL_ICONS } from "@/components/icons/social-icons"
 import { type Locale, getPathname } from "@/i18n-config";
 
 interface FooterSocialProps {
@@ -25,22 +24,6 @@ export function FooterSocial({ lang, i18n }: FooterSocialProps) {
                         <p className="text-white/70 mb-6 max-w-md leading-relaxed">
                             {i18n.description}
                         </p>
-                        <div className="flex space-x-4">
-                            {i18n.socials.map((social) => {
-                                const Icon = SOCIAL_ICONS[social.name]
-                                return (
-                                    <Link
-                                        target="_blank"
-                                        key={social.name}
-                                        href={social.href}
-                                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-disney-red transition-colors duration-200"
-                                    >
-                                        <span className="sr-only">{social.name}</span>
-                                        <Icon className="h-5 w-5 text-white" />
-                                    </Link>
-                                )
-                            })}
-                        </div>
                     </div>
 
                     {/* 在手机端将三个部分放在一行显示 */}

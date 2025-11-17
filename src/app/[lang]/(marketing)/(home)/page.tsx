@@ -1,130 +1,71 @@
-'use client'
-
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import ConverterPanel from '@/components/disney-converter/ConverterPanel'
-import { useHomeTranslation } from '@/hooks/use-home-translation'
-import { useConverterPanelTranslation } from '@/hooks/use-converter-panel-translation'
-import { type Locale } from '@/i18n-config'
+import { notFound } from 'next/navigation'
+import { type Locale, i18nConfig, getPathname, generateAlternates } from '@/i18n-config'
+import { getDictionary, i18nNamespaces } from '@/i18n'
+import { type Home } from '@/types/locales/home'
+import { type ConverterPanelLocal } from '@/types/locales/converter-panel'
+import { HeroConverterSection } from './HeroConverterSection'
+import { host } from '@/config/config'
+import type { Metadata } from 'next'
 
 interface HomePageProps {
   params: Promise<{ lang: Locale }>
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params
 
-export default function Home({ params }: HomePageProps) {
-  const [conversionMode, setConversionMode] = useState<'image' | 'video'>('image')
-  // 在刷新后恢复用户上次选择的模式
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('disney-converter-mode') as 'image' | 'video' | null
-      if (saved === 'image' || saved === 'video') {
-        setConversionMode(saved)
-      }
-    } catch {}
-  }, [])
-  const [lang, setLang] = useState<Locale>('zh')
-  const { translations, loading, error } = useHomeTranslation(lang)
-  const { translations: converterTranslations, loading: converterLoading, error: converterError } = useConverterPanelTranslation(lang)
-
-  // 初始化语言参数
-  useEffect(() => {
-    params.then(({ lang }) => setLang(lang))
-  }, [params])
-
-  const switchToImageMode = () => {
-    setConversionMode('image')
-    try { localStorage.setItem('disney-converter-mode', 'image') } catch {}
+  if (!i18nConfig.locales.includes(lang)) {
+    return {}
   }
 
-  const switchToVideoMode = () => {
-    setConversionMode('video')
-    try { localStorage.setItem('disney-converter-mode', 'video') } catch {}
+  const translations = await getDictionary<Home>(lang, i18nNamespaces.home)
+  const meta = translations.meta ?? {}
+  const alternates = generateAlternates(lang, '')
+  const canonical = `${host}${getPathname(lang, '')}`
+
+  return {
+    title: meta.title ?? 'DisneyAi',
+    description: meta.description ?? 'AI video disney ai website',
+    keywords: meta.keywords,
+    alternates: {
+      canonical,
+      languages: alternates,
+    },
+    openGraph: {
+      type: 'website',
+      url: canonical,
+      title: meta.title ?? 'DisneyAi',
+      description: meta.description ?? 'AI video disney ai website',
+      siteName: 'DisneyAi',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.title ?? 'DisneyAi',
+      description: meta.description ?? 'AI video disney ai website',
+    },
+  }
+}
+
+export default async function Home({ params }: HomePageProps) {
+  const { lang } = await params
+
+  if (!i18nConfig.locales.includes(lang)) {
+    notFound()
   }
 
-  // 如果正在加载翻译，显示加载状态
-  if (loading || converterLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-disney-red border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-disney-blue">Loading...</p>
-        </div>
-      </div>
-    )
-  }
-
-  // 如果加载翻译失败，显示错误状态
-  if (error || !translations || converterError || !converterTranslations) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <p className="text-red-500 mb-4">Failed to load translations</p>
-          <p className="text-gray-600">Please try refreshing the page</p>
-        </div>
-      </div>
-    )
-  }
+  const translations = await getDictionary<Home>(lang, i18nNamespaces.home)
+  const converterTranslations = await getDictionary<ConverterPanelLocal>(lang, 'converter-panel')
 
   return (
     <>
       <main>
-      {/* 迪士尼风格转换模块 */}
-      <section id="converter" className="relative pt-8 md:pt-16 pb-16 overflow-hidden">
-        {/* 背景：与"把日常变成迪士尼动画"一致 */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('https://picsum.photos/id/1035/1920/1080')] bg-cover bg-center opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-disney-blue/30 to-disney-light/80" />
-                              </div>
-        <div className="container mx-auto px-4 mb-4 md:mb-8 relative z-10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between">
-            <div>
-              <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-shadow-lg mb-2">
-                <span className="bg-gradient-to-r from-disney-red via-disney-yellow to-disney-purple bg-clip-text text-transparent">
-                  {conversionMode === 'image' ? translations.hero.title.imageConversion : translations.hero.title.videoConversion}
-                </span>
-              </h1>
-              <p className="text-gray-600 text-lg">
-                {conversionMode === 'image' ? translations.hero.subtitle.imageConversion : translations.hero.subtitle.videoConversion}
-              </p>
-            </div>
-            <div className="mt-6 md:mt-0 flex w-full md:inline-flex md:w-auto rounded-full overflow-hidden border-2 border-disney-red shadow-md">
-              <button 
-                onClick={switchToImageMode}
-                className={`flex-1 md:flex-none px-6 py-3 font-bold transition-all ${
-                  conversionMode === 'image' 
-                    ? 'bg-disney-red text-white' 
-                    : 'bg-white text-disney-red hover:bg-gray-100'
-                }`}
-              >
-                {translations.converter.imageMode.label}
-                <span className={`block text-xs font-normal mt-1 ${
-                  conversionMode === 'image' ? 'text-white/80' : 'text-disney-red/80'
-                }`}>{translations.converter.imageMode.description}</span>
-              </button>
-              <button 
-                onClick={switchToVideoMode}
-                className={`flex-1 md:flex-none px-6 py-3 font-bold transition-all ${
-                  conversionMode === 'video' 
-                    ? 'bg-disney-red text-white' 
-                    : 'bg-white text-disney-red hover:bg-gray-100'
-                }`}
-              >
-                {translations.converter.videoMode.label}
-                <span className={`block text-xs font-normal mt-1 ${
-                  conversionMode === 'video' ? 'text-white/80' : 'text-disney-red/80'
-                }`}>{translations.converter.videoMode.description}</span>
-              </button>
-                          </div>
-                            </div>
-                          </div>
-
-        <div className="relative z-10">
-          <ConverterPanel mode={conversionMode} i18n={converterTranslations} />
-                          </div>
-      </section>
-      
-
+        <HeroConverterSection
+          lang={lang}
+          hero={translations.hero}
+          converter={translations.converter}
+          converterTranslations={converterTranslations}
+        />
       {/* 功能亮点 */}
       <section id="features" className="py-16 md:py-24 bg-disney-blue text-white">
         <div className="container mx-auto px-4">
@@ -176,7 +117,6 @@ export default function Home({ params }: HomePageProps) {
           </div>
         </div>
       </section>
-
 
       {/* 风格模板库 */}
       <section id="templates" className="py-16 md:py-24 bg-magic">

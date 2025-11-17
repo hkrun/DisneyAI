@@ -85,4 +85,10 @@ export interface Home {
       answer: string;
     }>;
   };
+  meta?: {
+    title?: string;
+    description?: string;
+    alt?: string;
+    keywords?: string;
+  };
 }

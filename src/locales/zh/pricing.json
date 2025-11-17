@@ -2,7 +2,7 @@
   "hero": {
     "subtitle": "迪士尼风格转换，创意无限",
     "title": "选择您的迪士尼风格转换计划",
-    "description": "选择适合您创作需求的完美计划。我们提供 3 天免费试用。"
+    "description": "选择适合您创作需求的完美计划。我们提供 3 天抢先体验。"
   },
   "billing": {
     "title": "定价计划",
@@ -17,14 +17,14 @@
     "popular": "热门"
   },
   "freeTrial": {
-    "title": "免费试用",
-    "description": "体验完整功能，无需付款",
-    "badge": "限时免费",
+    "title": "抢先体验",
+    "description": "体验完整功能，仅需一美元",
+    "badge": "限时优惠",
     "price": {
-      "amount": "$0.00",
-      "period": "/3天"
+      "amount": "$1.00",
+      "period": "3天"
     },
-    "trial": "3天免费试用",
+    "trial": "3天抢先体验",
     "currency": "EUR",
     "mode": "trial",
     "features": [
@@ -36,18 +36,18 @@
     ],
     "product": {
       "code": "disneyai_trial",
-      "desc": "DisneyAi 3天免费试用",
-      "name": "DisneyAi 免费试用",
+      "desc": "DisneyAi 3天抢先体验",
+      "name": "DisneyAi 抢先体验",
       "quantity": "1",
       "sku": "disneyai_trial",
       "type": "digital",
-      "unit_price": "0.00",
+      "unit_price": "1.00",
       "priceId": "price_1SCxAYLmvlReBkzoW0jPGNCs"
     },
-    "cta": "免费领取",
-    "afterTrial": "试用结束后自动续费到基础版",
+    "cta": "立即体验",
+    "afterTrial": "体验结束后自动续费到基础版",
     "placeholderFeatures": {
-      "templateUsage": "免费模版使用",
+      "templateUsage": "模版使用",
       "customDisneyAi": "自定义风格转换",
       "historyView": "转换记录查看"
     },
@@ -56,24 +56,24 @@
       "customDisneyAi": "上传自己的图片或视频",
       "historyView": "查看转换历史记录"
     },
-    "placeholderPrice": "免费",
+    "placeholderPrice": "优惠",
     "placeholderPeriod": "3天",
     "statusTexts": {
-      "checkingTrial": "检查试用状态...",
-      "trialUsed": "试用已使用"
+      "checkingTrial": "检查体验状态...",
+      "trialUsed": "体验已使用"
     }
   },
   "basic": {
     "title": "基础版",
     "price": {
       "amount": "$9.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$99.99",
-      "period": "/年"
+      "period": "年"
     },
-    "trial": "3天免费试用",
+    "trial": "3天限时体验",
     "currency": "EUR",
     "mode": "定期",
     "features": [
@@ -106,19 +106,19 @@
       "unit_price": "99.99",
       "priceId": "price_1SCxBGLmvlReBkzoR3hG6eqT"
     },
-    "cta": "开始免费试用"
+    "cta": "立即订阅"
   },
   "premium": {
     "title": "高级版",
     "price": {
       "amount": "$19.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$199.99",
-      "period": "/年"
+      "period": "年"
     },
-    "trial": "3天免费试用",
+    "trial": "3天限时体验",
     "currency": "EUR",
     "mode": "定期",
     "features": [
@@ -155,19 +155,19 @@
       "unit_price": "199.99",
       "priceId": "price_1SCxBdLmvlReBkzoTabyONnB"
     },
-    "cta": "开始免费试用"
+    "cta": "立即订阅"
   },
   "professional": {
     "title": "专业版",
     "price": {
       "amount": "$29.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$299.99",
-      "period": "/年"
+      "period": "年"
     },
-    "trial": "3天免费试用",
+    "trial": "3天限时体验",
     "currency": "EUR",
     "mode": "定期",
     "features": [
@@ -202,7 +202,7 @@
       "unit_price": "299.99",
       "priceId": "price_1SCxBtLmvlReBkzo5RzDYiS4"
     },
-    "cta": "开始免费试用"
+    "cta": "立即订阅"
   },
   "oneTimeBasic": {
     "title": "700积分",
@@ -289,11 +289,11 @@
     "title": "商业版",
     "price": {
       "amount": "$99.99",
-      "period": "/月"
+      "period": "月"
     },
     "annualPrice": {
       "amount": "$999.99",
-      "period": "/年"
+      "period": "年"
     },
     "trial": "订阅后请立即联系我们",
     "currency": "EUR",
@@ -367,14 +367,14 @@
     }
   },
   "trial": {
-    "alreadyUsed": "试用已使用",
-    "alreadyUsedTitle": "试用已使用",
-    "alreadyUsedMessage": "您已经使用过3天免费试用，每个用户只能使用一次免费试用。\n您可以选择其他订阅计划继续使用我们的服务。",
+    "alreadyUsed": "体验已使用",
+    "alreadyUsedTitle": "体验已使用",
+    "alreadyUsedMessage": "您已经使用过3天限时体验，每个用户只能使用一次限时体验。\n您可以选择其他订阅计划继续使用我们的服务。",
     "alreadyUsedButton": "我知道了",
-    "cannotReapply": "您已使用过免费试用，无法再次申请",
+    "cannotReapply": "您已使用过限时体验，无法再次申请",
     "checkFailed": "检查失败",
-    "checkFailedDesc": "无法验证试用状态，请稍后重试",
-    "startFreeTrial": "开始免费试用"
+    "checkFailedDesc": "无法验证体验状态，请稍后重试",
+    "startFreeTrial": "开始限时体验"
   },
   "subscription": {
     "duplicateTitle": "不可重复订阅",
@@ -386,7 +386,7 @@
     "expiryTime": "到期时间：{expiryDate}",
     "subscribeNow": "立即订阅",
     "subscriptionTypes": {
-      "trial": "试用",
+      "trial": "体验",
       "monthly": "月度",
       "quarterly": "季度",
       "annual": "年度",

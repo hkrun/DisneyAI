@@ -59,6 +59,9 @@ export async function POST(req: Request) {
             // redirect_on_completion: 'if_required',
             redirect_on_completion: 'never',
             automatic_tax: {enabled: true},
+            customer_update: {
+                address: 'auto' // 🔑 自动从结账表单中保存地址（用于税费计算）
+            },
             client_reference_id: userId,
             // return_url:`${req.headers.get("origin")}/return?session_id={CHECKOUT_SESSION_ID}`,
             metadata: {

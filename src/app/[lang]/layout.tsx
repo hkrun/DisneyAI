@@ -45,6 +45,31 @@ export default async function RootLayout({
     <html lang={lang} className={geist.className} suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#DC2626" />
+        
+        {/* Apple iOS 支持 */}
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="DisneyAi" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        
+        {/* Service Worker 注册 */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+              navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                console.log('Service Worker 注册成功:', reg);
+              }).catch(function(err) {
+                console.log('Service Worker 注册失败:', err);
+              });
+            });
+          }
+          `
+        }} />
       </head>
       <body>
         <NextAuthProvider>

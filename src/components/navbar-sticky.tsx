@@ -13,6 +13,17 @@ import dynamic from "next/dynamic"
 const CreditsDisplay = dynamic(() => import("@/components/credits-display").then(m => m.CreditsDisplay), { ssr: false })
 import { SubscriptionLocal, ToastLocal } from "@/types/locales/billing";
 import { TransformHistoryLocal } from "@/types/locales/transform-history";
+import { useAddToHomeScreen } from "@/hooks/useAddToHomeScreen";
+import { Download, Share, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 
 interface NavbarStickyProps {
     lang: Locale;
@@ -78,6 +89,9 @@ interface NavbarStickyProps {
 
 export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal, historyLocal, i18n }: NavbarStickyProps) {
     const pathname = usePathname();
+    const { isVisible: canInstall, promptInstall, isIosSafari } = useAddToHomeScreen();
+    const [showIosGuide, setShowIosGuide] = useState(false);
+    
     const isActive = (href: string) => {
         if (lang === "en") {
             // 对于首页，只匹配精确路径
@@ -95,6 +109,14 @@ export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal,
             }
             // 对于其他页面，支持子路径匹配
             return pathname === fullPath || pathname.startsWith(fullPath + "/");
+        }
+    };
+    
+    const handleInstallClick = async () => {
+        if (isIosSafari) {
+            setShowIosGuide(true);
+        } else {
+            await promptInstall();
         }
     };
 
@@ -141,6 +163,17 @@ export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal,
                         <ThemeToggle label={navbarLocal.themeToggle.label} />
                     </div>
                     
+                    {/* Install PWA Button - 在头像左边 */}
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handleInstallClick}
+                        className="hover:bg-accent"
+                        title={navbarLocal.installApp?.tooltip || "添加到主屏幕"}
+                    >
+                        <Home className="h-5 w-5" />
+                    </Button>
+                    
                     {/* Auth Button */}
                     <AuthButton
                         lang={lang}
@@ -159,6 +192,66 @@ export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal,
                     </div>
                 </div>
             </div>
+            
+            {/* 安装引导对话框 */}
+            <Dialog open={showIosGuide} onOpenChange={setShowIosGuide}>
+                <DialogContent className="max-w-md">
+                    <DialogHeader>
+                        <DialogTitle>{navbarLocal.installApp?.manualInstall?.title || "手动添加到主屏幕"}</DialogTitle>
+                        <DialogDescription>
+                            {navbarLocal.installApp?.manualInstall?.description || "根据您使用的浏览器，按照以下步骤操作："}
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="space-y-6 py-4">
+                        {/* Chrome */}
+                        <div className="space-y-2">
+                            <h4 className="font-semibold text-sm">{navbarLocal.installApp?.manualInstall?.chrome?.title || "Chrome 浏览器"}</h4>
+                            <ol className="list-decimal list-inside space-y-1.5 text-sm text-muted-foreground">
+                                {(navbarLocal.installApp?.manualInstall?.chrome?.steps || [
+                                    "点击浏览器右上角的三个点（⋮）",
+                                    "在菜单中选择「添加到主屏幕」",
+                                    "等待安装完成即可"
+                                ]).map((step, idx) => (
+                                    <li key={idx}>{step}</li>
+                                ))}
+                            </ol>
+                        </div>
+                        
+                        {/* Edge */}
+                        <div className="space-y-2">
+                            <h4 className="font-semibold text-sm">{navbarLocal.installApp?.manualInstall?.edge?.title || "Edge 浏览器"}</h4>
+                            <ol className="list-decimal list-inside space-y-1.5 text-sm text-muted-foreground">
+                                {(navbarLocal.installApp?.manualInstall?.edge?.steps || [
+                                    "点击浏览器右下角的三条短横线（☰）",
+                                    "在菜单中选择「添加到手机」",
+                                    "等待安装完成即可"
+                                ]).map((step, idx) => (
+                                    <li key={idx}>{step}</li>
+                                ))}
+                            </ol>
+                        </div>
+                        
+                        {/* Safari */}
+                        <div className="space-y-2">
+                            <h4 className="font-semibold text-sm">{navbarLocal.installApp?.manualInstall?.safari?.title || "Safari 浏览器（iOS）"}</h4>
+                            <ol className="list-decimal list-inside space-y-1.5 text-sm text-muted-foreground">
+                                {(navbarLocal.installApp?.manualInstall?.safari?.steps || [
+                                    "点击浏览器底部的分享按钮（□↑）",
+                                    "在菜单中选择「添加到主屏幕」",
+                                    "等待安装完成即可"
+                                ]).map((step, idx) => (
+                                    <li key={idx}>{step}</li>
+                                ))}
+                            </ol>
+                        </div>
+                        
+                        {/* 提示 */}
+                        <p className="text-xs text-muted-foreground border-l-2 border-primary pl-3">
+                            {navbarLocal.installApp?.manualInstall?.tip || "温馨提示：建议使用 Chrome 或 Edge 浏览器以获得最佳体验"}
+                        </p>
+                    </div>
+                </DialogContent>
+            </Dialog>
         </header>
     )
 }

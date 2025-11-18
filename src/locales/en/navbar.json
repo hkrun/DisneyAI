@@ -90,10 +90,49 @@
             "getMoreButton": "Get More Credits"
         }
     },
+    "installApp": {
+        "tooltip": "Add to Home Screen",
+        "title": "Add to Home Screen",
+        "description": "Add DisneyAi to your home screen for faster access and better experience.",
+        "install": "Install Now",
+        "cancel": "Cancel",
+        "later": "Later",
+        "installed": "Installed",
+        "button": "Install App",
+        "manualInstall": {
+            "title": "Add to Home Screen Manually",
+            "description": "Follow these steps based on your browser:",
+            "chrome": {
+                "title": "Chrome Browser",
+                "steps": [
+                    "Tap the three dots (⋮) in the top right corner",
+                    "Select \"Add to Home screen\" from the menu",
+                    "Wait for installation to complete"
+                ]
+            },
+            "edge": {
+                "title": "Edge Browser",
+                "steps": [
+                    "Tap the three lines (☰) in the bottom right corner",
+                    "Select \"Add to phone\" from the menu",
+                    "Wait for installation to complete"
+                ]
+            },
+            "safari": {
+                "title": "Safari Browser (iOS)",
+                "steps": [
+                    "Tap the Share button (□↑) at the bottom",
+                    "Select \"Add to Home Screen\" from the menu",
+                    "Wait for installation to complete"
+                ]
+            },
+            "tip": "Tip: We recommend using Chrome or Edge for the best experience"
+        }
+    },
     "meta": {
-    "title": "DisneyAi Disney Style Conversion Pricing - AI Face Swap | Face Replacement | Video Face Swap",
-    "description": "Pricing plans for DisneyAi AI face swap service, providing professional AI face replacement, video face swap and creative content production services.",
-    "alt": "DisneyAi AI Face Swap",
-    "keywords": "Disney characters, Disney baby, Disney AI features, AI image generator"
+    "title": "DisneyAi Disney Style Conversion - AI Image Conversion | Video Conversion | Style Transfer",
+    "description": "DisneyAi Disney style conversion service, providing professional AI image style conversion, video style conversion and creative content production services.",
+    "alt": "DisneyAi Disney Style Conversion",
+    "keywords": "Disney style, Disney characters, style conversion, AI image generator, video conversion"
   }
 }

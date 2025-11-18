@@ -90,10 +90,49 @@
             "getMoreButton": "获取更多积分"
         }
     },
+    "installApp": {
+        "tooltip": "添加到主屏幕",
+        "title": "添加到主屏幕",
+        "description": "将 DisneyAi 添加到主屏幕，享受更快的访问速度和更好的体验。",
+        "install": "立即安装",
+        "cancel": "取消",
+        "later": "稍后",
+        "installed": "已安装",
+        "button": "安装应用",
+        "manualInstall": {
+            "title": "手动添加到主屏幕",
+            "description": "根据您使用的浏览器，按照以下步骤操作：",
+            "chrome": {
+                "title": "Chrome 浏览器",
+                "steps": [
+                    "点击浏览器右上角的三个点（⋮）",
+                    "在菜单中选择「添加到主屏幕」",
+                    "等待安装完成即可"
+                ]
+            },
+            "edge": {
+                "title": "Edge 浏览器",
+                "steps": [
+                    "点击浏览器右下角的三条短横线（☰）",
+                    "在菜单中选择「添加到手机」",
+                    "等待安装完成即可"
+                ]
+            },
+            "safari": {
+                "title": "Safari 浏览器（iOS）",
+                "steps": [
+                    "点击浏览器底部的分享按钮（□↑）",
+                    "在菜单中选择「添加到主屏幕」",
+                    "等待安装完成即可"
+                ]
+            },
+            "tip": "温馨提示：建议使用 Chrome 或 Edge 浏览器以获得最佳体验"
+        }
+    },
     "meta": {
-    "title": "DisneyAi AI换脸定价-AI换脸|人脸替换|视频换脸",
-    "description": "DisneyAi AI换脸服务定价方案，提供专业的AI人脸替换、视频换脸和创意内容制作服务。",
-    "alt": "DisneyAi AI换脸",
-    "keywords": "迪士尼角色,迪士尼婴儿,迪士尼AI功能,AI图像生成器"
+    "title": "DisneyAi 迪士尼风格转换-AI图片转换|视频转换|风格转换",
+    "description": "DisneyAi 迪士尼风格转换服务，提供专业的AI图片风格转换、视频风格转换和创意内容制作服务。",
+    "alt": "DisneyAi 迪士尼风格转换",
+    "keywords": "迪士尼风格,迪士尼角色,风格转换,AI图像生成器,视频转换"
   }
 }

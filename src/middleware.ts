@@ -31,6 +31,8 @@ const publicRoutes = [
   '/contact',
   '/legal',
   '/test-qwen', // Qwen VL-Max 测试页面
+  '/manifest.json', // PWA 清单文件
+  '/sw.js', // Service Worker
 ];
 
 function isProtectedApiRoute(pathname: string): boolean {
@@ -116,9 +118,11 @@ export async function middleware(request: NextRequest) {
 
   // 处理国际化重定向（仅针对页面路由）
   if (!pathnameHasLocale) {
-    if (pathname === '/test-qwen') {
+    // PWA 静态文件直接放行，不重定向
+    if (pathname === '/manifest.json' || pathname === '/sw.js') {
       return NextResponse.next();
     }
+    // 其他路径（包括 /）都需要重定向到带语言前缀的路径
     const redirectUrl = request.nextUrl.clone()
     const normalizedPath = pathname === '/' ? '' : pathname
     redirectUrl.pathname = `/${i18nConfig.defaultLocale}${normalizedPath}`

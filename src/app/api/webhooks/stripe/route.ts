@@ -114,6 +114,14 @@ async function handlePaymentSuccess(paymentIntent: Stripe.PaymentIntent) {
     console.log("=== 处理支付成功事件 ===");
     console.log("paymentIntent:", JSON.stringify(paymentIntent, null, 2));
 
+    // 🆕 检查是否是试用激活付款（$1付费试用）
+    const isTrialActivation = paymentIntent.metadata?.trialActivation === 'true';
+    if (isTrialActivation) {
+        console.log('🎯 检测到试用激活付款，准备创建3天试用订阅');
+        await handleTrialActivationPayment(paymentIntent);
+        return;
+    }
+
     // 检查是否是订阅支付
     if (paymentIntent.invoice) {
         console.log('检测到这是订阅支付的PaymentIntent，直接处理积分');
@@ -430,11 +438,102 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
     }
 }
 
+/**
+ * 🆕 处理试用激活付款（$1付费后创建3天试用订阅）
+ */
+async function handleTrialActivationPayment(paymentIntent: Stripe.PaymentIntent) {
+    console.log("=== 处理试用激活付款 ===");
+    
+    const user_id = paymentIntent.metadata?.userId;
+    const priceId = paymentIntent.metadata?.subscriptionPriceId; // 月度订阅的价格ID
+    const customerId = paymentIntent.customer as string;
+    
+    if (!user_id) {
+        console.error('❌ 试用激活付款中未找到用户ID');
+        return;
+    }
+    
+    if (!priceId) {
+        console.error('❌ 试用激活付款中未找到订阅价格ID');
+        return;
+    }
+    
+    if (!customerId) {
+        console.error('❌ 试用激活付款中未找到客户ID');
+        return;
+    }
+    
+    try {
+        // 1️⃣ 先为用户发放试用积分
+        const orderDetails: IOrderDetail = {
+            userId: user_id,
+            transactionId: paymentIntent.id,
+            invoice: '',
+            priceId: priceId,
+            price: 1.00, // $1试用激活费
+            date: new Date(paymentIntent.created * 1000).toISOString(),
+            customerId: customerId,
+            subscriptionId: '' // 订阅还未创建
+        };
+        
+        console.log('✅ 发放试用积分给用户:', user_id);
+        await createTrialSubscriptionFromStripe(orderDetails);
+        
+        // 2️⃣ 创建3天试用期订阅（试用结束后自动转为付费订阅）
+        console.log('🎯 创建3天试用期订阅...');
+        
+        // 获取支付方式ID
+        const paymentMethodId = paymentIntent.payment_method as string;
+        
+        // 将支付方式附加到客户
+        if (paymentMethodId) {
+            try {
+                await stripe.paymentMethods.attach(paymentMethodId, {
+                    customer: customerId,
+                });
+                console.log('✅ 支付方式已附加到客户');
+                
+                // 设置为默认支付方式
+                await stripe.customers.update(customerId, {
+                    invoice_settings: {
+                        default_payment_method: paymentMethodId,
+                    },
+                });
+                console.log('✅ 已设置默认支付方式');
+            } catch (error) {
+                console.error('❌ 附加支付方式失败:', error);
+            }
+        }
+        
+        // 创建订阅（带3天试用期）
+        const subscription = await stripe.subscriptions.create({
+            customer: customerId,
+            items: [{ price: priceId }],
+            trial_period_days: 3, // 3天试用期
+            metadata: {
+                userId: user_id,
+                priceId: priceId,
+                projectId: PROJECT_ID,
+                isTrial: 'true',
+                trialActivationPaid: 'true', // 标记已支付激活费
+                language: paymentIntent.metadata?.language || 'zh'
+            }
+        });
+        
+        console.log('✅ 创建3天试用订阅成功:', subscription.id);
+        console.log('📅 试用结束时间:', new Date((subscription.trial_end || 0) * 1000).toISOString());
+        
+    } catch (error) {
+        console.error('❌ 处理试用激活付款失败:', error);
+    }
+}
+
 async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
     console.log("=== 处理订阅创建事件 ===");
 
     // 检查是否是试用期订阅
     const isTrial = subscription.metadata?.isTrial === 'true';
+    const trialActivationPaid = subscription.metadata?.trialActivationPaid === 'true';
     const user_id = subscription.metadata?.userId;
     const priceId = subscription.metadata?.priceId;
 
@@ -449,21 +548,27 @@ async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
     }
 
     if (isTrial) {
-        console.log('检测到试用期订阅，立即为用户添加积分');
-
+        // 如果是通过 handleTrialActivationPayment 创建的订阅，已经发放过积分了
+        if (trialActivationPaid) {
+            console.log('✅ 这是付费试用订阅，积分已在激活付款时发放，跳过重复发放');
+            return;
+        }
+        
+        // 兼容旧的免费试用逻辑
+        console.log('检测到免费试用期订阅，立即为用户添加积分');
         const orderDetails: IOrderDetail = {
             userId: user_id,
             transactionId: subscription.id,
             invoice: '',
             priceId: priceId,
-            price: 0, // 试用期价格为0
+            price: 0,
             date: new Date(subscription.created * 1000).toISOString(),
             customerId: subscription.customer as string,
-            subscriptionId: subscription.id // 直接传递订阅ID
+            subscriptionId: subscription.id
         };
 
         console.log('创建试用期订阅记录，用户:', user_id);
-        await createOrderDetailsFromStripe(orderDetails, true, false); // 试用期，不是续费
+        await createTrialSubscriptionFromStripe(orderDetails);
     } else {
         console.log('非试用期订阅，等待支付完成后处理积分');
     }

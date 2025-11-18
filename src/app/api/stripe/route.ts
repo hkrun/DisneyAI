@@ -85,8 +85,8 @@ export async function POST(req: Request) {
                 }
             };
         } else if(type === "3") {
-            // 🆕 $1付费试用订阅（3天后自动转为月度订阅）
-            console.log('🎁 处理$1付费试用订阅请求');
+            // 🆕 $1付费试用（立即支付$1，然后在webhook中创建3天试用订阅）
+            console.log('🎁 处理$1付费试用请求');
             
             // 🚫 防重复检查
             const hasUsedTrial = await hasUsedFreeTrial();
@@ -97,37 +97,91 @@ export async function POST(req: Request) {
                 }, { status: 400 });
             }
             
-            console.log('✅ 用户未使用过试用，创建$1付费试用订阅');
-            param.mode = 'subscription';
-            param.subscription_data = {
-                trial_period_days: 3, // 🎯 3天试用期
-                // 🎯 关键：立即收取$1作为试用激活费
-                trial_settings: {
-                    end_behavior: {
-                        missing_payment_method: 'cancel' // 如果没有支付方式则取消
-                    }
-                },
-                metadata: {
-                    userId: userId,
-                    priceId: priceId,
-                    projectId: PROJECT_ID,
-                    isTrial: 'true', // 🏷️ 试用标识
-                    language: language || locale || 'zh' // 多语言支持
+            console.log('✅ 用户未使用过试用，创建$1付费试用支付');
+            
+            // 🔑 先创建或获取 Stripe 客户（关键！）
+            let customer: Stripe.Customer;
+            try {
+                // 尝试查找已存在的客户
+                const existingCustomers = await stripe.customers.list({
+                    email: customerEmail,
+                    limit: 1
+                });
+                
+                if (existingCustomers.data.length > 0) {
+                    customer = existingCustomers.data[0];
+                    console.log('✅ 找到已存在的客户:', customer.id);
+                } else {
+                    // 创建新客户
+                    customer = await stripe.customers.create({
+                        email: customerEmail,
+                        metadata: {
+                            userId: userId,
+                            projectId: PROJECT_ID
+                        }
+                    });
+                    console.log('✅ 创建新客户:', customer.id);
                 }
+            } catch (error) {
+                console.error('❌ 创建/获取客户失败:', error);
+                return NextResponse.json({ error: '创建客户失败' }, { status: 500 });
+            }
+            
+            // 🌍 多语言产品名称和描述
+            const trialProductNames: { [key: string]: string } = {
+                'zh': 'DisneyAi 3天体验激活',
+                'en': 'DisneyAi 3-Day Trial Activation',
+                'ja': 'DisneyAi 3日間体験アクティベーション',
+                'ko': 'DisneyAi 3일 체험 활성화',
+                'de': 'DisneyAi 3-Tage-Testaktivierung',
+                'fr': 'DisneyAi Activation d\'essai de 3 jours',
+                'es': 'DisneyAi Activación de prueba de 3 días'
             };
             
-            // 🎯 添加立即收取的$1试用费（作为首次发票项）
-            param.subscription_data.add_invoice_items = [{
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                        name: 'DisneyAi Trial Access Fee',
-                        description: '3-day trial activation fee'
+            const trialProductDescriptions: { [key: string]: string } = {
+                'zh': '立即开始3天体验，之后自动转为月度订阅 $9.99/月',
+                'en': 'Start 3-day trial now, then auto-renews to monthly subscription at $9.99/month',
+                'ja': '今すぐ3日間の体験を開始、その後月額$9.99のサブスクリプションに自動更新',
+                'ko': '지금 3일 체험 시작, 이후 월 $9.99 구독으로 자동 갱신',
+                'de': 'Starten Sie jetzt die 3-tägige Testversion, die sich dann automatisch in ein monatliches Abonnement für $9,99/Monat verlängert',
+                'fr': 'Commencez l\'essai de 3 jours maintenant, puis renouvellement automatique à l\'abonnement mensuel à $9,99/mois',
+                'es': 'Comience la prueba de 3 días ahora, luego se renueva automáticamente a la suscripción mensual a $9.99/mes'
+            };
+            
+            const productName = trialProductNames[locale] || trialProductNames['en'];
+            const productDescription = trialProductDescriptions[locale] || trialProductDescriptions['en'];
+            
+            // 🎯 使用 payment 模式立即收取$1
+            // 支付成功后在 webhook 中创建带3天试用期的订阅
+            param.mode = 'payment';
+            param.customer = customer.id; // 🔑 使用创建的客户ID（而不是customer_email）
+            delete param.customer_email; // 删除customer_email，因为已经有customer了
+            
+            param.line_items = [
+                {
+                    price_data: {
+                        currency: 'usd',
+                        product_data: {
+                            name: productName,
+                            description: productDescription
+                        },
+                        unit_amount: 100, // $1.00 = 100美分
                     },
-                    unit_amount: 100, // $1.00 = 100美分
-                },
-                quantity: 1,
-            }];
+                    quantity: 1
+                }
+            ];
+            param.payment_intent_data = {
+                setup_future_usage: 'off_session', // 🔑 保存支付方式用于未来扣款
+                metadata: {
+                    userId: userId,
+                    priceId: priceId, // 保存月度订阅的价格ID
+                    projectId: PROJECT_ID,
+                    isTrial: 'true', // 🏷️ 试用标识
+                    trialActivation: 'true', // 标记这是试用激活付款
+                    subscriptionPriceId: priceId, // 3天后要订阅的价格ID
+                    language: language || locale || 'zh'
+                }
+            };
         } else {
             // 常规订阅
             param.mode = 'subscription';

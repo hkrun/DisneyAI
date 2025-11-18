@@ -15,6 +15,7 @@ export interface Navbar {
     label: string;
   };
   creditsDisplay: CreditsDisplayLocale;
+  installApp?: InstallAppLocale;
 }
 
 
@@ -61,5 +62,33 @@ export interface CreditsDisplayLocale {
     costInfo: string;
     usageInfo: string;
     getMoreButton: string;
+  };
+}
+
+export interface InstallAppLocale {
+  tooltip: string;
+  title: string;
+  description: string;
+  install: string;
+  cancel: string;
+  later: string;
+  installed: string;
+  button: string;
+  manualInstall: {
+    title: string;
+    description: string;
+    chrome: {
+      title: string;
+      steps: string[];
+    };
+    edge: {
+      title: string;
+      steps: string[];
+    };
+    safari: {
+      title: string;
+      steps: string[];
+    };
+    tip: string;
   };
 }

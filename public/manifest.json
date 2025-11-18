@@ -1,0 +1,31 @@
+{
+  "name": "DisneyAi - 迪士尼风格转换",
+  "short_name": "DisneyAi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#DC2626",
+  "orientation": "portrait",
+  "description": "专业的迪士尼魔法转换服务平台，提供高质量的迪士尼风格图片和视频转换技术",
+  "icons": [
+    { 
+      "src": "/favicon.svg", 
+      "sizes": "192x192", 
+      "type": "image/svg+xml",
+      "purpose": "any" 
+    },
+    { 
+      "src": "/favicon.svg", 
+      "sizes": "512x512", 
+      "type": "image/svg+xml",
+      "purpose": "any" 
+    },
+    { 
+      "src": "/favicon.svg", 
+      "sizes": "180x180", 
+      "type": "image/svg+xml", 
+      "purpose": "any maskable" 
+    }
+  ]
+}
+

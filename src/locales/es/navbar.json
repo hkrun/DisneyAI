@@ -90,10 +90,49 @@
             "getMoreButton": "Obtener más créditos"
         }
     },
+    "installApp": {
+        "tooltip": "Añadir a la pantalla de inicio",
+        "title": "Añadir a la pantalla de inicio",
+        "description": "Añade DisneyAi a tu pantalla de inicio para un acceso más rápido y una mejor experiencia.",
+        "install": "Instalar ahora",
+        "cancel": "Cancelar",
+        "later": "Más tarde",
+        "installed": "Instalado",
+        "button": "Instalar aplicación",
+        "manualInstall": {
+            "title": "Añadir manualmente a la pantalla de inicio",
+            "description": "Sigue estos pasos según tu navegador:",
+            "chrome": {
+                "title": "Navegador Chrome",
+                "steps": [
+                    "Toca los tres puntos (⋮) en la esquina superior derecha",
+                    "Selecciona \"Añadir a pantalla de inicio\" del menú",
+                    "Espera a que se complete la instalación"
+                ]
+            },
+            "edge": {
+                "title": "Navegador Edge",
+                "steps": [
+                    "Toca las tres líneas (☰) en la esquina inferior derecha",
+                    "Selecciona \"Añadir al teléfono\" del menú",
+                    "Espera a que se complete la instalación"
+                ]
+            },
+            "safari": {
+                "title": "Navegador Safari (iOS)",
+                "steps": [
+                    "Toca el botón Compartir (□↑) en la parte inferior",
+                    "Selecciona \"Añadir a pantalla de inicio\" del menú",
+                    "Espera a que se complete la instalación"
+                ]
+            },
+            "tip": "Consejo: Recomendamos usar Chrome o Edge para la mejor experiencia"
+        }
+    },
     "meta": {
-        "title": "Precios de conversión de estilo Disney de DisneyAi - Intercambio de rostros IA | Reemplazo de rostros | Intercambio de rostros en vídeo",
-        "description": "Planes de precios del servicio de intercambio de rostros IA DisneyAi, que ofrece servicios profesionales de reemplazo de rostros IA, intercambio de rostros en vídeo y creación de contenido creativo.",
-        "alt": "DisneyAi Intercambio de rostros IA",
-        "keywords": "personajes de Disney, bebé de Disney, funciones de IA de Disney, generador de imágenes IA"
+        "title": "DisneyAi Conversión de Estilo Disney - Conversión de Imágenes IA | Conversión de Video | Transferencia de Estilo",
+        "description": "Servicio de conversión de estilo Disney DisneyAi, que ofrece servicios profesionales de conversión de estilo de imagen IA, conversión de estilo de video y creación de contenido creativo.",
+        "alt": "DisneyAi Conversión de Estilo Disney",
+        "keywords": "estilo Disney, personajes de Disney, conversión de estilo, generador de imágenes IA, conversión de video"
   }
 }

@@ -90,10 +90,49 @@
             "getMoreButton": "Mehr Guthaben erhalten"
         }
     },
+    "installApp": {
+        "tooltip": "Zum Startbildschirm hinzufügen",
+        "title": "Zum Startbildschirm hinzufügen",
+        "description": "Fügen Sie DisneyAi zu Ihrem Startbildschirm hinzu für schnelleren Zugriff und bessere Erfahrung.",
+        "install": "Jetzt installieren",
+        "cancel": "Abbrechen",
+        "later": "Später",
+        "installed": "Installiert",
+        "button": "App installieren",
+        "manualInstall": {
+            "title": "Manuell zum Startbildschirm hinzufügen",
+            "description": "Folgen Sie diesen Schritten je nach Browser:",
+            "chrome": {
+                "title": "Chrome Browser",
+                "steps": [
+                    "Tippen Sie auf die drei Punkte (⋮) oben rechts",
+                    "Wählen Sie \"Zum Startbildschirm hinzufügen\" aus dem Menü",
+                    "Warten Sie auf die Installation"
+                ]
+            },
+            "edge": {
+                "title": "Edge Browser",
+                "steps": [
+                    "Tippen Sie auf die drei Linien (☰) unten rechts",
+                    "Wählen Sie \"Zum Telefon hinzufügen\" aus dem Menü",
+                    "Warten Sie auf die Installation"
+                ]
+            },
+            "safari": {
+                "title": "Safari Browser (iOS)",
+                "steps": [
+                    "Tippen Sie auf die Teilen-Schaltfläche (□↑) unten",
+                    "Wählen Sie \"Zum Home-Bildschirm\" aus dem Menü",
+                    "Warten Sie auf die Installation"
+                ]
+            },
+            "tip": "Tipp: Wir empfehlen Chrome oder Edge für die beste Erfahrung"
+        }
+    },
     "meta": {
-    "title": "DisneyAi Disney-Stil-Konvertierung Preise - KI Gesichtstausch | Gesichtsaustausch | Video Gesichtstausch",
-    "description": "Preispläne für DisneyAi KI Gesichtstausch-Service, professionelle KI Gesichtsaustausch, Video Gesichtstausch und kreative Inhaltsproduktion.",
-    "alt": "DisneyAi KI Gesichtstausch",
-    "keywords": "Disney Charaktere, Disney Baby, Disney KI Funktionen, KI Bildgenerator"
+    "title": "DisneyAi Disney-Stil-Konvertierung - KI Bildkonvertierung | Video Konvertierung | Stil-Transfer",
+    "description": "DisneyAi Disney-Stil-Konvertierungsservice, professionelle KI Bildstil-Konvertierung, Videostil-Konvertierung und kreative Inhaltsproduktion.",
+    "alt": "DisneyAi Disney-Stil-Konvertierung",
+    "keywords": "Disney-Stil, Disney Charaktere, Stil-Konvertierung, KI Bildgenerator, Video Konvertierung"
   }
 }

@@ -92,10 +92,49 @@
             "getMoreButton": "Obtenir plus de crédits"
         }
     },
+    "installApp": {
+        "tooltip": "Ajouter à l'écran d'accueil",
+        "title": "Ajouter à l'écran d'accueil",
+        "description": "Ajoutez DisneyAi à votre écran d'accueil pour un accès plus rapide et une meilleure expérience.",
+        "install": "Installer maintenant",
+        "cancel": "Annuler",
+        "later": "Plus tard",
+        "installed": "Installé",
+        "button": "Installer l'application",
+        "manualInstall": {
+            "title": "Ajouter manuellement à l'écran d'accueil",
+            "description": "Suivez ces étapes selon votre navigateur :",
+            "chrome": {
+                "title": "Navigateur Chrome",
+                "steps": [
+                    "Appuyez sur les trois points (⋮) en haut à droite",
+                    "Sélectionnez \"Ajouter à l'écran d'accueil\" dans le menu",
+                    "Attendez la fin de l'installation"
+                ]
+            },
+            "edge": {
+                "title": "Navigateur Edge",
+                "steps": [
+                    "Appuyez sur les trois lignes (☰) en bas à droite",
+                    "Sélectionnez \"Ajouter au téléphone\" dans le menu",
+                    "Attendez la fin de l'installation"
+                ]
+            },
+            "safari": {
+                "title": "Navigateur Safari (iOS)",
+                "steps": [
+                    "Appuyez sur le bouton Partager (□↑) en bas",
+                    "Sélectionnez \"Sur l'écran d'accueil\" dans le menu",
+                    "Attendez la fin de l'installation"
+                ]
+            },
+            "tip": "Conseil : Nous recommandons Chrome ou Edge pour la meilleure expérience"
+        }
+    },
     "meta": {
-    "title": "Tarifs DisneyAi Conversion de Style Disney - Échange de Visages IA | Remplacement de Visages | Échange de Visages Vidéo",
-    "description": "Plans de tarification pour le service d'échange de visages IA DisneyAi, offrant des services professionnels de remplacement de visages IA, échange de visages vidéo et création de contenu créatif.",
-    "alt": "DisneyAi Échange de Visages IA",
-    "keywords": "personnages Disney, bébé Disney, fonctionnalités IA Disney, générateur d'images IA"
+    "title": "DisneyAi Conversion de Style Disney - Conversion d'Images IA | Conversion Vidéo | Transfert de Style",
+    "description": "Service de conversion de style Disney DisneyAi, offrant des services professionnels de conversion de style d'image IA, conversion de style vidéo et création de contenu créatif.",
+    "alt": "DisneyAi Conversion de Style Disney",
+    "keywords": "style Disney, personnages Disney, conversion de style, générateur d'images IA, conversion vidéo"
   }
 }

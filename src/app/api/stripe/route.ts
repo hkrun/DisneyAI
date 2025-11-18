@@ -47,6 +47,34 @@ export async function POST(req: Request) {
             'ko': '이메일이 자동으로 채워지고 잠겨서 결제가 귀하의 계정과 연결되도록 보장합니다'
         };
 
+        // 🔑 统一为所有支付创建或获取 Stripe 客户
+        let customer: Stripe.Customer;
+        try {
+            // 尝试查找已存在的客户
+            const existingCustomers = await stripe.customers.list({
+                email: customerEmail,
+                limit: 1
+            });
+            
+            if (existingCustomers.data.length > 0) {
+                customer = existingCustomers.data[0];
+                console.log('✅ 找到已存在的客户:', customer.id);
+            } else {
+                // 创建新客户
+                customer = await stripe.customers.create({
+                    email: customerEmail,
+                    metadata: {
+                        userId: userId,
+                        projectId: PROJECT_ID
+                    }
+                });
+                console.log('✅ 创建新客户:', customer.id);
+            }
+        } catch (error) {
+            console.error('❌ 创建/获取客户失败:', error);
+            return NextResponse.json({ error: '创建客户失败' }, { status: 500 });
+        }
+
         const param: Stripe.Checkout.SessionCreateParams = {
             ui_mode: 'embedded',
             locale: stripeLocale as Stripe.Checkout.SessionCreateParams.Locale,
@@ -59,6 +87,7 @@ export async function POST(req: Request) {
             // redirect_on_completion: 'if_required',
             redirect_on_completion: 'never',
             automatic_tax: {enabled: true},
+            customer: customer.id, // 🔑 使用客户ID而不是email
             customer_update: {
                 address: 'auto' // 🔑 自动从结账表单中保存地址（用于税费计算）
             },
@@ -69,7 +98,6 @@ export async function POST(req: Request) {
                 priceId: priceId,
                 projectId: PROJECT_ID
             },
-            customer_email: customerEmail,
             custom_text: {
                 submit: {
                     message: customMessages[locale] || customMessages['en'],
@@ -100,35 +128,7 @@ export async function POST(req: Request) {
                 }, { status: 400 });
             }
             
-            console.log('✅ 用户未使用过试用，创建$1付费试用支付');
-            
-            // 🔑 先创建或获取 Stripe 客户（关键！）
-            let customer: Stripe.Customer;
-            try {
-                // 尝试查找已存在的客户
-                const existingCustomers = await stripe.customers.list({
-                    email: customerEmail,
-                    limit: 1
-                });
-                
-                if (existingCustomers.data.length > 0) {
-                    customer = existingCustomers.data[0];
-                    console.log('✅ 找到已存在的客户:', customer.id);
-                } else {
-                    // 创建新客户
-                    customer = await stripe.customers.create({
-                        email: customerEmail,
-                        metadata: {
-                            userId: userId,
-                            projectId: PROJECT_ID
-                        }
-                    });
-                    console.log('✅ 创建新客户:', customer.id);
-                }
-            } catch (error) {
-                console.error('❌ 创建/获取客户失败:', error);
-                return NextResponse.json({ error: '创建客户失败' }, { status: 500 });
-            }
+            console.log('✅ 用户未使用过试用，创建$1付费试用支付（客户已创建: ' + customer.id + '）');
             
             // 🌍 多语言产品名称和描述
             const trialProductNames: { [key: string]: string } = {
@@ -157,8 +157,6 @@ export async function POST(req: Request) {
             // 🎯 使用 payment 模式立即收取$1
             // 支付成功后在 webhook 中创建带3天试用期的订阅
             param.mode = 'payment';
-            param.customer = customer.id; // 🔑 使用创建的客户ID（而不是customer_email）
-            delete param.customer_email; // 删除customer_email，因为已经有customer了
             
             param.line_items = [
                 {
@@ -198,7 +196,7 @@ export async function POST(req: Request) {
         }
         
         console.log('创建 Stripe 会话参数:', {
-            customer_email: param.customer_email,
+            customer: param.customer,
             mode: param.mode,
             locale: stripeLocale,
             userId: userId

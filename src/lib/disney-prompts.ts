@@ -15,7 +15,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '现代迪士尼电影风格',
     prompt: 'Make it into a classic hand-drawn 2D fairy tale animation style, with soft colors, rounded character shapes, and a warm, nostalgic storybook feeling',
     category: 'classic',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmplhscrdh9.jpg'
+    image: '/1.jpg'
   },
   {
     id: 'cinderella',
@@ -23,7 +23,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '优雅的迪士尼公主风格',
     prompt: "Create a hand-drawn 2D fairy tale princess animation style from the 1930s to 1950s, with elegant vintage character design, expressive almond-shaped eyes, soft skin tones and a gentle color palette. Keep the original facial features while blending in classic storybook aesthetics. The scene should be a castle, magical forest or grand ballroom, with watercolor-like backgrounds and subtle textures that evoke the golden age of animated fairy tales.",
     category: 'classic',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/573dc94d2b66d6c05b151aad618f145b.jpg'
+    image: '/2.jpg'
   },
   {
     id: 'bambi',
@@ -31,7 +31,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '自然森林风格',
     prompt: 'Classic hand-drawn 2D forest fairy tale style: vivid saturated colors, soft rounded character outlines, warm storytelling lighting, peaceful woodland atmosphere.',
     category: 'classic',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/85c100280e033d687accbd0bcd95c2fd.jpeg'
+    image: '/3.jpeg'
   },
   {
     id: 'mulan',
@@ -39,7 +39,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '迪士尼还原古代中国场景',
     prompt: 'Hand-drawn and 3D blended animation style, ancient Chinese setting, traditional Chinese architecture (wooden houses, ancestral halls), oriental character design (long black hair, petal-shaped lips), warm earthy tones with bright accents, historical fairy tale atmosphere, family-friendly illustration',
     category: 'classic',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/941ahqx9bnrma0csemc80gj5ww.png'
+    image: '/4.png'
   },
   
 
@@ -50,7 +50,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '皮克斯3D动画风格，玩具质感',
     prompt: '3D cartoon animation style with toy-like characters, plastic materials, bright colors, clean studio lighting, childhood nostalgia, playful atmosphere, detailed 3D rendering',
     category: 'pixar',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/f085f2e48f37c1dc5c238c5ffde136af.jpg'
+    image: '/5.jpg'
   },
   {
     id: 'frozen',
@@ -58,7 +58,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '冰雪魔法风格，蓝色和白色主调',
     prompt: '3D winter fantasy animation style, ice and snow magic, crystalline textures, cool blue and white tones, ice castle scenery, magical sparkles, detailed snow effects',
     category: 'modern',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmpc46is7bu.jpg'
+    image: '/6.jpg'
   },
   {
     id: 'zootopia',
@@ -66,7 +66,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: ' 迪士尼 3D 写实卡通风格，动物毛发皮肤质感细腻',
     prompt: '3D realistic cartoon style, anthropomorphic animal characters with detailed fur texture and expressive faces, a vibrant fantasy-modern city, exaggerated cartoon movements, soft lighting, detailed urban environments, family-friendly mood',
     category: 'modern',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/6244b887612cf8c60d581dc9a8ceff51.jpeg'
+    image: '/7.jpeg'
   },
   {
     id: 'finding-nemo',
@@ -74,7 +74,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '海底世界风格，蓝色和珊瑚色调',
     prompt: '3D underwater ocean animation style, colorful coral reef environment, diverse marine life, flowing water effects, tropical fish colors, deep ocean lighting, immersive underwater world',
     category: 'pixar',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/61c3c68198b2ab11a191df0e79504585.jpeg'
+    image: '/8.jpeg'
   },
   
   {id: "wreck-it-ralph",
@@ -82,7 +82,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: "迪士尼像素风与 3D 融合风格，复古游戏场景用像素（简洁鲜艳）",
     prompt: "A hybrid style combining retro pixel art and 3D cartoon rendering: pixelated game levels, bright and saturated blocky textures, simple geometric shapes, 3D characters with exaggerated proportions and detailed facial expressions, glowing arcade lights, and a nostalgic video game world full of energy and movement",
     category: "pixar",
-    image: "https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/eb624b85a3427bdf60fc9b60211932d5.jpeg"
+    image: "/9.jpeg"
   },
 
   // 现代动画系列
@@ -91,7 +91,7 @@ export const DISNEY_STYLE_TEMPLATES: DisneyStyleTemplate[] = [
     description: '迪士尼 CGI 动画风格，以非洲草原为背景',
     prompt: 'CGI realistic animation style, African savanna landscape, vivid bright colors, lifelike animal fur and skin textures, detailed grasslands and trees, dramatic cinematic lighting, epic fairy tale scene, high-definition natural atmosphere',
     category: 'modern',
-    image: 'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/377c38a66f28a1a1d18df2d341056526.jpeg'
+    image: '/10.jpeg'
   },
   
 ];

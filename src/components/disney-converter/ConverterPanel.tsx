@@ -989,9 +989,9 @@ export default function ConverterPanel({ mode, i18n }: ConverterPanelProps) {
                       <p className="text-sm font-medium mb-3">{i18n.steps.upload.exampleImages}</p>
                       <div className="grid grid-cols-3 gap-4">
                         {[
-                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/xg1.jpg',
-                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/xg2.jpeg',
-                          'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/xg3.jpeg'
+                          '/xg1.jpg',
+                          '/xg2.jpeg',
+                          '/xg3.jpeg'
                         ].map((imageUrl, index) => (
                           <div 
                             key={index} 

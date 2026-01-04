@@ -84,30 +84,30 @@ export default async function Home({ params }: HomePageProps) {
               <div className="rounded-xl overflow-hidden border border-white/20 mt-auto">
                 {index === 0 && (
                   <div className="flex">
-                    <img src="https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/26d14eaa220f611a9b8fd98cbf5e194d.jpeg" className="w-1/2 h-96 object-cover" />
-                    <img src="https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmplhscrdh9.jpg" className="w-1/2 h-96 object-cover" />
+                    <img src="/db1.jpeg" className="w-1/2 h-96 object-cover" />
+                    <img src="/1.jpg" className="w-1/2 h-96 object-cover" />
                   </div>
                 )}
                 {index === 1 && (
                   <video 
                     className="w-full h-96 object-contain bg-black" 
                     controls
-                    poster="https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/82750495732c270ef928d15fb9c5cec3.jpeg"
+                    poster="/sp1.jpeg"
                     preload="metadata"
                   >
-                    <source src="https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/video/%E5%A4%84%E7%90%86%E5%9B%BE%E5%83%8F%E4%BF%A1%E6%81%AF%20%281%29.mp4" type="video/mp4" />
+                    <source src="/sp1.mp4" type="video/mp4" />
                     {translations.features.videoNotSupported}
                   </video>
                 )}
                 {index === 2 && (
                   <>
                     <div className="flex">
-                      <img src="https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmpcisxw7a1.jpg" className="w-1/2 h-48 object-cover" />
-                      <img src="https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/output.jpg" className="w-1/2 h-48 object-cover" />
+                      <img src="/gz1.jpg" className="w-1/2 h-48 object-cover" />
+                      <img src="/gz2.jpg" className="w-1/2 h-48 object-cover" />
                     </div>
                     <div className="flex">
-                      <img src="https://replicate.delivery/xezq/uIeVH8eQnFrRg0Dk5fcEE72Yfhom7TD7QhgZdEMVOWjigpfqC/out-0.jpg" className="w-1/2 h-48 object-cover" />
-                      <img src="https://replicate.delivery/xezq/WNgmTGm2NSaffERQTBX89bidf8AYyEWr7wvq7xC4fBZVT6fqC/output_seed42.png" className="w-1/2 h-48 object-cover" />
+                      <img src="/gz3.jpg" className="w-1/2 h-48 object-cover" />
+                      <img src="/gz4.png" className="w-1/2 h-48 object-cover" />
                     </div>
                   </>
                 )}
@@ -140,10 +140,10 @@ export default async function Home({ params }: HomePageProps) {
               <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                 <div className="relative">
                   <img src={[
-                    'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmpbc368xbh.jpg',
-                    'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmpxxpqhr6u.jpg',
-                    'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmps27hcreu.jpg',
-                    'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/tmpu5f1dmuo.jpg'
+                    '/cat1.jpg',
+                    '/cat2.jpg',
+                    '/cat3.jpg',
+                    '/cat4.jpg'
                   ][i]} className="w-full h-48 object-cover" />
                   <div className={`absolute top-3 right-3 ${item.tag === '经典' || item.tag === 'Classic' ?'bg-disney-yellow text-disney-blue':'bg-disney-blue text-white'} text-xs px-2 py-1 rounded-full font-medium`}>{item.tag}</div>
                   </div>
@@ -182,9 +182,9 @@ export default async function Home({ params }: HomePageProps) {
               </div>
                 <p className="text-gray-700 mb-4">"{testimonial.content}"</p>
                   <img src={[
-                    'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/teed94mh15rm80csfvzbkh0xzm.jpg',
-                    'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/kmy8hmgj8srme0csejmt4w2br0.jpg',
-                    'https://scmh-shanghai.oss-cn-shanghai.aliyuncs.com/dsn/images/941ahqx9bnrma0csemc80gj5ww.png'
+                    '/pl1.jpg',
+                    '/pl2.jpg',
+                    '/4.png'
                   ][i]} className="w-full h-40 object-cover rounded-lg" />
                 </div>
             ))}
@@ -205,7 +205,7 @@ export default async function Home({ params }: HomePageProps) {
                 <a href="#" className="inline-block bg-white text-disney-purple hover:bg-gray-100 px-6 py-3 rounded-full font-bold">{translations.activity.cta}</a>
                 </div>
               <div className="md:w-1/2 relative h-64 md:h-auto">
-                <img src="https://replicate.delivery/xezq/ZqlSU1rzlIrvLpXW4vooAenGNPks1DEZsfJayqXvOgTVX6XVA/out-0.jpg" className="absolute inset-0 w-full h-full object-cover" />
+                <img src="/jl.jpg" className="absolute inset-0 w-full h-full object-cover" />
                 </div>
               </div>
             </div>

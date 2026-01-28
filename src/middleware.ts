@@ -117,7 +117,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // 静态文件（图片、视频等）直接放行，不进行国际化处理
-  const staticFilePattern = /\.(mp4|webm|mov|avi|flv|wmv|jpg|jpeg|png|gif|svg|webp|ico|pdf|zip|css|js|woff|woff2|ttf|eot|manifest\.json|sw\.js)$/i;
+  const staticFilePattern = /\.(mp4|webm|mov|avi|flv|wmv|jpg|jpeg|png|gif|svg|webp|ico|pdf|zip|css|js|woff|woff2|ttf|eot|txt|manifest\.json|sw\.js)$/i;
   if (staticFilePattern.test(pathname)) {
     // 如果静态文件路径包含语言前缀（如 /en/sp1.mp4），重写为根路径（/sp1.mp4）
     const localeMatch = pathname.match(/^\/([a-z]{2})\/(.+)$/);
@@ -131,8 +131,8 @@ export async function middleware(request: NextRequest) {
 
   // 处理国际化重定向（仅针对页面路由）
   if (!pathnameHasLocale) {
-    // PWA 静态文件直接放行，不重定向
-    if (pathname === '/manifest.json' || pathname === '/sw.js') {
+    // PWA 静态文件和 ads.txt 直接放行，不重定向
+    if (pathname === '/manifest.json' || pathname === '/sw.js' || pathname === '/ads.txt') {
       return NextResponse.next();
     }
     // 其他路径（包括 /）都需要重定向到带语言前缀的路径
@@ -148,7 +148,7 @@ export async function middleware(request: NextRequest) {
  export const config = {
   matcher: [
     // Skip Next.js internals and static files (except those with locale prefix that need rewriting)
-    '/((?!_next|sitemap.xml|favicon.ico|robots.txt|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|assets)).*)',
+    '/((?!_next|sitemap.xml|favicon.ico|robots.txt|ads.txt|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|assets)).*)',
     // Always run for API routes
     '/(api|trpc)(.*)',
   ],

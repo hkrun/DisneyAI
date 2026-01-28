@@ -75,13 +75,21 @@ export async function uploadToOSS(
     // 构建上传URL
     const uploadUrl = `https://${ossConfig.bucket}.${ossConfig.endpoint}/${objectKey}`
 
+    // 根据文件类型设置缓存时间
+    // 图片缓存1年，视频缓存1天（因为视频可能较大且可能更新）
+    const isImage = contentType.startsWith('image/')
+    const cacheControl = isImage 
+      ? 'public, max-age=31536000, immutable' // 图片：1年，不可变
+      : 'public, max-age=86400' // 视频：1天
+
     // 执行上传
     const response = await fetch(uploadUrl, {
       method: 'PUT',
       headers: {
         'Authorization': `OSS ${ossConfig.accessKeyId}:${signature}`,
         'Date': date,
-        'Content-Type': contentType
+        'Content-Type': contentType,
+        'Cache-Control': cacheControl // 添加缓存头，减少重复下载
       },
       body: new Uint8Array(fileBuffer)
     })

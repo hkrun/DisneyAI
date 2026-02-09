@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
+        // 仅屏蔽接口、后台、测试页，保留所有语言首页及营销页可被索引
         disallow: ['/api/', '/dashboard', '/test-qwen'],
       },
     ],

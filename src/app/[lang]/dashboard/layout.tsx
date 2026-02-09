@@ -1,9 +1,12 @@
 import type React from "react"
 import { NavbarSticky } from "@/components/dashboard/navbar-sticky"
-import { i18nConfig, type Locale } from "@/i18n-config";
+import { type Locale } from "@/i18n-config";
 import { getDictionary, i18nNamespaces } from '@/i18n'
-import { Navbar, Footer, Billing } from "@/types/locales";
+import { Navbar } from "@/types/locales";
 
+export const metadata = {
+  robots: { index: false, follow: false },
+}
 
 export default async function Layout({
   children,

@@ -60,7 +60,42 @@ export default async function Page({ params }: { params: Promise<{ lang: Locale;
     notFound();
   }
 
-  return <AboutPostClient lang={lang} slug={slug} i18n={i18n} post={post} />;
+  const articleUrl = `${host}${getPathname(lang, `/about/${slug}`)}`;
+  const imageUrl = post.image
+    ? (post.image.startsWith('http') ? post.image : `${host}${post.image}`)
+    : undefined;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    ...(imageUrl && { image: imageUrl }),
+    datePublished: post.publishDate,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'DisneyAi',
+      logo: { '@type': 'ImageObject', url: `${host}/favicon.svg` },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl,
+    },
+    url: articleUrl,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <AboutPostClient lang={lang} slug={slug} i18n={i18n} post={post} />
+    </>
+  );
 }
 
 // 生成静态页面参数

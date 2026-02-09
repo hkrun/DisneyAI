@@ -7,3 +7,4 @@ export * from "./policy";
 export * from "./pricing";
 export * from  "./billing"
 export * from './auth';
+export * from './ad';

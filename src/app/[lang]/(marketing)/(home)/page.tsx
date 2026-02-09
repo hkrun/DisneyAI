@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { type Locale, i18nConfig, getPathname, generateAlternates } from '@/i18n-config'
 import { getDictionary, i18nNamespaces } from '@/i18n'
@@ -57,8 +58,38 @@ export default async function Home({ params }: HomePageProps) {
   const translations = await getDictionary<Home>(lang, i18nNamespaces.home)
   const converterTranslations = await getDictionary<ConverterPanelLocal>(lang, 'converter-panel')
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${host}/#website`,
+        url: host,
+        name: 'DisneyAi',
+        description: translations.meta?.description ?? 'AI video disney ai website',
+        inLanguage: [lang],
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: { '@type': 'EntryPoint', urlTemplate: `${host}/${lang}/about?q={search_term_string}` },
+          'query-input': 'required name=search_term_string',
+        },
+      },
+      {
+        '@type': 'Organization',
+        '@id': `${host}/#organization`,
+        name: 'DisneyAi',
+        url: host,
+        logo: { '@type': 'ImageObject', url: `${host}/favicon.svg` },
+      },
+    ],
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main>
         <HeroConverterSection
           lang={lang}
@@ -66,6 +97,7 @@ export default async function Home({ params }: HomePageProps) {
           converter={translations.converter}
           converterTranslations={converterTranslations}
         />
+
       {/* 功能亮点 */}
       <section id="features" className="py-16 md:py-24 bg-disney-blue text-white">
         <div className="container mx-auto px-4">

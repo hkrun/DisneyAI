@@ -1,17 +1,10 @@
-import { i18nConfig, type Locale, getPathname, localizationsKV, languages } from "@/i18n-config";
+import { type Locale } from "@/i18n-config";
 import { getDictionary, i18nNamespaces } from '@/i18n'
-import { host } from '@/config/config'
 import { Home } from "@/types/locales";
 
-
-export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+// 不在此 layout 中设置 canonical/alternates，由各子页面（legal、privacy、terms、payments-refund）自行设置正确的 canonical 与 hreflang
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
-  const alternates = Object.keys(languages).reduce((acc, l) => {
-    acc[localizationsKV[l]] = `${host}${getPathname(l as Locale, '')}`;
-    return acc;
-  }, {} as { [key: string]: string });
-
-  // Try to read translated meta, but fall back safely if missing
   let title = 'DisneyAi';
   let description = 'AI video disney ai website';
   try {
@@ -33,15 +26,10 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     },
     openGraph: {
       type: "website",
-      url: `${host}${getPathname(lang, '')}`,
       title,
       description,
       siteName: "DisneyAi"
     },
-    alternates: {
-      canonical: `${host}${getPathname(lang, '')}`,
-      languages: alternates
-    }
   }
 }
 
@@ -49,7 +37,7 @@ export default async function Layout({
   children, params
 }: Readonly<{
   children: React.ReactNode,
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }>) {
   return (
     <div className={`prose max-w-none m-5 mb-20 dark:prose-h1:text-gray-200 dark:prose-h2:text-gray-200 dark:prose-a:text-gray-200

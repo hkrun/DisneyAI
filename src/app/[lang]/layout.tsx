@@ -46,6 +46,9 @@ export default async function RootLayout({
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         
+        {/* Google AdSense Meta */}
+        <meta name="google-adsense-account" content="ca-pub-4422054913154766" />
+
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#DC2626" />
@@ -56,6 +59,13 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-title" content="DisneyAi" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         
+        {/* Google AdSense Script */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4422054913154766"
+          crossOrigin="anonymous"
+        />
+
         {/* Service Worker 注册 */}
         <script dangerouslySetInnerHTML={{
           __html: `

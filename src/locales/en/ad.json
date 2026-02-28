@@ -1,5 +1,8 @@
 {
   "close": "Close",
   "open": "Open",
-  "ad": "Ad"
+  "ad": "Ad",
+  "openButtonBefore": "Click image to ",
+  "openButtonHighlight": "open",
+  "openButtonAfter": " link"
 }

@@ -58,6 +58,12 @@
         { "title": "‘라이온 킹’ 어드벤처 풍", "tag": "신규", "description": "고품질 스타일 변환", "status": "사용 가능" }
       ]
     },
+    "featuredArticles": {
+      "title": "최신 매직 아티클",
+      "subtitle": "DisneyAi 로 만들어진 최신 튜토리얼, 활용 사례, 크리에이티브 아이디어를 만나보세요",
+      "viewAll": "전체 아티클 보기",
+      "readMore": "자세히 보기"
+    },
     "community": {
       "title": "크리에이티브 광장",
       "subtitle": "커뮤니티에 참여해 디즈니 스타일 작품을 공유해 보세요",

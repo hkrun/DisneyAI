@@ -58,6 +58,12 @@
         { "title": "Style aventure « Le Roi Lion »", "tag": "Nouveau", "description": "Conversion de style haute qualité", "status": "Disponible" }
       ]
     },
+    "featuredArticles": {
+      "title": "Derniers articles magiques",
+      "subtitle": "Découvrez les tutoriels, études de cas et idées créatives les plus récents réalisés avec DisneyAi",
+      "viewAll": "Voir tous les articles",
+      "readMore": "Lire l’article"
+    },
     "community": {
       "title": "Place créative",
       "subtitle": "Rejoignez notre communauté et partagez vos œuvres au style Disney",

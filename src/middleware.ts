@@ -92,7 +92,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 处理国际化路由（仅针对非API路由）
+  // 处理国际化路由（仅针对非 API 路由）
   const pathnameHasLocale = i18nConfig.locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
@@ -129,17 +129,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 处理国际化重定向（仅针对页面路由）
+  // 处理国际化重写（仅针对页面路由）
   if (!pathnameHasLocale) {
-    // PWA 静态文件和 ads.txt 直接放行，不重定向
+    // PWA 静态文件和 ads.txt 直接放行，不做国际化重写
     if (pathname === '/manifest.json' || pathname === '/sw.js' || pathname === '/ads.txt') {
       return NextResponse.next();
     }
-    // 其他路径（包括 /）都需要重定向到带语言前缀的路径
-    const redirectUrl = request.nextUrl.clone()
+    // 其他路径（包括 /）都内部重写到带语言前缀的路径（地址栏不变）
+    const rewriteUrl = request.nextUrl.clone()
     const normalizedPath = pathname === '/' ? '' : pathname
-    redirectUrl.pathname = `/${i18nConfig.defaultLocale}${normalizedPath}`
-    return NextResponse.redirect(redirectUrl, 308)
+    rewriteUrl.pathname = `/${i18nConfig.defaultLocale}${normalizedPath}`
+    return NextResponse.rewrite(rewriteUrl)
   }
 
   return NextResponse.next();

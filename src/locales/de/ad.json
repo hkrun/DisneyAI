@@ -1,5 +1,8 @@
 {
   "close": "Schließen",
   "open": "Öffnen",
-  "ad": "Werbung"
+  "ad": "Werbung",
+  "openButtonBefore": "Klicken Sie auf das Bild, um den ",
+  "openButtonHighlight": "Link",
+  "openButtonAfter": " zu öffnen"
 }

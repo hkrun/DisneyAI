@@ -1,5 +1,8 @@
 {
   "close": "Cerrar",
   "open": "Abrir",
-  "ad": "Anuncio"
+  "ad": "Anuncio",
+  "openButtonBefore": "Haga clic en la imagen para ",
+  "openButtonHighlight": "abrir",
+  "openButtonAfter": " el enlace"
 }

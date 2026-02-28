@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import { ArrowRight } from 'lucide-react'
 import { type Locale, i18nConfig, getPathname, generateAlternates } from '@/i18n-config'
 import { getDictionary, i18nNamespaces } from '@/i18n'
 import { type Home } from '@/types/locales/home'
 import { type ConverterPanelLocal } from '@/types/locales/converter-panel'
+import { type About } from '@/types/locales/about'
+import { generateBlogPosts } from '@/data/blog-posts'
 import { HeroConverterSection } from './HeroConverterSection'
 import { host } from '@/config/config'
 import type { Metadata } from 'next'
@@ -57,6 +60,18 @@ export default async function Home({ params }: HomePageProps) {
 
   const translations = await getDictionary<Home>(lang, i18nNamespaces.home)
   const converterTranslations = await getDictionary<ConverterPanelLocal>(lang, 'converter-panel')
+  const aboutTranslations = await getDictionary<About>(lang, i18nNamespaces.about)
+
+  // 生成博客文章并按发布时间倒序取最新 3 篇
+  const blogPostsMap = generateBlogPosts(aboutTranslations)
+  const featuredPosts = Object.entries(blogPostsMap)
+    .map(([slug, post]) => ({ slug, ...post }))
+    .sort((a, b) => {
+      const aTime = Date.parse(a.publishDate)
+      const bTime = Date.parse(b.publishDate)
+      return (isNaN(bTime) ? 0 : bTime) - (isNaN(aTime) ? 0 : aTime)
+    })
+    .slice(0, 3)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -191,6 +206,77 @@ export default async function Home({ params }: HomePageProps) {
             </div>
           </div>
         </section>
+
+      {/* Featured Articles Section */}
+      {featuredPosts.length > 0 && (
+        <section className="py-14 bg-white dark:bg-gray-950 border-y border-gray-100 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                  {translations.featuredArticles?.title}
+                </h2>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 max-w-2xl">
+                  {translations.featuredArticles?.subtitle}
+                </p>
+              </div>
+              <div className="flex md:justify-end">
+                <Link
+                  href={getPathname(lang, '/about')}
+                  className="inline-flex items-center text-sm font-medium text-bp-primary hover:text-bp-primary/80"
+                >
+                  {translations.featuredArticles?.viewAll}
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {featuredPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={getPathname(lang, `/about/${post.slug}`)}
+                  className="group relative block rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-80"
+                >
+                  {post.image ? (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      unoptimized={post.image.startsWith('http://') || post.image.includes('?')}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-700 dark:to-gray-900" />
+                  )}
+                  {/* 渐变遮罩，确保文字可读性 */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  {/* 文字内容叠加在图片上 */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-6">
+                    <p className="text-xs font-semibold tracking-wide text-white/90 uppercase mb-2">
+                      {post.category}
+                    </p>
+                    <h3 className="text-lg md:text-xl font-bold text-white mb-2 line-clamp-2 drop-shadow-lg">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-white/90 mb-4 line-clamp-2 drop-shadow-md">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-white/80">
+                      <span>{post.readTime}</span>
+                      <span className="inline-flex items-center text-white font-medium group-hover:translate-x-1 transition-transform">
+                        {translations.featuredArticles?.readMore}
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 社区/评价 + 活动 */}
       <section id="community" className="py-16 md:py-24 bg-white">

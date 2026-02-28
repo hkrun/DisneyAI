@@ -49,7 +49,7 @@ export default async function Layout({
         historyLocal={i18nHistory}
         i18n={{ auth: i18nAuth }}
       />
-      <div className="pb-[33vh] md:pb-[120px]">
+      <div>
         {children}
       </div>
       {/* Footer */}

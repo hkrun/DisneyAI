@@ -1,5 +1,8 @@
 {
   "close": "닫기",
   "open": "열기",
-  "ad": "광고"
+  "ad": "광고",
+  "openButtonBefore": "이미지를 클릭하여 ",
+  "openButtonHighlight": "열기",
+  "openButtonAfter": " 링크"
 }

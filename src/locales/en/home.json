@@ -78,6 +78,12 @@
       }
     ]
   },
+  "featuredArticles": {
+    "title": "Latest Magic Articles",
+    "subtitle": "Discover the newest tutorials, case studies and creative ideas from DisneyAi users",
+    "viewAll": "View all articles",
+    "readMore": "Read more"
+  },
   "community": {
     "title": "Creative Square",
     "subtitle": "Join our creative community and share your Disney-style works",

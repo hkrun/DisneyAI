@@ -29,6 +29,12 @@ export interface Home {
     }>;
     videoNotSupported: string;
   };
+  featuredArticles?: {
+    title: string;
+    subtitle: string;
+    viewAll: string;
+    readMore: string;
+  };
   templates: {
     title: string;
     subtitle: string;

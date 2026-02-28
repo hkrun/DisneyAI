@@ -58,6 +58,12 @@
         { "title": "Estilo de aventura de \"El Rey León\"", "tag": "Nuevo", "description": "Conversión de estilo de alta calidad", "status": "Disponible" }
       ]
     },
+    "featuredArticles": {
+      "title": "Artículos mágicos recientes",
+      "subtitle": "Descubre las últimas guías, tutoriales y casos reales creados con DisneyAi",
+      "viewAll": "Ver todos los artículos",
+      "readMore": "Leer más"
+    },
     "community": {
       "title": "Plaza creativa",
       "subtitle": "Únete a nuestra comunidad creativa y comparte tus obras con estilo Disney",

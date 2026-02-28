@@ -78,6 +78,12 @@
       }
     ]
   },
+  "featuredArticles": {
+    "title": "最新魔法灵感文章",
+    "subtitle": "看看创作者们如何用 DisneyAi 打造爆款内容与实战案例",
+    "viewAll": "查看全部文章",
+    "readMore": "阅读全文"
+  },
   "community": {
     "title": "创意广场",
     "subtitle": "加入我们的创意社区，分享你的迪士尼风格作品",

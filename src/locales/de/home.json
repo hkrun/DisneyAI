@@ -58,6 +58,12 @@
         { "title": "„Der König der Löwen“ Abenteuerstil", "tag": "Neu", "description": "Hochwertige Stilkonvertierung", "status": "Verfügbar" }
       ]
     },
+    "featuredArticles": {
+      "title": "Aktuelle Magic‑Artikel",
+      "subtitle": "Entdecke die neuesten Tutorials, Praxisbeispiele und Kreativ‑Guides, die mit DisneyAi erstellt wurden",
+      "viewAll": "Alle Artikel anzeigen",
+      "readMore": "Mehr lesen"
+    },
     "community": {
       "title": "Kreativ‑Plaza",
       "subtitle": "Tritt unserer Community bei und teile deine Werke im Disney‑Stil",

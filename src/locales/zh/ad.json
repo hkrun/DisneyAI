@@ -1,5 +1,8 @@
 {
   "close": "关闭",
   "open": "打开",
-  "ad": "广告"
+  "ad": "广告",
+  "openButtonBefore": "点击图片",
+  "openButtonHighlight": "打开",
+  "openButtonAfter": "链接"
 }

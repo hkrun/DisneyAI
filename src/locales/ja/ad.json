@@ -1,5 +1,8 @@
 {
   "close": "閉じる",
   "open": "開く",
-  "ad": "広告"
+  "ad": "広告",
+  "openButtonBefore": "画像をクリックして",
+  "openButtonHighlight": "開く",
+  "openButtonAfter": "リンク"
 }

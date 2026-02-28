@@ -34,10 +34,12 @@ export function AdTriggerProvider({
     storageKey: 'modal-ad-trigger',
   })
 
+  // 跟踪页面上的点击事件
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement
 
+      // 排除广告弹窗和底部广告位的点击
       if (
         target.closest('[role="dialog"]') !== null ||
         target.closest('[role="banner"]') !== null ||
@@ -46,6 +48,8 @@ export function AdTriggerProvider({
         return
       }
 
+      // 检查是否是可点击的元素
+      // 包括：链接、按钮、可点击的卡片等
       const isClickable =
         target.tagName === 'A' ||
         target.tagName === 'BUTTON' ||
@@ -60,6 +64,7 @@ export function AdTriggerProvider({
       }
     }
 
+    // 添加全局点击监听（使用捕获阶段，确保能捕获所有点击）
     document.addEventListener('click', handleClick, true)
 
     return () => {
@@ -67,6 +72,7 @@ export function AdTriggerProvider({
     }
   }, [recordClick])
 
+  // 加载翻译
   const [translations, setTranslations] = useState<Ad | null>(null)
 
   useEffect(() => {
@@ -77,13 +83,21 @@ export function AdTriggerProvider({
         setTranslations(data)
       } catch (error) {
         console.error('Failed to load ad translations:', error)
+        // 回退到英文
         try {
           const fallbackMod = await import('@/locales/en/ad.json')
           const fallback = (fallbackMod?.default ?? fallbackMod) as Ad
           setTranslations(fallback)
         } catch (fallbackError) {
           console.error('Failed to load fallback translations:', fallbackError)
-          setTranslations({ close: 'Close', open: 'Open', ad: 'Ad' })
+          setTranslations({
+            close: 'Close',
+            open: 'Open',
+            ad: 'Ad',
+            openButtonBefore: 'Click image to ',
+            openButtonHighlight: 'open',
+            openButtonAfter: ' link',
+          })
         }
       }
     }
@@ -94,6 +108,9 @@ export function AdTriggerProvider({
   const closeText = translations?.close || 'Close'
   const openText = translations?.open || 'Open'
   const adText = translations?.ad || 'Ad'
+  const openButtonBefore = translations?.openButtonBefore ?? 'Click image to '
+  const openButtonHighlight = translations?.openButtonHighlight ?? 'open'
+  const openButtonAfter = translations?.openButtonAfter ?? ' link'
 
   return (
     <ModalAd
@@ -103,6 +120,9 @@ export function AdTriggerProvider({
       closeText={closeText}
       openText={openText}
       adText={adText}
+      openButtonBefore={openButtonBefore}
+      openButtonHighlight={openButtonHighlight}
+      openButtonAfter={openButtonAfter}
       onClose={handleAdClosed}
     />
   )

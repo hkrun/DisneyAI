@@ -8,4 +8,6 @@ export interface Ad {
   openButtonHighlight?: string
   /** 弹窗底部提示文案后半段，如「链接」 */
   openButtonAfter?: string
+  /** 悬浮隐藏按钮文案，如「隐藏」/ "Hide" */
+  hide?: string
 }

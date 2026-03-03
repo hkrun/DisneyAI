@@ -38,6 +38,7 @@ export interface UserButtonLocale {
 export interface Navigation {
   href: string;
   label: string;
+  children?: Navigation[];
 }
 
 export interface MobileMenuLocale {

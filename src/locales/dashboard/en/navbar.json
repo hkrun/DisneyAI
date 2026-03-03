@@ -17,6 +17,24 @@
         {
             "href": "/dashboard/messages",
             "label": "Messages"
+        },
+        {
+            "href": "/dashboard/promotion",
+            "label": "Promotion",
+            "children": [
+                {
+                    "href": "/dashboard/promotion",
+                    "label": "Platform Settings"
+                },
+                {
+                    "href": "/dashboard/promotion/records",
+                    "label": "Platform Records"
+                },
+                {
+                    "href": "/dashboard/promotion/stats",
+                    "label": "Statistics"
+                }
+            ]
         }
     ],
     "actions": {
@@ -48,6 +66,10 @@
             {
                 "href": "/dashboard/messages",
                 "label": "Messages"
+            },
+            {
+                "href": "/dashboard/promotion",
+                "label": "Promotion"
             }
         ]
     },

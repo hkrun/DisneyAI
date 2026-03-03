@@ -4,6 +4,7 @@ import { FooterSocial } from "@/components/footer-social"
 import { BottomFixedAd } from "@/components/ads/bottom-fixed-ad"
 import { TopRightAd } from "@/components/ads/top-right-ad"
 import { AdTriggerProvider } from "@/components/ads/ad-trigger-provider"
+import { PromotionTracker } from "@/components/promotion-tracker"
 import { i18nConfig, type Locale } from "@/i18n-config";
 import { getDictionary, i18nNamespaces } from '@/i18n'
 import { Navbar, Footer, Billing, Auth } from "@/types/locales";
@@ -41,6 +42,7 @@ export default async function Layout({
 
   return (
     <>
+      <PromotionTracker />
       {/* Navigation Bar */}
       <NavbarSticky
         lang={lang}

@@ -1,4 +1,5 @@
 import type React from "react"
+import Script from "next/script"
 import { NavbarSticky } from "@/components/navbar-sticky"
 import { FooterSocial } from "@/components/footer-social"
 import { BottomFixedAd } from "@/components/ads/bottom-fixed-ad"
@@ -53,7 +54,7 @@ export default async function Layout({
         i18n={{ auth: i18nAuth }}
       />
       {/* 右上角广告位 */}
-      <TopRightAd
+      {/* <TopRightAd
         id="top-right-ad-main"
         showOnMobile={true}
         badgeCount={1}
@@ -90,7 +91,7 @@ export default async function Layout({
           title="右上角广告"
           scrolling="no"
         />
-      </TopRightAd>
+      </TopRightAd> */}
       <div>
         {children}
       </div>
@@ -172,6 +173,12 @@ export default async function Layout({
           />
         </div>
       </BottomFixedAd>
+      {/* 页面底部追加脚本广告 */}
+      <Script
+        id="marketing-page-inline-ad"
+        src="https://controlslaverystuffing.com/3e/7b/b7/3e7bb7544a932083ca5357be7c4d49e1.js"
+        strategy="afterInteractive"
+      />
       {/* 广告弹窗触发提供者（暂时注释） */}
       {/*
       <AdTriggerProvider
@@ -180,6 +187,7 @@ export default async function Layout({
         description="From Backtest to Live Deployment — All in One Place"
       />
       */}
+      
     </>
   )
 }

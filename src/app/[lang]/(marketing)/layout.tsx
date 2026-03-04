@@ -61,7 +61,6 @@ export default async function Layout({
         <iframe
           id="top-right-ad-d9e328b35f2065d7a58ee532fb8779f3"
           className="border-0"
-          sandbox="allow-scripts allow-same-origin"
           referrerPolicy="no-referrer"
           style={{ width: '320px', height: '50px' }}
           srcDoc={`
@@ -110,7 +109,6 @@ export default async function Layout({
           <iframe
             id="95b49ef8524fe084d660d25ea47e802a"
             className="border-0 block md:hidden"
-            sandbox="allow-scripts allow-same-origin"
             referrerPolicy="no-referrer"
             style={{ width: '300px', height: '250px' }}
             srcDoc={`
@@ -143,7 +141,6 @@ export default async function Layout({
           <iframe
             id="214deec7c06803a52f9407ff22418767"
             className="border-0 hidden md:block"
-            sandbox="allow-scripts allow-same-origin"
             referrerPolicy="no-referrer"
             style={{ width: '728px', height: '90px' }}
             srcDoc={`

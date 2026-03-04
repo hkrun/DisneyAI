@@ -59,11 +59,23 @@ function generatePostContent(content: any): string {
     const titleTag = i === 1 ? 'h2' : 'h3';
     html += `<${titleTag}>${content[titleKey]}</${titleTag}>`;
 
-    // 循环处理每个章节的段落 (p1, p2, p3...)
-    for (let p = 1; p < 10; p++) {
+    // 循环处理每个章节的段落 (p1, p2, p3...)，最多支持到 P20
+    for (let p = 1; p <= 20; p++) {
       const pKey = `section${i}P${p}`;
       if (content[pKey]) {
         html += `<p>${content[pKey]}</p>`;
+
+        // 如果该段落配置了图片（如 section1P5Image1、section1P5Image2...），紧跟在该段落后插入
+        for (let imgIndex = 1; imgIndex < 10; imgIndex++) {
+          const imageKey = `section${i}P${p}Image${imgIndex}`;
+          if (content[imageKey]) {
+            const src = content[imageKey];
+            const alt = `${content[titleKey]} - 段落${p} 图片${imgIndex}`;
+            html += `<figure><img src="${src}" alt="${alt}" style="max-width:100%;height:auto;border-radius:12px;" /></figure>`;
+          } else {
+            break;
+          }
+        }
       } else {
         // 没有更多段落了，跳出循环
         break;

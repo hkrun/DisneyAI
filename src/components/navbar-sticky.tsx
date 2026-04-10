@@ -1,6 +1,5 @@
 "use client"
 import Link from "next/link"
-import { LanguageToggle } from "@/components/language-toggle"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { MobileMenu } from "@/components/mobile-menu"
 // 不再需要自定义AuthProvider，使用NextAuth的SessionProvider
@@ -159,7 +158,7 @@ export function NavbarSticky({ lang, navbarLocal, subscriptionLocal, toastLocal,
 
                     {/* Language, Theme Toggles - Hidden on mobile */}
                     <div className="hidden md:flex items-center gap-4">
-                        <LanguageToggle lang={lang} label={navbarLocal.languageToggle.label} />
+                        {/* <LanguageToggle lang={lang} label={navbarLocal.languageToggle.label} /> */}
                         <ThemeToggle label={navbarLocal.themeToggle.label} />
                     </div>
                     

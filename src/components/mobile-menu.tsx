@@ -5,7 +5,6 @@ import Link from "next/link"
 import { X, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "./theme-toggle"
-import { LanguageToggle } from "./language-toggle"
 import { MobileLanguageToggle } from "./mobile-language-toggle"
 import { type Locale, getPathname } from "@/i18n-config";
 import { useSession } from 'next-auth/react'
@@ -142,7 +141,7 @@ export function MobileMenu({ lang, i18n, languageToggle, themeToggle }: MobileMe
             )}
             
             {/* 悬浮语言切换按钮 - 仅移动端显示 */}
-            <MobileLanguageToggle lang={lang} label={languageToggle} />
+            {/* <MobileLanguageToggle lang={lang} label={languageToggle} /> */}
         </div>
     )
 }

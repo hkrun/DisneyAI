@@ -1,10 +1,7 @@
 import type React from "react"
-import Script from "next/script"
 import { NavbarSticky } from "@/components/navbar-sticky"
 import { FooterSocial } from "@/components/footer-social"
 import { BottomFixedAd } from "@/components/ads/bottom-fixed-ad"
-import { TopRightAd } from "@/components/ads/top-right-ad"
-import { AdTriggerProvider } from "@/components/ads/ad-trigger-provider"
 import { PromotionTracker } from "@/components/promotion-tracker"
 import { i18nConfig, type Locale } from "@/i18n-config";
 import { getDictionary, i18nNamespaces } from '@/i18n'
@@ -53,45 +50,6 @@ export default async function Layout({
         historyLocal={i18nHistory}
         i18n={{ auth: i18nAuth }}
       />
-      {/* 右上角广告位 */}
-      {/* <TopRightAd
-        id="top-right-ad-main"
-        showOnMobile={true}
-        badgeCount={1}
-      >
-        <iframe
-          id="top-right-ad-d9e328b35f2065d7a58ee532fb8779f3"
-          className="border-0"
-          referrerPolicy="no-referrer"
-          style={{ width: '320px', height: '50px' }}
-          srcDoc={`
-            <!DOCTYPE html>
-            <html>
-              <head>
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <style>
-                  body { margin: 0; padding: 0; overflow: hidden; }
-                </style>
-              </head>
-              <body>
-               <script>
-  atOptions = {
-    'key' : 'd9e328b35f2065d7a58ee532fb8779f3',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script src="https://controlslaverystuffing.com/d9e328b35f2065d7a58ee532fb8779f3/invoke.js"></script>
-              </body>
-            </html>
-          `}
-          title="右上角广告"
-          scrolling="no"
-        />
-      </TopRightAd> */}
       <div>
         {children}
       </div>
@@ -132,7 +90,7 @@ export default async function Layout({
     'params' : {}
   };
 </script>
-<script src="https://controlslaverystuffing.com/c934864e48cfd6133fda14666a004518/invoke.js"></script>
+<script src="https://grufffeelimitation.com/c934864e48cfd6133fda14666a004518/invoke.js"></script>
                 </body>
               </html>
             `}
@@ -164,7 +122,7 @@ export default async function Layout({
     'params' : {}
   };
 </script>
-<script src="https://controlslaverystuffing.com/742e868bcc97a1c6c20966ae4a67556e/invoke.js"></script>
+<script src="https://grufffeelimitation.com/742e868bcc97a1c6c20966ae4a67556e/invoke.js"></script>
                 </body>
               </html>
             `}
@@ -173,21 +131,7 @@ export default async function Layout({
           />
         </div>
       </BottomFixedAd>
-      {/* 页面底部追加脚本广告 */}
-      <Script
-        id="marketing-page-inline-ad"
-        src="https://controlslaverystuffing.com/3e/7b/b7/3e7bb7544a932083ca5357be7c4d49e1.js"
-        strategy="afterInteractive"
-      />
-      {/* 广告弹窗触发提供者（暂时注释） */}
-      {/*
-      <AdTriggerProvider
-        lang={lang}
-        title="Strategy Hub for Better Wins"
-        description="From Backtest to Live Deployment — All in One Place"
-      />
-      */}
-      
+
     </>
   )
 }
